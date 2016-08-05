@@ -51,7 +51,6 @@ namespace Microsoft.P_FS_Boogie
         private Dictionary<P_Root.FunDecl, string> FunToFileName =
            new Dictionary<P_Root.FunDecl, string>();
 
-        private string mainMachine = null;
         private SymbolTable symbolTable = new SymbolTable();
         private int maxFields = 0;
         private bool hasDefer = false;
@@ -823,6 +822,7 @@ namespace Microsoft.P_FS_Boogie
             FSharpOption<Syntax.Expr> retExp = null;
             List<Syntax.Stmt> body = new List<Syntax.Stmt>();
             var args = new List<Syntax.VarDecl>();
+            fileName = anonFunToFileName[d];
 
             var ln = getLineColNumber(d.body as P_Root.Stmt).Item1;
             if (ln == 0)
@@ -1070,8 +1070,6 @@ namespace Microsoft.P_FS_Boogie
             FSharpList<string> monitored_events = FSharpList<string>.Empty;
             FSharpOption<Syntax.Card> qc = null;
 
-            if (getString(d.name).Equals("Main", StringComparison.InvariantCultureIgnoreCase))
-                mainMachine = name;
             if (d.kind.Symbol.ToString() == "MODEL")
                 is_model = true;
             else if (d.kind.Symbol.ToString() == "MONITOR")
@@ -1085,9 +1083,6 @@ namespace Microsoft.P_FS_Boogie
                 var x = genQueueConstraint(d.card as P_Root.QueueConstraint);
                 qc = new FSharpOption<Syntax.Card>(x);
             }
-            if (d.isMain.Symbol.ToString() == "TRUE")
-                mainMachine = name;
-
             return new Syntax.MachineDecl(name, start_state, globals, functions,
                 states, is_monitor, monitored_events, qc, is_model, hasPush);
         }
@@ -1242,6 +1237,7 @@ namespace Microsoft.P_FS_Boogie
         private Syntax.FunDecl genFunDecl(P_Root.FunDecl d)
         {
             var name = symbolTable.GetFunName(getString(d.name));
+            fileName = FunToFileName[d];
             NewScope(name);
             name =symbolTable.GetFunName(name);
             bool is_model = false;
@@ -1325,10 +1321,13 @@ namespace Microsoft.P_FS_Boogie
             FSharpOption<Syntax.Expr> retExp = null;
             List<Syntax.Stmt> body = new List<Syntax.Stmt>();
 
-            var ln = getLineNumber(d.body as P_Root.Stmt);
-            name += ln;
-            if (ln == 0)
+            var ln = getLineColNumber(d.body as P_Root.Stmt);
+            if (ln.Item1 == 0)
                 name += ("_rand_" + r.Next());
+            else
+                name += ln.Item1;
+
+            fileName = anonFunToFileName[d];
 
             if (!symbolTable.InsideStaticFn)
                 symbolTable.AddMachFun(symbolTable.currentM, name); 
@@ -1551,7 +1550,6 @@ namespace Microsoft.P_FS_Boogie
             staticFunctions.Clear();
             machines.Clear();
             events.Clear();
-            mainMachine = null;
             typeDefs.Clear();
             symbolTable.Clear();
             eventToMonitorList.Clear();
@@ -1744,9 +1742,8 @@ namespace Microsoft.P_FS_Boogie
             {
                 evMonList.Add(new Tuple<string, FSharpList<string>>(kv.Key, ListModule.OfSeq(kv.Value)));
             }     
-            var prog =  new Syntax.ProgramDecl(fileName, mainMachine,
-                ListModule.OfSeq(machines), ListModule.OfSeq(events), MapModule.OfSeq(evMonList),
-                ListModule.OfSeq(staticFunctions), maxFields, hasDefer, hasIgnore);
+            var prog =  new Syntax.ProgramDecl(ListModule.OfSeq(machines), ListModule.OfSeq(events),
+                MapModule.OfSeq(evMonList),ListModule.OfSeq(staticFunctions), maxFields, hasDefer, hasIgnore);
             var map = new List<Tuple<string, FSharpList<Tuple<int, string, Syntax.Type>>>>();
             foreach (var kv in functionsToRefParams)
             {

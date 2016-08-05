@@ -179,10 +179,8 @@ module Syntax =
    
   [<Serializable>]
   [<AllowNullLiteral>]
-  type ProgramDecl(fileName: string, mainmachine: string, machines: MachineDecl list, 
-                      events: EventDecl list, eventsToMonitors: Map<string, string list>, staticFuns: FunDecl list, maxFields: int, hasDefer: bool, hasIgnore: bool) =
-    member this.FileName = fileName
-    member this.MainMachine = mainmachine
+  type ProgramDecl(machines: MachineDecl list, events: EventDecl list, eventsToMonitors: Map<string, string list>, 
+                    staticFuns: FunDecl list, maxFields: int, hasDefer: bool, hasIgnore: bool) =
     member this.Machines = machines
     member this.Events = events
     member this.EventsToMonitors = eventsToMonitors
@@ -194,7 +192,6 @@ module Syntax =
     member this.HasPush = Seq.exists (fun(md: MachineDecl) -> md.HasPush) this.Machines
     member this.HasEventQCs = Seq.exists (fun(e: EventDecl) -> e.QC.IsSome) this.Events
     member this.HasMachineQCs = Seq.exists (fun(md: MachineDecl) -> md.QC.IsSome) this.Machines
-
 
     member this.MachineMap =
       let map = ref Map.empty in
@@ -209,34 +206,4 @@ module Syntax =
     member this.EventMap =
       let map = ref Map.empty in
       List.iter (fun (event: EventDecl) -> map := Map.add event.Name event !map) this.Events
-      !map      
-
-  (* Input program *)
-  let stmtlist = [ 
-                    Assign(Lval.Var("c"), Expr.Tuple [Expr.ConstInt 1; Expr.ConstInt 2]);  // c = (1,2)
-                    Assign(Lval.Var("x"), Expr.Var("y"));  // x = y
-                    Assign(Lval.Var("d"), Expr.Var("c"));  // d = c
-                    Assign(Lval.Var("c"), Expr.Cast(Expr.Var("d"), Type.Tuple [Int; Int]));  // d = c
-                    Insert(Lval.Index(Lval.Var("f"), Expr.ConstInt(0)), Expr.Bin(Idx, Expr.Var("e"), Expr.ConstInt(1)), Expr.ConstInt(2)); // f[0] += (e[1], 2)
-                    Assign(Lval.Var("g"), New("M", Expr.ConstInt 1)); // g = new M(1)
-                    Assign(Lval.Var("f"), Default(Type.Seq (Type.Seq Int))); // f = default(seq[seq[int]])
-                    Assign(Lval.Var("h"), Default(Type.Tuple [Type.Tuple [Any; Any]; Int])); // h = default(((any,any),int)))
-                    Assign(Lval.Var("i"), Expr.NamedTuple([("f1", Expr.ConstInt 1); ("f2", Expr.ConstBool true)])); // i = (f1: 1, f2: true)
-                    Assign(Lval.Var("a"), Expr.NamedDot(Expr.Var("i"), "f1")); // a = i.f1
-                  ]
-
-  let env = Map.ofList [ 
-              ("a", Int); 
-              ("b", Any); 
-              ("c", Type.Tuple [Int; Int]); 
-              ("d", Type.Tuple [Any; Any]); 
-              ("e", Type.Seq Int);
-              ("f", Type.Seq (Type.Seq Int));
-              ("g", Type.Machine);
-              ("h", Type.Tuple [Type.Tuple [Any; Any]; Int]);
-              ("i", Type.NamedTuple [("f1", Type.Int); ("f2", Type.Bool)]);
-              ("x", Int); 
-              ("y", Int) 
-            ]
-
-
+      !map

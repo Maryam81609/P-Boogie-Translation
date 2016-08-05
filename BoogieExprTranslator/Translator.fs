@@ -48,7 +48,6 @@ module Translator =
     | Expr.ConstInt(i) -> sprintf "PrtConstructFromInt(%d)" i
     | Expr.ConstBool(b) -> if b then "PrtTrue" else "PrtFalse"
     | Expr.This -> "PrtConstructFromMachineId(thisMid)"
-//    | Expr.New(_,_) -> "PrtConstructFromMachine(1)" (* TODO: Fix *)
     | Expr.Default t when t = Null || t = Machine || t = Type.Event || t = Any -> "null"
     | Expr.Default Int -> "PrtConstructFromInt(0)"
     | Expr.Default Bool -> "PrtFalse"
@@ -486,7 +485,7 @@ module Translator =
     sw.WriteLine("")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
-    sw.WriteLine("assert false;") //ToDo, Assert, or, assume?
+    sw.WriteLine("assert false;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
     sw.Indent <- sw.Indent - 1
@@ -577,7 +576,6 @@ module Translator =
   /// A special case for translating monitors. There's no enque/deque
   /// or deferred events or push transitions. Some statement translations will differ too.
   let createMonitor (sw: IndentedTextWriter) G evMap (md: MachineDecl) =
-    
     let stateToInt =  [for i in md.States do yield i.Name] |> Seq.mapi (fun i x -> x,i) |> Map.ofSeq
 
     let translateMonitorTrans src (t: TransDecl.T)  =
@@ -602,6 +600,7 @@ module Translator =
           sw.WriteLine("else ")
         end
       | _ -> raise NotDefined
+    
     let translateMonitorDo (d: DoDecl.T) =
       match d with
       | DoDecl.T.Ignore(e) ->
@@ -617,7 +616,20 @@ module Translator =
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
-    //let translateMonitorStmt st =
+    let translateMonitorStmt st =
+    //Monitors may not use the 'this' keyword, perform nondeterministic choice,
+    //create machines or execute send/receive.
+      match st with
+      | Raise(e, arg) -> 
+        begin
+          let plExpr = (translateExpr G evMap arg)
+          sw.WriteLine("call Monitor_{0}({1}, {2});", md.Name, (translateEventExpr evMap e plExpr), plExpr) 
+        end
+      | Receive(_) -> raise NotDefined 
+      | Pop -> raise NotDefined
+      | Send(_) -> raise NotDefined
+      | NewStmt(_) -> raise NotDefined
+      | _ -> translateStmt sw G evMap st 
 
     let translateMonitorFunction (fd: FunDecl) =
       let formals = fd.Formals |> List.map (fun(v: VarDecl) -> v.Name + ": PrtRef") |> String.concat ", "
@@ -626,10 +638,10 @@ module Translator =
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       sw.WriteLine("// Initialize locals.")
-      //getVars "" fd.Locals |> List.iter ((fun(x) -> sw.WriteLine("{0}", x))
-      //!tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
-      //getDefaults fd.Locals |> List.iter (translateStmt sw G evMap)
-      //List.iter translateMonitorStmt fd.Body
+      getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+      !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+      getDefaults fd.Locals |> List.iter (translateStmt sw G evMap)
+      List.iter translateMonitorStmt fd.Body
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
@@ -639,12 +651,10 @@ module Translator =
     List.iter translateMonitorState md.States
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
-    monitorToStartState := Map.add md.Name (Map.find md.StartState stateToInt)
-      !monitorToStartState
-    ""
+    monitorToStartState := Map.add md.Name (Map.find md.StartState stateToInt) !monitorToStartState
+    List.iter translateMonitorFunction md.Functions
 
   let printAssertEventCard (sw: IndentedTextWriter) evToInt (evToDecl: Map<string, EventDecl>) =
-    
     let printEventQC e =
       match (Map.find e evToDecl).QC with
       | None -> ignore true
@@ -678,19 +688,18 @@ module Translator =
     sw.WriteLine("tail := MachineInboxTail[mid];")
     sw.WriteLine("count := machineEvToQCount[mid][event];")
 
-    sw.WriteLine("//Queue constraints for specific events.")
+    sw.WriteLine("// Queue constraints for specific events.")
     Map.iter (fun k v -> (printEventQC k)) evToDecl
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
-  let createMonitorFunction (sw: IndentedTextWriter) evMap evToMon monToInt =
-    
+  let createMonitorFunction (sw: IndentedTextWriter) evMap evToMon  =
     let printMonitorSt ev monLst =
       let e = (Map.find ev evMap)
       sw.WriteLine("if(event == {0}) //{1}", e, ev)
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
-      List.iter (fun(m) -> sw.WriteLine("Enqueue({0}, {1}, payload);", (Map.find m monToInt), e)) monLst
+      List.iter (fun(m) -> sw.WriteLine("call Monitor_{0}({1}, payload);", m, e)) monLst
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
     sw.WriteLine("procedure monitor(event: int, payload: PrtRef)")
@@ -701,7 +710,6 @@ module Translator =
     sw.WriteLine("}")
 
   let createAssertPayloadDynamicType (sw: IndentedTextWriter) (evToInt: Map<string,int>) (evToDecl: Map<string, EventDecl>) =
-    
     let printAssertion e =
       match (Map.find e evToDecl).Type with
       | None -> ignore true
@@ -726,8 +734,7 @@ module Translator =
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
-  let createDeque (sw: IndentedTextWriter) hasDefer hasIgnore =
-    
+  let createDeque (sw: IndentedTextWriter) hasDefer hasIgnore =    
     sw.WriteLine("procedure Dequeue() returns (event: int, payload: PrtRef)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -828,7 +835,6 @@ module Translator =
     sw.WriteLine("}")
 
   let translateProg (prog: ProgramDecl) (sw: IndentedTextWriter) =
-    
     (* Top-level types *)
     sw.WriteLine("type PrtType;")
     sw.WriteLine("const unique {0}: PrtType;", (translateType Null))
@@ -930,7 +936,10 @@ module Translator =
 
     let evMap = prog.EventMap |> Map.toSeq |> Seq.map fst |> Seq.mapi (fun i x -> (x,i)) |> Map.ofSeq
 
-    createMonitorFunction sw evMap prog.EventsToMonitors monitorToInt
+    (* Create a function to send stuff to monitors*)
+    createMonitorFunction sw evMap prog.EventsToMonitors 
+    
+    (* Create a function to assert payload type*)
     createAssertPayloadDynamicType sw evMap prog.EventMap
 
     (* Equals *)
@@ -954,8 +963,15 @@ module Translator =
     List.iter (translateFunction sw G evMap) prog.StaticFuns
 
     (* Monitors *)
-
-
+    let mons = List.filter (fun(m:MachineDecl) -> m.IsMonitor) prog.Machines 
+    //Globals
+    mons |> List.fold (fun acc (m: MachineDecl) -> acc @ m.Globals) [] 
+    |> List.iter (fun(v: VarDecl) -> sw.WriteLine("var {0}: PrtRef;", v.Name))
+    //Current State
+    mons |> List.map (fun(md: MachineDecl) -> md.Name) 
+    |> List.iter (fun(s) -> sw.WriteLine("var {0}_CurrState: int;", s))
+    //Function for the monitor
+    List.iter (createMonitor sw G evMap) mons
 
     (* New machine creation *)
     List.iter (createNewMachineFunction sw G evMap) prog.Machines
@@ -971,12 +987,13 @@ module Translator =
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("var tmpRhsValue: PrtRef;")
     sw.WriteLine("machineCounter := 0;")
-    //Start monitors
-    Map.iter (fun k v -> sw.WriteLine("call tmpRhsValue := newMachine_{0}(null);", k)) monitorToInt
+    
+    //Set monitor Start States.
+    Map.iter (fun k v -> sw.WriteLine("{0}_CurrState := {1};", k, v)) !monitorToStartState
 
     //Start main machine
 
-    sw.WriteLine("call tmpRhsValue := newMachine_{0}(null);", prog.MainMachine)
+    sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
 
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")

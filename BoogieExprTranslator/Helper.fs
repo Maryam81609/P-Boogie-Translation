@@ -271,11 +271,10 @@ module Helper=
     sprintf "\n%s state %s\n{\n%s%s%s%s}" temp s.Name entry exit dos trans
 
   let printMachine (prog: ProgramDecl) (m: Syntax.MachineDecl) =
-    let main = if (m.Name = prog.MainMachine) then "main " else ""
     let machine = if (m.IsModel) then "model" else (if (m.IsMonitor) then "spec" else "machine")
     let monitors = if(m.IsMonitor) then (sprintf " monitors %s " (printList (sprintf "%s") m.MonitorList ", ")) else ""
     let card = if (m.QC.IsSome) then (printCard m.QC.Value) else ""
-    sprintf "%s%s %s%s%s\n{\n%s\n%s%s\n}\n" main machine m.Name card monitors 
+    sprintf "%s %s%s%s\n{\n%s\n%s%s\n}\n" machine m.Name card monitors 
               (printVarList m.Globals) 
               (printList (printFunction prog m.Name) m.Functions "\n") 
               (printList (fun (s: Syntax.StateDecl) -> 

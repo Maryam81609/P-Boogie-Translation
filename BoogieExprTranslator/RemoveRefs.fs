@@ -200,4 +200,4 @@ module RemoveRefParams =
     let funToRetType = prog.StaticFuns |> Seq.ofList |> Seq.map (fun (fd: FunDecl) -> (fd.Name, fd.RetType)) |> Map.ofSeq |> Map.filter (fun k v -> v.IsSome) |> Map.map (fun k v -> v.Value)
     let stfns = List.map (removeRefParamsFunction funToRefParams funToRetType) prog.StaticFuns
     let machines = List.map (removeRefParamsMachine funToRefParams funToRetType) prog.Machines
-    new ProgramDecl(prog.FileName, prog.MainMachine, machines, prog.Events, prog.EventsToMonitors, stfns, prog.maxFields, prog.HasDefer, prog.HasIgnore)
+    new ProgramDecl(machines, prog.Events, prog.EventsToMonitors, stfns, prog.maxFields, prog.HasDefer, prog.HasIgnore)
