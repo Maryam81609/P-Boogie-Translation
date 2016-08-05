@@ -35,7 +35,7 @@
   <ItemGroup>
     <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\Ext\Formula\x86\Core.dll</HintPath>
+      <HintPath>..\P\Ext\Formula\Src\Core\bin\x86\Debug\Core.dll</HintPath>
     </Reference>
     <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />

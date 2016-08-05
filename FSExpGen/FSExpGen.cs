@@ -109,92 +109,105 @@ namespace Microsoft.P_FS_Boogie
             return ret;
         }
 
-        private int getLineNumber(P_Root.Stmt s)
+        private Tuple<int, int> getLineColNumber(P_Root.Stmt s)
         {
             if (s is P_Root.NewStmt)
             {
                 var x = (s as P_Root.NewStmt);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Raise)
             {
                 var x = (s as P_Root.Raise);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Send)
             {
                 var x = (s as P_Root.Send);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Monitor)
             {
                 var x = (s as P_Root.Monitor);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.FunStmt)
             {
                 var x = (s as P_Root.FunStmt);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.NulStmt)
             {
                 var x = (s as P_Root.NulStmt);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.BinStmt)
             {
                 var x = (s as P_Root.BinStmt);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Return)
             {
                 var x = (s as P_Root.Return);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.While)
             {
                 var x = (s as P_Root.While);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Ite)
             {
                 var x = (s as P_Root.Ite);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Seq)
             {
                 var x = (s as P_Root.Seq).s1 as P_Root.Stmt;
-                return getLineNumber(x);
+                return getLineColNumber(x);
             }
             else if (s is P_Root.Receive)
             {
                 var x = (s as P_Root.Receive);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
             else if (s is P_Root.Assert)
             {
                 var x = (s as P_Root.Assert);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
-            else if(s is P_Root.Print)
+            else if (s is P_Root.Print)
             {
                 var x = (s as P_Root.Print);
-                var l = (x.info as P_Root.SourceInfo).line;
-                return getValue(l as P_Root.Natural);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
             }
-            return -1;
+            return null;
         }
 
         private void NewScope(string name)
@@ -811,10 +824,11 @@ namespace Microsoft.P_FS_Boogie
             List<Syntax.Stmt> body = new List<Syntax.Stmt>();
             var args = new List<Syntax.VarDecl>();
 
-            var ln = getLineNumber(d.body as P_Root.Stmt);
-            name += ln;
+            var ln = getLineColNumber(d.body as P_Root.Stmt).Item1;
             if (ln == 0)
                 name += ("_rand_" + r.Next());
+            else
+                name += '_' + ln;
 
             var env = symbolTable.IncludeSurroundingScopes(name);
             var envVarDecl = new Syntax.VarDecl(name + "_env", env.Item1);
@@ -917,12 +931,12 @@ namespace Microsoft.P_FS_Boogie
 
         private List<Syntax.Stmt> genStmt(P_Root.Stmt s)
         {
-            var ln = getLineNumber(s);
+            var ln = getLineColNumber(s);
             if (s is P_Root.NewStmt)
             {
                 var st = genNewStmt(s as P_Root.NewStmt);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -930,7 +944,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genRaiseStmt(s as P_Root.Raise);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -938,7 +952,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genSendStmt(s as P_Root.Send);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -946,7 +960,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genMonitorStmt(s as P_Root.Monitor);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -954,7 +968,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genFunStmt(s as P_Root.FunStmt);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -962,7 +976,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genNulStmt(s as P_Root.NulStmt);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -970,7 +984,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genBinStmt(s as P_Root.BinStmt);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -978,7 +992,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genReturnStmt(s as P_Root.Return);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -986,7 +1000,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genWhileStmt(s as P_Root.While);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -994,7 +1008,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genIteStmt(s as P_Root.Ite);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -1007,7 +1021,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genReceiveStmt(s as P_Root.Receive);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -1015,7 +1029,7 @@ namespace Microsoft.P_FS_Boogie
             {
                 var st = genAssertStmt(s as P_Root.Assert);
                 var lst = new List<Syntax.Stmt>();
-                lst.Add(Syntax.Stmt.NewSkip(ln));
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);
                 return lst;
             }
@@ -1056,7 +1070,7 @@ namespace Microsoft.P_FS_Boogie
             FSharpList<string> monitored_events = FSharpList<string>.Empty;
             FSharpOption<Syntax.Card> qc = null;
 
-            if (d.isMain.Symbol.ToString() == "TRUE")
+            if (getString(d.name).Equals("Main", StringComparison.InvariantCultureIgnoreCase))
                 mainMachine = name;
             if (d.kind.Symbol.ToString() == "MODEL")
                 is_model = true;
@@ -1593,6 +1607,18 @@ namespace Microsoft.P_FS_Boogie
                 }
                 eventToMonitorList["null"] = new List<string>();
                 eventToMonitorList["halt"] = new List<string>();
+
+                foreach (var l in program.FileInfos)
+                {
+                    if (l.decl is P_Root.FunDecl)
+                    {
+                        FunToFileName[l.decl as P_Root.FunDecl] = getString(l.file);
+                    }
+                    else if (l.decl is P_Root.AnonFunDecl)
+                    {
+                        anonFunToFileName[l.decl as P_Root.AnonFunDecl] = getString(l.file);
+                    }
+                }
             }
         }
 
