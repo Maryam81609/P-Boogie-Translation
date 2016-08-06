@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Microsoft.P2Boogie;
 using Microsoft.FSharp.Collections;
 
-namespace Microsoft.P_FS_Boogie
+namespace Microsoft.PBoogieTranslator
 {
     class SymbolTable
     {

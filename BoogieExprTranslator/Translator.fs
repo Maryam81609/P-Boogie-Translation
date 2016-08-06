@@ -379,7 +379,7 @@ module Translator =
     List.zip l1 l2
 
   //TODO Come back!
-  let printEvDict (sw:IndentedTextWriter) (state: int) (evDict, name)=
+  let printEvDict (sw:IndentedTextWriter) (state: int) (evDict: Map<int, bool>, name: string)=
     Map.iter (fun k v ->sw.WriteLine("{0}[{1}][{2}] := {3};", name, state, k, v)) evDict
 
   let translateFunction (sw: IndentedTextWriter) G evMap (fd: FunDecl) =
@@ -656,26 +656,15 @@ module Translator =
 
   let printAssertEventCard (sw: IndentedTextWriter) evToInt (evToDecl: Map<string, EventDecl>) =
     let printEventQC e =
+      sw.WriteLine("if(event == {0}) //{1}", (Map.find e evToInt), e)
+      sw.WriteLine("{")
+      sw.Indent <- sw.Indent + 1
       match (Map.find e evToDecl).QC with
-      | None -> ignore true
-      | Some(Card.Assume(i)) ->
-        begin
-          sw.WriteLine("if(event == {0}) //{1}", (Map.find e evToInt), e)
-          sw.WriteLine("{")
-          sw.Indent <- sw.Indent + 1
-          sw.WriteLine("assume (count <= {0});", i)
-          sw.Indent <- sw.Indent - 1
-          sw.WriteLine("}")
-        end
-      | Some(Card.Assert(i)) ->
-        begin
-          sw.WriteLine("if(event == {0}) //{1}", (Map.find e evToInt), e)
-          sw.WriteLine("{")
-          sw.Indent <- sw.Indent + 1
-          sw.WriteLine("assert (count <= {0});", i)
-          sw.Indent <- sw.Indent - 1
-          sw.WriteLine("}")
-        end
+      | None -> sw.WriteLine()
+      | Some(Card.Assume(i)) -> sw.WriteLine("assume (count <= {0});", i)
+      | Some(Card.Assert(i)) -> sw.WriteLine("assert (count <= {0});", i)
+      sw.Indent <- sw.Indent - 1
+      sw.WriteLine("}")
 
     sw.WriteLine("procedure AssertEventCard(mid: int, event: int)")
     sw.WriteLine("{")
@@ -766,7 +755,7 @@ module Translator =
     sw.WriteLine("event := MachineInboxStoreEvent[thisMid][ptr];")
     if hasIgnore then
       begin
-        sw.WriteLine("if(event >= 0 && ignoreEvents[event])")
+        sw.WriteLine("if(event >= 0 && ignoreEvents[CurrState][event])")
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
         sw.WriteLine("// dequeue")
@@ -795,7 +784,7 @@ module Translator =
         sw.WriteLine("}")
         sw.Write("else ")
       end
-    let cond = if hasDefer then "if(event >= 0 && !deferEvents[event])" else "if(event >= 0)"
+    let cond = if hasDefer then "if(event >= 0 && !deferEvents[CurrState][event])" else "if(event >= 0)"
     sw.WriteLine("{0}", cond)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -923,8 +912,8 @@ module Translator =
     (* deferred, ignored events *)
     let dicts =
       ["var{:thread_local} registerEvents: [int][int]bool;"] @
-      (if prog.HasIgnore then ["var{:thread_local} ignoreEvents: [int]bool;"] else []) @
-      (if prog.HasDefer then ["var{:thread_local} deferEvents: [int]bool;"] else [])
+      (if prog.HasIgnore then ["var{:thread_local} ignoreEvents: [int][int]bool;"] else []) @
+      (if prog.HasDefer then ["var{:thread_local} deferEvents: [int][int]bool;"] else [])
 
     List.iter (fun(x:string) -> sw.WriteLine(x)) dicts
 

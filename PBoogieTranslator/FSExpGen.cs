@@ -8,10 +8,11 @@ using Microsoft.FSharp.Collections;
 using Microsoft.FSharp.Core;
 using Microsoft.P2Boogie;
 using System.IO;
+using PBoogieTranslator;
 
-namespace Microsoft.P_FS_Boogie
+namespace Microsoft.PBoogieTranslator
 {
-    sealed class FSharpExpGen
+     sealed class FSharpExpGen
     {
         private List<PProgram> parsedPrograms { get; set; }
         private Compiler compiler;
@@ -57,12 +58,9 @@ namespace Microsoft.P_FS_Boogie
         private bool hasIgnore = false;
         private string fileName = null;
 
-        public FSharpExpGen(CommandLineOptions options)
+        public FSharpExpGen(CommandLineArguments args)
         {
-            options.analyzeOnly = true;
-            options.profile = true;
-            options.test = true;
-            compiler = new Compiler(options);
+            compiler = new Compiler(args.options);
         }
 
         private static string getString(ICSharpTerm x)
