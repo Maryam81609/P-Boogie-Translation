@@ -32,7 +32,7 @@ module Main =
     end
 
 
-  [<EntryPoint>]
+  (*[<EntryPoint>]
   let main argv = 
     use t = new StreamWriter(argv.[1])
     //let t = System.Console.Out
@@ -49,3 +49,4 @@ module Main =
 *)
   
 
+*)

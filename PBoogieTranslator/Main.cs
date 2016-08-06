@@ -23,6 +23,10 @@ namespace Microsoft.PBoogieTranslator
                 printPFile(options.deSugarFile, prog);
             }
 
+            //Type check the program.
+            Console.WriteLine("Type checking...");
+            ProgramTyping.typecheckProgram(prog);
+
             //Remove named tuples in the P Program
             prog = RemoveNamedTuples.removeNamedTuplesProgram(prog);
             if(options.removeNTFile != null)
