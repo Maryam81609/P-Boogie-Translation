@@ -397,7 +397,6 @@ module Translator =
     sw.WriteLine("}")
 
   let translateDos (sw: IndentedTextWriter) evMap (d: DoDecl.T) =
-    
     match d with
     | DoDecl.T.Call(e, f) ->
       begin
@@ -409,6 +408,7 @@ module Translator =
         sw.WriteLine("}")
       end
     | DoDecl.T.Ignore(e) ->  sw.WriteLine("if(event == {0}) {} //{1}", (Map.find e evMap), e)
+    | DoDecl.T.Defer(_) -> ignore true
 
   let translateTransitions (sw: IndentedTextWriter) (mach: MachineDecl) src (stateToInt:Map<string, int>) (evMap: Map<string,int>) (t: TransDecl.T) =
     match t with
