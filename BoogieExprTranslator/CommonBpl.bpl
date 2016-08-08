@@ -76,48 +76,10 @@ procedure StateStackPop()
    return;
 }
 
-procedure Probe(event: int) (returns handlerState: int)
-{
-   handlerState := CurrState;
-   if(registerEvents[handlerState][event])
-   {
-      return;
-   }
-
-   var s: StateStackType;
-   s := StateStack;
-   while(s != Nil()) 
-   {
-      handlerState := state#Cons(StateStack);
-      s := stack#Cons(StateStack);
-	  if(registerEvents[handlerState][event])
-	  {
-         return;
-      }
-   }
-   assert false; //No handler
-   return;
-}
-
-
-
-procedure AssertEventCard(mid: int, event: int)
-{
-   var head: int;
-   var tail: int;
-   var count: int;
-   
-   head := MachineInboxHead[mid];
-   tail := MachineInboxTail[mid];
-   count := machineEvToQCount[mid][event];
-
-   //Queue constraints for specific events.
-}
-
 procedure AssertMachineQueueSize(mid: int)
 {
-	var head: int;
-	var tail: int;
+    var head: int;
+    var tail: int;
     var size: int;
     var qc: int;
 
@@ -125,17 +87,17 @@ procedure AssertMachineQueueSize(mid: int)
     tail := MachineInboxTail[mid];
     size := (tail - head) + 1;
 
-	qc := machineToQCAssert[mid];
-	if(qc > 0)
-	{
+    qc := machineToQCAssert[mid];
+    if(qc > 0)
+    {
        assert (size <= qc);
-	}
+    }
 
     qc := machineToQCAssume[mid];
-	if(qc > 0)
-	{
+    if(qc > 0)
+    {
        assume (size <= qc);
-	}
+    }
 }
 
 procedure Enqueue(mid:int, event: int, payload: PrtRef) 
@@ -157,6 +119,6 @@ procedure Enqueue(mid:int, event: int, payload: PrtRef)
 
 procedure send(mid: int, event: int, payload: PrtRef)
 {
-	call monitor(event, payload);
-	call Enqueue(mid, event, payload);
+    call monitor(event, payload);
+    call Enqueue(mid, event, payload);
 }

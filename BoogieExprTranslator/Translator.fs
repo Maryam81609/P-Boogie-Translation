@@ -407,8 +407,8 @@ module Translator =
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
       end
-    | DoDecl.T.Ignore(e) ->  sw.WriteLine("if(event == {0}) {} //{1}", (Map.find e evMap), e)
-    | DoDecl.T.Defer(_) -> ignore true
+    | DoDecl.T.Ignore(e) -> sw.WriteLine("if(event == {0}) {} //{1} ignored.", (Map.find e evMap), e)
+    | DoDecl.T.Defer(e) -> sw.WriteLine("if(event == {0}) {} //{1} deferred.", (Map.find e evMap), e)
 
   let translateTransitions (sw: IndentedTextWriter) (mach: MachineDecl) src (stateToInt:Map<string, int>) (evMap: Map<string,int>) (t: TransDecl.T) =
     match t with
@@ -423,7 +423,7 @@ module Translator =
         | None -> ignore true
         | Some(ea) -> sw.WriteLine("call {0}();", ea)
         sw.WriteLine("call {0}(payload);", f)
-        sw.WriteLine("call TransitionState({0}, {1});", (Map.find src stateToInt), (Map.find d stateToInt))
+        sw.WriteLine("call TransitionState({0}, {1}, depth);", (Map.find src stateToInt), (Map.find d stateToInt))
         match dstEntryAction with
         | None -> ignore true
         | Some(ea) -> sw.WriteLine("call {0}(payload);", ea)
@@ -465,8 +465,7 @@ module Translator =
     ht || hd
 
   let translateState (sw: IndentedTextWriter) mach (stateToInt:Map<string, int>) hasDefer hasIgnore (evMap: Map<string,int>) (state: StateDecl) =
-    
-    sw.WriteLine("if(CurrState == {0})", (Map.find state.Name stateToInt))
+    sw.WriteLine("if(HandlerState == {0})", (Map.find state.Name stateToInt))
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     List.iter (translateDos sw evMap) state.Dos
@@ -493,8 +492,7 @@ module Translator =
     sw.WriteLine("else ")
 
 
-  let createNewMachineFunction (sw: IndentedTextWriter) G (evMap: Map<string,int>) (md: MachineDecl) =
-    
+  let createNewMachineFunction (sw: IndentedTextWriter) G (evMap: Map<string,int>) (md: MachineDecl) =    
     let m = md.Name
     sw.WriteLine("procedure newMachine_{0}(entryArg: PrtRef) returns (m: PrtRef)", m)
     sw.WriteLine("{")
@@ -519,7 +517,6 @@ module Translator =
     sw.WriteLine("}")
 
   let translateMachine (sw: IndentedTextWriter) G evMap hasDefer hasIgnore (md: MachineDecl) =
-    
     let stateToInt =  [for i in md.States do yield i.Name] |> Seq.mapi (fun i x -> x,i) |> Map.ofSeq
     let state = md.StateMap.[md.StartState]
     assert(not md.IsMonitor)
@@ -539,6 +536,7 @@ module Translator =
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
     sw.WriteLine("var HandlerState: int;")
+    sw.WriteLine("var depth: int;")
     sw.WriteLine("// Initialize")
     if md.HasPush then
       sw.WriteLine("StateStack := Nil();")
@@ -561,6 +559,7 @@ module Translator =
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("call event, payload := Dequeue();")
+    sw.WriteLine("call HandlerState, depth := Probe(event);")
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine("")
     sw.WriteLine("{")
@@ -823,6 +822,76 @@ module Translator =
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
+  let createProbe sw hasPush =
+    fprintfn sw @"procedure Probe(event: int) (returns handlerState: int, depth: int)
+{
+   handlerState := CurrState;
+   depth := 0;
+   if(registerEvents[handlerState][event])
+   {
+      return;
+   }"
+   
+    if hasPush then 
+      fprintfn sw "  //Probe down the state stack. 
+   var s: StateStackType;
+   s := StateStack;
+   while(s != Nil()) 
+   {
+      depth := depth + 1;
+      handlerState := state#Cons(s);
+      s := stack#Cons(s);
+      if(registerEvents[handlerState][event])
+      {
+         return;
+      }
+   }
+   assert false; //No handler
+   return;
+}"
+  
+  let createTransitionState sw hasPush = 
+    fprintfn sw "procedure TransitionState(src: int, dst: int, depth: int)
+{
+    if(src == CurrState)
+    {
+        CurrState := dst;
+        return; 
+    }
+    "
+    if hasPush then 
+      fprintfn sw "    //Handle Pushes
+    var s: StateStackType;
+    var t: StateStackType;
+    var st: int;
+	  var i: int;
+    
+    assert (StateStack != Nil());
+    st := state#Cons(StateStack);
+    s  := stack#Cons(StateStack);
+    t  := Nil();
+	  i  := 0;
+    
+    while(i < depth)
+    {
+        assert (s != Nil());
+        t  := Cons(st, t);
+        st := state#Cons(s);
+        s  := stack#Cons(s);
+		i  := i + 1;
+    }
+    
+    s = Cons(dst, s);
+   
+    while(t != Nil())
+    {
+        st := state#Cons(t);
+        t  := stack#Cons(t);
+        s  := Cons(st, s);
+    }"
+    fprintfn sw "    assume false; 
+}
+"
   let translateProg (prog: ProgramDecl) (sw: IndentedTextWriter) =
     (* Top-level types *)
     sw.WriteLine("type PrtType;")
@@ -939,6 +1008,12 @@ module Translator =
 
     (* Deque *)
     createDeque sw prog.HasDefer prog.HasIgnore
+
+    (* Probe state stack function *)
+    createProbe sw prog.HasPush
+
+    (* Transitioning between states *)
+    createTransitionState sw prog.HasPush
 
     let s = IO.File.ReadAllLines("CommonBpl.bpl") in
     Array.iter (fun (x:string) -> sw.WriteLine(x)) s
