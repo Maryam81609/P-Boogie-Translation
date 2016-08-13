@@ -204,6 +204,13 @@ namespace Microsoft.PBoogieTranslator
                 var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
                 return new Tuple<int, int>(l, c);
             }
+            else if(s is P_Root.Goto)
+            {
+                var x = (s as P_Root.Goto);
+                var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
+                var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
+                return new Tuple<int, int>(l, c);
+            }
             return null;
         }
 
@@ -927,6 +934,14 @@ namespace Microsoft.PBoogieTranslator
             return Syntax.Stmt.NewAssert(arg) as Syntax.Stmt.Assert;
         }
 
+        private Syntax.Stmt.Goto genGotoStmt(P_Root.Goto s)
+        {
+            var st = getQualifiedName(s.dst as P_Root.QualifiedName);
+            var exp = genExpr(s.arg as P_Root.Expr);
+            return Syntax.Stmt.NewGoto(st, exp) as Syntax.Stmt.Goto;
+        }
+
+
         private List<Syntax.Stmt> genStmt(P_Root.Stmt s)
         {
             var ln = getLineColNumber(s);
@@ -1026,6 +1041,14 @@ namespace Microsoft.PBoogieTranslator
             else if (s is P_Root.Assert)
             {
                 var st = genAssertStmt(s as P_Root.Assert);
+                var lst = new List<Syntax.Stmt>();
+                lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
+                lst.Add(st);
+                return lst;
+            }
+            else if(s is P_Root.Goto)
+            {
+                var st = genGotoStmt(s as P_Root.Goto);
                 var lst = new List<Syntax.Stmt>();
                 lst.Add(Syntax.Stmt.NewSkip(fileName, ln.Item1, ln.Item2));
                 lst.Add(st);

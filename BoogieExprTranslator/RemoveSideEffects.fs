@@ -248,6 +248,11 @@ module RemoveSideEffects =
         let (el', d, G') = removeSideEffectsExprlist el G in
           d @ [FunStmt(s, el', v)], G'
       end
+    | Goto(s, e) -> 
+      begin
+        let (e', d, G') = removeSideEffectsExpr e G in
+          d @ [Goto(s, e')], G'
+      end
 
   /// returns new list of statements and the new G 
   and removeSideEffectsStlist stlist G =

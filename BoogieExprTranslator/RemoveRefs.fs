@@ -186,6 +186,11 @@ module RemoveRefParams =
             vl, stl @ if v.IsSome then [Assign(Lval.Var(v.Value), e')] else []
           end
       end
+    | Goto(s, e) -> 
+      begin
+        let vl, stl, e' = removeRefParamsExpr funToRefParams funToRetType e
+        vl, stl @ [Goto(s, e')]
+      end
   
   let removeRefParamsFunction funToRefParams funToRetType (fd: FunDecl) = 
     let vl, stl = List.fold (fun (vl, stl) (curr_vl, curr_stl) -> vl @ curr_vl, stl @ curr_stl) ([], []) (List.map (removeRefParamsStmt funToRefParams funToRetType) fd.Body)

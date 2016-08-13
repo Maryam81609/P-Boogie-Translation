@@ -823,25 +823,25 @@ module Translator =
     sw.WriteLine("}")
 
   let createProbe sw hasPush =
-    fprintfn sw @"procedure Probe(event: int) (returns handlerState: int, depth: int)
+    fprintfn sw @"procedure getHandlerState(event: int) //(returns handlerState: int, depth: int)
 {
-   handlerState := CurrState;
-   depth := 0;
-   if(registerEvents[handlerState][event])
+   //handlerState := CurrState;
+//   depth := 0;
+   if(registerEvents[CurrState][event])
    {
       return;
    }"
    
     if hasPush then 
       fprintfn sw "  //Probe down the state stack. 
-   var s: StateStackType;
-   s := StateStack;
-   while(s != Nil()) 
+//   var s: StateStackType;
+//   s := StateStack;
+   while(StateStack != Nil())
    {
-      depth := depth + 1;
-      handlerState := state#Cons(s);
-      s := stack#Cons(s);
-      if(registerEvents[handlerState][event])
+//      depth := depth + 1;
+      CurrState := state#Cons(StateStack);
+      StateStack := stack#Cons(StateStack);
+      if(registerEvents[CurrState][event])
       {
          return;
       }
@@ -850,6 +850,7 @@ module Translator =
    return;
 }"
   
+(*
   let createTransitionState sw hasPush = 
     fprintfn sw "procedure TransitionState(src: int, dst: int, depth: int)
 {
@@ -892,6 +893,8 @@ module Translator =
     fprintfn sw "    assume false; 
 }
 "
+*)
+
   let translateProg (prog: ProgramDecl) (sw: IndentedTextWriter) =
     (* Top-level types *)
     sw.WriteLine("type PrtType;")
@@ -1011,9 +1014,6 @@ module Translator =
 
     (* Probe state stack function *)
     createProbe sw prog.HasPush
-
-    (* Transitioning between states *)
-    createTransitionState sw prog.HasPush
 
     let s = IO.File.ReadAllLines("CommonBpl.bpl") in
     Array.iter (fun (x:string) -> sw.WriteLine(x)) s

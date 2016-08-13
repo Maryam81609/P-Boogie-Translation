@@ -72,6 +72,7 @@ module Syntax =
     | Return of Expr option
     | Monitor of Expr * Expr  
     | FunStmt of string * Expr list * string option
+    | Goto of string * Expr
 
   (* Variable and type *)
   [<Serializable>]

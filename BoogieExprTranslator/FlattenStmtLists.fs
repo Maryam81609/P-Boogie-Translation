@@ -19,7 +19,8 @@ module FlattenStmtLists =
     | Pop
     | Return(_)
     | Monitor(_)
-    | FunStmt(_) -> [st]
+    | FunStmt(_) 
+    | Goto(_) -> [st]
     | While(c, s) -> [While(c, (flattenAllStmts(flattenStmt s)))]
     | Ite(c, i, e) -> 
       [Ite(c, (flattenAllStmts(flattenStmt i)), (flattenAllStmts(flattenStmt e)))]

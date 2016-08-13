@@ -422,6 +422,13 @@ module ProgramTyping =
             (sprintf "%s: Function returns a %s, but got no return value" cf (printType rettype.Value))
           else "")
       end
+    | Goto(s, e) ->
+      begin
+        let st = Map.find s (Map.find cm prog.MachineMap).StateMap
+        match st.EntryAction with
+        | None -> typeAssert (e = Expr.Nil) (sprintf "State %s does not expect an entry argument, but got %s" s (printExpr e))
+        | Some(a) -> ignore (typecheckCall prog G cm a [e])
+      end
     | Pop -> ignore true
     | Skip(_) -> ignore true //A fancy way of generating unit.
 

@@ -177,6 +177,7 @@ module Helper=
     | Monitor(e1, e2) -> sprintf "monitor (%s), (%s);" (printExpr e1) (printExpr e2)
     | FunStmt(s, el, None) -> sprintf "%s(%s);" s (printList printExpr el ", ")
     | FunStmt(s, el, v) -> sprintf "%s = %s(%s);" v.Value s (printList printExpr el ", ")
+    | Goto(s, e) -> sprintf "goto %s, %s" s (printExpr e)
     
   ///printEventAction <program> <event name> <machine name> <function name>
   and printCases (prog: ProgramDecl) cm (ev, st) =     
