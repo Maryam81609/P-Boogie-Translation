@@ -1,7 +1,6 @@
 @echo off
 setlocal
 pushd %~dp0
-cd ..
 goto :start
 
 :help
@@ -13,7 +12,6 @@ echo noclean - do not clean the build, so do incemental build
 goto :exit
 
 :start
-echo ============= Building P SDK on %COMPUTERNAME% ===============
 
 set MSBuildPath=
 for /F "usebackq tokens=1,2* delims= " %%i in (`reg query HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0 -v MSBuildToolsPath`) do (
@@ -25,6 +23,11 @@ if not "%MSBuildPath%"=="" goto :step2
 echo MSBUILD 14.0 does not appear to be installed.
 echo No info found in HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0
 goto :eof
+
+git submodule init
+git submodule update
+
+cd P
 
 :step2
 set TAIL=%MSBuildPath:~-6%
@@ -104,6 +107,14 @@ REM this code fixes a problem in MIDL compile by forcing recompile of these file
 del Src\PrtDist\Core\NodeManager_c.c
 del Src\PrtDist\Core\NodeManager_s.c
 
+cd ..
 
+if "%NoClean%"=="true" goto :build
+echo msbuild PBoogieTranslator.sln /p:Platform=%Platform% /p:Configuration=%Configuration%
+msbuild  PBoogieTranslator.sln /p:Platform=%Platform% /p:Configuration=%Configuration% /t:Clean
+:build
+if "%CleanOnly%"=="true" goto :exit
+msbuild PBoogieTranslator.sln /p:Platform=%Platform% /p:Configuration=%Configuration% 
 
-
+:exit
+popd
