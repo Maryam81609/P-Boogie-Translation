@@ -944,7 +944,7 @@ module Translator =
     sw.WriteLine("")
     sw.WriteLine("function PrtConstructFromInt(int) : PrtRef;")
     sw.WriteLine("axiom (forall x : int :: {PrtFieldInt(PrtConstructFromInt(x))} PrtFieldInt(PrtConstructFromInt(x)) == x);")
-    sw.WriteLine("axiom (forall x : int :: {PrtDynamicType(PrtConstructFromInt(x))} PrtDynamicType(PrtConstructFromInt(x)) == {0});", (translateType Int))
+    sw.WriteLine("axiom (forall x : int :: {PrtDynamicType(PrtConstructFromInt(x))} PrtDynamicType(PrtConstructFromInt(x)) == {0:D});", (translateType Int))
     sw.WriteLine("")
     sw.WriteLine("function {:inline} PrtConstructFromBool(v: bool) : PrtRef")
     sw.WriteLine("{ if v then PrtTrue else PrtFalse }")

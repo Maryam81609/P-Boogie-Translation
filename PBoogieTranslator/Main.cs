@@ -13,6 +13,7 @@ namespace Microsoft.PBoogieTranslator
     {
         public static void Main(string[] args)
         {
+            args = new string[] { @"C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature1SMLevelDecls\Correct\bug1\bug1.p" };
             var options = new CommandLineArguments(args);
             FSharpExpGen fsExpGen = new FSharpExpGen(options);
 
