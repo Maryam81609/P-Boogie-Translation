@@ -5,7 +5,7 @@ using System.IO;
 
 namespace PBoogieTranslator
 {
-    internal class CommandLineArguments
+    public sealed class CommandLineArguments
     {
         public string deSugarFile = null;
         public string removeNTFile = null;
@@ -13,6 +13,7 @@ namespace PBoogieTranslator
         public string boogieFile = null;
         public string inputFile = null;
         public string serializedDSFile = null;
+        public bool list = false;
         public Microsoft.Pc.CommandLineOptions options = new Microsoft.Pc.CommandLineOptions();
 
         public CommandLineArguments(string[] args)
@@ -101,6 +102,10 @@ namespace PBoogieTranslator
                             options.profile = true;
                             break;
 
+                        case "list":
+                            list = true;
+                            break;
+
                         default:
                             goto error;
                     }
@@ -110,6 +115,7 @@ namespace PBoogieTranslator
                     if (inputFile == null)
                     {
                         inputFile = Path.GetFullPath(arg);
+                        Console.WriteLine(inputFile);
                         boogieFile = Path.ChangeExtension(inputFile, ".bpl");
                     }
                     else
@@ -118,7 +124,7 @@ namespace PBoogieTranslator
                     }
                 }
             }
-            if (inputFile != null && inputFile.Length > 2 && inputFile.EndsWith(".p"))
+            if (inputFile != null && inputFile.Length > 2 && (inputFile.EndsWith(".p") || inputFile.EndsWith(".txt")))
             {
                 return;
             }

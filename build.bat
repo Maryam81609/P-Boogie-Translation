@@ -1,6 +1,7 @@
 @echo off
 setlocal
 pushd %~dp0
+cd ..
 goto :start
 
 :help
@@ -24,11 +25,6 @@ echo MSBUILD 14.0 does not appear to be installed.
 echo No info found in HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\MSBuild\ToolsVersions\14.0
 goto :eof
 
-git submodule init
-git submodule update
-
-cd P
-
 :step2
 set TAIL=%MSBuildPath:~-6%
 if "[%TAIL%]" == "[amd64\]" set MSBuildPath=%MSBuildPath:~0,-6%"
@@ -39,6 +35,7 @@ set NoSync=
 set CleanOnly=
 set NoClean=
 set SubmoduleOutOfDate=false
+
 :parseargs
 if /I "%1"=="debug" set Configuration=Debug
 if /I "%1"=="release" set Configuration=Release
@@ -54,67 +51,41 @@ if /I "%1"=="/help" goto :help
 if /I "%1"=="help" goto :help
 shift
 goto :parseargs
+
 :initsub
-if exist "Ext\Formula\README.md" goto :updatesub
+if exist "P\README.md" goto :updatesub
+
 echo ### Initializing your submodules 
 git submodule init
 git submodule update
-goto :sync
+
 :checksubmodule
 for /f "usebackq tokens=1,2*" %%i in (`git submodule summary %1`) do (
   if "%%j"=="%1" echo #### Submodule is out of date: %1 & set SubmoduleOutOfDate=true  
 )
+
 goto :eof
+
 :updatesub
 if "%NoSync%"=="true" goto :nosync
+
 echo ### Updating your submodules 
 call :checksubmodule Ext/Formula
 call :checksubmodule Ext/Zing
+
 if "%SubmoduleOutOfDate%"=="false" goto :nosync
+
 :sync
 echo ### Fixing your submodules so they are up to date...
 git submodule sync --recursive
 git submodule update --init --recursive
 goto :nosync
+
 :nosync
-cd ext\zing
-echo msbuild  Zing.sln /p:Platform=%Platform% /p:Configuration=Release
-msbuild  Zing.sln /p:Platform=%Platform% /p:Configuration=Release
-if ERRORLEVEL 1 goto :exit
-set BinaryDrop=..\..\Bld\Drops\%Configuration%\%Platform%\Binaries
-if NOT exist %BinaryDrop% mkdir %BinaryDrop%
-for %%i in (zc\bin\%Platform%\Release\zc.exe
-             ZingExplorer\bin\%Platform%\Release\ZingExplorer.dll
-             Zinger\bin\%Platform%\Release\Zinger.exe
-             Microsoft.Zing\bin\%Platform%\Release\Microsoft.Zing.dll
-             Microsoft.Zing.Runtime\bin\%Platform%\Release\Microsoft.Zing.Runtime.dll
-             Microsoft.Zing\bin\%Platform%\Release\Microsoft.Comega.dll
-             Microsoft.Zing\bin\%Platform%\Release\Microsoft.Comega.Runtime.dll
-             Resources\external\CCI\System.Compiler.dll
-             Resources\external\CCI\System.Compiler.Framework.dll
-             Resources\external\CCI\System.Compiler.Runtime.dll
-             DelayingSchedulers\CustomDelayingScheduler\bin\%Platform%\Release\CustomDelayingScheduler.dll
-             DelayingSchedulers\RandomDelayingScheduler\bin\%Platform%\Release\RandomDelayingScheduler.dll
-             DelayingSchedulers\RoundRobinDelayingScheduler\bin\%Platform%\Release\RoundRobinDelayingScheduler.dll
-             DelayingSchedulers\RunToCompletionDelayingScheduler\bin\%Platform%\Release\RunToCompletionDelayingScheduler.dll
-	     DelayingSchedulers\SealingScheduler\bin\%Platform%\Release\SealingScheduler.dll) do (
-             
-    copy %%i %BinaryDrop%
-)
-   
-cd ..\..
-REM this code fixes a problem in MIDL compile by forcing recompile of these files for each configuration.
-del Src\PrtDist\Core\NodeManager_c.c
-del Src\PrtDist\Core\NodeManager_s.c
 
-cd ..
+echo "Building P..."
+cd P\Bld
+call build.bat %1 %2 %3 %4 
 
-if "%NoClean%"=="true" goto :build
-echo msbuild PBoogieTranslator.sln /p:Platform=%Platform% /p:Configuration=%Configuration%
-msbuild  PBoogieTranslator.sln /p:Platform=%Platform% /p:Configuration=%Configuration% /t:Clean
-:build
-if "%CleanOnly%"=="true" goto :exit
-msbuild PBoogieTranslator.sln /p:Platform=%Platform% /p:Configuration=%Configuration% 
 
-:exit
-popd
+echo "Building Corral..."

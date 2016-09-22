@@ -1,4 +1,5 @@
-﻿using Microsoft.Pc;
+﻿
+using Microsoft.Pc;
 using Microsoft.Pc.Domains;
 using System;
 using System.Collections.Generic;
@@ -12,14 +13,14 @@ using PBoogieTranslator;
 
 namespace Microsoft.PBoogieTranslator
 {
-     sealed class FSharpExpGen
+    public sealed class FSharpExpGen
     {
         private List<PProgram> parsedPrograms { get; set; }
         private Compiler compiler;
         private static Random r = new Random();
 
         //Data structures dealing with functions
-        private Dictionary<string, List<Syntax.VarDecl>> 
+        private Dictionary<string, List<Syntax.VarDecl>>
             functionsToLocals = new Dictionary<string, List<Syntax.VarDecl>>();
 
         //Data Structures Dealing with States
@@ -39,15 +40,15 @@ namespace Microsoft.PBoogieTranslator
         private List<Syntax.FunDecl> staticFunctions = new List<Syntax.FunDecl>();
         private List<Syntax.MachineDecl> machines = new List<Syntax.MachineDecl>();
         private List<Syntax.EventDecl> events = new List<Syntax.EventDecl>();
-        private Dictionary<string, Syntax.Type> 
+        private Dictionary<string, Syntax.Type>
             typeDefs = new Dictionary<string, Syntax.Type>();
-        private Dictionary<string, Syntax.EventDecl> 
+        private Dictionary<string, Syntax.EventDecl>
             eventsToDecls = new Dictionary<string, Syntax.EventDecl>();
-        private Dictionary<string, List<string>> 
+        private Dictionary<string, List<string>>
             eventToMonitorList = new Dictionary<string, List<string>>();
-        private Dictionary<string, List<Tuple<int, string, Syntax.Type>>> 
+        private Dictionary<string, List<Tuple<int, string, Syntax.Type>>>
             functionsToRefParams = new Dictionary<string, List<Tuple<int, string, Syntax.Type>>>();
-        private Dictionary<P_Root.AnonFunDecl, string> anonFunToFileName = 
+        private Dictionary<P_Root.AnonFunDecl, string> anonFunToFileName =
             new Dictionary<P_Root.AnonFunDecl, string>();
         private Dictionary<P_Root.FunDecl, string> FunToFileName =
            new Dictionary<P_Root.FunDecl, string>();
@@ -61,6 +62,15 @@ namespace Microsoft.PBoogieTranslator
         public FSharpExpGen(CommandLineArguments args)
         {
             compiler = new Compiler(args.options);
+        }
+
+        public FSharpExpGen()
+        {
+            var options = new CommandLineOptions();
+            options.analyzeOnly = true;
+            options.test = true;
+            options.profile = true;
+            compiler = new Compiler(options);
         }
 
         private static string getString(ICSharpTerm x)
@@ -204,7 +214,7 @@ namespace Microsoft.PBoogieTranslator
                 var c = getValue((x.info as P_Root.SourceInfo).col as P_Root.Natural);
                 return new Tuple<int, int>(l, c);
             }
-            else if(s is P_Root.Goto)
+            else if (s is P_Root.Goto)
             {
                 var x = (s as P_Root.Goto);
                 var l = getValue((x.info as P_Root.SourceInfo).line as P_Root.Natural);
@@ -217,7 +227,7 @@ namespace Microsoft.PBoogieTranslator
         private void NewScope(string name)
         {
             symbolTable.NewScope(name);
-            functionsToLocals[name] = new List<Syntax.VarDecl>();    
+            functionsToLocals[name] = new List<Syntax.VarDecl>();
             functionsToRefParams[name] = new List<Tuple<int, string, Syntax.Type>>();
         }
 
@@ -304,7 +314,7 @@ namespace Microsoft.PBoogieTranslator
                 return null;
             if (lst.Count > maxFields)
                 maxFields = lst.Count;
-            return Syntax.Type.NewNamedTuple(ListModule.OfSeq(lst)) 
+            return Syntax.Type.NewNamedTuple(ListModule.OfSeq(lst))
                 as Syntax.Type.NamedTuple;
         }
 
@@ -371,7 +381,7 @@ namespace Microsoft.PBoogieTranslator
             var symName = symbolTable.GetVarName(name);
             if (name != symName)
                 return Syntax.Expr.NewVar(symName) as Syntax.Expr.Var;
-            else if(eventsToDecls.ContainsKey(name))
+            else if (eventsToDecls.ContainsKey(name))
                 return Syntax.Expr.NewEvent(name);
             throw new InvalidProgramException("No such variable/event as " + name);
         }
@@ -686,7 +696,7 @@ namespace Microsoft.PBoogieTranslator
             if (s.op.Symbol.ToString() == "POP")
                 return Syntax.Stmt.Pop;
             else if (s.op.Symbol.ToString() == "SKIP")
-                return Syntax.Stmt.NewSkip("",-1,-1);
+                return Syntax.Stmt.NewSkip("", -1, -1);
             return Syntax.Stmt.NewSkip("", -1, -1);
         }
 
@@ -765,19 +775,19 @@ namespace Microsoft.PBoogieTranslator
             {
                 retList.Add(Syntax.Expr.NewVar(x.Item2));
             }
-            
+
             if (s.expr.Symbol.ToString() != "NIL")
             {
                 var expr = genExpr(s.expr as P_Root.Expr);
-                if(refParams.Count > 0)
+                if (refParams.Count > 0)
                 {
                     retList.Insert(0, expr);
                     e = new FSharpOption<Syntax.Expr>(Syntax.Expr.NewTuple(ListModule.OfSeq(retList)));
                 }
-                else    
+                else
                     e = new FSharpOption<Syntax.Expr>(expr);
             }
-            else if(refParams.Count > 0)
+            else if (refParams.Count > 0)
             {
                 e = new FSharpOption<Syntax.Expr>(Syntax.Expr.NewTuple(ListModule.OfSeq(retList)));
             }
@@ -810,7 +820,7 @@ namespace Microsoft.PBoogieTranslator
             do
             {
                 lst.AddRange(genStmt(x.s1 as P_Root.Stmt));
-                if(x.s2 is P_Root.Seq) //Recursion - we have [s1, [s2, ... ]]
+                if (x.s2 is P_Root.Seq) //Recursion - we have [s1, [s2, ... ]]
                     x = (x.s2 as P_Root.Seq);
                 else //s2 is not a seq statement. Base case - We have [s1, s2]
                 {
@@ -839,7 +849,7 @@ namespace Microsoft.PBoogieTranslator
             var envVarDecl = new Syntax.VarDecl(name + "_env", env.Item1);
             //Added this envVarDecl to PARENT FUNCTION - as NewScope() 
             //is called below.
-            if(env.Item1.Item.Length > 0)
+            if (env.Item1.Item.Length > 0)
             {
                 var cf = symbolTable.currentF;
                 functionsToLocals[cf].Add(envVarDecl);
@@ -853,7 +863,7 @@ namespace Microsoft.PBoogieTranslator
                 maxFields = env.Item1.Item.Length;
 
             NewScope(name);
-            
+
             //Get args            
             args.Insert(0, getAnonFunParams(d.envVars as P_Root.NmdTupType, name));
 
@@ -917,7 +927,7 @@ namespace Microsoft.PBoogieTranslator
         private Syntax.Stmt.Receive genReceiveStmt(P_Root.Receive s)
         {
             var @case = s.cases as P_Root.Cases;
-            var lst = new List<Tuple<string,Syntax.Stmt>>();
+            var lst = new List<Tuple<string, Syntax.Stmt>>();
             do
             {
                 lst.Add(genCase(@case));
@@ -1046,7 +1056,7 @@ namespace Microsoft.PBoogieTranslator
                 lst.Add(st);
                 return lst;
             }
-            else if(s is P_Root.Goto)
+            else if (s is P_Root.Goto)
             {
                 var st = genGotoStmt(s as P_Root.Goto);
                 var lst = new List<Syntax.Stmt>();
@@ -1222,7 +1232,7 @@ namespace Microsoft.PBoogieTranslator
             {
                 var f = x.hd as P_Root.NmdTupTypeField;
                 var d = genVar(f, owner);
-                if(f.qual.Symbol.ToString() == "REF")
+                if (f.qual.Symbol.ToString() == "REF")
                 {
                     var cf = symbolTable.currentF;
                     functionsToRefParams[cf].Add(new Tuple<int, string, Syntax.Type>(i, d.Name, d.Type));
@@ -1260,7 +1270,7 @@ namespace Microsoft.PBoogieTranslator
             var name = symbolTable.GetFunName(getString(d.name));
             fileName = FunToFileName[d];
             NewScope(name);
-            name =symbolTable.GetFunName(name);
+            name = symbolTable.GetFunName(name);
             bool is_model = false;
             bool is_pure = false;
             FSharpOption<Syntax.Type> rettype = null;
@@ -1287,7 +1297,7 @@ namespace Microsoft.PBoogieTranslator
             var stmt = ListModule.OfSeq(genStmt(d.body as P_Root.Stmt));
 
             //Return type.
-            foreach(var x in functionsToRefParams[name])
+            foreach (var x in functionsToRefParams[name])
             {
                 typLst.Add(x.Item3);
             }
@@ -1304,7 +1314,7 @@ namespace Microsoft.PBoogieTranslator
                 else
                     rettype = new FSharpOption<Syntax.Type>(x);
             }
-            else if(typLst.Count > 0)
+            else if (typLst.Count > 0)
             {
                 rettype = new FSharpOption<Syntax.Type>(
                     Syntax.Type.NewTuple(ListModule.OfSeq(typLst)));
@@ -1327,7 +1337,7 @@ namespace Microsoft.PBoogieTranslator
 
             var name = getString(n.name);
             var type = genTypeExpr(n.type as P_Root.TypeExpr);
-           
+
             symbolTable.AddVar(name, type);
             name = owner + '_' + name;
             return new Syntax.VarDecl(name, type);
@@ -1351,7 +1361,7 @@ namespace Microsoft.PBoogieTranslator
             fileName = anonFunToFileName[d];
 
             if (!symbolTable.InsideStaticFn)
-                symbolTable.AddMachFun(symbolTable.currentM, name); 
+                symbolTable.AddMachFun(symbolTable.currentM, name);
 
             NewScope(name);
             //Get args
@@ -1581,7 +1591,7 @@ namespace Microsoft.PBoogieTranslator
             maxFields = 0;
             hasDefer = false;
             hasIgnore = false;
-    }
+        }
 
         private void Init()
         {
@@ -1612,14 +1622,14 @@ namespace Microsoft.PBoogieTranslator
                 foreach (var fun in program.Functions)
                 {
                     var name = getString(fun.name);
-                    if(fun.owner.Symbol.ToString() != "NIL")
+                    if (fun.owner.Symbol.ToString() != "NIL")
                     {
                         var owner = getString((fun.owner as P_Root.MachineDecl).name);
                         symbolTable.AddMachFun(owner, name);
                     }
                 }
 
-                foreach(var ev in program.Events)
+                foreach (var ev in program.Events)
                 {
                     var evName = getString(ev.name);
                     eventToMonitorList[evName] = new List<string>();
@@ -1685,7 +1695,7 @@ namespace Microsoft.PBoogieTranslator
                     var s = doDecl.src as P_Root.StateDecl;
                     var currentM = getString((s.owner as P_Root.MachineDecl).name);
                     symbolTable.currentM = currentM;
-                    string n = currentM + '_' + 
+                    string n = currentM + '_' +
                         getQualifiedName(s.name as P_Root.QualifiedName);
                     var x = genDoDecl(doDecl);
                     statesToDos[n].Add(x);
@@ -1759,12 +1769,12 @@ namespace Microsoft.PBoogieTranslator
             fileName = Path.GetFullPath(inputFileName);
             genFSExprs();
             var evMonList = new List<Tuple<string, FSharpList<string>>>();
-            foreach(var kv in eventToMonitorList)
+            foreach (var kv in eventToMonitorList)
             {
                 evMonList.Add(new Tuple<string, FSharpList<string>>(kv.Key, ListModule.OfSeq(kv.Value)));
-            }     
-            var prog =  new Syntax.ProgramDecl(ListModule.OfSeq(machines), ListModule.OfSeq(events),
-                MapModule.OfSeq(evMonList),ListModule.OfSeq(staticFunctions), maxFields, hasDefer, hasIgnore);
+            }
+            var prog = new Syntax.ProgramDecl(ListModule.OfSeq(machines), ListModule.OfSeq(events),
+                MapModule.OfSeq(evMonList), ListModule.OfSeq(staticFunctions), maxFields, hasDefer, hasIgnore);
             var map = new List<Tuple<string, FSharpList<Tuple<int, string, Syntax.Type>>>>();
             foreach (var kv in functionsToRefParams)
             {

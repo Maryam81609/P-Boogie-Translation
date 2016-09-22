@@ -186,6 +186,7 @@ module Syntax =
     member this.Events = events
     member this.EventsToMonitors = eventsToMonitors
     member this.StaticFuns = staticFuns
+    
     member this.maxFields = maxFields
     member this.HasDefer = hasDefer
     member this.HasIgnore = hasIgnore
