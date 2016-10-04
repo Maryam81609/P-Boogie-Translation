@@ -174,7 +174,7 @@ module Helper=
     | Pop -> "pop;"
     | Return(None) -> "return;"
     | Return(Some(e)) -> sprintf "return (%s);" (printExpr e)
-    | Monitor(e1, e2) -> sprintf "monitor (%s), (%s);" (printExpr e1) (printExpr e2)
+    | Monitor(e1, e2) -> sprintf "monitor(%s), (%s);" (printExpr e1) (printExpr e2)
     | FunStmt(s, el, None) -> sprintf "%s(%s);" s (printList printExpr el ", ")
     | FunStmt(s, el, v) -> sprintf "%s = %s(%s);" v.Value s (printList printExpr el ", ")
     | Goto(s, e) -> sprintf "goto %s, %s" s (printExpr e)

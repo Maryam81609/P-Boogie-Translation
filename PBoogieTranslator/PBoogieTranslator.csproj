@@ -36,10 +36,6 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Core, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\P\Ext\Formula\Src\Core\bin\x86\Debug\Core.dll</HintPath>
-    </Reference>
     <Reference Include="FSharp.Core, Version=4.4.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -61,13 +57,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\P\Ext\Formula\Src\Core\Core.csproj">
+      <Project>{1b5724ec-fff1-48d7-a700-ad46f0150afc}</Project>
+      <Name>Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\P\Src\Pc\Compiler\Compiler.csproj">
+      <Project>{ed76217f-2452-4a35-90f6-6eb6ccf2d882}</Project>
+      <Name>Compiler</Name>
+    </ProjectReference>
     <ProjectReference Include="..\BoogieExprTranslator\BoogieExprTranslator.fsproj">
       <Project>{dd849437-50d3-498f-a0b4-2e06b8387aa9}</Project>
       <Name>BoogieExprTranslator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\P\Src\Pc\Compiler\Compiler.csproj">
-      <Project>{ed76217f-2452-4a35-90f6-6eb6ccf2d882}</Project>
-      <Name>Compiler</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -70,7 +70,7 @@ module RemoveNamedTuples =
     | Pop -> st
     | Return(None) -> st
     | Return(Some(e)) -> Return(Some (processExpr G e))
-    | Monitor(e1, e2) -> Monitor((processExpr G e1), (processExpr G e2))
+    | Monitor(e1, e2) -> Monitor ((processExpr G e1), (processExpr G e2))
     | FunStmt(s, el, None) -> FunStmt(s, (List.map (processExpr G) el), None)
     | FunStmt(s, el, v) -> FunStmt(s, (List.map (processExpr G) el), v)
     | Goto(s, e) -> Goto(s, processExpr G e)
