@@ -166,7 +166,8 @@ module RemoveSideEffects =
         let (l', d1, G') = removeSideEffectsLval l G in
         let (e1', d2, G'') = removeSideEffectsExpr e1 G' in
         let (e2', d3, G''') = removeSideEffectsExpr e2 G'' in
-        (d1 @ d2 @ d3 @ [Insert(l', e1', e2')], G''')
+        let v, G'''' = getLocal (typeofLval l' G''') G'''
+        (d1 @ d2 @ d3 @ [Insert(l', e1', e2')], G'''')
       end
     | Remove(l, e) ->
       begin

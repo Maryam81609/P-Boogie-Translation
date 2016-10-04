@@ -338,7 +338,7 @@ module ProgramTyping =
                        (printType (typecheckExpr prog G cm arg))))
         else (typeAssert (arg = Expr.Nil) (sprintf "Event %s takes no argument, but got %s" e (printExpr arg)))
       end
-    | Expr.Dot(_)| Expr.NamedDot(_) | Expr.Nil | Expr.Call(_) | Expr.Default(_) | Expr.Cast(_) | Expr.Var(_) ->
+    | Expr.Dot(_)| Expr.NamedDot(_) | Expr.Nil | Expr.Call(_) | Expr.Default(_) | Expr.Cast(_) | Expr.Var(_) | Expr.Bin(Idx, _, _)->
       begin
         let t = typecheckExpr prog G cm event
         typeAssert (isSubtype t Type.Event) (sprintf "%s is not an event!" (printExpr event))

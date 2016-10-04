@@ -47,12 +47,9 @@ namespace Microsoft.PBoogieTranslator
             eventToMonitorList = new Dictionary<string, List<string>>();
         private Dictionary<string, List<Tuple<int, string, Syntax.Type>>> 
             functionsToRefParams = new Dictionary<string, List<Tuple<int, string, Syntax.Type>>>();
-        private Dictionary<P_Root.AnonFunDecl, string> anonFunToFileName = 
-            new Dictionary<P_Root.AnonFunDecl, string>();
-        private Dictionary<P_Root.FunDecl, string> FunToFileName =
-           new Dictionary<P_Root.FunDecl, string>();
 
         private SymbolTable symbolTable = new SymbolTable();
+
         private int maxFields = 0;
         private bool hasDefer = false;
         private bool hasIgnore = false;
@@ -65,6 +62,8 @@ namespace Microsoft.PBoogieTranslator
 
         private static string getString(ICSharpTerm x)
         {
+            if (x.Symbol.ToString() == "NULL")
+                return "null";
             try
             {
                 return (x as P_Root.StringCnst).Value;
@@ -106,6 +105,16 @@ namespace Microsoft.PBoogieTranslator
             return ret;
         }
 
+        private string getFunFileInfo(P_Root.FunDecl d)
+        {
+            //var s = d.Span as 
+            return "";
+        }
+
+        private string getAnonFunFileInfo(P_Root.AnonFunDecl d)
+        {
+            return "";
+        }
         private Tuple<int, int> getLineColNumber(P_Root.Stmt s)
         {
             if (s is P_Root.NewStmt)
@@ -827,7 +836,7 @@ namespace Microsoft.PBoogieTranslator
             FSharpOption<Syntax.Expr> retExp = null;
             List<Syntax.Stmt> body = new List<Syntax.Stmt>();
             var args = new List<Syntax.VarDecl>();
-            fileName = anonFunToFileName[d];
+            fileName = getAnonFunFileInfo(d);
 
             var ln = getLineColNumber(d.body as P_Root.Stmt).Item1;
             if (ln == 0)
@@ -898,7 +907,9 @@ namespace Microsoft.PBoogieTranslator
 
             if (env.Item1.Item.Length > 0)
             {
-                argList.Add(env.Item2);
+                var st = Syntax.Stmt.NewAssign(Syntax.Lval.NewVar(name + "_env"), env.Item2);
+                stmtList.Add(st);
+                argList.Add(Syntax.Expr.NewVar(name + "_env"));
                 retVar = new FSharpOption<string>(name + "_env");
             }
             stmtList.Add(Syntax.Stmt.NewFunStmt(name, ListModule.OfSeq(argList), retVar));
@@ -1258,7 +1269,7 @@ namespace Microsoft.PBoogieTranslator
         private Syntax.FunDecl genFunDecl(P_Root.FunDecl d)
         {
             var name = symbolTable.GetFunName(getString(d.name));
-            fileName = FunToFileName[d];
+            fileName = getFunFileInfo(d);
             NewScope(name);
             name =symbolTable.GetFunName(name);
             bool is_model = false;
@@ -1348,7 +1359,7 @@ namespace Microsoft.PBoogieTranslator
             else
                 name += ln.Item1;
 
-            fileName = anonFunToFileName[d];
+            fileName = getAnonFunFileInfo(d);
 
             if (!symbolTable.InsideStaticFn)
                 symbolTable.AddMachFun(symbolTable.currentM, name); 
@@ -1621,23 +1632,14 @@ namespace Microsoft.PBoogieTranslator
 
                 foreach(var ev in program.Events)
                 {
-                    var evName = getString(ev.name);
-                    eventToMonitorList[evName] = new List<string>();
+                    var e = genEventDecl(ev);
+                    events.Add(e);
+                    eventsToDecls[e.Name] = e;
+                    eventToMonitorList[e.Name] = new List<string>();
                 }
                 eventToMonitorList["null"] = new List<string>();
                 eventToMonitorList["halt"] = new List<string>();
 
-                foreach (var l in program.FileInfos)
-                {
-                    if (l.decl is P_Root.FunDecl)
-                    {
-                        FunToFileName[l.decl as P_Root.FunDecl] = getString(l.file);
-                    }
-                    else if (l.decl is P_Root.AnonFunDecl)
-                    {
-                        anonFunToFileName[l.decl as P_Root.AnonFunDecl] = getString(l.file);
-                    }
-                }
             }
         }
 
@@ -1645,13 +1647,6 @@ namespace Microsoft.PBoogieTranslator
         {
             foreach (var program in parsedPrograms)
             {
-                foreach (var ev in program.Events)
-                {
-                    var e = genEventDecl(ev);
-                    events.Add(e);
-                    eventsToDecls[e.Name] = e;
-                }
-
                 foreach (var vd in program.Variables)
                 {
                     var v = genVarDecl(vd);

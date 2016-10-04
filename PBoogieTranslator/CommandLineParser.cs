@@ -7,12 +7,19 @@ namespace PBoogieTranslator
 {
     internal class CommandLineArguments
     {
-        public string deSugarFile = null;
-        public string removeNTFile = null;
-        public string removeSEFile = null;
-        public string boogieFile = null;
+        public bool desugar = false;
+        public bool removeNT = false;
+        public bool removeSE = false;
+        public bool genBoogie = true;
+        public bool serialize = false;
+        public string deSugarFile { get { return Path.Combine(Path.GetDirectoryName(pFile), "deSugared_" + Path.GetFileName(pFile)); } }
+        public string removeNTFile { get { return Path.Combine(Path.GetDirectoryName(pFile), "NTRemoved_" + Path.GetFileName(pFile)); } }
+        public string removeSEFile { get { return Path.Combine(Path.GetDirectoryName(pFile), "SERemoved_" + Path.GetFileName(pFile)); } }
+        public string boogieFile { get { return Path.ChangeExtension(pFile, ".bpl"); } }
+    
         public string inputFile = null;
-        public string serializedDSFile = null;
+        public string pFile = null;
+        public bool list = false;
         public Microsoft.Pc.CommandLineOptions options = new Microsoft.Pc.CommandLineOptions();
 
         public CommandLineArguments(string[] args)
@@ -27,15 +34,8 @@ namespace PBoogieTranslator
             for (int i = 0; i < args.Length; i++)
             {
                 string arg = args[i];
-                string colonArg = null;
                 if (arg[0] == '-' || arg[0] == '/')
                 {
-                    var colonIndex = arg.IndexOf(':');
-                    if (colonIndex >= 0)
-                    {
-                        arg = args[i].Substring(0, colonIndex);
-                        colonArg = args[i].Substring(colonIndex + 1);
-                    }
                     if (inputFile == null)
                     {
                         goto error;
@@ -43,65 +43,29 @@ namespace PBoogieTranslator
                     switch (arg.Substring(1).ToLowerInvariant())
                     {
                         case "desugar":
-                            if (colonArg == null)
-                            {
-                                var folder = Path.GetDirectoryName(inputFile);
-                                var file = Path.GetFileName(inputFile);
-                                deSugarFile = Path.Combine(folder, "deSugared_" + file);
-                            }
+                            desugar = true;
                             break;
 
-                        case "removeNT":
-                            if (colonArg == null)
-                            {
-                                var folder = Path.GetDirectoryName(inputFile);
-                                var file = Path.GetFileName(inputFile);
-                                removeNTFile = Path.Combine(folder, "NTRemoved_" + file);
-                            }
+                        case "removent":
+                            removeNT = true;
                             break;
-                        case "removeSE":
-                            if (colonArg == null)
-                            {
-                                var folder = Path.GetDirectoryName(inputFile);
-                                var file = Path.GetFileName(inputFile);
-                                removeSEFile = Path.Combine(folder, "SERemoved_" + file);
-                            }
+                        case "removese":
+                            removeSE = true;
                             break;
-
-                        case "outputfilename":
-                            if (colonArg == null)
-                            {
-                                Console.WriteLine("Must supply name for output files");
-                                goto error;
-                            }
-                            else if(colonArg != "-")
-                            {
-                                boogieFile = Path.GetFullPath(colonArg);
-                                var folder = Path.GetDirectoryName(boogieFile);
-                                if (!Directory.Exists(folder))
-                                {
-                                    Console.WriteLine("Output directory {0} does not exist", folder);
-                                    goto error;
-                                }
-                            }
-                            break;
-
                         case "serialize":
-                            if (colonArg == null)
-                            { 
-                                serializedDSFile = Path.ChangeExtension(inputFile, ".dat");
-                            }
-                            else
-                            {
-                                serializedDSFile = Path.GetFullPath(colonArg);
-                            }
+                            serialize = true;
                             break;
-
                         case "profile":
                             options.profile = true;
                             break;
-
+                        case "list":
+                            list = true;
+                            break;
+                        case "noboogie":
+                            genBoogie = false;
+                            break;
                         default:
+                            Console.WriteLine("Invalid Option: {0}", arg);
                             goto error;
                     }
                 }
@@ -110,7 +74,6 @@ namespace PBoogieTranslator
                     if (inputFile == null)
                     {
                         inputFile = Path.GetFullPath(arg);
-                        boogieFile = Path.ChangeExtension(inputFile, ".bpl");
                     }
                     else
                     {
@@ -118,25 +81,29 @@ namespace PBoogieTranslator
                     }
                 }
             }
-            if (inputFile != null && inputFile.Length > 2 && inputFile.EndsWith(".p"))
+            if (inputFile != null && inputFile.Length > 2)
             {
+                if (inputFile.EndsWith(".p"))
+                    pFile = inputFile;
                 return;
             }
-            else
+            else if(!inputFile.EndsWith(".txt"))
             {
                 Console.WriteLine("Illegal input file name: {0}", inputFile);
             }
         error:
             {
                 Console.WriteLine("USAGE: PBoogieTranslator.exe file.p [options]");
-                Console.WriteLine("/deSugar:[name]?");
-                Console.WriteLine("/outputFileName:[name]?");
-                Console.WriteLine("/removeNT:[name]?");
-                Console.WriteLine("/removeSE:[name]?");
-                Console.WriteLine("/serialize:[name]?");
-                Console.WriteLine("If name is not supplied, we will save to file with names like");
+                Console.WriteLine("/deSugar");
+                Console.WriteLine("/removeNT");
+                Console.WriteLine("/removeSE");
+                Console.WriteLine("/serialize");
+                Console.WriteLine("/noBoogie");
+                Console.WriteLine("We will save to file with names like");
                 Console.WriteLine("deSugared_file.p, NTRemoved_file.p, etc.");
-                Console.WriteLine("If name is \"-\", output is printed to the terminal.");
+                Console.WriteLine("/list");
+                Console.WriteLine("\tThis option will consider the lines of the input file as file paths.");
+
                 Environment.Exit(-1);
             }
         }

@@ -53,12 +53,12 @@
     <Compile Include="Common.fs" />
     <Compile Include="FlattenStmtLists.fs" />
     <Compile Include="Helper.fs" />
-    <Compile Include="RemoveRefs.fs" />
     <None Include="App.config" />
     <None Include="CommonBpl.bpl">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <Compile Include="ProgramTyping.fs" />
+    <Compile Include="RemoveRefs.fs" />
     <Compile Include="RemoveNamedTuples.fs" />
     <Compile Include="RemoveSideEffects.fs" />
     <Compile Include="Translator.fs" />

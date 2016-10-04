@@ -73,7 +73,8 @@ namespace Microsoft.PBoogieTranslator
             var typLst = new List<Syntax.Type>();
             var expLst = new List<Syntax.Expr>();
             var vdLst = new List<Syntax.VarDecl>();
-            var vaLst = new List<Syntax.Stmt>();
+            //var asgnLst = new List<Syntax.Stmt>();
+            var restoreLst = new List<Syntax.Stmt>();
             int i = 0;
             foreach (var tbl in tbls)
             {
@@ -83,7 +84,10 @@ namespace Microsoft.PBoogieTranslator
                     typLst.Add(v.Value);
                     expLst.Add(Syntax.Expr.NewVar(name));
                     vdLst.Add(new Syntax.VarDecl(name, v.Value));
-                    vaLst.Add(Syntax.Stmt.NewAssign(Syntax.Lval.NewVar(name),
+                    //asgnLst.Add(Syntax.Stmt.NewAssign(
+                        //Syntax.Lval.NewDot(Syntax.Lval.NewVar(fName + "_env"), i), 
+                        //Syntax.Expr.NewVar(name)));
+                    restoreLst.Add(Syntax.Stmt.NewAssign(Syntax.Lval.NewVar(name),
                         Syntax.Expr.NewDot(Syntax.Expr.NewVar(fName + "_env"), i)));
                     i++;
                 }
@@ -95,7 +99,7 @@ namespace Microsoft.PBoogieTranslator
                 as Syntax.Expr.Tuple;
             return new Tuple<Syntax.Type.Tuple, Syntax.Expr.Tuple, 
                 List<Syntax.VarDecl>, List<Syntax.Stmt>>
-                (tupType, tupExpr, vdLst, vaLst);
+                (tupType, tupExpr, vdLst, restoreLst);
         }
 
         public void AddMachine(string m)

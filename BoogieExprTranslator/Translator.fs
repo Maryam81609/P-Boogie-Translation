@@ -1,5 +1,4 @@
 ﻿namespace Microsoft.P2Boogie
-
 module Translator =
 
   open System
@@ -15,6 +14,7 @@ module Translator =
   let TypmapIndex = ref 0
   let (tmpVars: string list ref) = ref []
   let (monitorToStartState: Map<string, int> ref) = ref Map.empty
+  //let tupCount = ref 0
 
   let GetTypeIndex t =
     if Map.containsKey t !Typmap then Map.find t !Typmap
@@ -66,21 +66,23 @@ module Translator =
     | Expr.Dot(e, f) -> sprintf "PrtFieldTuple%d(%s)" f (translateExpr G evMap e)
     | _ -> raise NotDefined
 
-  let translateMachineExpr m =
+  let translateMachineExpr G evMap m =
     match m with
-    | Expr.Var(x) -> sprintf "PrtFieldMachine(%s)" x
     | Expr.This   -> "thisMid"
-    | _ -> raise NotDefined
+    | _ -> sprintf "PrtFieldMachine(%s)" (translateExpr G evMap m)
 
-  let translateEventExpr evMap e plExpr =
+  let translateEventExpr (sw: IndentedTextWriter) G evMap e plExpr =
     match e with
-    | Expr.Var(ev) -> sprintf "AssertPayloadDynamicType(%s, %s)" ev plExpr
     | Expr.Event(ev) -> sprintf "%d" (Map.find ev evMap)
-    | _ -> raise NotDefined
+    | _ ->
+      begin 
+        sw.WriteLine("call eventID := AssertPayloadDynamicType({0}, {1})", (translateExpr G evMap e), plExpr)
+        "eventID"
+      end
 
   let typesAsserted = ref Set.empty
 
-  let translateAssign (sw: IndentedTextWriter) G evMap lval expr  =
+  let rec translateAssign (sw: IndentedTextWriter) G evMap lval expr  =
     
     let genRhsValue e G =
         let rhsVar = "tmpRhsValue" in
@@ -133,6 +135,10 @@ module Translator =
             sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeMap{1};", (getLhsVar lval), (GetTypeIndex (Map(t1, t2))))
             sw.WriteLine("assume PrtFieldMapSize({0}) == 0;", (getLhsVar lval))
         end
+    | _, Expr.Default(Type.Tuple(ls)) -> 
+      begin
+        translateDefaultTuple sw G evMap ls
+      end
     | _, Expr.Bin(Idx, e1, e2) ->
         begin
             match isMap (typeof e1 G) with
@@ -173,8 +179,42 @@ module Translator =
         begin
             sw.WriteLine("call {0} := WriteMap{1}, {2}, {3});", lhsVar, lhsVar, (translateExpr G evMap e), (translateExpr G evMap expr))
         end
+    | Lval.Dot(Lval.Var(lhsVar), i), _ ->
+      begin
+        let x = translateExpr G evMap expr
+        let (Type.Tuple(ls)) = Map.find lhsVar G
+        let l = List.length ls   
+        for j = 0 to l - 1 do
+        begin
+          let ej = if j = i  then x else sprintf "PrtFieldTuple%d(%s)" j lhsVar
+          sw.WriteLine("tmpRhsValue_{0} := {1};", j, ej)
+        end
+        sw.WriteLine("call {0} := AllocatePrtRef();", lhsVar)
+        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeTuple{1};", lhsVar, l)
+        for j = 0 to l - 1 do
+          let ej = sprintf  "tmpRhsValue_%d" j in
+            sw.WriteLine("assume PrtFieldTuple{0}({1}) == {2}", j, lhsVar, ej)
+      end
+    | Lval.Dot(_), _ -> raise NotDefined
     | _, _ ->
         sw.WriteLine("{0} := {1};", (getLhsVar lval), (translateExpr G evMap expr))
+
+  and translateDefaultTuple sw G evMap ls = 
+    for i = 0 to (List.length ls) - 1 do
+      let ty = List.item  i ls
+      let n = getFreshVar()
+      sw.WriteLine("var {0}: PrtRef;", n)
+      match ty with
+      | Type.Tuple(ls') -> 
+        begin
+          translateDefaultTuple sw G evMap ls'
+        end
+      | _ -> 
+        begin
+          let lval = Lval.Var(n)
+          let rval = Expr.Default(ty)
+          translateAssign sw G evMap lval rval
+        end
 
   let translateInsert (sw:IndentedTextWriter) G evMap v e1 e2 =
     match isSeq (typeof (Expr.Var(v)) G) with
@@ -199,24 +239,38 @@ module Translator =
     match stmt with
     | Assign(l, e) -> translateAssign sw G evMap l e
     | Insert(Lval.Var(v), e1, e2) -> translateInsert sw G evMap v e1 e2
+    | Insert(Lval.Dot(v, i), e1, e2) -> 
+      begin
+        let (Type.Tuple(ls)) = typeofLval v G
+        let typ = List.item i ls
+        let G' = Map.add "tmpRhsValue" typ G
+        //sw.WriteLine("tmpRhsValue := PrtFieldTuple{0}(
+        ignore true
+      end
+    | Insert(Lval.Index(v, e), e1, e2) -> ignore true
     | Remove(Lval.Var(v), e1) -> translateRemove sw G evMap v e1
+    | Remove(Lval.Dot(v, i), e1) -> ignore true
+    | Remove(Lval.Index(v, e), e1) -> ignore true
+    
     | Assume(e) -> sw.WriteLine("assume PrtFieldBool({0});", (translateExpr G evMap e))
     | Assert(e) -> sw.WriteLine("assert PrtFieldBool({0});", (translateExpr G evMap e))
     | NewStmt(m, e) -> sw.WriteLine("call tmpRhsValue := newMachine_{0}({1})", m, (translateExpr G evMap e))
     | Raise(e, a) ->
       begin
         let plExpr = (translateExpr G evMap a)
+        let eExp = (translateEventExpr sw G evMap e plExpr)
         sw.WriteLine("eventRaised := true;")
-        sw.WriteLine("raisedEvent := {0};", (translateEventExpr evMap e plExpr))
+        sw.WriteLine("raisedEvent := {0};", eExp)
         sw.WriteLine("raisedEventPl := {0};", plExpr)
       end
     | Send(m, e, arg) ->
       begin
         let plExpr = (translateExpr G evMap arg)
-      sw.WriteLine("call send({0}, {1}, {2});", (translateMachineExpr m), (translateEventExpr evMap e plExpr), plExpr)
+        let eExp = (translateEventExpr sw G evMap e plExpr)
+        sw.WriteLine("call send({0}, {1}, {2});", (translateMachineExpr G evMap m), eExp, plExpr)
       end
     | Skip(_,-1,_) -> ignore true
-    | Skip(f, l, c) -> sw.WriteLine("assume {:sourceloc \"{0}\", {1}, {2}} true;", f, l, c)
+    | Skip(f, l, c) -> sw.WriteLine("assume {{:sourceloc \"{0}\", {1}, {2}}} true;", f, l, c)
     | While(c, st) ->
       begin
         sw.WriteLine("while(PrtFieldBool({0}))", (translateExpr G evMap c))
@@ -263,7 +317,8 @@ module Translator =
     | Monitor(e, arg) ->
       begin
         let plExpr = (translateExpr G evMap arg)
-        sw.WriteLine("monitor({0}, {1});", (translateEventExpr evMap e plExpr), plExpr)
+        let eExp = (translateEventExpr sw G evMap e plExpr)
+        sw.WriteLine("monitor({0}, {1});", eExp, plExpr)
       end
     | FunStmt(f, el, v) ->
       begin
@@ -297,7 +352,7 @@ module Translator =
     "
 
     for i = 1 to maxFields do
-        sw.WriteLine("if(ta == PrtTypeTuple{0}) { call v := PrtEqualsTuple{1}(a,b); return; }", i, i)
+        sw.WriteLine("if(ta == PrtTypeTuple{0}) {{ call v := PrtEqualsTuple{1}(a,b); return; }}", i, i)
 
     fprintfn sw "
     // Map, Seq type
@@ -305,7 +360,7 @@ module Translator =
   }
     "
     for i = 1 to maxFields do
-      sw.WriteLine("procedure PrtEqualsTuple{0}(x: PrtRef, y: PrtRef) returns (v: PrtRef) {", i)
+      sw.WriteLine("procedure PrtEqualsTuple{0}(x: PrtRef, y: PrtRef) returns (v: PrtRef) {{", i)
       for j = 0 to (i-1) do
       sw.WriteLine("call v := PrtEquals(PrtFieldTuple{0}(x), PrtFieldTuple{1}(y));", j, j)
       if j <> (i-1) then sw.WriteLine("if(v == PrtFalse) { return; }")
@@ -314,7 +369,7 @@ module Translator =
   let printTypeCheck (sw:IndentedTextWriter) t =
     let tindex =  GetTypeIndex t  in
     sw.WriteLine("// Type {0}", (printType t))
-    sw.WriteLine("procedure AssertIsType{0}(x: PrtRef) {", tindex)
+    sw.WriteLine("procedure AssertIsType{0}(x: PrtRef) {{", tindex)
     match t with
     | Null -> raise NotDefined
     | Any -> raise NotDefined
@@ -389,10 +444,11 @@ module Translator =
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("// Initialize locals.")
-    getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("%s", x))
-    !tmpVars |> List.iter (fun(x) -> sw.WriteLine("%s", x))
-    getDefaults fd.Locals |> List.iter (translateStmt sw G evMap)
-    List.iter (translateStmt sw G evMap) fd.Body
+    getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+    !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+    let G' = mergeMaps G (fd.VarMap)
+    getDefaults fd.Locals |> List.iter (translateStmt sw G' evMap)
+    List.iter (translateStmt sw G' evMap) fd.Body
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
@@ -407,8 +463,8 @@ module Translator =
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
       end
-    | DoDecl.T.Ignore(e) -> sw.WriteLine("if(event == {0}) {} //{1} ignored.", (Map.find e evMap), e)
-    | DoDecl.T.Defer(e) -> sw.WriteLine("if(event == {0}) {} //{1} deferred.", (Map.find e evMap), e)
+    | DoDecl.T.Ignore(e) -> sw.WriteLine("if(event == {0}) {{}} //{1} ignored.", (Map.find e evMap), e)
+    | DoDecl.T.Defer(e) -> sw.WriteLine("if(event == {0}) {{}} //{1} deferred.", (Map.find e evMap), e)
 
   let translateTransitions (sw: IndentedTextWriter) (mach: MachineDecl) src (stateToInt:Map<string, int>) (evMap: Map<string,int>) (t: TransDecl.T) =
     match t with
@@ -437,7 +493,6 @@ module Translator =
         sw.WriteLine("if(event == {0}) // {1}", (Map.find e evMap), e)
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-        sw.WriteLine("assert (CurrState == HandlerState);")
         sw.WriteLine("call StateStackPush({0});", (Map.find src stateToInt))
         sw.WriteLine("CurrState := {0};", (Map.find d stateToInt))
         match dstEntryAction with
@@ -527,7 +582,7 @@ module Translator =
       !map
     let G' = mergeMaps (mergeMaps G md.VarMap) funs
 
-    List.iter (translateFunction sw G evMap) md.Functions
+    List.iter (translateFunction sw G' evMap) md.Functions
 
     (* The actual machine thread *)
     sw.WriteLine("procedure MachineThread_{0}(mid: int, entryArg: PrtRef)", md.Name)
@@ -603,8 +658,17 @@ module Translator =
     let translateMonitorDo (d: DoDecl.T) =
       match d with
       | DoDecl.T.Ignore(e) ->
-          sw.WriteLine("if(event == {0}) {} // {1}", (Map.find e evMap), e)
-      | _ -> raise NotDefined
+          sw.WriteLine("if(event == {0}) {{}} // {1}", (Map.find e evMap), e)
+      | DoDecl.T.Call(e,f) ->
+        begin
+          sw.WriteLine("if(event == {0}) //{1}", (Map.find e evMap), e)
+          sw.WriteLine("{")
+          sw.Indent <- sw.Indent + 1
+          sw.WriteLine("call {0}(payload);", f)
+          sw.Indent <- sw.Indent - 1
+          sw.WriteLine("}")
+        end
+      | _ -> raise NotDefined //No Defers.
 
     let translateMonitorState (st: StateDecl) =
       sw.WriteLine("if({0}_CurrState == {1}) // {2}", md.Name, (Map.find st.Name stateToInt), st.Name)
@@ -615,22 +679,23 @@ module Translator =
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
-    let translateMonitorStmt st =
+    let translateMonitorStmt g st =
     //Monitors may not use the 'this' keyword, perform nondeterministic choice,
     //create machines or execute send/receive.
       match st with
       | Raise(e, arg) -> 
         begin
-          let plExpr = (translateExpr G evMap arg)
-          sw.WriteLine("call Monitor_{0}({1}, {2});", md.Name, (translateEventExpr evMap e plExpr), plExpr) 
+          let plExpr = (translateExpr g evMap arg)
+          let eExp = (translateEventExpr sw G evMap e plExpr)
+          sw.WriteLine("call Monitor_{0}({1}, {2});", md.Name, eExp, plExpr) 
         end
       | Receive(_) -> raise NotDefined 
       | Pop -> raise NotDefined
       | Send(_) -> raise NotDefined
       | NewStmt(_) -> raise NotDefined
-      | _ -> translateStmt sw G evMap st 
+      | _ -> translateStmt sw g evMap st 
 
-    let translateMonitorFunction (fd: FunDecl) =
+    let translateMonitorFunction g (fd: FunDecl) =
       let formals = fd.Formals |> List.map (fun(v: VarDecl) -> v.Name + ": PrtRef") |> String.concat ", "
       let ret = if fd.RetType.IsSome then " returns (ret: PrtRef)" else ""
       sw.WriteLine("procedure {0}({1}){2}", fd.Name, formals, ret)
@@ -639,8 +704,9 @@ module Translator =
       sw.WriteLine("// Initialize locals.")
       getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
       !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
-      getDefaults fd.Locals |> List.iter (translateStmt sw G evMap)
-      List.iter translateMonitorStmt fd.Body
+      getDefaults fd.Locals |> List.iter (translateStmt sw g evMap)
+      let g' = mergeMaps g fd.VarMap
+      List.iter (translateMonitorStmt g') fd.Body
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
@@ -651,7 +717,14 @@ module Translator =
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
     monitorToStartState := Map.add md.Name (Map.find md.StartState stateToInt) !monitorToStartState
-    List.iter translateMonitorFunction md.Functions
+    let funs =
+      let map = ref Map.empty in
+        List.iter (fun(f: FunDecl) -> map := Map.add f.Name (if f.RetType.IsSome then f.RetType.Value else Type.Null) !map) md.Functions
+      !map
+    let G' = mergeMaps (mergeMaps G md.VarMap) funs
+    List.iter (translateMonitorFunction G') md.Functions
+
+//------
 
   let printAssertEventCard (sw: IndentedTextWriter) evToInt (evToDecl: Map<string, EventDecl>) =
     let printEventQC e =
@@ -690,6 +763,7 @@ module Translator =
       List.iter (fun(m) -> sw.WriteLine("call Monitor_{0}({1}, payload);", m, e)) monLst
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
+
     sw.WriteLine("procedure monitor(event: int, payload: PrtRef)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -865,13 +939,13 @@ module Translator =
     var s: StateStackType;
     var t: StateStackType;
     var st: int;
-	  var i: int;
+    var i: int;
     
     assert (StateStack != Nil());
     st := state#Cons(StateStack);
     s  := stack#Cons(StateStack);
     t  := Nil();
-	  i  := 0;
+    i  := 0;
     
     while(i < depth)
     {
@@ -879,7 +953,7 @@ module Translator =
         t  := Cons(st, t);
         st := state#Cons(s);
         s  := stack#Cons(s);
-		i  := i + 1;
+    i  := i + 1;
     }
     
     s = Cons(dst, s);
@@ -944,7 +1018,7 @@ module Translator =
     sw.WriteLine("")
     sw.WriteLine("function PrtConstructFromInt(int) : PrtRef;")
     sw.WriteLine("axiom (forall x : int :: {PrtFieldInt(PrtConstructFromInt(x))} PrtFieldInt(PrtConstructFromInt(x)) == x);")
-    sw.WriteLine("axiom (forall x : int :: {PrtDynamicType(PrtConstructFromInt(x))} PrtDynamicType(PrtConstructFromInt(x)) == {0:D});", (translateType Int))
+    sw.WriteLine("axiom (forall x : int :: {{PrtDynamicType(PrtConstructFromInt(x))}} PrtDynamicType(PrtConstructFromInt(x)) == {0});", (translateType Int))
     sw.WriteLine("")
     sw.WriteLine("function {:inline} PrtConstructFromBool(v: bool) : PrtRef")
     sw.WriteLine("{ if v then PrtTrue else PrtFalse }")
@@ -955,13 +1029,12 @@ module Translator =
     sw.WriteLine("")
     sw.WriteLine("function PrtConstructFromMachineId(int) : PrtRef;")
     sw.WriteLine("axiom (forall x : int :: {PrtFieldMachine(PrtConstructFromMachineId(x))} PrtFieldMachine(PrtConstructFromMachineId(x)) == x);")
-    sw.WriteLine("axiom (forall x : int :: {PrtDynamicType(PrtConstructFromMachineId(x))} PrtDynamicType(PrtConstructFromMachineId(x)) == {0});", (translateType Machine))
+    sw.WriteLine("axiom (forall x : int :: {{PrtDynamicType(PrtConstructFromMachineId(x))}} PrtDynamicType(PrtConstructFromMachineId(x)) == {0});", (translateType Machine))
     sw.WriteLine("")
     sw.WriteLine("function PrtConstructFromEventId(int) : PrtRef;")
     sw.WriteLine("axiom (forall x : int :: {PrtFieldEvent(PrtConstructFromEventId(x))} PrtFieldEvent(PrtConstructFromEventId(x)) == x);")
-    sw.WriteLine("axiom (forall x : int :: {PrtDynamicType(PrtConstructFromEventId(x))} PrtDynamicType(PrtConstructFromEventId(x)) == {0});", (translateType Type.Event))
+    sw.WriteLine("axiom (forall x : int :: {{PrtDynamicType(PrtConstructFromEventId(x))}} PrtDynamicType(PrtConstructFromEventId(x)) == {0});", (translateType Type.Event))
     sw.WriteLine("")
-
 
     (* Allocation *)
     sw.WriteLine("procedure {:allocator} AllocatePrtRef() returns (x: PrtRef);")
@@ -979,9 +1052,7 @@ module Translator =
     (* Machine Globals *)
     prog.Machines |> List.filter (fun(md: MachineDecl) -> not md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Globals) |> List.map (getVars "{:thread_local}") |> List.fold (fun l v ->  l @ v) [] |> List.iter (fun(x)->sw.WriteLine(x))
 
-    (* Registered events *)
-
-    (* deferred, ignored events *)
+    (* Registered, deferred, ignored events *)
     let dicts =
       ["var{:thread_local} registerEvents: [int][int]bool;"] @
       (if prog.HasIgnore then ["var{:thread_local} ignoreEvents: [int][int]bool;"] else []) @
@@ -990,8 +1061,8 @@ module Translator =
     List.iter (fun(x:string) -> sw.WriteLine(x)) dicts
 
     (*Temp RHS vars *)
-    tmpVars := "var tmpRhsValue: PrtRef;" ::
-    [for i = 0 to prog.maxFields-1 do yield (sprintf "var tmpRhsValue_%d: PrtRef;" i)]
+    tmpVars := "var{:thread_local} tmpRhsValue: PrtRef;" ::
+    [for i = 0 to prog.maxFields-1 do yield (sprintf "var{:thread_local} tmpRhsValue_%d: PrtRef;" i)]
 
     let monitorToInt = prog.Machines |> List.filter (fun (md: MachineDecl) -> md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Name) |> Seq.mapi (fun i x -> (x, i)) |> Map.ofSeq
 

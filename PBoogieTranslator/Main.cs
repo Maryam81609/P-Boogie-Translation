@@ -13,15 +13,44 @@ namespace Microsoft.PBoogieTranslator
     {
         public static void Main(string[] args)
         {
-            args = new string[] { @"C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature1SMLevelDecls\Correct\bug1\bug1.p" };
             var options = new CommandLineArguments(args);
             FSharpExpGen fsExpGen = new FSharpExpGen(options);
+            if(options.list)
+            {
+                using (var sr = new StreamReader(options.inputFile))
+                {
+                    string line = null;
+                    while((line = sr.ReadLine()) != null)
+                    {
+                        if (line.StartsWith("//"))
+                            continue;
+                        Console.WriteLine("*************************************************************************************************************************");
+                        Console.WriteLine(line);
+                        Console.WriteLine("*************************************************************************************************************************");
+                        options.pFile = line;
+                        Process(options, fsExpGen);
+                    }
+                    Console.WriteLine("*************************************************************************************************************************");
+                }
+            }
+            else
+            {
+                options.pFile = options.inputFile;
+                Process(options, fsExpGen);
+            }
+        }
 
+        public static void Process(CommandLineArguments options, FSharpExpGen fsExpGen)
+        {
             //Desugar the P Program
-            var prog = fsExpGen.genFSExpression(options.inputFile);
-            if(options.deSugarFile != null)
+            var prog = fsExpGen.genFSExpression(options.pFile);
+            if(options.desugar)
             {
                 printPFile(options.deSugarFile, prog);
+            }
+            if (options.serialize)
+            {
+                Save(prog, "serialized_" + options.deSugarFile);
             }
 
             //Type check the program.
@@ -30,24 +59,29 @@ namespace Microsoft.PBoogieTranslator
 
             //Remove named tuples in the P Program
             prog = RemoveNamedTuples.removeNamedTuplesProgram(prog);
-            if(options.removeNTFile != null)
+            if(options.removeNT)
             {
                 printPFile(options.removeNTFile, prog);
             }
-            
+            if (options.serialize)
+            {
+                Save(prog, "serialized_" + options.removeNTFile);
+            }
+
             //Remove side effects in the P Program
             prog = RemoveSideEffects.removeSideEffectsProgram(prog);
-            if(options.removeSEFile != null)
+            if(options.removeSE)
             {
                 printPFile(options.removeSEFile, prog);
             }
 
-            //Print the Boogie file.
-            if (options.boogieFile == "-")
+            if (options.serialize)
             {
-                Translator.translateProg(prog, new IndentedTextWriter(Console.Out, "    "));
+                Save(prog, "serialized_" + options.removeSEFile);
             }
-            else
+
+            //Print the Boogie file.
+            if (options.genBoogie)
             {
                 using (var sw = new StreamWriter(options.boogieFile))
                 using (var tr = new IndentedTextWriter(sw, "    "))
@@ -80,6 +114,7 @@ namespace Microsoft.PBoogieTranslator
 
         private static void printPFile(string fileName, Syntax.ProgramDecl prog)
         {
+            Console.WriteLine(fileName);
             if (fileName == "-")
             {
                 Helper.printProg(prog, new IndentedTextWriter(Console.Out, "   "));
