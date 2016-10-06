@@ -5,7 +5,7 @@ module RemoveSideEffects =
   open Helper
   open ProgramTyping
 
- /// Takes an expr as input, returns the re-written expr, a set of statements and updated environment 
+  /// Takes an expr as input, returns the re-written expr, a set of statements and updated environment 
   let rec removeSideEffectsExpr expr G =
     let (nexpr, stlist, nG) =
       match expr with
@@ -135,45 +135,115 @@ module RemoveSideEffects =
         (partialExplist @ [e], partialStlist @ d, G')
       end
       ) ([], [], G) exprlist
-      
-  /// Takes an lval as input, returns the re-written lval, a set of statements and updated environment 
-  let rec removeSideEffectsLval lval G =
-    match lval with
-    | Lval.Var(_) -> (lval, [], G)
-    | Lval.Dot(l, f) -> 
+
+  /// returns a list of statements and a new G 
+  let rec normalizeLvalStmt st G =
+    match st with
+    | Assign(lval, e) ->
       begin
-        let (l', stlist, G') = removeSideEffectsLval l G in
-        (Lval.Dot(l', f), stlist, G')
+        match lval with
+            (*l.f = e
+            * ==> 
+            * l = (l.0, l.1, ..., e) *)
+            
+        | Lval.Dot(l, f) -> 
+          begin
+            let t = tupleSize (typeofLval l G) in
+            let rhs = ref [] in
+            for i = (t-1) downto 0 do
+              if i = f then rhs := e :: !rhs 
+              else rhs := Expr.Dot(lvalToExpr l, i) :: !rhs
+            normalizeLvalStmt (Assign(l, Expr.Tuple !rhs)) G
+          end
+        | Lval.Index(Lval.Var(_), _) -> ([st], G)
+            (* l[e'] = e
+            * ==> 
+            * t = l; t[e'] = e; l = t
+            *)
+        | Lval.Index(l, e') ->
+          begin
+            let (t, G') = getLocal (typeofLval l G) G in
+            let s1 = Assign(Lval.Var(t), lvalToExpr l) in
+            let s2 = Assign(Lval.Index(Lval.Var(t), e'), e) in
+            let s3 = Assign(l, Expr.Var(t)) in
+            let (s3list, G'') = normalizeLvalStmt s3 G' in
+            ([s1; s2] @ s3list, G'')
+          end
+        | _ -> ([st], G)
       end
-    | Lval.NamedDot(_) -> raise NotDefined
-    | Lval.Index(l, e) ->
+    | Remove(lval, e) ->
       begin
-        let (e', stlist1, G') = removeSideEffectsExpr e G in
-        let (l', stlist2, G'') = removeSideEffectsLval l G' in
-        (Lval.Index(l', e'), stlist1 @ stlist2, G'')
+        match lval with
+        (* lval -= e
+          * ==>
+          * t = lval; t -= e; lval = t
+          *)
+        | Lval.Dot(_ ,_)
+        | Lval.Index(_, _) ->
+          begin
+            let (t, G') = getLocal (typeofLval lval G) G in
+            let s1 = Assign(Lval.Var(t), lvalToExpr lval) in
+            let s2 = Remove(Lval.Var(t), e) in
+            let s3 = Assign(lval, Expr.Var(t)) in
+            let (s3list, G'') = normalizeLvalStmt s3 G' in
+            ([s1; s2] @s3list, G'')
+          end
+        | _ -> ([st], G)
       end
+    | Insert(lval, e1, e2) ->
+      begin
+        match lval with
+        (* lval += (e1,e2)
+          * ==>
+          * t = lval; t += (e1,e2); lval = t
+          *)
+        | Lval.Dot(_, _) 
+        | Lval.Index(_, _) ->
+          begin
+            let (t, G') = getLocal (typeofLval lval G) G in
+            let s1 = Assign(Lval.Var(t), lvalToExpr lval) in
+            let s2 = Insert(Lval.Var(t), e1, e2) in
+            let s3 = Assign(lval, Expr.Var(t)) in
+            let (s3list, G'') = normalizeLvalStmt s3 G' in
+            ([s1; s2] @s3list, G'')
+          end
+        | _ -> ([st], G)
+      end
+    | _ -> ([st], G)
+
+  /// returns new list of statements and the new G 
+  let normalizeLvalStlist stlist G =
+    List.fold (fun (partialStlist, partialG) stmt ->
+      begin
+        let (d, G') = normalizeLvalStmt stmt partialG in
+        (partialStlist @ d, G')
+      end
+      ) ([], G) stlist
+  
 
   let rec removeSideEffectsStmt stmt G =
     match stmt with
     | Assign(l, e) -> 
       begin
-        let (l', d1, G') = removeSideEffectsLval l G in
-        let (e', d2, G'') = removeSideEffectsExpr e G' in
-        (d1 @ d2 @ [Assign(l', e')], G'')
+        let (e', d1, G') = removeSideEffectsExpr e G in
+        let s = Assign(l, e')
+        let (d2, G'') = normalizeLvalStmt s G' in
+        (d1 @ d2, G'')
       end
     | Insert(l, e1, e2) ->
       begin
-        let (l', d1, G') = removeSideEffectsLval l G in
-        let (e1', d2, G'') = removeSideEffectsExpr e1 G' in
-        let (e2', d3, G''') = removeSideEffectsExpr e2 G'' in
-        let v, G'''' = getLocal (typeofLval l' G''') G'''
-        (d1 @ d2 @ d3 @ [Insert(l', e1', e2')], G'''')
+        let (e1', d1, G') = removeSideEffectsExpr e1 G in
+        let (e2', d2, G'') = removeSideEffectsExpr e2 G' in
+        let s = Insert(l, e1', e2') in 
+        let (d3, G''') = normalizeLvalStmt s G'' in 
+        (d1 @ d2 @ d3, G''')
       end
     | Remove(l, e) ->
       begin
-        let (l', d1, G') = removeSideEffectsLval l G in
-        let (e', d2, G'') = removeSideEffectsExpr e G' in
-        (d1 @ d2 @ [Remove(l', e')], G'')
+        let (e', d1, G') = removeSideEffectsExpr e G in
+        let s = Remove(l, e')
+        let (d2, G'') = normalizeLvalStmt s G' in
+        (d1 @ d2, G'')
       end
     | Assume(e) ->
       begin
@@ -264,90 +334,11 @@ module RemoveSideEffects =
       end
       ) ([], G) stlist
 
-  /// returns a list of statements and a new G 
-  let rec normalizeLvalStmt st G =
-    match st with
-    | Assign(lval, e) ->
-      begin
-        match lval with
-            (*l.f = e
-            * ==> 
-            * l = (l.0, l.1, ..., e) *)
-            
-        | Lval.Dot(l, f) -> 
-          begin
-            let t = tupleSize (typeofLval l G) in
-            let rhs = ref [] in
-            for i = (t-1) downto 0 do
-              if i = f then rhs := e :: !rhs 
-              else rhs := Expr.Dot(lvalToExpr l, f) :: !rhs
-            normalizeLvalStmt (Assign(l, Expr.Tuple !rhs)) G
-          end
-        | Lval.Index(Lval.Var(_), _) -> ([st], G)
-            (* l[e'] = e
-            * ==> 
-            * t = l; t[e'] = e; l = t
-            *)
-        | Lval.Index(l, e') ->
-          begin
-            let (t, G') = getLocal (typeofLval l G) G in
-            let s1 = Assign(Lval.Var(t), lvalToExpr l) in
-            let s2 = Assign(Lval.Index(Lval.Var(t), e'), e) in
-            let s3 = Assign(l, Expr.Var(t)) in
-            let (s3list, G'') = normalizeLvalStmt s3 G' in
-            ([s1; s2] @ s3list, G'')
-          end
-        | _ -> ([st], G)
-      end
-    | Remove(lval, e) ->
-      begin
-        match lval with
-        (* lval -= e
-          * ==>
-          * t = lval; t -= e; lval = t
-          *)
-        | Lval.Dot(_ ,_)
-        | Lval.Index(_, _) ->
-          begin
-            let (t, G') = getLocal (typeofLval lval G) G in
-            let s1 = Assign(Lval.Var(t), lvalToExpr lval) in
-            let s2 = Remove(Lval.Var(t), e) in
-            let s3 = Assign(lval, Expr.Var(t)) in
-            let (s3list, G'') = normalizeLvalStmt s3 G' in
-            ([s1; s2] @s3list, G'')
-          end
-        | _ -> ([st], G)
-      end
-    | Insert(lval, e1, e2) ->
-      begin
-        match lval with
-        (* lval += (e1,e2)
-          * ==>
-          * t = lval; t += (e1,e2); lval = t
-          *)
-        | Lval.Dot(_, _) 
-        | Lval.Index(_, _) ->
-          begin
-            let (t, G') = getLocal (typeofLval lval G) G in
-            let s1 = Assign(Lval.Var(t), lvalToExpr lval) in
-            let s2 = Insert(Lval.Var(t), e1, e2) in
-            let s3 = Assign(lval, Expr.Var(t)) in
-            let (s3list, G'') = normalizeLvalStmt s3 G' in
-            ([s1; s2] @s3list, G'')
-          end
-        | _ -> ([st], G)
-      end
-    | _ -> ([st], G)
+  ///Get Defaults for each variable declared. Returns a set of statements and an updated environment.
+  let getDefaults (vdList: VarDecl list) G = 
+    let defs = List.fold (fun ls (vd: VarDecl) -> ls @ [Stmt.Assign(Lval.Var(vd.Name), Expr.Default(vd.Type))]) [] vdList
+    removeSideEffectsStlist defs G
 
-  /// returns new list of statements and the new G 
-  let normalizeLvalStlist stlist G =
-    List.fold (fun (partialStlist, partialG) stmt ->
-      begin
-        let (d, G') = normalizeLvalStmt stmt partialG in
-        (partialStlist @ d, G')
-      end
-      ) ([], G) stlist
-  
   ///Get all the vars in G2 that are not present in G1.
   let getNewVars G1 G2 = 
     let g1 = G1 |> Map.toSeq |> Seq.map fst |> Set.ofSeq
@@ -359,9 +350,10 @@ module RemoveSideEffects =
   ///only one side effect at most.
   let removeSideEffectsFn G (f: FunDecl) = 
     let G' = mergeMaps G f.VarMap
-    let stList, G'' = removeSideEffectsStlist f.Body G'
-    let newVars = f.Locals @ (getNewVars G' G'')
-    new FunDecl(f.Name, f.Formals, f.RetType, newVars, stList, f.IsModel, f.IsPure)
+    let defs, G'' = getDefaults f.Locals G'
+    let stList, G''' = removeSideEffectsStlist f.Body G''
+    let newVars = f.Locals @ (getNewVars G' G''')
+    new FunDecl(f.Name, f.Formals, f.RetType, newVars, defs @ stList, f.IsModel, f.IsPure, f.TrueNames)
 
   ///Return a new MachineDecl with all statements 
   ///causing only one side effect at most.
@@ -369,10 +361,12 @@ module RemoveSideEffects =
     let funs = 
       let map = ref Map.empty in
         List.iter (fun(f: FunDecl) -> map := Map.add f.Name (if f.RetType.IsSome then f.RetType.Value else Type.Null) !map) m.Functions
-      !map 
+      !map  
     let G' = mergeMaps (mergeMaps G m.VarMap) funs
-    let fList = List.map (removeSideEffectsFn G') m.Functions 
-    new MachineDecl(m.Name, m.StartState, m.Globals, fList, m.States, m.IsMonitor, m.MonitorList, m.QC, m.IsModel, m.HasPush)
+    let init, G'' = getDefaults m.Globals G'
+    let newGlobals = m.Globals @ (getNewVars G' G'')
+    let fList = List.map (removeSideEffectsFn G'') m.Functions 
+    new MachineDecl(m.Name, m.StartState, newGlobals , fList, m.States, m.IsMonitor, m.MonitorList, m.QC, m.IsModel, m.HasPush, init)
 
   ///Return a new ProgramDecl with all statements causing 
   ///only one side effect at most.

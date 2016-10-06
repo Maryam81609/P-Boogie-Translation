@@ -37,11 +37,11 @@ module FlattenStmtLists =
   
   let flattenStmtsFun (fd: FunDecl) = 
     let flatSt = List.fold (fun acc st -> acc @ (flattenStmt st)) [] fd.Body
-    new FunDecl(fd.Name, fd.Formals, fd.RetType, fd.Locals, flatSt, fd.IsModel, fd.IsPure)
+    new FunDecl(fd.Name, fd.Formals, fd.RetType, fd.Locals, flatSt, fd.IsModel, fd.IsPure, fd.TrueNames)
   
   let flattenStmtsMachine (md: MachineDecl) = 
     let fLst = List.map flattenStmtsFun md.Functions
-    new MachineDecl(md.Name, md.StartState, md.Globals, fLst, md.States, md.IsMonitor, md.MonitorList, md.QC, md.IsModel, md.HasPush)
+    new MachineDecl(md.Name, md.StartState, md.Globals, fLst, md.States, md.IsMonitor, md.MonitorList, md.QC, md.IsModel, md.HasPush, md.Init)
 
   let flattenStmtsProg (prog: ProgramDecl) = 
     let fLst = List.map flattenStmtsFun prog.StaticFuns

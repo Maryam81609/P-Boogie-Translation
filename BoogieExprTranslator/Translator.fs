@@ -76,8 +76,8 @@ module Translator =
     | Expr.Event(ev) -> sprintf "%d" (Map.find ev evMap)
     | _ ->
       begin 
-        sw.WriteLine("call eventID := AssertPayloadDynamicType({0}, {1})", (translateExpr G evMap e), plExpr)
-        "eventID"
+        sw.WriteLine("call tmpEventID := AssertPayloadDynamicType({0}, {1});", (translateExpr G evMap e), plExpr)
+        "tmpEventID"
       end
 
   let typesAsserted = ref Set.empty
@@ -100,121 +100,67 @@ module Translator =
         | _ -> ()
     match (lval, expr) with
     | _, Expr.Cast(e, t) ->
-        begin
-            (* evaluate rhs *)
-            let rhsVar = genRhsValue e G in
-            (* generate type assertion *)
-            setTypesAsserted t
-            sw.WriteLine("call AssertIsType{0}({1});", (GetTypeIndex t), rhsVar)
-            (* the assignment *)
-            sw.WriteLine("{0} := {1};", (getLhsVar lval), rhsVar)
-        end
-    | _, Expr.Tuple(es) ->
-        begin
-            for i = 0 to (List.length es) - 1 do
-            let ei = (List.item i es) in
-            sw.WriteLine("tmpRhsValue_{0} := {1};", i, (translateExpr G evMap ei))
-            sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
-            sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeTuple{1};", (getLhsVar lval), (List.length es))
-            for i = 0 to (List.length es) - 1 do
-            sw.WriteLine("assume PrtFieldTuple{0}({1}) == tmpRhsValue_{2};", i, (getLhsVar lval), i)
-        end
-    | _, Expr.Call(callee, args) ->
-        begin
-            sw.WriteLine("call {0} := {1}({2});", (getLhsVar lval), callee, (printList (translateExpr G evMap), args, ",, "))
-        end
-    | _, Expr.Default(Seq(t)) ->
-        begin
-            sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
-            sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeSeq{1};", (getLhsVar lval), (GetTypeIndex (Seq(t))))
-            sw.WriteLine("assume PrtFieldSeqSize({0}) == 0;", (getLhsVar lval))
-        end
-    | _, Expr.Default(Map(t1, t2)) ->
-        begin
-            sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
-            sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeMap{1};", (getLhsVar lval), (GetTypeIndex (Map(t1, t2))))
-            sw.WriteLine("assume PrtFieldMapSize({0}) == 0;", (getLhsVar lval))
-        end
-    | _, Expr.Default(Type.Tuple(ls)) -> 
       begin
-        translateDefaultTuple sw G evMap ls
+        (* evaluate rhs *)
+        let rhsVar = genRhsValue e G in
+        (* generate type assertion *)
+        setTypesAsserted t
+        sw.WriteLine("call AssertIsType{0}({1});", (GetTypeIndex t), rhsVar)
+        (* the assignment *)
+        sw.WriteLine("{0} := {1};", (getLhsVar lval), rhsVar)
+      end
+    | _, Expr.Tuple(es) ->
+      begin
+        for i = 0 to (List.length es) - 1 do
+          let ei = (List.item i es) in
+            sw.WriteLine("tmpRhsValue_{0} := {1};", i, (translateExpr G evMap ei))
+
+        sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
+        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeTuple{1};", (getLhsVar lval), (List.length es))
+
+        for i = 0 to (List.length es) - 1 do
+          sw.WriteLine("assume PrtFieldTuple{0}({1}) == tmpRhsValue_{2};", i, (getLhsVar lval), i)
+      end
+    | _, Expr.Call(callee, args) ->
+      sw.WriteLine("call {0} := {1}({2});", (getLhsVar lval), callee, (printList (translateExpr G evMap), args, ",, "))
+      
+    | _, Expr.Default(Seq(t)) ->
+      begin
+        sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
+        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeSeq{1};", (getLhsVar lval), (GetTypeIndex (Seq(t))))
+        sw.WriteLine("assume PrtFieldSeqSize({0}) == 0;", (getLhsVar lval))
+      end
+    | _, Expr.Default(Map(t1, t2)) ->
+      begin
+        sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
+        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeMap{1};", (getLhsVar lval), (GetTypeIndex (Map(t1, t2))))
+        sw.WriteLine("assume PrtFieldMapSize({0}) == 0;", (getLhsVar lval))
       end
     | _, Expr.Bin(Idx, e1, e2) ->
-        begin
-            match isMap (typeof e1 G) with
-            | true ->  sw.WriteLine("call {0} := ReadMap({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
-            | false -> sw.WriteLine("assert SeqIndexInBounds({0}, PrtFieldInt({1})); {2} := ReadSeq({3}, PrtFieldInt({4}));", (translateExpr G evMap e1), (translateExpr G evMap e2), (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
-        end
+      begin
+        match isMap (typeof e1 G) with
+        | true ->  sw.WriteLine("call {0} := ReadMap({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
+        | false -> sw.WriteLine("assert SeqIndexInBounds({0}, PrtFieldInt({1})); {2} := ReadSeq({3}, PrtFieldInt({4}));", (translateExpr G evMap e1), (translateExpr G evMap e2), (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
+      end
     | _, Expr.Bin(In, e1, e2) ->
-        begin
-            sw.WriteLine("call {0} := MapContainsKey({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
-        end
+      sw.WriteLine("call {0} := MapContainsKey({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
     | _, Expr.Bin(Eq, e1, e2) ->
-        begin
-            sw.WriteLine("call {0} := PrtEquals({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
-        end
+      sw.WriteLine("call {0} := PrtEquals({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
     | _, Expr.Un(Keys, e) ->
-        begin
-            sw.WriteLine("call {0} := MapGetKeys({1});", (getLhsVar lval), (translateExpr G evMap e))
-        end
+      sw.WriteLine("call {0} := MapGetKeys({1});", (getLhsVar lval), (translateExpr G evMap e))
     | _, Expr.Un(Values, e) ->
-        begin
-            sw.WriteLine("call {0} := MapGetValues({1});", (getLhsVar lval), (translateExpr G evMap e))
-        end
+      sw.WriteLine("call {0} := MapGetValues({1});", (getLhsVar lval), (translateExpr G evMap e))
     | _, Expr.Nondet ->
-        begin
-            sw.WriteLine("havoc {0};", (getLhsVar lval))
-        end
+      sw.WriteLine("havoc {0};", (getLhsVar lval))
     | Lval.Var(v), Expr.New(m, arg) ->
-      begin
-        sw.WriteLine("machineCounter := machineCounter + 1;")
-        sw.WriteLine("async call MachineThread_{0}(machineCounter, {1});", m, (translateExpr G evMap arg))
-        sw.WriteLine("{0} := PrtConstructFromMachineId(machineCounter);", v)
-      end
+        sw.WriteLine("call {0} := newMachine_{1}({2});", v, m, translateExpr G evMap arg)
     | Lval.Index(Lval.Var(lhsVar), e), _ when isSeq (typeofLval (Lval.Var(lhsVar)) G) ->
-        begin
-            sw.WriteLine("call {0} := WriteSeq({1}, PrtFieldInt({2}), {3});", lhsVar, lhsVar, (translateExpr G evMap e), (translateExpr G evMap expr))
-        end
+      sw.WriteLine("call {0} := WriteSeq({1}, PrtFieldInt({2}), {3});", lhsVar, lhsVar, (translateExpr G evMap e), (translateExpr G evMap expr))
     | Lval.Index(Lval.Var(lhsVar), e), _ ->
-        begin
-            sw.WriteLine("call {0} := WriteMap{1}, {2}, {3});", lhsVar, lhsVar, (translateExpr G evMap e), (translateExpr G evMap expr))
-        end
-    | Lval.Dot(Lval.Var(lhsVar), i), _ ->
-      begin
-        let x = translateExpr G evMap expr
-        let (Type.Tuple(ls)) = Map.find lhsVar G
-        let l = List.length ls   
-        for j = 0 to l - 1 do
-        begin
-          let ej = if j = i  then x else sprintf "PrtFieldTuple%d(%s)" j lhsVar
-          sw.WriteLine("tmpRhsValue_{0} := {1};", j, ej)
-        end
-        sw.WriteLine("call {0} := AllocatePrtRef();", lhsVar)
-        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeTuple{1};", lhsVar, l)
-        for j = 0 to l - 1 do
-          let ej = sprintf  "tmpRhsValue_%d" j in
-            sw.WriteLine("assume PrtFieldTuple{0}({1}) == {2}", j, lhsVar, ej)
-      end
+      sw.WriteLine("call {0} := WriteMap({1}, {2}, {3});", lhsVar, lhsVar, (translateExpr G evMap e), (translateExpr G evMap expr))
     | Lval.Dot(_), _ -> raise NotDefined
     | _, _ ->
-        sw.WriteLine("{0} := {1};", (getLhsVar lval), (translateExpr G evMap expr))
-
-  and translateDefaultTuple sw G evMap ls = 
-    for i = 0 to (List.length ls) - 1 do
-      let ty = List.item  i ls
-      let n = getFreshVar()
-      sw.WriteLine("var {0}: PrtRef;", n)
-      match ty with
-      | Type.Tuple(ls') -> 
-        begin
-          translateDefaultTuple sw G evMap ls'
-        end
-      | _ -> 
-        begin
-          let lval = Lval.Var(n)
-          let rval = Expr.Default(ty)
-          translateAssign sw G evMap lval rval
-        end
+      sw.WriteLine("{0} := {1};", (getLhsVar lval), (translateExpr G evMap expr))
 
   let translateInsert (sw:IndentedTextWriter) G evMap v e1 e2 =
     match isSeq (typeof (Expr.Var(v)) G) with
@@ -239,19 +185,7 @@ module Translator =
     match stmt with
     | Assign(l, e) -> translateAssign sw G evMap l e
     | Insert(Lval.Var(v), e1, e2) -> translateInsert sw G evMap v e1 e2
-    | Insert(Lval.Dot(v, i), e1, e2) -> 
-      begin
-        let (Type.Tuple(ls)) = typeofLval v G
-        let typ = List.item i ls
-        let G' = Map.add "tmpRhsValue" typ G
-        //sw.WriteLine("tmpRhsValue := PrtFieldTuple{0}(
-        ignore true
-      end
-    | Insert(Lval.Index(v, e), e1, e2) -> ignore true
     | Remove(Lval.Var(v), e1) -> translateRemove sw G evMap v e1
-    | Remove(Lval.Dot(v, i), e1) -> ignore true
-    | Remove(Lval.Index(v, e), e1) -> ignore true
-    
     | Assume(e) -> sw.WriteLine("assume PrtFieldBool({0});", (translateExpr G evMap e))
     | Assert(e) -> sw.WriteLine("assert PrtFieldBool({0});", (translateExpr G evMap e))
     | NewStmt(m, e) -> sw.WriteLine("call tmpRhsValue := newMachine_{0}({1})", m, (translateExpr G evMap e))
@@ -298,6 +232,7 @@ module Translator =
     | SeqStmt(ls) -> List.iter (translateStmt sw G evMap) ls
     | Receive(ls) ->
       begin
+        sw.WriteLine("yield;")
         sw.WriteLine("call event, payload := Dequeue();")
         List.iter translateCase ls
         sw.WriteLine("")
@@ -311,7 +246,7 @@ module Translator =
     | Return(None) -> sw.WriteLine("return;")
     | Return(Some(e)) ->
       begin
-        sw.WriteLine("ret := {0}", (translateExpr G evMap e))
+        sw.WriteLine("ret := {0};", (translateExpr G evMap e))
         sw.WriteLine("return;")
       end
     | Monitor(e, arg) ->
@@ -393,9 +328,6 @@ module Translator =
   let getVars attr (vdList: VarDecl list) =
     List.map (fun(vd: VarDecl) -> sprintf "var%s %s: PrtRef; // %s" attr vd.Name (printType vd.Type)) vdList
 
-  let getDefaults (vdList: VarDecl list) =
-    List.fold (fun ls (vd: VarDecl) -> ls @ [Stmt.Assign(Lval.Var(vd.Name), Expr.Default(vd.Type))]) [] vdList
-
   let getEventMaps d trans hasDefer hasIgnore (events: Map<string, int>) =
     let regEvents = ref(events |> Map.toSeq |> Seq.map (fun (k, v) -> (v, false)) |> Map.ofSeq)
     let igEvents  = ref(events |> Map.toSeq |> Seq.map (fun (k, v) -> (v, false)) |> Map.ofSeq)
@@ -435,19 +367,24 @@ module Translator =
 
   //TODO Come back!
   let printEvDict (sw:IndentedTextWriter) (state: int) (evDict: Map<int, bool>, name: string)=
-    Map.iter (fun k v ->sw.WriteLine("{0}[{1}][{2}] := {3};", name, state, k, v)) evDict
+    Map.iter (fun k v ->sw.WriteLine("{0}[{1}][{2}] := {3};", name, state, k, if v then "true" else "false")) evDict
 
   let translateFunction (sw: IndentedTextWriter) G evMap (fd: FunDecl) =
-    let formals = fd.Formals |> List.map (fun(v: VarDecl) -> v.Name + ": PrtRef") |> String.concat ", "
+    let formals = fd.Formals |> List.map (fun(v: VarDecl) -> "actual_" + v.Name + ": PrtRef") |> String.concat ", "
     let ret = if fd.RetType.IsSome then " returns (ret: PrtRef)" else ""
     sw.WriteLine("procedure {0}({1}){2}", fd.Name, formals, ret)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
-    sw.WriteLine("// Initialize locals.")
+    fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef;")  |> List.iter (fun(s) -> sw.WriteLine(s))
+    fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name) |> List.iter (fun(s) -> sw.WriteLine(s))
     getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+    
+    
+    sw.WriteLine("var event: int;")
+    sw.WriteLine("var payload: PrtRef;")
     !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+    
     let G' = mergeMaps G (fd.VarMap)
-    getDefaults fd.Locals |> List.iter (translateStmt sw G' evMap)
     List.iter (translateStmt sw G' evMap) fd.Body
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
@@ -520,7 +457,7 @@ module Translator =
     ht || hd
 
   let translateState (sw: IndentedTextWriter) mach (stateToInt:Map<string, int>) hasDefer hasIgnore (evMap: Map<string,int>) (state: StateDecl) =
-    sw.WriteLine("if(HandlerState == {0})", (Map.find state.Name stateToInt))
+    sw.WriteLine("if(CurrState == {0})", (Map.find state.Name stateToInt))
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     List.iter (translateDos sw evMap) state.Dos
@@ -546,27 +483,27 @@ module Translator =
     sw.WriteLine("}")
     sw.WriteLine("else ")
 
-
   let createNewMachineFunction (sw: IndentedTextWriter) G (evMap: Map<string,int>) (md: MachineDecl) =    
     let m = md.Name
     sw.WriteLine("procedure newMachine_{0}(entryArg: PrtRef) returns (m: PrtRef)", m)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("var tmp: int;")
     sw.WriteLine("machineCounter := machineCounter + 1;")
-    sw.WriteLine("call InitializeInbox(machineCounter);")
-    sw.WriteLine("// For raised events")
-    sw.WriteLine("eventRaised := false;")
+    sw.WriteLine("tmp := machineCounter;")
+    sw.WriteLine("call InitializeInbox(tmp);")
     sw.WriteLine("// Generate Queue Constraint Mappings")
     let qc =
       match md.QC with
       | Some(Card.Assert(i)) -> sprintf "%d" i, "0 - 1"
       | Some(Card.Assume(i)) -> "0 - 1", sprintf "%d" i
       | None -> "0 - 1", "0 - 1"
-    sw.WriteLine("machineToQCAssert[machineCounter] := {0};", (fst qc))
-    sw.WriteLine("machineToQCAssume[machineCounter] := {0};", (snd qc))
-    Map.iter (fun k (v: int) -> sw.WriteLine("machineEvToQCount[machineCounter][{0}] := 0;", v)) evMap
-    sw.WriteLine("async call MachineThread_{0}(machineCounter, entryArg);", m)
-    sw.WriteLine("m := PrtConstructFromMachineId(machineCounter);")
+    sw.WriteLine("machineToQCAssert[tmp] := {0};", (fst qc))
+    sw.WriteLine("machineToQCAssume[tmp] := {0};", (snd qc))
+    Map.iter (fun k (v: int) -> sw.WriteLine("machineEvToQCount[tmp][{0}] := 0;", v)) evMap
+    sw.WriteLine("async call MachineThread_{0}(tmp, entryArg);", m)
+    sw.WriteLine("yield;")
+    sw.WriteLine("m := PrtConstructFromMachineId(tmp);")
     sw.WriteLine("return;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
@@ -590,16 +527,16 @@ module Translator =
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
-    sw.WriteLine("var HandlerState: int;")
     sw.WriteLine("var depth: int;")
     sw.WriteLine("// Initialize")
     if md.HasPush then
       sw.WriteLine("StateStack := Nil();")
     sw.WriteLine("CurrState := {0};", (Map.find md.StartState stateToInt))
-    sw.WriteLine("HandlerState := CurrState;")
+    sw.WriteLine("// For raised events")
+    sw.WriteLine("eventRaised := false;")
     sw.WriteLine("thisMid := mid;")
     sw.WriteLine("// Initialize machine variables.")
-    md.Globals |> getDefaults |> List.iter (translateStmt sw G evMap)
+    md.Init |> List.iter (translateStmt sw G evMap)
 
     sw.WriteLine("// Set mappings of registered, deferred and ignored events.")
 
@@ -613,8 +550,9 @@ module Translator =
     sw.WriteLine("while(true)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("yield;")
     sw.WriteLine("call event, payload := Dequeue();")
-    sw.WriteLine("call HandlerState, depth := Probe(event);")
+    sw.WriteLine("call ProbeStateStack(event);")
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine("")
     sw.WriteLine("{")
@@ -696,15 +634,16 @@ module Translator =
       | _ -> translateStmt sw g evMap st 
 
     let translateMonitorFunction g (fd: FunDecl) =
-      let formals = fd.Formals |> List.map (fun(v: VarDecl) -> v.Name + ": PrtRef") |> String.concat ", "
+      let formals = fd.Formals |> List.map (fun(v: VarDecl) -> "actual_" + v.Name + ": PrtRef") |> String.concat ", "
       let ret = if fd.RetType.IsSome then " returns (ret: PrtRef)" else ""
       sw.WriteLine("procedure {0}({1}){2}", fd.Name, formals, ret)
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
+      fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef;")  |> List.iter (fun(s) -> sw.WriteLine(s))
+      fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name) |> List.iter (fun(s) -> sw.WriteLine(s))
       sw.WriteLine("// Initialize locals.")
       getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
       !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
-      getDefaults fd.Locals |> List.iter (translateStmt sw g evMap)
       let g' = mergeMaps g fd.VarMap
       List.iter (translateMonitorStmt g') fd.Body
       sw.Indent <- sw.Indent - 1
@@ -897,10 +836,8 @@ module Translator =
     sw.WriteLine("}")
 
   let createProbe sw hasPush =
-    fprintfn sw @"procedure getHandlerState(event: int) //(returns handlerState: int, depth: int)
+    fprintfn sw @"procedure ProbeStateStack(event: int)
 {
-   //handlerState := CurrState;
-//   depth := 0;
    if(registerEvents[CurrState][event])
    {
       return;
@@ -908,20 +845,17 @@ module Translator =
    
     if hasPush then 
       fprintfn sw "  //Probe down the state stack. 
-//   var s: StateStackType;
-//   s := StateStack;
    while(StateStack != Nil())
    {
-//      depth := depth + 1;
       CurrState := state#Cons(StateStack);
       StateStack := stack#Cons(StateStack);
       if(registerEvents[CurrState][event])
       {
          return;
       }
-   }
-   assert false; //No handler
-   return;
+   }"
+
+    fprintfn sw @"return;
 }"
   
 (*
@@ -1061,8 +995,8 @@ module Translator =
     List.iter (fun(x:string) -> sw.WriteLine(x)) dicts
 
     (*Temp RHS vars *)
-    tmpVars := "var{:thread_local} tmpRhsValue: PrtRef;" ::
-    [for i = 0 to prog.maxFields-1 do yield (sprintf "var{:thread_local} tmpRhsValue_%d: PrtRef;" i)]
+    tmpVars := "var tmpRhsValue: PrtRef;" ::
+    [for i = 0 to prog.maxFields-1 do yield (sprintf "var tmpRhsValue_%d: PrtRef;" i)]
 
     let monitorToInt = prog.Machines |> List.filter (fun (md: MachineDecl) -> md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Name) |> Seq.mapi (fun i x -> (x, i)) |> Map.ofSeq
 
@@ -1086,6 +1020,9 @@ module Translator =
     (* Probe state stack function *)
     createProbe sw prog.HasPush
 
+    (* Assert Event Cardinality *)
+    printAssertEventCard sw evMap prog.EventMap
+
     let s = IO.File.ReadAllLines("CommonBpl.bpl") in
     Array.iter (fun (x:string) -> sw.WriteLine(x)) s
 
@@ -1099,12 +1036,15 @@ module Translator =
 
     (* Monitors *)
     let mons = List.filter (fun(m:MachineDecl) -> m.IsMonitor) prog.Machines 
+    
     //Globals
     mons |> List.fold (fun acc (m: MachineDecl) -> acc @ m.Globals) [] 
     |> List.iter (fun(v: VarDecl) -> sw.WriteLine("var {0}: PrtRef;", v.Name))
+    
     //Current State
     mons |> List.map (fun(md: MachineDecl) -> md.Name) 
     |> List.iter (fun(s) -> sw.WriteLine("var {0}_CurrState: int;", s))
+
     //Function for the monitor
     List.iter (createMonitor sw G evMap) mons
 
@@ -1127,8 +1067,8 @@ module Translator =
     Map.iter (fun k v -> sw.WriteLine("{0}_CurrState := {1};", k, v)) !monitorToStartState
 
     //Start main machine
-
     sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
+    sw.WriteLine("yield;")
 
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")

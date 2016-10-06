@@ -194,12 +194,12 @@ module RemoveRefParams =
   
   let removeRefParamsFunction funToRefParams funToRetType (fd: FunDecl) = 
     let vl, stl = List.fold (fun (vl, stl) (curr_vl, curr_stl) -> vl @ curr_vl, stl @ curr_stl) ([], []) (List.map (removeRefParamsStmt funToRefParams funToRetType) fd.Body)
-    new FunDecl(fd.Name, fd.Formals, fd.RetType, fd.Locals @ vl, stl, fd.IsModel, fd.IsPure)
+    new FunDecl(fd.Name, fd.Formals, fd.RetType, fd.Locals @ vl, stl, fd.IsModel, fd.IsPure, fd.TrueNames)
 
   let removeRefParamsMachine funToRefParams funToRetType (md: MachineDecl) = 
     let f' = md.Functions |> Seq.ofList |> Seq.map (fun (fd: FunDecl) -> (fd.Name, fd.RetType)) |> Map.ofSeq |>  Map.filter (fun k v -> v.IsSome) |> Map.map (fun k v -> v.Value) |> mergeMaps funToRetType
     let funs = List.map (removeRefParamsFunction funToRefParams f') md.Functions
-    new MachineDecl(md.Name, md.StartState, md.Globals, funs, md.States, md.IsMonitor, md.MonitorList, md.QC, md.IsModel, md.HasPush)
+    new MachineDecl(md.Name, md.StartState, md.Globals, funs, md.States, md.IsMonitor, md.MonitorList, md.QC, md.IsModel, md.HasPush, md.Init)
 
   let removeRefParamsProgram funToRefParams (prog: ProgramDecl) =
     let funToRetType = prog.StaticFuns |> Seq.ofList |> Seq.map (fun (fd: FunDecl) -> (fd.Name, fd.RetType)) |> Map.ofSeq |> Map.filter (fun k v -> v.IsSome) |> Map.map (fun k v -> v.Value)

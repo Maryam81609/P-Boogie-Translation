@@ -39,9 +39,6 @@ var machineToQCAssert: [int] int;
 var machineToQCAssume: [int] int;
 var machineEvToQCount: [int][int]int;
 
-//Ensure only a live machine gets events
-var alive: [int]bool;
-
 //mid
 var {:thread_local} thisMid : int;
 
@@ -123,8 +120,7 @@ procedure Enqueue(mid:int, event: int, payload: PrtRef)
 
 procedure send(mid: int, event: int, payload: PrtRef)
 {
-	//Ensure only a live machine gets events
-	assert alive[mid];
     call monitor(event, payload);
     call Enqueue(mid, event, payload);
+    yield;
 }

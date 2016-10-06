@@ -82,7 +82,7 @@ module Syntax =
 
   [<Serializable>]
   type FunDecl(name: string, formals: VarDecl list, rettype: Type option, 
-               locals: VarDecl list, body: Stmt list, isModel: bool, isPure: bool) =
+               locals: VarDecl list, body: Stmt list, isModel: bool, isPure: bool, trueNames: Map<string, string>) =
     member this.Name = name
     member this.Formals = formals
     member this.RetType = rettype
@@ -90,6 +90,7 @@ module Syntax =
     member this.Body = body
     member this.IsModel = isModel
     member this.IsPure = isPure
+    member this.TrueNames = trueNames
 
 //Implicitly assumes that there are no conflicts in the names of locals and formals.
     member this.VarMap = 
@@ -150,7 +151,7 @@ module Syntax =
   type MachineDecl(name: string, startState: string, globals: VarDecl list, 
                       functions: FunDecl list, states: StateDecl list, 
                       isMonitor: bool, monitorsList: string List, 
-                      qc: Card option, isModel: bool, hasPush: bool) =
+                      qc: Card option, isModel: bool, hasPush: bool, init: Stmt list) =
     member this.Name = name
     member this.StartState = startState
     member this.Globals = globals
@@ -161,6 +162,7 @@ module Syntax =
     member this.QC = qc;
     member this.IsModel = isModel
     member this.HasPush = hasPush
+    member this.Init = init
 
     member this.StateMap =
       let map = ref Map.empty in

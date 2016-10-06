@@ -14,21 +14,26 @@ namespace Microsoft.PBoogieTranslator
             new Dictionary<string, Dictionary<string, Syntax.Type>>();
         private Dictionary<string, HashSet<string>> machinesToFuns =
             new Dictionary<string, HashSet<string>>();
+        public Dictionary<string, Dictionary<string, string>> machTrueNames =
+            new Dictionary<string, Dictionary<string, string>>();
+        private Stack<Dictionary<string, string>> trueNames = 
+            new Stack<Dictionary<string, string>>();
+        
 
         public string currentM { get; set; }
         public string currentF { get { if (tbls.Count > 0) return (tbls.Peek().Item1); else return null; } }
         public bool InsideStaticFn { get; set; } = false;
-        //public Syntax.Expr.NamedTuple tupExpr { get; private set; }
-        //public Syntax.Type.NamedTuple tupType { get; private set; }
-
+        
         public void NewScope(string name)
         {
             tbls.Push(new Tuple<string, Dictionary<string, Syntax.Type>>(name, new Dictionary<string, Syntax.Type>()));
+            trueNames.Push(new Dictionary<string, string>());
         }
 
         public void ExitScope()
         {
             tbls.Pop();
+            trueNames.Pop();
         }
 
         public void Clear()
@@ -113,6 +118,10 @@ namespace Microsoft.PBoogieTranslator
                 machinesToFuns[m] = new HashSet<string>();
             else
                 throw new Exception("Machine " + m + "already exists!");
+            if (!machTrueNames.ContainsKey(m))
+                machTrueNames[m] = new Dictionary<string, string>();
+            else
+                throw new Exception("Machine " + m + "already exists!");
         }
 
         public void AddMachVar(string m, string v, Syntax.Type t)
@@ -120,6 +129,7 @@ namespace Microsoft.PBoogieTranslator
             if (!machinesToVars.ContainsKey(m))
                 throw new Exception("No such machine as " + m);
             machinesToVars[m].Add(v, t);
+            machTrueNames[m].Add(m + "_" + v, v);
         }
 
         public void AddMachFun(string m, string f)
@@ -133,6 +143,28 @@ namespace Microsoft.PBoogieTranslator
         {
             var tbl = tbls.Peek();
             tbl.Item2.Add(v, t);
+            trueNames.Peek().Add(currentF + "_" + v, v);
         }
+
+        public Dictionary<string, string> getTrueNamesInScope()
+        {
+            Dictionary<string, string> ret;
+            if (!InsideStaticFn)
+                ret = new Dictionary<string, string>(machTrueNames[currentM]);
+            else
+                ret = new Dictionary<string, string>();
+
+            var arr = trueNames.ToArray();
+
+            for(int i = arr.Length - 1; i >= 0; --i)
+            {
+                foreach(var kv in arr[i])
+                {
+                    ret[kv.Key] = kv.Value;
+                }
+            }            
+            return ret;
+        }
+
     }
 }
