@@ -172,13 +172,13 @@ module Translator =
     | true -> sw.WriteLine("call {0} := RemoveSeq({1}, PrtFieldInt({2}));", v, v, (translateExpr G evMap e1))
     | false -> sw.WriteLine("call {0} := RemoveMap({1}, PrtFieldInt({2}));", v, v, (translateExpr G evMap e1))
 
-  let rec translateStmt (sw: IndentedTextWriter) G (evMap: Map<string, int>) stmt =
+  let rec translateStmt (sw: IndentedTextWriter) G (stateToInt: Map<string, int>) (cm: string) (evMap: Map<string, int>) stmt =
     
     let translateCase (e, st) =
       sw.WriteLine("if(event == {0})", (Map.find e evMap))
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
-      translateStmt sw G evMap st
+      translateStmt sw G stateToInt cm evMap st
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
       sw.Write("else ")
@@ -210,7 +210,7 @@ module Translator =
         sw.WriteLine("while(PrtFieldBool({0}))", (translateExpr G evMap c))
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-        translateStmt sw G evMap st
+        translateStmt sw G stateToInt cm evMap st
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
       end
@@ -219,17 +219,17 @@ module Translator =
         sw.WriteLine("if(PrtFieldBool({0}))", (translateExpr G evMap c))
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-        translateStmt sw G evMap i
+        translateStmt sw G stateToInt cm evMap i
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
         sw.WriteLine("else")
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-        translateStmt sw G evMap e
+        translateStmt sw G stateToInt cm evMap e
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
       end
-    | SeqStmt(ls) -> List.iter (translateStmt sw G evMap) ls
+    | SeqStmt(ls) -> List.iter (translateStmt sw G stateToInt cm evMap) ls
     | Receive(ls) ->
       begin
         sw.WriteLine("yield;")
@@ -242,7 +242,12 @@ module Translator =
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
       end
-    | Pop -> sw.WriteLine("call StateStackPop();")
+    | Pop ->
+      begin
+        if cm = "" then raise NotDefined
+        sw.WriteLine("call {0}_CallExitAction();", cm)
+        sw.WriteLine("call StateStackPop();")
+      end
     | Return(None) -> sw.WriteLine("return;")
     | Return(Some(e)) ->
       begin
@@ -262,6 +267,15 @@ module Translator =
                   | None -> ""
                   | Some(x) -> sprintf " %s := " x
         sw.WriteLine("call {0}{1}({2});", lhs, f, args)
+      end
+    | Goto(s, e) -> 
+      begin
+        if cm = "" then raise NotDefined
+        sw.WriteLine("payload := {0};", translateExpr G evMap e)
+        sw.WriteLine("call {0}_CallExitAction();", cm)
+        sw.WriteLine("call {0}_CallEntryAction({1}, payload);", cm, (Map.find s stateToInt))
+        sw.WriteLine("CurrState := {0};", Map.find s stateToInt)
+        sw.WriteLine("goto {0};", s)
       end
     | _ -> raise NotDefined
 
@@ -369,7 +383,7 @@ module Translator =
   let printEvDict (sw:IndentedTextWriter) (state: int) (evDict: Map<int, bool>, name: string)=
     Map.iter (fun k v ->sw.WriteLine("{0}[{1}][{2}] := {3};", name, state, k, if v then "true" else "false")) evDict
 
-  let translateFunction (sw: IndentedTextWriter) G evMap (fd: FunDecl) =
+  let translateFunction (sw: IndentedTextWriter) G (stateToInt: Map<string, int>) cm evMap (fd: FunDecl) =
     let formals = fd.Formals |> List.map (fun(v: VarDecl) -> "actual_" + v.Name + ": PrtRef") |> String.concat ", "
     let ret = if fd.RetType.IsSome then " returns (ret: PrtRef)" else ""
     sw.WriteLine("procedure {0}({1}){2}", fd.Name, formals, ret)
@@ -385,7 +399,7 @@ module Translator =
     !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
     
     let G' = mergeMaps G (fd.VarMap)
-    List.iter (translateStmt sw G' evMap) fd.Body
+    List.iter (translateStmt sw G' stateToInt  cm evMap) fd.Body
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
@@ -407,34 +421,25 @@ module Translator =
     match t with
     | TransDecl.T.Call(e, d, f) ->
       begin
-        let srcExitAction = mach.StateMap.[src].ExitAction
-        let dstEntryAction = mach.StateMap.[d].EntryAction
         sw.WriteLine("if(event == {0}) // {1}", (Map.find e evMap), e)
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1;
-        match srcExitAction with
-        | None -> ignore true
-        | Some(ea) -> sw.WriteLine("call {0}();", ea)
+        sw.WriteLine("call {0}_CallExitAction();", mach.Name)
         sw.WriteLine("call {0}(payload);", f)
-        sw.WriteLine("call TransitionState({0}, {1}, depth);", (Map.find src stateToInt), (Map.find d stateToInt))
-        match dstEntryAction with
-        | None -> ignore true
-        | Some(ea) -> sw.WriteLine("call {0}(payload);", ea)
+        sw.WriteLine("CurrState := {0};", Map.find d stateToInt)
+        sw.WriteLine("call {0}_CallEntryAction({1}, payload);", mach.Name, Map.find d stateToInt)
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
-        sw.WriteLine("else ")
+        sw.Write("else ")
       end
     |TransDecl.T.Push(e, d) ->
       begin
-        let dstEntryAction = mach.StateMap.[d].EntryAction
         sw.WriteLine("if(event == {0}) // {1}", (Map.find e evMap), e)
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
         sw.WriteLine("call StateStackPush({0});", (Map.find src stateToInt))
         sw.WriteLine("CurrState := {0};", (Map.find d stateToInt))
-        match dstEntryAction with
-        | None -> ignore true
-        | Some(ea) -> sw.WriteLine("call {0}(payload);", ea)
+        sw.WriteLine("call {0}_CallEntryAction({1}, payload);", mach.Name, Map.find d stateToInt)
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
         sw.WriteLine("else ")
@@ -460,6 +465,7 @@ module Translator =
     sw.WriteLine("if(CurrState == {0})", (Map.find state.Name stateToInt))
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("  {0}:", state.Name)
     List.iter (translateDos sw evMap) state.Dos
     List.iter (translateTransitions sw mach state.Name stateToInt evMap) state.Transitions
     if (not (haltHandled state)) then
@@ -473,7 +479,6 @@ module Translator =
         sw.WriteLine("else")
       end
     //Raise exception for unhandled event.
-    sw.WriteLine("")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("assert false;")
@@ -501,10 +506,73 @@ module Translator =
     sw.WriteLine("machineToQCAssert[tmp] := {0};", (fst qc))
     sw.WriteLine("machineToQCAssume[tmp] := {0};", (snd qc))
     Map.iter (fun k (v: int) -> sw.WriteLine("machineEvToQCount[tmp][{0}] := 0;", v)) evMap
-    sw.WriteLine("async call MachineThread_{0}(tmp, entryArg);", m)
     sw.WriteLine("yield;")
+    sw.WriteLine("async call MachineThread_{0}(tmp, entryArg);", m)
     sw.WriteLine("m := PrtConstructFromMachineId(tmp);")
     sw.WriteLine("return;")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+
+
+  let createProbe sw name =
+    fprintfn sw @"procedure %s_ProbeStateStack(event: int)
+{
+   if(registerEvents[CurrState][event])
+   {
+      return;
+   }" name
+   
+
+    
+    fprintfn sw "  //Probe down the state stack. 
+   while(StateStack != Nil())
+   {"
+    fprintfn sw "      call %s_CallExitAction(CurrState);" name
+    fprintfn sw @"
+      CurrState := state#Cons(StateStack);
+      StateStack := stack#Cons(StateStack);
+      if(registerEvents[CurrState][event])
+      {
+         return;
+      }
+   }"
+
+    fprintfn sw @"return;
+}"
+
+  let createCallEntryAction (sw: IndentedTextWriter) (name: string) (states: StateDecl list) (stateToInt: Map<string, int>) = 
+    let callEntryAction (st: StateDecl) = 
+      sw.WriteLine("if(state == {0}) //{1}", Map.find st.Name stateToInt, st.Name) 
+      sw.WriteLine("{")
+      sw.Indent <- sw.Indent + 1
+      match st.EntryAction with
+      | Some(a) -> sw.WriteLine("call {0}(payload);")
+      | None -> sw.WriteLine()
+      sw.Indent <- sw.Indent - 1
+      sw.WriteLine("}")
+
+    sw.WriteLine("procedure {0}_CallEntryAction(state, payload)", name)
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    List.iter callEntryAction states
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+
+  let createCallExitAction (sw: IndentedTextWriter) (name: string) (states: StateDecl list) (stateToInt: Map<string, int>) = 
+    let callExitAction (st: StateDecl) = 
+      sw.WriteLine("if(CurrState == {0}) //{1}", Map.find st.Name stateToInt, st.Name) 
+      sw.WriteLine("{")
+      sw.Indent <- sw.Indent + 1
+      match st.ExitAction with
+      | Some(a) -> sw.WriteLine("call {0}(null);")
+      | None -> sw.WriteLine()
+      sw.Indent <- sw.Indent - 1
+      sw.WriteLine("}")
+
+    sw.WriteLine("procedure {0}_CallExitAction()", name)
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    List.iter callExitAction states
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
@@ -519,8 +587,13 @@ module Translator =
       !map
     let G' = mergeMaps (mergeMaps G md.VarMap) funs
 
-    List.iter (translateFunction sw G' evMap) md.Functions
+    List.iter (translateFunction sw G' stateToInt md.Name evMap) md.Functions
 
+    if md.HasPush then createProbe sw md.Name
+
+    createCallEntryAction sw md.Name md.States stateToInt
+    createCallExitAction sw md.Name md.States stateToInt
+    
     (* The actual machine thread *)
     sw.WriteLine("procedure MachineThread_{0}(mid: int, entryArg: PrtRef)", md.Name)
     sw.WriteLine("{")
@@ -536,7 +609,7 @@ module Translator =
     sw.WriteLine("eventRaised := false;")
     sw.WriteLine("thisMid := mid;")
     sw.WriteLine("// Initialize machine variables.")
-    md.Init |> List.iter (translateStmt sw G evMap)
+    md.Init |> List.iter (translateStmt sw G stateToInt md.Name evMap)
 
     sw.WriteLine("// Set mappings of registered, deferred and ignored events.")
 
@@ -552,7 +625,7 @@ module Translator =
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("yield;")
     sw.WriteLine("call event, payload := Dequeue();")
-    sw.WriteLine("call ProbeStateStack(event);")
+    if md.HasPush then sw.WriteLine("call {0}_ProbeStateStack(event);", md.Name)
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine("")
     sw.WriteLine("{")
@@ -569,6 +642,24 @@ module Translator =
   /// or deferred events or push transitions. Some statement translations will differ too.
   let createMonitor (sw: IndentedTextWriter) G evMap (md: MachineDecl) =
     let stateToInt =  [for i in md.States do yield i.Name] |> Seq.mapi (fun i x -> x,i) |> Map.ofSeq
+    
+    let createCallMonitorExitAction() = 
+      let callExitAction (st: StateDecl) = 
+        sw.WriteLine("if({0}_CurrState == {1}) //{2}", md.Name, Map.find st.Name stateToInt, st.Name) 
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        match st.ExitAction with
+        | Some(a) -> sw.WriteLine("call {0}(null);")
+        | None -> sw.WriteLine()
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+
+      sw.WriteLine("procedure {0}_CallExitAction()", md.Name)
+      sw.WriteLine("{")
+      sw.Indent <- sw.Indent + 1
+      List.iter callExitAction md.States
+      sw.Indent <- sw.Indent - 1
+      sw.WriteLine("}")
 
     let translateMonitorTrans src (t: TransDecl.T)  =
       match t with
@@ -581,7 +672,7 @@ module Translator =
           sw.Indent <- sw.Indent + 1;
           match srcExitAction with
           | None -> ignore true
-          | Some(ea) -> sw.WriteLine("call {0}();", ea)
+          | Some(ea) -> sw.WriteLine("call {0}(null);", ea)
           sw.WriteLine("call {0}(payload);", f)
           sw.WriteLine("{0}_CurrState := {1};", md.Name, (Map.find d stateToInt))
           match dstEntryAction with
@@ -610,6 +701,7 @@ module Translator =
 
     let translateMonitorState (st: StateDecl) =
       sw.WriteLine("if({0}_CurrState == {1}) // {2}", md.Name, (Map.find st.Name stateToInt), st.Name)
+      sw.WriteLine("  {0}:", st.Name)
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       List.iter translateMonitorDo st.Dos
@@ -631,7 +723,7 @@ module Translator =
       | Pop -> raise NotDefined
       | Send(_) -> raise NotDefined
       | NewStmt(_) -> raise NotDefined
-      | _ -> translateStmt sw g evMap st 
+      | _ -> translateStmt sw g stateToInt md.Name evMap st 
 
     let translateMonitorFunction g (fd: FunDecl) =
       let formals = fd.Formals |> List.map (fun(v: VarDecl) -> "actual_" + v.Name + ": PrtRef") |> String.concat ", "
@@ -649,6 +741,8 @@ module Translator =
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
+    createCallEntryAction sw md.Name md.States stateToInt
+    createCallMonitorExitAction
     sw.WriteLine("procedure Monitor_{0}(event: int, payload: PrtRef)", md.Name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -835,74 +929,6 @@ module Translator =
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
-  let createProbe sw hasPush =
-    fprintfn sw @"procedure ProbeStateStack(event: int)
-{
-   if(registerEvents[CurrState][event])
-   {
-      return;
-   }"
-   
-    if hasPush then 
-      fprintfn sw "  //Probe down the state stack. 
-   while(StateStack != Nil())
-   {
-      CurrState := state#Cons(StateStack);
-      StateStack := stack#Cons(StateStack);
-      if(registerEvents[CurrState][event])
-      {
-         return;
-      }
-   }"
-
-    fprintfn sw @"return;
-}"
-  
-(*
-  let createTransitionState sw hasPush = 
-    fprintfn sw "procedure TransitionState(src: int, dst: int, depth: int)
-{
-    if(src == CurrState)
-    {
-        CurrState := dst;
-        return; 
-    }
-    "
-    if hasPush then 
-      fprintfn sw "    //Handle Pushes
-    var s: StateStackType;
-    var t: StateStackType;
-    var st: int;
-    var i: int;
-    
-    assert (StateStack != Nil());
-    st := state#Cons(StateStack);
-    s  := stack#Cons(StateStack);
-    t  := Nil();
-    i  := 0;
-    
-    while(i < depth)
-    {
-        assert (s != Nil());
-        t  := Cons(st, t);
-        st := state#Cons(s);
-        s  := stack#Cons(s);
-    i  := i + 1;
-    }
-    
-    s = Cons(dst, s);
-   
-    while(t != Nil())
-    {
-        st := state#Cons(t);
-        t  := stack#Cons(t);
-        s  := Cons(st, s);
-    }"
-    fprintfn sw "    assume false; 
-}
-"
-*)
-
   let translateProg (prog: ProgramDecl) (sw: IndentedTextWriter) =
     (* Top-level types *)
     sw.WriteLine("type PrtType;")
@@ -1017,9 +1043,6 @@ module Translator =
     (* Deque *)
     createDeque sw prog.HasDefer prog.HasIgnore
 
-    (* Probe state stack function *)
-    createProbe sw prog.HasPush
-
     (* Assert Event Cardinality *)
     printAssertEventCard sw evMap prog.EventMap
 
@@ -1032,7 +1055,7 @@ module Translator =
       !map
 
     (* Static functions *)
-    List.iter (translateFunction sw G evMap) prog.StaticFuns
+    List.iter (translateFunction sw G Map.empty "" evMap) prog.StaticFuns
 
     (* Monitors *)
     let mons = List.filter (fun(m:MachineDecl) -> m.IsMonitor) prog.Machines 
@@ -1067,8 +1090,8 @@ module Translator =
     Map.iter (fun k v -> sw.WriteLine("{0}_CurrState := {1};", k, v)) !monitorToStartState
 
     //Start main machine
-    sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
     sw.WriteLine("yield;")
+    sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
 
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")

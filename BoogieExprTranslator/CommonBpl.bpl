@@ -121,6 +121,6 @@ procedure Enqueue(mid:int, event: int, payload: PrtRef)
 procedure send(mid: int, event: int, payload: PrtRef)
 {
     call monitor(event, payload);
-    call Enqueue(mid, event, payload);
     yield;
+    call Enqueue(mid, event, payload);
 }
