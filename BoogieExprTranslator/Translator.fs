@@ -742,7 +742,7 @@ module Translator =
       sw.WriteLine("}")
 
     createCallEntryAction sw md.Name md.States stateToInt
-    createCallMonitorExitAction
+    createCallMonitorExitAction()
     sw.WriteLine("procedure Monitor_{0}(event: int, payload: PrtRef)", md.Name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
