@@ -1601,7 +1601,6 @@ namespace Microsoft.PBoogieTranslator
 
         private void Init()
         {
-            ClearAll();
             foreach (var program in parsedPrograms)
             {
                 var file = program.FileInfos;
@@ -1736,9 +1735,9 @@ namespace Microsoft.PBoogieTranslator
             if (result)
             {
                 parsedPrograms = new List<PProgram>(compiler.ParsedPrograms.Values);
-                Init();
-                //Get all TypeDefs first.
+                ClearAll();
                 fixTypeDefs();
+                Init();
                 return true;
             }
             else

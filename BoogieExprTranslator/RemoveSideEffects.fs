@@ -147,14 +147,15 @@ module RemoveSideEffects =
             * l = (l.0, l.1, ..., e) *)
         | Lval.Dot(l, f) -> 
           begin
-            let e', stlst, G' = match e with
-                                | Tuple(ls) ->
-                                  begin
-                                    let t, g = getLocal (typeof e G) G
-                                    let sl, g' = normalizeLvalStmt (Assign(Lval.Var(t), e)) g
-                                    Expr.Var(t), sl, g'
-                                  end
-                                | _ -> e, [], G
+            let e', stlst, G' = 
+              match e with
+              | Tuple(ls) ->
+                begin
+                  let t, g = getLocal (typeof e G) G
+                  let sl, g' = normalizeLvalStmt (Assign(Lval.Var(t), e)) g
+                  Expr.Var(t), sl, g'
+                end
+              | _ -> e, [], G
             let t = tupleSize (typeofLval l G) in
             let rhs = ref [] in
             for i = (t-1) downto 0 do
@@ -228,30 +229,48 @@ module RemoveSideEffects =
       end
       ) ([], G) stlist
   
+  let rec removeSideEffectsLval lval G = 
+    match lval with
+    | Lval.Var(v) -> lval, [], G
+    | Lval.Dot(l, f) -> 
+    begin
+      let l', stl, G' = removeSideEffectsLval l G
+      Lval.Dot(l', f), stl, G'
+    end
+    | Lval.Index(l, e) -> 
+      begin
+        let l', stl1, G' = removeSideEffectsLval l G
+        let e', stl2, G'' = removeSideEffectsExpr e G'
+        Lval.Index(l', e'), stl1 @ stl2, G''
+      end
+    | Lval.NamedDot(_) -> raise NotDefined
 
   let rec removeSideEffectsStmt stmt G =
     match stmt with
     | Assign(l, e) -> 
       begin
-        let (e', d1, G') = removeSideEffectsExpr e G in
-        let s = Assign(l, e')
-        let (d2, G'') = normalizeLvalStmt s G' in
-        (d1 @ d2, G'')
+        let (l', d1, G')  = removeSideEffectsLval l G in
+        let (e', d2, G'') = removeSideEffectsExpr e G' in
+        let s = Assign(l', e') in
+        let (d3, G''') = normalizeLvalStmt s G'' in
+        (d1 @ d2 @ d3, G''')
       end
     | Insert(l, e1, e2) ->
       begin
-        let (e1', d1, G') = removeSideEffectsExpr e1 G in
-        let (e2', d2, G'') = removeSideEffectsExpr e2 G' in
-        let s = Insert(l, e1', e2') in 
-        let (d3, G''') = normalizeLvalStmt s G'' in 
-        (d1 @ d2 @ d3, G''')
+        let (l', d1, G')  = removeSideEffectsLval l G in
+        let (e1', d2, G'') = removeSideEffectsExpr e1 G' in
+        let (e2', d3, G''') = removeSideEffectsExpr e2 G'' in
+        let s = Insert(l', e1', e2') in 
+        let (d4, G'''') = normalizeLvalStmt s G''' in 
+        (d1 @ d2 @ d3 @ d4, G'''')
       end
     | Remove(l, e) ->
       begin
-        let (e', d1, G') = removeSideEffectsExpr e G in
-        let s = Remove(l, e')
-        let (d2, G'') = normalizeLvalStmt s G' in
-        (d1 @ d2, G'')
+        let (l', d1, G')  = removeSideEffectsLval l G in
+        let (e', d2, G'') = removeSideEffectsExpr e G' in
+        let s = Remove(l', e')
+        let (d3, G''') = normalizeLvalStmt s G'' in
+        (d1 @ d2 @ d3, G''')
       end
     | Assume(e) ->
       begin
