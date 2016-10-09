@@ -4,33 +4,19 @@
 // Sequences
 procedure WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef)
 {
-    var oldStore: [int]PrtRef;
-    var newStore: [int]PrtRef;
-    int i;
+    var store: [int]PrtRef;
     int size;
 
     assert SeqIndexInBounds(seq, index);
         
-    i := 0;
     size := PrtFieldSeqSize(seq);
-    oldStore := PrtFieldSeqStore(seq);
-    while(i < size)
-    {
-        if(i == index)
-        {
-            newStore[index] := value;
-        }
-        else
-        {
-            newStore[i] := oldStore[i];
-        }
-        i := i + 1;
-    }
+    store := PrtFieldSeqStore(seq);
+    store[index] := value;
 
     call nseq := AllocatePrtRef();
     assume PrtDynamicType(nseq) == PrtDynamicType(seq);
     assume PrtFieldSeqSize(nseq) == size;
-    assume PrtFieldSeqStore(nseq) == newStore;
+    assume PrtFieldSeqStore(nseq) == store;
     return;
 }
 
@@ -139,22 +125,13 @@ procedure {:inline} ReadMap(map: PrtRef, key: PrtRef) returns (value: PrtRef)
 procedure {:inline} MapGetKeys(map: PrtRef) returns (seq: PrtRef)
 {
     var size: int;
-    var oldStore: [int]PrtRef;
-    var newStore: [int]PrtRef;
-    var i: int;
+    var store: [int]PrtRef;
 
     store := PrtFieldMapKeys(map);
     size := PrtFieldMapSize(map);
-    i := 0;
-
-    while(i < size)
-    {
-        newStore[i] := oldStore[i];
-        i := i + 1;
-    }
 
     call seq := AllocatePrtRef();
-    assume PrtFieldSeqStore(seq) == newStore; 
+    assume PrtFieldSeqStore(seq) == store; 
     assume PrtFieldSeqSize(seq) == size;
 
     return;
@@ -162,22 +139,13 @@ procedure {:inline} MapGetKeys(map: PrtRef) returns (seq: PrtRef)
 procedure {:inline} MapGetValues(map: PrtRef) returns (seq: PrtRef)
 {
     var size: int;
-    var oldStore: [int]PrtRef;
-    var newStore: [int]PrtRef;
-    var i: int;
+    var store: [int]PrtRef;
 
     store := PrtFieldMapValues(map);
     size := PrtFieldMapSize(map);
-    i := 0;
-
-    while(i < size)
-    {
-        newStore[i] := oldStore[i];
-        i := i + 1;
-    }
 
     call seq := AllocatePrtRef();
-    assume PrtFieldSeqStore(seq) == newStore; 
+    assume PrtFieldSeqStore(seq) == store; 
     assume PrtFieldSeqSize(seq) == size;
 
     return;
@@ -188,28 +156,21 @@ procedure {:inline} WriteMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns (
     var size: int;
     var i: int;
     var flag: bool;
-    var oldKeys: [int]PrtRef;
-    var oldValues: [int]PrtRef;
-    var newKeys: [int]PrtRef;
-    var newValues: [int]PrtRef;
+    var keys: [int]PrtRef;
+    var values: [int]PrtRef;
 
     size := PrtFieldMapSize(map);
     i := 0;
-    oldKeys := PrtFieldMapKeys(map);
-    oldValues := PrtFieldMapValues(map);
+    keys := PrtFieldMapKeys(map);
+    values := PrtFieldMapValues(map);
     flag := false;
 
     while(i < size)
     {
-        newKeys[i] := oldKeys[i];
-        if(oldKeys[i] == key)
+        if(keys[i] == key)
         {
-            newValues[i] := value;
+            values[i] := value;
             flag := true;
-        }
-        else
-        {
-            newValues[i] := oldValues[i];
         }
         i := i + 1;
     }
@@ -219,8 +180,8 @@ procedure {:inline} WriteMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns (
     call nmap := AllocatePrtRef();
     assume PrtDynamicType(nmap) == PrtDynamicType(map);
     assume PrtFieldMapSize(nmap) == size;
-    assume PrtFieldMapKeys(nmap) == newKeys;
-    assume PrtFieldMapValues(nmap) == newValues;
+    assume PrtFieldMapKeys(nmap) == keys;
+    assume PrtFieldMapValues(nmap) == values;
 
     return;
 }
@@ -229,35 +190,31 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
 {
     var size: int;
     var i: int;
-    var oldKeys: [int]PrtRef;
-    var oldValues: [int]PrtRef;
-    var newKeys: [int]PrtRef;
-    var newValues: [int]PrtRef;
+    var keys: [int]PrtRef;
+    var values: [int]PrtRef;
 
     size := PrtFieldMapSize(map);
     i := 0;
-    oldKeys := PrtFieldMapKeys(map);
-    oldValues := PrtFieldMapValues(map);
+    keys := PrtFieldMapKeys(map);
+    values := PrtFieldMapValues(map);
     
     while(i < size)
     {
-        newKeys[i] := oldKeys[i];
-        newValues[i] := oldValues[i];
-        if(oldKeys[i] == key)
+        if(keys[i] == key)
         {
             assert false;
         }
         i := i + 1;
     }
     
-    newKeys[i] := key;
-    newValues[i] := value;
+    keys[size] := key;
+    values[size] := value;
 
     call nmap := AllocatePrtRef();
     assume PrtDynamicType(nmap) == PrtDynamicType(map);
     assume PrtFieldMapSize(nmap) == size + 1;
-    assume PrtFieldMapKeys(nmap) == newKeys;
-    assume PrtFieldMapValues(nmap) == newValues;
+    assume PrtFieldMapKeys(nmap) == keys;
+    assume PrtFieldMapValues(nmap) == values;
 
     return;
 }
