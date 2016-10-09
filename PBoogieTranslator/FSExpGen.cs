@@ -336,12 +336,12 @@ namespace Microsoft.PBoogieTranslator
 
         private Syntax.Type genNameType(P_Root.NameType t)
         {
-            var name = getString(t.name);
+            var name = t.name.Symbol.ToString();
             Syntax.Type res;
             if (typeDefs.TryGetValue(name, out res))
                 return res;
             else
-                return null;
+                return Syntax.Type.NewModelType(name);
         }
 
         private Syntax.Type genTypeExpr(P_Root.TypeExpr t)
@@ -1783,6 +1783,7 @@ namespace Microsoft.PBoogieTranslator
             else
             {
                 Console.WriteLine("Compilation failed. Compile from command line to see detailed error messages. Terminating...");
+                Console.WriteLine(compiler.Log);
                 return false;
             }
 

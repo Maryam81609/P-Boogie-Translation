@@ -64,17 +64,6 @@ module RemoveSideEffects =
         end
       | Expr.NamedTuple(_)
       | Expr.NamedDot(_, _) -> raise NotDefined
-      | Expr.Cast(e, t) when (isSubtype (typeof e G) t) -> 
-        begin
-          (* redundant cast *)
-          removeSideEffectsExpr e G
-        end
-      | Expr.Cast(e, t) -> 
-        begin
-          let (e', s, G') = removeSideEffectsExpr e G in
-          let (l, G'') = getLocal t G' in
-          (Expr.Var(l), s @ [Assign(Lval.Var(l), Expr.Cast(e',t))], G'')
-        end
       | Expr.Default t ->
         begin
           let (l, G') = getLocal t G in
@@ -126,6 +115,17 @@ module RemoveSideEffects =
           let (l, G'') = getLocal (typeof expr G') G' in
           (Expr.Var(l), s @ [Assign(Lval.Var(l), New(m, e'))], G'')
         end
+      | Expr.Cast(e, t) when (isSubtype (typeof e G) t) -> 
+        begin
+          (* redundant cast *)
+          removeSideEffectsExpr e G
+        end
+      | Expr.Cast(e, t) -> 
+        begin
+          let (e', s, G') = removeSideEffectsExpr e G in
+          let (l, G'') = getLocal t G' in
+          (Expr.Var(l), s @ [Assign(Lval.Var(l), Expr.Cast(e',t))], G'')
+        end
       in (nexpr, stlist, nG) 
 
   let removeSideEffectsExprlist exprlist G = 
@@ -145,15 +145,23 @@ module RemoveSideEffects =
             (*l.f = e
             * ==> 
             * l = (l.0, l.1, ..., e) *)
-            
         | Lval.Dot(l, f) -> 
           begin
+            let e', stlst, G' = match e with
+                                | Tuple(ls) ->
+                                  begin
+                                    let t, g = getLocal (typeof e G) G
+                                    let sl, g' = normalizeLvalStmt (Assign(Lval.Var(t), e)) g
+                                    Expr.Var(t), sl, g'
+                                  end
+                                | _ -> e, [], G
             let t = tupleSize (typeofLval l G) in
             let rhs = ref [] in
             for i = (t-1) downto 0 do
-              if i = f then rhs := e :: !rhs 
+              if i = f then rhs := e'::!rhs
               else rhs := Expr.Dot(lvalToExpr l, i) :: !rhs
-            normalizeLvalStmt (Assign(l, Expr.Tuple !rhs)) G
+            let sl', G'' = normalizeLvalStmt (Assign(l, Expr.Tuple !rhs)) G'
+            stlst @ sl', G''
           end
         | Lval.Index(Lval.Var(_), _) -> ([st], G)
             (* l[e'] = e

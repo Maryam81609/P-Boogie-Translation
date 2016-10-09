@@ -41,6 +41,8 @@ namespace Microsoft.PBoogieTranslator
             tbls.Clear();
             machinesToVars.Clear();
             machinesToFuns.Clear();
+            machTrueNames.Clear();
+            trueNames.Clear();
             currentM = null;
             InsideStaticFn = false;
         }
@@ -112,16 +114,16 @@ namespace Microsoft.PBoogieTranslator
             if (!machinesToVars.ContainsKey(m))
                 machinesToVars[m] = new Dictionary<string, Syntax.Type>();
             else
-                throw new Exception("Machine " + m + "already exists!");
+                throw new Exception("Machine " + m + " already exists!");
 
             if (!machinesToFuns.ContainsKey(m))
                 machinesToFuns[m] = new HashSet<string>();
             else
-                throw new Exception("Machine " + m + "already exists!");
+                throw new Exception("Machine " + m + " already exists!");
             if (!machTrueNames.ContainsKey(m))
                 machTrueNames[m] = new Dictionary<string, string>();
             else
-                throw new Exception("Machine " + m + "already exists!");
+                throw new Exception("Machine " + m + " already exists!");
         }
 
         public void AddMachVar(string m, string v, Syntax.Type t)

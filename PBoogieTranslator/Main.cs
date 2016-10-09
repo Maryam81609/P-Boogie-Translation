@@ -15,23 +15,46 @@ namespace Microsoft.PBoogieTranslator
         {
             var options = new CommandLineArguments(args);
             FSharpExpGen fsExpGen = new FSharpExpGen(options);
-            if(options.list)
+            int correct = 0;
+            int wrong = 0;
+            int tested = 0;
+            if (options.list)
             {
                 using (var sr = new StreamReader(options.inputFile))
                 {
                     string line = null;
-                    while((line = sr.ReadLine()) != null)
+                    while ((line = sr.ReadLine()) != null)
                     {
-                        if (line.StartsWith("//"))
-                            continue;
-                        Console.WriteLine("*************************************************************************************************************************");
-                        Console.WriteLine(line);
-                        Console.WriteLine("*************************************************************************************************************************");
-                        options.pFile = line;
-                        Process(options, fsExpGen);
+                        try
+                        {
+                            if (line.StartsWith("//"))
+                                continue;
+                            Console.WriteLine("*************************************************************************************************************************");
+                            Console.WriteLine(line);
+                            Console.WriteLine("*************************************************************************************************************************");
+                            options.pFile = line;
+                            Process(options, fsExpGen);
+                            ++correct;
+                        }
+                        catch (Exception e)
+                        {
+                            for (int i = 0; i < 3; ++i)
+                            {
+                                System.Console.Beep();
+                            }
+                            ++wrong;
+                            Console.WriteLine(e);
+                            Console.WriteLine(e.StackTrace);
+                            Console.WriteLine(e.Source);
+                        }
+                        finally
+                        {
+                            ++tested;
+                        }
                     }
                     Console.WriteLine("*************************************************************************************************************************");
                 }
+                System.Console.WriteLine("{0} correct, {1} wrong, {2} in total", correct, wrong, tested);
             }
             else
             {
