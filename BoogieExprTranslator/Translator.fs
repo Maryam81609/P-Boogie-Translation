@@ -147,9 +147,15 @@ module Translator =
     | _, Expr.Bin(Eq, e1, e2) ->
       sw.WriteLine("call {0} := PrtEquals({1}, {2});", (getLhsVar lval), (translateExpr G evMap e1), (translateExpr G evMap e2))
     | _, Expr.Un(Keys, e) ->
-      sw.WriteLine("call {0} := MapGetKeys({1});", (getLhsVar lval), (translateExpr G evMap e))
+      begin
+        sw.WriteLine("call {0} := MapGetKeys({1});", (getLhsVar lval), (translateExpr G evMap e))
+        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeSeq{1};", (getLhsVar lval), (GetTypeIndex (Map.find (getLhsVar lval) G)))
+      end
     | _, Expr.Un(Values, e) ->
-      sw.WriteLine("call {0} := MapGetValues({1});", (getLhsVar lval), (translateExpr G evMap e))
+      begin
+        sw.WriteLine("call {0} := MapGetValues({1});", (getLhsVar lval), (translateExpr G evMap e))
+        sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeSeq{1};", (getLhsVar lval), (GetTypeIndex (Map.find (getLhsVar lval) G)))
+      end
     | _, Expr.Nondet ->
       sw.WriteLine("havoc {0};", (getLhsVar lval))
     | Lval.Var(v), Expr.New(m, arg) ->

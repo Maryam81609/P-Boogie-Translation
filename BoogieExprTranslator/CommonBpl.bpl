@@ -28,6 +28,7 @@ procedure WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRe
     }
 
     call nseq := AllocatePrtRef();
+    assume PrtDynamicType(nseq) == PrtDynamicType(seq);
     assume PrtFieldSeqSize(nseq) == size;
     assume PrtFieldSeqStore(nseq) == newStore;
     return;
@@ -78,6 +79,7 @@ procedure {:inline} RemoveSeq(seq: PrtRef, index: int)  returns (nseq: PrtRef)
     }
 
     call nseq := AllocatePrtRef();
+    assume PrtDynamicType(nseq) == PrtDynamicType(seq);
     assume PrtFieldSeqSize(nseq) == size - 1;
     assume PrtFieldSeqStore(nseq) == newStore;
     return;
@@ -215,6 +217,7 @@ procedure {:inline} WriteMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns (
     assert flag;
 
     call nmap := AllocatePrtRef();
+    assume PrtDynamicType(nmap) == PrtDynamicType(map);
     assume PrtFieldMapSize(nmap) == size;
     assume PrtFieldMapKeys(nmap) == newKeys;
     assume PrtFieldMapValues(nmap) == newValues;
@@ -251,6 +254,7 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
     newValues[i] := value;
 
     call nmap := AllocatePrtRef();
+    assume PrtDynamicType(nmap) == PrtDynamicType(map);
     assume PrtFieldMapSize(nmap) == size + 1;
     assume PrtFieldMapKeys(nmap) == newKeys;
     assume PrtFieldMapValues(nmap) == newValues;
@@ -297,6 +301,7 @@ procedure RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
     }
 
     call nmap := AllocatePrtRef();
+    assume PrtDynamicType(nmap) == PrtDynamicType(map);
     assume PrtFieldMapSize(nmap) == size - 1;
     assume PrtFieldMapKeys(nmap) == newKeys;
     assume PrtFieldMapValues(nmap) == newValues;
