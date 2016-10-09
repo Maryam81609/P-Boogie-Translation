@@ -232,6 +232,7 @@ module ProgramTyping =
         let ts = typecheckExpr prog G cm e in
         match ts with
         | Type.Tuple(ls) -> List.item i ls
+        | Type.NamedTuple(ls) -> let n,t = List.item i ls in t
         | _ -> raise NotDefined
       end
     | Expr.NamedDot(e, f) -> 
@@ -299,6 +300,7 @@ module ProgramTyping =
       begin
         match (typecheckLval prog G cm l) with
         | Type.Tuple(ls) -> List.item i ls
+        | Type.NamedTuple(ls) -> let n, t = List.item i ls in t
         | _ -> raise NotDefined
       end
     | Lval.NamedDot(l, f) -> 

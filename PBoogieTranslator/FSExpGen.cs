@@ -1535,45 +1535,6 @@ namespace Microsoft.PBoogieTranslator
                 return Syntax.DoDecl.T.NewCall(trig, action);
             }
         }
-
-        /* ToDo
-        private void genAnnotatable(P_Root.Annotatable a)
-        {
-            if (a is P_Root.EventDecl)
-            {
-                genEventDecl(a as P_Root.EventDecl);
-            }
-            else if (a is P_Root.MachineDecl)
-            {
-                genMachineDecl(a as P_Root.MachineDecl);
-            }
-            else if (a is P_Root.VarDecl)
-            {
-                genVarDecl(a as P_Root.VarDecl);
-            }
-            else if (a is P_Root.FunDecl)
-            {
-                genFunDecl(a as P_Root.FunDecl);
-            }
-            else if (a is P_Root.StateDecl)
-            {
-                genStateDecl(a as P_Root.StateDecl);
-            }
-            else if (a is P_Root.TransDecl)
-            {
-                genTransDecl(a as P_Root.TransDecl);
-            }
-            else if (a is P_Root.DoDecl)
-            {
-                genDoDecl(a as P_Root.DoDecl);
-            }
-        }
-
-        private void genAnnotation(P_Root.Annotation a)
-        {
-            genAnnotatable(a.ant as P_Root.Annotatable);
-            //ToDo Assertion Generation Logic.
-        }*/
         private void addTypeDef(P_Root.TypeDef t)
         {
             var type = genTypeExpr(t.type as P_Root.TypeExpr);
