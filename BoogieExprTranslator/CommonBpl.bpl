@@ -5,7 +5,7 @@
 procedure WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef)
 {
     var store: [int]PrtRef;
-    int size;
+    var size: int;
 
     assert SeqIndexInBounds(seq, index);
         
@@ -19,26 +19,6 @@ procedure WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRe
     assume PrtFieldSeqStore(nseq) == store;
     return;
 }
-
-//COME BACK
-procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef);
-/*{
-
-    var store: [int]PrtRef;
-    var size: int;
-    size := PrtFieldSeqSize(seq);
-    
-    //ToDo: Come Back
-    assert (size  ==  index); //or le?
-    
-    store := PrtFieldSeqStore(seq);
-    store[index] := value;
-
-    call nseq := AllocatePrtRef();
-    assume PrtFieldSeqSize(nseq) == size + 1;
-    assume PrtFieldSeqStore(nseq) == store;
-}
-*/
 
 procedure {:inline} RemoveSeq(seq: PrtRef, index: int)  returns (nseq: PrtRef)
 {
@@ -236,7 +216,7 @@ procedure RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
     oldValues := PrtFieldMapValues(map);
     flag := false;
 
-    while(i < size && oldkeys[i] != key)
+    while(i < size && oldKeys[i] != key)
     {
         newKeys[i] := oldKeys[i];
         newValues[i] := oldValues[i];

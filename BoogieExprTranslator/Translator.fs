@@ -436,13 +436,13 @@ module Translator =
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef;")  |> List.iter (fun(s) -> sw.WriteLine(s))
-    fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name) |> List.iter (fun(s) -> sw.WriteLine(s))
     getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
-    
     
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
     !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+    
+    fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name + ";") |> List.iter (fun(s) -> sw.WriteLine(s))
     
     let G' = mergeMaps G (fd.VarMap)
     List.iter (translateStmt sw G' stateToInt  cm evMap) fd.Body
@@ -573,7 +573,7 @@ module Translator =
     fprintfn sw "  //Probe down the state stack. 
    while(StateStack != Nil())
    {"
-    fprintfn sw "      call %s_CallExitAction(CurrState);" name
+    fprintfn sw "      call %s_CallExitAction();" name
     fprintfn sw @"
       CurrState := state#Cons(StateStack);
       StateStack := stack#Cons(StateStack);
@@ -592,12 +592,12 @@ module Translator =
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       match st.EntryAction with
-      | Some(a) -> sw.WriteLine("call {0}(payload);")
+      | Some(a) -> sw.WriteLine("call {0}(payload);", a)
       | None -> sw.WriteLine()
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
-    sw.WriteLine("procedure {0}_CallEntryAction(state, payload)", name)
+    sw.WriteLine("procedure {0}_CallEntryAction(state: int, payload: PrtRef)", name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     List.iter callEntryAction states
@@ -610,7 +610,7 @@ module Translator =
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       match st.ExitAction with
-      | Some(a) -> sw.WriteLine("call {0}(null);")
+      | Some(a) -> sw.WriteLine("call {0}(null);", a)
       | None -> sw.WriteLine()
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
@@ -655,7 +655,7 @@ module Translator =
     sw.WriteLine("eventRaised := false;")
     sw.WriteLine("thisMid := mid;")
     sw.WriteLine("// Initialize machine variables.")
-    md.Init |> List.iter (translateStmt sw G stateToInt md.Name evMap)
+    md.Init |> List.iter (translateStmt sw G' stateToInt md.Name evMap)
 
     sw.WriteLine("// Set mappings of registered, deferred and ignored events.")
 
@@ -778,10 +778,10 @@ module Translator =
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef;")  |> List.iter (fun(s) -> sw.WriteLine(s))
-      fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name) |> List.iter (fun(s) -> sw.WriteLine(s))
-      sw.WriteLine("// Initialize locals.")
       getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
       !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+      fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name) |> List.iter (fun(s) -> sw.WriteLine(s))
+      
       let g' = mergeMaps g fd.VarMap
       List.iter (translateMonitorStmt g') fd.Body
       sw.Indent <- sw.Indent - 1
@@ -975,6 +975,16 @@ module Translator =
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
+  let initializeMonitorGlobals (sw: IndentedTextWriter) evMap (md: MachineDecl) = 
+    let funs =
+      let map = ref Map.empty in
+        List.iter (fun(f: FunDecl) -> map := Map.add f.Name (if f.RetType.IsSome then f.RetType.Value else Type.Null) !map) md.Functions
+      !map
+    let G = mergeMaps  md.VarMap funs
+    let stateToInt =  [for i in md.States do yield i.Name] |> Seq.mapi (fun i x -> x,i) |> Map.ofSeq
+
+    List.iter (translateStmt sw G stateToInt md.Name evMap) md.Init
+
   let translateProg (prog: ProgramDecl) (sw: IndentedTextWriter) =
     (* Top-level types *)
     sw.WriteLine("type PrtType;")
@@ -1140,6 +1150,9 @@ module Translator =
     //Set monitor Start States.
     Map.iter (fun k v -> sw.WriteLine("{0}_CurrState := {1};", k, v)) !monitorToStartState
 
+    //Initialize monitor globals
+    mons |> List.iter (initializeMonitorGlobals sw evMap)
+    
     //Start main machine
     sw.WriteLine("yield;")
     sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
