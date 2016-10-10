@@ -170,7 +170,7 @@ module Translator =
 
   let translateInsert (sw:IndentedTextWriter) G evMap v e1 e2 =
     match isSeq (typeof (Expr.Var(v)) G) with
-    | true -> sw.WriteLine("call {0} := InsertSeq({1}, PrtFieldInt({2}), {3});", v, v, (translateExpr G evMap e1), (translateExpr G evMap e2))
+    | true -> sw.WriteLine("call {0} := InsertSeq{1}({2}, PrtFieldInt({3}), {4});", v, (GetTypeIndex (Map.find v G)), v, (translateExpr G evMap e1), (translateExpr G evMap e2))
     | false -> sw.WriteLine("call {0} := InsertMap({1}, PrtFieldInt({2}), {3});", v, v, (translateExpr G evMap e1), (translateExpr G evMap e2))
 
   let translateRemove (sw:IndentedTextWriter) G evMap v e1 =
@@ -982,12 +982,17 @@ module Translator =
     sw.WriteLine("const unique {0}: PrtType;", (translateType Type.Event))
     for i = 1 to prog.maxFields do
         sw.WriteLine("const unique PrtTypeTuple{0}: PrtType;", i)
+    let allTypes = GetAllTypes()
     Set.iter (fun t ->
         match t with
         | Seq _ -> sw.WriteLine("const unique PrtTypeSeq{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
         | Map _ -> sw.WriteLine("const unique PrtTypeMap{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
         | _ -> ()
-        ) (GetAllTypes())
+        ) allTypes
+    Set.iter (fun t ->
+        match t with 
+        | Seq _ -> printInsertSeq sw t
+        | _ -> ()) allTypes
 
     (* ref type *)
     sw.WriteLine("type PrtRef;")
