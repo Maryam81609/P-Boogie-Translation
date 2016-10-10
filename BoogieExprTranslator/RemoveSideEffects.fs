@@ -268,7 +268,7 @@ module RemoveSideEffects =
       begin
         let (l', d1, G')  = removeSideEffectsLval l G in
         let (e', d2, G'') = removeSideEffectsExpr e G' in
-        let s = Remove(l', e')
+        let s = Remove(l', e') in
         let (d3, G''') = normalizeLvalStmt s G'' in
         (d1 @ d2 @ d3, G''')
       end
