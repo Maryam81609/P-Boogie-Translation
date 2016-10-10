@@ -345,6 +345,43 @@ module Translator =
     end
     sw.WriteLine("}")
 
+  let printInsertSeq (sw: IndentedTextWriter) (t: Type) = 
+    let idx = GetTypeIndex t
+    let seqTyp = match t with
+                 | Type.Seq(typ) -> typ
+                 | _ -> raise NotDefined
+    sw.WriteLine("procedure InsertSeq{0}(seq: PrtRef, index: int, value: PrtRef) returns (nseq: PrtRef);", idx)
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("var store: [int]PrtRef;")
+    sw.WriteLine("var size: int;")
+    sw.WriteLine("var i: int;")
+    sw.WriteLine("var tmp: PrtRef;")
+    sw.WriteLine("size := PrtFieldSeqSize(seq);")
+    sw.WriteLine("assert (size  <=  index);") //or eq?
+    sw.WriteLine("i := size;")
+
+    sw.WriteLine("store := PrtFieldSeqStore(seq);")
+    sw.WriteLine("store[index] := value;");
+    sw.WriteLine("while(i < index)")
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("//Initialize gaps to default value.")
+    let m = Map.ofSeq([("tmp", seqTyp)])
+    let st = Assign(Lval.Var("tmp"), Default(seqTyp))
+    translateStmt sw m Map.empty "" Map.empty st
+    sw.WriteLine("store[i] := tmp;")
+    sw.WriteLine("i := i + 1;")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+
+    sw.WriteLine("call nseq := AllocatePrtRef();")
+    sw.WriteLine("assume PrtFieldSeqSize(nseq) == size + 1;")
+    sw.WriteLine("assume PrtFieldSeqStore(nseq) == store;")
+    sw.WriteLine("assume PrtDynamicType(nseq) == PrtDynamicType(seq);")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+
   let getVars attr (vdList: VarDecl list) =
     List.map (fun(vd: VarDecl) -> sprintf "var%s %s: PrtRef; // %s" attr vd.Name (printType vd.Type)) vdList
 
