@@ -6,6 +6,7 @@ module Translator =
   open Helper
   open Common
   open ProgramTyping
+  open RemoveSideEffects
   open System.CodeDom.Compiler
 
   (* Translation of normalized side-effect-free programs to Boogie *)
@@ -350,6 +351,7 @@ module Translator =
     let seqTyp = match t with
                  | Type.Seq(typ) -> typ
                  | _ -> raise NotDefined
+    sw.WriteLine("//Insert Operation for {0}", (translateType t))
     sw.WriteLine("procedure InsertSeq{0}(seq: PrtRef, index: int, value: PrtRef) returns (nseq: PrtRef);", idx)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -369,7 +371,8 @@ module Translator =
     sw.WriteLine("//Initialize gaps to default value.")
     let m = Map.ofSeq([("tmp", seqTyp)])
     let st = Assign(Lval.Var("tmp"), Default(seqTyp))
-    translateStmt sw m Map.empty "" Map.empty st
+    let stl, m' = removeSideEffectsStmt st m
+    List.iter (translateStmt sw m' Map.empty "" Map.empty) stl
     sw.WriteLine("store[i] := tmp;")
     sw.WriteLine("i := i + 1;")
     sw.Indent <- sw.Indent - 1
