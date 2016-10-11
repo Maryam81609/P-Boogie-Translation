@@ -6,7 +6,6 @@ module Translator =
   open Helper
   open Common
   open ProgramTyping
-  open RemoveSideEffects
   open System.CodeDom.Compiler
 
   (* Translation of normalized side-effect-free programs to Boogie *)
@@ -52,7 +51,7 @@ module Translator =
     | Expr.Default t when t = Null || t = Machine || t = Type.Event || t = Any -> "null"
     | Expr.Default Int -> "PrtConstructFromInt(0)"
     | Expr.Default Bool -> "PrtFalse"
-    | Expr.Event s -> sprintf "PrtConstructFromEvent(%d)" (Map.find s evMap)
+    | Expr.Event s -> sprintf "PrtConstructFromEventId(%d)" (Map.find s evMap)
     | Expr.Var(v) -> v
     | Expr.Bin(op, e1, e2) when  isIntop(op) -> sprintf "PrtConstructFromInt(PrtFieldInt(%s) %s PrtFieldInt(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isRelop(op) -> sprintf "PrtConstructFromBool(PrtFieldInt(%s) %s PrtFieldInt(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
@@ -123,8 +122,9 @@ module Translator =
           sw.WriteLine("assume PrtFieldTuple{0}({1}) == tmpRhsValue_{2};", i, (getLhsVar lval), i)
       end
     | _, Expr.Call(callee, args) ->
-      sw.WriteLine("call {0} := {1}({2});", (getLhsVar lval), callee, (printList (translateExpr G evMap), args, ",, "))
-      
+      begin
+        sw.WriteLine("call {0} := {1};", (getLhsVar lval), (translateExpr G evMap expr))
+      end
     | _, Expr.Default(Seq(t)) ->
       begin
         sw.WriteLine("call {0} := AllocatePrtRef();", (getLhsVar lval))
@@ -289,7 +289,7 @@ module Translator =
   let fprintfnComment (sw:IndentedTextWriter) x =
     sw.WriteLine("// " + x)
 
-  let printEquals sw maxFields =
+  let printEquals (sw: IndentedTextWriter) maxFields =
     fprintfn sw "// Equals
   procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
   {
@@ -316,11 +316,19 @@ module Translator =
   }
     "
     for i = 1 to maxFields do
-      sw.WriteLine("procedure PrtEqualsTuple{0}(x: PrtRef, y: PrtRef) returns (v: PrtRef) {{", i)
-      for j = 0 to (i-1) do
-      sw.WriteLine("call v := PrtEquals(PrtFieldTuple{0}(x), PrtFieldTuple{1}(y));", j, j)
-      if j <> (i-1) then sw.WriteLine("if(v == PrtFalse) { return; }")
-      sw.WriteLine("}")
+      begin
+        sw.WriteLine("procedure PrtEqualsTuple{0}(x: PrtRef, y: PrtRef) returns (v: PrtRef)", i)
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        for j = 0 to (i-1) do
+          begin
+            sw.WriteLine("call v := PrtEquals(PrtFieldTuple{0}(x), PrtFieldTuple{1}(y));", j, j)
+            if j <> (i-1) then sw.WriteLine("if(v == PrtFalse) { return; }")
+          end
+        sw.WriteLine("return;")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+      end
 
   let printTypeCheck (sw:IndentedTextWriter) t =
     let tindex =  GetTypeIndex t  in
@@ -344,45 +352,6 @@ module Translator =
         let ti = List.item i ts in
         sw.WriteLine("call AssertIsType{0}(PrtFieldTuple{1}(x));", (GetTypeIndex ti), i)
     end
-    sw.WriteLine("}")
-
-  let printInsertSeq (sw: IndentedTextWriter) (t: Type) = 
-    let idx = GetTypeIndex t
-    let seqTyp = match t with
-                 | Type.Seq(typ) -> typ
-                 | _ -> raise NotDefined
-    sw.WriteLine("//Insert Operation for {0}", (translateType t))
-    sw.WriteLine("procedure InsertSeq{0}(seq: PrtRef, index: int, value: PrtRef) returns (nseq: PrtRef);", idx)
-    sw.WriteLine("{")
-    sw.Indent <- sw.Indent + 1
-    sw.WriteLine("var store: [int]PrtRef;")
-    sw.WriteLine("var size: int;")
-    sw.WriteLine("var i: int;")
-    sw.WriteLine("var tmp: PrtRef;")
-    sw.WriteLine("size := PrtFieldSeqSize(seq);")
-    sw.WriteLine("assert (size  <=  index);") //or eq?
-    sw.WriteLine("i := size;")
-
-    sw.WriteLine("store := PrtFieldSeqStore(seq);")
-    sw.WriteLine("store[index] := value;");
-    sw.WriteLine("while(i < index)")
-    sw.WriteLine("{")
-    sw.Indent <- sw.Indent + 1
-    sw.WriteLine("//Initialize gaps to default value.")
-    let m = Map.ofSeq([("tmp", seqTyp)])
-    let st = Assign(Lval.Var("tmp"), Default(seqTyp))
-    let stl, m' = removeSideEffectsStmt st m
-    List.iter (translateStmt sw m' Map.empty "" Map.empty) stl
-    sw.WriteLine("store[i] := tmp;")
-    sw.WriteLine("i := i + 1;")
-    sw.Indent <- sw.Indent - 1
-    sw.WriteLine("}")
-
-    sw.WriteLine("call nseq := AllocatePrtRef();")
-    sw.WriteLine("assume PrtFieldSeqSize(nseq) == size + 1;")
-    sw.WriteLine("assume PrtFieldSeqStore(nseq) == store;")
-    sw.WriteLine("assume PrtDynamicType(nseq) == PrtDynamicType(seq);")
-    sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
   let getVars attr (vdList: VarDecl list) =
@@ -1002,10 +971,6 @@ module Translator =
         | Map _ -> sw.WriteLine("const unique PrtTypeMap{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
         | _ -> ()
         ) allTypes
-    Set.iter (fun t ->
-        match t with 
-        | Seq _ -> printInsertSeq sw t
-        | _ -> ()) allTypes
 
     (* ref type *)
     sw.WriteLine("type PrtRef;")

@@ -2,7 +2,7 @@
 //Deep copy is guarenteed because, every time we mutate a value, we create a new PrtRef for it.
 
 // Sequences
-procedure WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef)
+procedure {:inline} WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef)
 {
     var store: [int]PrtRef;
     var size: int;
@@ -51,9 +51,44 @@ procedure {:inline} RemoveSeq(seq: PrtRef, index: int)  returns (nseq: PrtRef)
     return;
 }
 
+procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef);
+{
+
+    var oldStore: [int]PrtRef;
+	var newStore: [int]PrtRef;
+    var size: int;
+	var i: int;
+
+    size := PrtFieldSeqSize(seq);
+	i := 0;    
+    assert (0 <= index && index <= size);
+    
+    store := PrtFieldSeqStore(seq);
+	while(i < index)
+	{
+		newStore[i] := oldStore [i];
+		i := i + 1;
+	}
+	
+	newStore[index] := value;
+	i := i + 1;
+
+	while(i < size)
+	{
+		newStore[i + 1] := oldStore[i];
+		i := i + 1;
+	}
+
+    call nseq := AllocatePrtRef();
+    assume PrtFieldSeqSize(nseq) == size + 1;
+    assume PrtFieldSeqStore(nseq) == newStore;
+	assume PrtDynamicType(nseq) == PrtDynamicType(seq);
+}
+
+
 
 // Maps
-procedure MapContainsKey(map: PrtRef, key: PrtRef) returns (v: bool)
+procedure {:inline} MapContainsKey(map: PrtRef, key: PrtRef) returns (v: bool)
 {
     var size: int;
     var i: int;
@@ -199,7 +234,7 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
     return;
 }
 
-procedure RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
+procedure {:inline} RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
 {
     var size: int;
     var i: int;

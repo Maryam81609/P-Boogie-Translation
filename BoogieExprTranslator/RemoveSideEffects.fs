@@ -342,9 +342,13 @@ module RemoveSideEffects =
             (d1 @ d2 @ [Monitor(e1', e2')], G'')
       end
     | FunStmt(s, el, v) -> 
-      begin  
+      begin
+        let v' = 
+          match v, (Map.find s G) with
+          | None, typ when typ <> Type.Null -> Some("tmpRhsValue")
+          | _ -> v
         let (el', d, G') = removeSideEffectsExprlist el G in
-          d @ [FunStmt(s, el', v)], G'
+          d @ [FunStmt(s, el', v')], G'
       end
     | Goto(s, e) -> 
       begin
