@@ -12,7 +12,6 @@ module Translator =
 
   let Typmap = ref Map.empty
   let TypmapIndex = ref 0
-  let (tmpVars: string list ref) = ref []
   let (monitorToStartState: Map<string, int> ref) = ref Map.empty
   //let tupCount = ref 0
 
@@ -409,7 +408,6 @@ module Translator =
     
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
-    !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
     
     fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name + ";") |> List.iter (fun(s) -> sw.WriteLine(s))
     
@@ -748,7 +746,6 @@ module Translator =
       sw.Indent <- sw.Indent + 1
       fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef;")  |> List.iter (fun(s) -> sw.WriteLine(s))
       getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
-      !tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
       fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name) |> List.iter (fun(s) -> sw.WriteLine(s))
       
       let g' = mergeMaps g fd.VarMap
@@ -1047,9 +1044,10 @@ module Translator =
     List.iter (fun(x:string) -> sw.WriteLine(x)) dicts
 
     (*Temp RHS vars *)
-    tmpVars := "var tmpRhsValue: PrtRef;" ::
-    [for i = 0 to prog.maxFields-1 do yield (sprintf "var tmpRhsValue_%d: PrtRef;" i)]
-
+    let tmpVars = "var{:thread_local} tmpRhsValue: PrtRef;" ::
+    [for i = 0 to prog.maxFields-1 do yield (sprintf "var{:thread_local} tmpRhsValue_%d: PrtRef;" i)] in
+      tmpVars |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
+    
     let monitorToInt = prog.Machines |> List.filter (fun (md: MachineDecl) -> md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Name) |> Seq.mapi (fun i x -> (x, i)) |> Map.ofSeq
 
     let evMap = prog.EventMap |> Map.toSeq |> Seq.map fst |> Seq.mapi (fun i x -> (x,i)) |> Map.ofSeq
