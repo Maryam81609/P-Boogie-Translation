@@ -51,9 +51,8 @@ procedure {:inline} RemoveSeq(seq: PrtRef, index: int)  returns (nseq: PrtRef)
     return;
 }
 
-procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef);
+procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef)
 {
-
     var oldStore: [int]PrtRef;
 	var newStore: [int]PrtRef;
     var size: int;
@@ -63,7 +62,7 @@ procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (
 	i := 0;    
     assert (0 <= index && index <= size);
     
-    store := PrtFieldSeqStore(seq);
+    oldStore := PrtFieldSeqStore(seq);
 	while(i < index)
 	{
 		newStore[i] := oldStore [i];

@@ -1597,7 +1597,7 @@ namespace Microsoft.PBoogieTranslator
             maxFields = 0;
             hasDefer = false;
             hasIgnore = false;
-    }
+        }
 
         private void Init()
         {

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.CodeDom.Compiler;
 using PBoogieTranslator;
+using System.Diagnostics;
 
 namespace Microsoft.PBoogieTranslator
 {
@@ -18,6 +19,7 @@ namespace Microsoft.PBoogieTranslator
             int correct = 0;
             int wrong = 0;
             int tested = 0;
+            ProcessStartInfo startInfo = new ProcessStartInfo();
             if (options.list)
             {
                 using (var sr = new StreamReader(options.inputFile))
@@ -33,7 +35,30 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine(line);
                             Console.WriteLine("*************************************************************************************************************************");
                             options.pFile = line;
-                            Process(options, fsExpGen);
+                            ProcessPFile(options, fsExpGen);
+                            startInfo.FileName = @"C:\Users\teja5832\P-Boogie-Translation\corral\boogie\Binaries\Boogie.exe";
+                            startInfo.Arguments = options.boogieFile;
+                            startInfo.RedirectStandardError = true;
+                            startInfo.RedirectStandardInput = true;
+                            startInfo.RedirectStandardOutput = true;
+                            startInfo.UseShellExecute = false;
+                            using (Process process = new Process())
+                            {
+                                process.StartInfo = startInfo;
+                                process.Start();
+                                string output = process.StandardOutput.ReadToEnd();
+                                string err = process.StandardError.ReadToEnd();
+                                if (!output.Contains("type checking error"))
+                                {
+                                    Console.WriteLine("Boogie Output:");
+                                    Console.WriteLine(output);
+                                }
+                                if (!err.Contains("type checking error"))
+                                {
+                                    Console.Error.WriteLine(err);
+                                }
+                                process.WaitForExit();
+                            }
                             ++correct;
                         }
                         catch (Exception e)
@@ -59,11 +84,11 @@ namespace Microsoft.PBoogieTranslator
             else
             {
                 options.pFile = options.inputFile;
-                Process(options, fsExpGen);
+                ProcessPFile(options, fsExpGen);
             }
         }
 
-        public static void Process(CommandLineArguments options, FSharpExpGen fsExpGen)
+        public static void ProcessPFile(CommandLineArguments options, FSharpExpGen fsExpGen)
         {
             //Desugar the P Program
             var prog = fsExpGen.genFSExpression(options.pFile);
