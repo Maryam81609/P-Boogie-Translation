@@ -162,7 +162,7 @@ namespace Microsoft.PBoogieTranslator
 
         private static void printPFile(string fileName, Syntax.ProgramDecl prog)
         {
-            Console.WriteLine(fileName);
+            //Console.WriteLine(fileName);
             if (fileName == "-")
             {
                 Helper.printProg(prog, new IndentedTextWriter(Console.Out, "   "));

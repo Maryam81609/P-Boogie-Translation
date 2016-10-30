@@ -276,6 +276,7 @@ namespace Microsoft.PBoogieTranslator
                 lst.Add(z);
                 x = x.tl as P_Root.TupType;
             } while (x != null);
+            //Console.WriteLine("{0}: {1}; {2}", lst, lst.Count, maxFields);
             if (lst.Count > maxFields)
                 maxFields = lst.Count;
             return Syntax.Type.NewTuple(ListModule.OfSeq(lst)) as Syntax.Type.Tuple;
@@ -311,6 +312,9 @@ namespace Microsoft.PBoogieTranslator
             var lst = genNmdTupTypeList(t);
             if (lst == null)
                 return null;
+
+           // Console.WriteLine("{0}: {1}; {2}", lst, lst.Count, maxFields);
+
             if (lst.Count > maxFields)
                 maxFields = lst.Count;
             return Syntax.Type.NewNamedTuple(ListModule.OfSeq(lst)) 
@@ -555,12 +559,24 @@ namespace Microsoft.PBoogieTranslator
         private Syntax.Expr.Tuple genTupleExpr(P_Root.Tuple e)
         {
             var x = genExprs(e.body as P_Root.Exprs);
+            if(x.Length > maxFields)
+            {
+                maxFields = x.Length;
+            }
+           // Console.WriteLine("{0}: {1}; {2}", x, x.Length, maxFields);
+
             return Syntax.Expr.NewTuple(x) as Syntax.Expr.Tuple;
         }
 
         private Syntax.Expr.NamedTuple genNamedTupleExpr(P_Root.NamedTuple e)
         {
             var x = genNamedExprs(e.body as P_Root.NamedExprs);
+            if (x.Length > maxFields)
+            {
+                maxFields = x.Length;
+            }
+           // Console.WriteLine("{0}: {1}; {2}", x, x.Length, maxFields);
+
             return Syntax.Expr.NewNamedTuple(x) as Syntax.Expr.NamedTuple;
         }
 
@@ -770,27 +786,34 @@ namespace Microsoft.PBoogieTranslator
             var refParams = functionsToRefParams[symbolTable.currentF];
             var retList = new List<Syntax.Expr>();
 
+            if (s.expr.Symbol.ToString() != "NIL")
+            {
+                var expr = genExpr(s.expr as P_Root.Expr);
+                retList.Add(expr);
+            }
+
             foreach (var x in refParams)
             {
                 retList.Add(Syntax.Expr.NewVar(x.Item2));
             }
-            
-            if (s.expr.Symbol.ToString() != "NIL")
-            {
-                var expr = genExpr(s.expr as P_Root.Expr);
-                if(refParams.Count > 0)
-                {
-                    retList.Insert(0, expr);
-                    e = new FSharpOption<Syntax.Expr>(Syntax.Expr.NewTuple(ListModule.OfSeq(retList)));
-                }
-                else    
-                    e = new FSharpOption<Syntax.Expr>(expr);
-            }
-            else if(refParams.Count > 0)
+
+            if(refParams.Count > 0)
             {
                 e = new FSharpOption<Syntax.Expr>(Syntax.Expr.NewTuple(ListModule.OfSeq(retList)));
+                if(retList.Count > maxFields)
+                {
+                    maxFields = retList.Count;
+                }
+                //Console.WriteLine("{0}: {1}; {2}", retList, retList.Count, maxFields);
             }
-
+            else if(retList.Count > 0)
+            {
+                e = new FSharpOption<Syntax.Expr>(retList[0]);
+            }
+            else
+            {
+                e = null;
+            }
             return Syntax.Stmt.NewReturn(e) as Syntax.Stmt.Return;
         }
 
@@ -857,6 +880,9 @@ namespace Microsoft.PBoogieTranslator
                 retType = new FSharpOption<Syntax.Type>(env.Item1);
                 body.AddRange(env.Item4);
             }
+
+            var lst = env.Item1.Item;
+            //Console.WriteLine("{0}: {1}; {2}", lst, lst.Length, maxFields);
 
             if (env.Item1.Item.Length > maxFields)
                 maxFields = env.Item1.Item.Length;
@@ -1295,6 +1321,7 @@ namespace Microsoft.PBoogieTranslator
             bool is_model = false;
             bool is_pure = false;
             FSharpOption<Syntax.Type> rettype = null;
+            Syntax.Type tmpRetType = null;
             FSharpList<Syntax.VarDecl> @params = FSharpList<Syntax.VarDecl>.Empty;
             var typLst = new List<Syntax.Type>();
             if (d.kind.Symbol.ToString() == "MODEL")
@@ -1315,30 +1342,43 @@ namespace Microsoft.PBoogieTranslator
                     (genVars(d.locals as P_Root.NmdTupType, name));
             }
 
-            var stmt = ListModule.OfSeq(genStmt(d.body as P_Root.Stmt));
-
+            var body = genStmt(d.body as P_Root.Stmt);
+            
             //Return type.
-            foreach(var x in functionsToRefParams[name])
+            if (d.@return.Symbol.ToString() != "NIL")
+            {
+                tmpRetType = genTypeExpr(d.@return as P_Root.TypeExpr);
+                typLst.Add(tmpRetType);
+            }
+
+            //Heuristic. If there is no return statement at the end of the body, add one.
+            else if(!(body[body.Count - 1] is Syntax.Stmt.Return))
+            {
+                var retSt = genReturnStmt(new P_Root.Return());
+                body.Add(retSt);
+            }
+
+            foreach (var x in functionsToRefParams[name])
             {
                 typLst.Add(x.Item3);
             }
-
-            if (d.@return.Symbol.ToString() != "NIL")
-            {
-                var x = genTypeExpr(d.@return as P_Root.TypeExpr);
-                if (typLst.Count > 0)
-                {
-                    typLst.Insert(0, x);
-                    rettype = new FSharpOption<Syntax.Type>(
-                        Syntax.Type.NewTuple(ListModule.OfSeq(typLst)));
-                }
-                else
-                    rettype = new FSharpOption<Syntax.Type>(x);
-            }
-            else if(typLst.Count > 0)
+            
+            if (functionsToRefParams[name].Count > 0)
             {
                 rettype = new FSharpOption<Syntax.Type>(
                     Syntax.Type.NewTuple(ListModule.OfSeq(typLst)));
+                if(typLst.Count > maxFields)
+                {
+                    maxFields = typLst.Count;
+                } 
+            }
+            else if(tmpRetType != null)
+            {
+                rettype = new FSharpOption<Syntax.Type>(tmpRetType);
+            }
+            else
+            {
+                rettype = null;
             }
 
             ExitScope();
@@ -1350,7 +1390,7 @@ namespace Microsoft.PBoogieTranslator
                 trueNames.Add(new Tuple<string, string>(kv.Key, kv.Value));
             }
 
-            return new Syntax.FunDecl(name, @params, rettype, locals, stmt, is_model, is_pure, MapModule.OfSeq(trueNames));
+            return new Syntax.FunDecl(name, @params, rettype, locals, ListModule.OfSeq(body), is_model, is_pure, MapModule.OfSeq(trueNames));
         }
 
 
@@ -1521,7 +1561,7 @@ namespace Microsoft.PBoogieTranslator
                 //which calls the function in question.
                 var action = owner + "_do_" + trig;
                 var funName = symbolTable.GetFunName(getString(d.action));
-                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl("payload", Syntax.Type.Null),
+                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(funName + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
                 var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null),
                     FSharpList<Syntax.Stmt>.Empty);

@@ -317,7 +317,7 @@ module RemoveSideEffects =
       begin
         let (c', d1, G') = removeSideEffectsExpr c G in
           let (d2, G'') = removeSideEffectsStmt s G' in 
-            d1 @ [While(c', SeqStmt(d2))], G'' 
+            d1 @ [While(c', SeqStmt(d2 @ d1))], G'' 
       end
     | Ite(c, i, e) -> 
        begin
