@@ -118,4 +118,4 @@ module RemoveNamedTuples =
     let eList = List.map processEd prog.Events
     let mList = List.map (removeNamedTuplesMachine G) prog.Machines
     let fList = List.map (removeNamedTuplesFn G) prog.StaticFuns
-    new ProgramDecl(mList, eList, prog.EventsToMonitors, fList, prog.maxFields, prog.HasDefer, prog.HasIgnore)
+    new ProgramDecl(mList, eList, prog.EventsToMonitors, fList, prog.maxFields, prog.HasDefer, prog.HasIgnore, prog.TypesAsserted)

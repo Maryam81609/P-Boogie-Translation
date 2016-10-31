@@ -408,4 +408,4 @@ module RemoveSideEffects =
       !map 
     let mList = List.map (removeSideEffectsMachine G) prog.Machines
     let fList = List.map (removeSideEffectsFn G) prog.StaticFuns
-    new ProgramDecl(mList, prog.Events, prog.EventsToMonitors, fList, prog.maxFields, prog.HasDefer, prog.HasIgnore)
+    new ProgramDecl(mList, prog.Events, prog.EventsToMonitors, fList, prog.maxFields, prog.HasDefer, prog.HasIgnore, prog.TypesAsserted)

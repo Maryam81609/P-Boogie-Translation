@@ -48,6 +48,8 @@ namespace Microsoft.PBoogieTranslator
         private Dictionary<string, List<Tuple<int, string, Syntax.Type>>> 
             functionsToRefParams = new Dictionary<string, List<Tuple<int, string, Syntax.Type>>>();
 
+        private HashSet<Syntax.Type> typesAsserted = new HashSet<Syntax.Type>();
+
         private SymbolTable symbolTable = new SymbolTable();
 
         private int maxFields = 0;
@@ -521,10 +523,33 @@ namespace Microsoft.PBoogieTranslator
             return Syntax.Expr.NewDefault(t) as Syntax.Expr.Default;
         }
 
+        private void AssertTypes(Syntax.Type t)
+        {
+            typesAsserted.Add(t);
+
+            if (t is Syntax.Type.Tuple)
+            {
+                var obj = (t as Syntax.Type.Tuple).Item;
+                foreach (var typ in obj)
+                {
+                    AssertTypes(typ);
+                }
+            }
+            else if(t is Syntax.Type.NamedTuple)
+            {
+                var obj = (t as Syntax.Type.NamedTuple).Item;
+                foreach(var typ in obj)
+                {
+                    AssertTypes(typ.Item2);
+                }
+            }
+        }
+
         private Syntax.Expr.Cast genCastExpr(P_Root.Cast e)
         {
             var arg = genExpr(e.arg as P_Root.Expr);
             var t = genTypeExpr(e.type as P_Root.TypeExpr);
+            AssertTypes(t);
             return Syntax.Expr.NewCast(arg, t) as Syntax.Expr.Cast;
         }
 
@@ -1630,6 +1655,7 @@ namespace Microsoft.PBoogieTranslator
             typeDefs.Clear();
             symbolTable.Clear();
             eventToMonitorList.Clear();
+            typesAsserted.Clear();
 
             events.Add(new Syntax.EventDecl("halt", null, null));
             events.Add(new Syntax.EventDecl("null", null, null));
@@ -1804,7 +1830,7 @@ namespace Microsoft.PBoogieTranslator
                 evMonList.Add(new Tuple<string, FSharpList<string>>(kv.Key, ListModule.OfSeq(kv.Value)));
             }     
             var prog =  new Syntax.ProgramDecl(ListModule.OfSeq(machines), ListModule.OfSeq(events),
-                MapModule.OfSeq(evMonList),ListModule.OfSeq(staticFunctions), maxFields, hasDefer, hasIgnore);
+                MapModule.OfSeq(evMonList),ListModule.OfSeq(staticFunctions), maxFields, hasDefer, hasIgnore, SetModule.OfSeq(typesAsserted));
             var map = new List<Tuple<string, FSharpList<Tuple<int, string, Syntax.Type>>>>();
             foreach (var kv in functionsToRefParams)
             {

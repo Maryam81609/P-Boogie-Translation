@@ -46,5 +46,5 @@ module FlattenStmtLists =
   let flattenStmtsProg (prog: ProgramDecl) = 
     let fLst = List.map flattenStmtsFun prog.StaticFuns
     let mLst = List.map flattenStmtsMachine prog.Machines
-    new ProgramDecl(prog.Machines, prog.Events, prog.EventsToMonitors, prog.StaticFuns, prog.maxFields, prog.HasDefer, prog.HasIgnore)
+    new ProgramDecl(prog.Machines, prog.Events, prog.EventsToMonitors, prog.StaticFuns, prog.maxFields, prog.HasDefer, prog.HasIgnore, prog.TypesAsserted)
 

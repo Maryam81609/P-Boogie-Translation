@@ -183,15 +183,16 @@ module Syntax =
   [<Serializable>]
   [<AllowNullLiteral>]
   type ProgramDecl(machines: MachineDecl list, events: EventDecl list, eventsToMonitors: Map<string, string list>, 
-                    staticFuns: FunDecl list, maxFields: int, hasDefer: bool, hasIgnore: bool) =
+                    staticFuns: FunDecl list, maxFields: int, hasDefer: bool, hasIgnore: bool, typesAsserted: Set<Type>) =
     member this.Machines = machines
     member this.Events = events
     member this.EventsToMonitors = eventsToMonitors
     member this.StaticFuns = staticFuns
-    
+
     member this.maxFields = maxFields
     member this.HasDefer = hasDefer
     member this.HasIgnore = hasIgnore
+    member this.TypesAsserted = typesAsserted
 
     member this.HasPush = Seq.exists (fun(md: MachineDecl) -> md.HasPush) this.Machines
     member this.HasEventQCs = Seq.exists (fun(e: EventDecl) -> e.QC.IsSome) this.Events
@@ -211,3 +212,11 @@ module Syntax =
       let map = ref Map.empty in
       List.iter (fun (event: EventDecl) -> map := Map.add event.Name event !map) this.Events
       !map
+    
+    member this.Types = 
+      Set([for m in this.Machines do for v in m.VarMap do yield v.Value]) +
+      Set([for f in this.StaticFuns do for v in f.VarMap do yield v.Value]) +
+      Set([for m in this.Machines do for f in m.Functions do for v in f.VarMap do yield v.Value]) - 
+      Set([Type.Any])
+
+    

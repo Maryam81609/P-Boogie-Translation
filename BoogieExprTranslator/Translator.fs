@@ -14,16 +14,7 @@ module Translator =
   let TypmapIndex = ref 0
 
   let GetTypeIndex t =
-    if Map.containsKey t !Typmap then Map.find t !Typmap
-    else begin
-      let ret = !TypmapIndex
-      Typmap := Map.add t ret !Typmap
-      TypmapIndex := ret + 1
-      ret
-    end
-
-  let GetAllTypes () =
-    Map.fold (fun state key _ -> Set.add key state) Set.empty !Typmap
+    Map.find t !Typmap
 
   let (monitorToStartState: Map<string, int> ref) = ref Map.empty
   
@@ -79,8 +70,6 @@ module Translator =
         "tmpEventID"
       end
 
-  let typesAsserted = ref Set.empty
-
   let rec translateAssign (sw: IndentedTextWriter) G evMap lval expr  =
     
     let genRhsValue e G =
@@ -92,18 +81,12 @@ module Translator =
                             | Lval.Var(v) -> v
                             | _ -> raise NotDefined
     in
-    let rec setTypesAsserted t =
-        typesAsserted := Set.add t !typesAsserted
-        match t with
-        | Type.Tuple ts -> List.iter setTypesAsserted ts
-        | _ -> ()
+
     match (lval, expr) with
     | _, Expr.Cast(e, t) ->
       begin
         (* evaluate rhs *)
         let rhsVar = genRhsValue e G in
-        (* generate type assertion *)
-        setTypesAsserted t
         sw.WriteLine("call AssertIsType{0}({1});", (GetTypeIndex t), rhsVar)
         (* the assignment *)
         sw.WriteLine("{0} := {1};", (getLhsVar lval), rhsVar)
@@ -337,7 +320,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     match t with
-    | Null -> raise NotDefined
+    | Null -> sw.WriteLine("assert PrtIsNull(x);")
     | Any -> raise NotDefined
     | Bool
     | Seq(_)
@@ -990,7 +973,13 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     List.iter (translateStmt sw G stateToInt md.Name evMap) md.Init
 
   let translateProg (prog: ProgramDecl) (sw: IndentedTextWriter) =
+    
+    Typmap := prog.Types |> Seq.mapi (fun i x -> (x,i)) |> Map.ofSeq
+    
+//    printfn "%A" !Typmap
+
     (* Top-level types *)
+    
     sw.WriteLine("type PrtType;")
     sw.WriteLine("const unique {0}: PrtType;", (translateType Null))
     sw.WriteLine("const unique {0}: PrtType;", (translateType Int))
@@ -999,6 +988,15 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("const unique {0}: PrtType;", (translateType Type.Event))
     for i = 1 to prog.maxFields do
       sw.WriteLine("const unique PrtTypeTuple{0}: PrtType;", i)
+
+      
+    (* Sequence and Map Types *)
+    Map.iter (fun k v ->
+        match k with
+        | Seq _ -> sw.WriteLine("const unique PrtTypeSeq{0}: PrtType; // {1}", v, (printType k))
+        | Map _ -> sw.WriteLine("const unique PrtTypeMap{0}: PrtType; // {1}", v, (printType k))
+        | _ -> ()
+        ) !Typmap
     
     (* ref type *)
     sw.WriteLine("type PrtRef;")
@@ -1062,6 +1060,9 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("function {:inline} ReadSeq(seq: PrtRef, index: int) : PrtRef")
     sw.WriteLine("{ PrtFieldSeqStore(seq)[index] }")
     sw.WriteLine("")
+    
+    (* AssertIsType *)
+    Set.iter (fun t -> printTypeCheck sw t) prog.TypesAsserted
 
     (* Machine Globals *)
     prog.Machines |> List.filter (fun(md: MachineDecl) -> not md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Globals) |> List.map (getVars "{:thread_local}") |> List.fold (fun l v ->  l @ v) [] |> List.iter (fun(x)->sw.WriteLine(x))
@@ -1111,15 +1112,15 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     (* Monitors *)
     let mons = List.filter (fun(m:MachineDecl) -> m.IsMonitor) prog.Machines 
     
-    //Globals
+    (* Globals *)
     mons |> List.fold (fun acc (m: MachineDecl) -> acc @ m.Globals) [] 
     |> List.iter (fun(v: VarDecl) -> sw.WriteLine("var {0}: PrtRef;", v.Name))
     
-    //Current State
+    (* Current State *)
     mons |> List.map (fun(md: MachineDecl) -> md.Name) 
     |> List.iter (fun(s) -> sw.WriteLine("var {0}_CurrState: int;", s))
 
-    //Function for the monitor
+    (* Function for the monitor *)
     List.iter (createMonitor sw G evMap) mons
 
     (* New machine creation *)
@@ -1129,18 +1130,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     List.filter (fun(m: MachineDecl) -> not m.IsMonitor) prog.Machines
     |> List.iter (translateMachine sw G evMap prog.HasDefer prog.HasIgnore)
 
-    (* Sequence and Map Types *)
-    Set.iter (fun t ->
-        match t with
-        | Seq _ -> sw.WriteLine("const unique PrtTypeSeq{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
-        | Map _ -> sw.WriteLine("const unique PrtTypeMap{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
-        | _ -> ()
-        ) (GetAllTypes())
-
-    
-    (* AssertIsType *)
-    Set.iter (fun t -> printTypeCheck sw t) !typesAsserted
-
     (* The main function *)
     sw.WriteLine("procedure {:entrypoint} main()")
     sw.WriteLine("{")
@@ -1148,13 +1137,13 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("var tmpRhsValue: PrtRef;")
     sw.WriteLine("machineCounter := 0;")
     
-    //Set monitor Start States.
+    (* Set monitor Start States. *)
     Map.iter (fun k v -> sw.WriteLine("{0}_CurrState := {1};", k, v)) !monitorToStartState
 
-    //Initialize monitor globals
+    (* Initialize monitor globals *)
     mons |> List.iter (initializeMonitorGlobals sw evMap)
     
-    //Start main machine
+    (* Start main machine *)
     sw.WriteLine("yield;")
     sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
 
@@ -1162,8 +1151,5 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("}")
     
     monitorToStartState := Map.empty
-    Typmap := Map.empty
-    TypmapIndex := 0
-    typesAsserted := Set.empty
-
-    0 // return an integer exit code
+    
+    0 
