@@ -52,14 +52,21 @@ namespace Microsoft.PBoogieTranslator
                                 {
                                     Console.WriteLine("Boogie Output:");
                                     Console.WriteLine(output);
+                                    wrong++;
                                 }
                                 if (!err.Contains("type checking error"))
                                 {
                                     Console.Error.WriteLine(err);
+                                    wrong++;
+                                }
+                                else
+                                {
+                                    correct++;
                                 }
                                 process.WaitForExit();
+                                
                             }
-                            ++correct;
+                            
                         }
                         catch (Exception e)
                         {

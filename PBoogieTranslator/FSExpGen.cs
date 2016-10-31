@@ -1224,7 +1224,7 @@ namespace Microsoft.PBoogieTranslator
                 //which calls the function in question.
                 var action = name + "_entry";
                 var funName = symbolTable.GetFunName(getString(state.entryAction));
-                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl("payload", Syntax.Type.Null),
+                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(action + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
                 var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null),
                     FSharpList<Syntax.Stmt>.Empty);
@@ -1252,7 +1252,7 @@ namespace Microsoft.PBoogieTranslator
                 //which calls the function in question.
                 var action = name + "_exit";
                 var funName = symbolTable.GetFunName(getString(state.exitFun));
-                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl("payload", Syntax.Type.Null),
+                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(action + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
                 var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null),
                     FSharpList<Syntax.Stmt>.Empty);
