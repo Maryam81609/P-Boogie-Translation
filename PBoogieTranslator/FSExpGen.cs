@@ -1515,7 +1515,7 @@ namespace Microsoft.PBoogieTranslator
                 //which calls the function in question.
                 var action = owner + "_on_" + trig + "_goto_" + dst;
                 var funName = symbolTable.GetFunName(getString(t.action));
-                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl("payload", Syntax.Type.Null),
+                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(action + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
                 var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null),
                     FSharpList<Syntax.Stmt>.Empty);
@@ -1561,7 +1561,7 @@ namespace Microsoft.PBoogieTranslator
                 //which calls the function in question.
                 var action = owner + "_do_" + trig;
                 var funName = symbolTable.GetFunName(getString(d.action));
-                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(funName + "_payload", Syntax.Type.Null),
+                var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(action + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
                 var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null),
                     FSharpList<Syntax.Stmt>.Empty);

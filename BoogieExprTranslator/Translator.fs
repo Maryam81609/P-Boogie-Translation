@@ -9,11 +9,10 @@ module Translator =
   open System.CodeDom.Compiler
 
   (* Translation of normalized side-effect-free programs to Boogie *)
-
+  
   let Typmap = ref Map.empty
   let TypmapIndex = ref 0
-  let (monitorToStartState: Map<string, int> ref) = ref Map.empty
-  
+
   let GetTypeIndex t =
     if Map.containsKey t !Typmap then Map.find t !Typmap
     else begin
@@ -26,6 +25,8 @@ module Translator =
   let GetAllTypes () =
     Map.fold (fun state key _ -> Set.add key state) Set.empty !Typmap
 
+  let (monitorToStartState: Map<string, int> ref) = ref Map.empty
+  
   let translateType t =
     match t with
     | Null -> "PrtTypeNull"
@@ -506,6 +507,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("assert false;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
+
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
     sw.Write("else ")
@@ -703,7 +705,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
             | Some(ea) -> sw.WriteLine("call {0}(payload);", ea)
             sw.Indent <- sw.Indent - 1
             sw.WriteLine("}")
-            sw.WriteLine("else ")
           end
         | _ -> raise NotDefined
         sw.Write("else ")
@@ -733,6 +734,23 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       sw.Indent <- sw.Indent + 1
       List.iter translateMonitorDo st.Dos
       List.iter (translateMonitorTrans st.Name) st.Transitions
+      let e1 = List.map (fun (t: TransDecl.T) -> match t with
+                                                 | TransDecl.T.Call(e, _, _) 
+                                                 | TransDecl.T.Push(e, _) -> e) st.Transitions
+      let e2 = List.map (fun (t: DoDecl.T) -> match t with
+                                                 | DoDecl.T.Call(e, _)
+                                                 | DoDecl.T.Ignore(e) 
+                                                 | DoDecl.T.Defer(e)-> e) st.Dos
+      let unHandled = Set(md.MonitorList) - (Set(e1) + Set(e2))
+      if unHandled.Count > 0 then begin
+        sw.Write("if(")
+        let conds = Set.map (fun s -> sprintf "event == %d" (Map.find s evMap)) unHandled
+        let cond = String.concat " || " conds
+        sw.Write(cond)
+        let evNames = String.concat ", " unHandled 
+        sw.WriteLine("){{}} //Nothing to do for {0}.", evNames)
+        sw.Write("else")
+      end
       sw.WriteLine()
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
@@ -981,14 +999,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("const unique {0}: PrtType;", (translateType Type.Event))
     for i = 1 to prog.maxFields do
       sw.WriteLine("const unique PrtTypeTuple{0}: PrtType;", i)
-    Set.iter (fun t ->
-        match t with
-        | Seq _ -> sw.WriteLine("const unique PrtTypeSeq{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
-        | Map _ -> sw.WriteLine("const unique PrtTypeMap{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
-        | _ -> ()
-        ) (GetAllTypes())
-//    printf "%A" (GetAllTypes())
-
+    
     (* ref type *)
     sw.WriteLine("type PrtRef;")
     sw.WriteLine("const unique null: PrtRef;")
@@ -1080,9 +1091,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     (* Equals *)
     printEquals sw prog.maxFields
 
-    (* AssertIsType *)
-    Set.iter (fun t -> printTypeCheck sw t) !typesAsserted
-
     (* Deque *)
     createDeque sw prog.HasDefer prog.HasIgnore
 
@@ -1121,8 +1129,19 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     List.filter (fun(m: MachineDecl) -> not m.IsMonitor) prog.Machines
     |> List.iter (translateMachine sw G evMap prog.HasDefer prog.HasIgnore)
 
-    (* The main function *)
+    (* Sequence and Map Types *)
+    Set.iter (fun t ->
+        match t with
+        | Seq _ -> sw.WriteLine("const unique PrtTypeSeq{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
+        | Map _ -> sw.WriteLine("const unique PrtTypeMap{0}: PrtType; // {1}", (GetTypeIndex t), (printType t))
+        | _ -> ()
+        ) (GetAllTypes())
 
+    
+    (* AssertIsType *)
+    Set.iter (fun t -> printTypeCheck sw t) !typesAsserted
+
+    (* The main function *)
     sw.WriteLine("procedure {:entrypoint} main()")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -1141,11 +1160,10 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
 
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
-
+    
+    monitorToStartState := Map.empty
     Typmap := Map.empty
     TypmapIndex := 0
-    monitorToStartState := Map.empty
     typesAsserted := Set.empty
 
-    
     0 // return an integer exit code
