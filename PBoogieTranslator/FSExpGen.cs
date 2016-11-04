@@ -1438,7 +1438,7 @@ namespace Microsoft.PBoogieTranslator
         //A(sad?) Departure from Design. 
         //We generate the name of the AnonFunction, a FunDecl to
         //that effect and add it to the appropriate list.
-        private void genAnonFunDecl(P_Root.AnonFunDecl d, ref string name)
+        private void genAnonFunDecl(P_Root.AnonFunDecl d, ref string name, bool calledByTransDecl=false)
         {
             FSharpOption<Syntax.Type> retType = null;
             FSharpOption<Syntax.Expr> retExp = null;
@@ -1460,6 +1460,16 @@ namespace Microsoft.PBoogieTranslator
             var args = new List<Syntax.VarDecl>();
             args.Add(getAnonFunParams(d.envVars as P_Root.NmdTupType, name));
 
+
+            if (calledByTransDecl)
+            {
+                var tmp = args[0];
+                var vName = tmp.Name;
+                var typ = tmp.Type;
+                retExp = new FSharpOption<Syntax.Expr>(Syntax.Expr.NewVar(vName));
+                retType = new FSharpOption<Syntax.Type>(typ);
+            }
+
             //Get Locals
             if (d.locals.Symbol.ToString() != "NIL")
             {
@@ -1475,6 +1485,7 @@ namespace Microsoft.PBoogieTranslator
             {
                 body.AddRange(genStmt(d.body as P_Root.Stmt));
             }
+
             body.Add(Syntax.Stmt.NewReturn(retExp));
 
             var trueNames = new List<Tuple<string, string>>();
@@ -1531,7 +1542,7 @@ namespace Microsoft.PBoogieTranslator
             else if (t.action is P_Root.AnonFunDecl)
             {
                 var action = owner + "_on_" + trig + "_goto_" + dst;
-                genAnonFunDecl(t.action as P_Root.AnonFunDecl, ref action);
+                genAnonFunDecl(t.action as P_Root.AnonFunDecl, ref action, true);
                 return Syntax.TransDecl.T.NewCall(trig, dst, action);
             }
             else
