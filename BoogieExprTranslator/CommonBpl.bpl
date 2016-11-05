@@ -87,13 +87,13 @@ procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (
 
 
 // Maps
-procedure {:inline} MapContainsKey(map: PrtRef, key: PrtRef) returns (v: bool)
+procedure {:inline} MapContainsKey(map: PrtRef, key: PrtRef) returns (v: PrtRef)
 {
     var size: int;
     var i: int;
     var keys: [int]PrtRef;
 
-    v := false;
+    v := PrtFalse;
     size := PrtFieldMapSize(map);
     i := 0;
     keys := PrtFieldMapKeys(map);
@@ -102,7 +102,7 @@ procedure {:inline} MapContainsKey(map: PrtRef, key: PrtRef) returns (v: bool)
     {
         if(keys[i] == key)
         {
-            v := true;
+            v := PrtTrue;
             return;
         }
         i := i + 1;

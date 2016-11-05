@@ -156,12 +156,12 @@ module Translator =
   let translateInsert (sw:IndentedTextWriter) G evMap v e1 e2 =
     match isSeq (typeof (Expr.Var(v)) G) with
     | true -> sw.WriteLine("call {0} := InsertSeq({1}, PrtFieldInt({2}), {3});", v, v, (translateExpr G evMap e1), (translateExpr G evMap e2))
-    | false -> sw.WriteLine("call {0} := InsertMap({1}, PrtFieldInt({2}), {3});", v, v, (translateExpr G evMap e1), (translateExpr G evMap e2))
+    | false -> sw.WriteLine("call {0} := InsertMap({1}, {2}, {3});", v, v, (translateExpr G evMap e1), (translateExpr G evMap e2))
 
   let translateRemove (sw:IndentedTextWriter) G evMap v e1 =
     match isSeq (typeof (Expr.Var(v)) G) with
     | true -> sw.WriteLine("call {0} := RemoveSeq({1}, PrtFieldInt({2}));", v, v, (translateExpr G evMap e1))
-    | false -> sw.WriteLine("call {0} := RemoveMap({1}, PrtFieldInt({2}));", v, v, (translateExpr G evMap e1))
+    | false -> sw.WriteLine("call {0} := RemoveMap({1}, {2});", v, v, (translateExpr G evMap e1))
 
   let rec translateStmt (sw: IndentedTextWriter) G (stateToInt: Map<string, int>) (cm: string) (evMap: Map<string, int>) stmt =
     
@@ -698,7 +698,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
             match srcExitAction with
             | None -> ignore true
             | Some(ea) -> sw.WriteLine("call {0}(null);", ea)
-            sw.WriteLine("call {0}(payload);", f)
+            sw.WriteLine("call payload := {0}(payload);", f)
             sw.WriteLine("{0}_CurrState := {1};", md.Name, (Map.find d stateToInt))
             match dstEntryAction with
             | None -> ignore true
@@ -738,9 +738,9 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
                                                  | TransDecl.T.Call(e, _, _) 
                                                  | TransDecl.T.Push(e, _) -> e) st.Transitions
       let e2 = List.map (fun (t: DoDecl.T) -> match t with
-                                                 | DoDecl.T.Call(e, _)
-                                                 | DoDecl.T.Ignore(e) 
-                                                 | DoDecl.T.Defer(e)-> e) st.Dos
+                                              | DoDecl.T.Call(e, _)
+                                              | DoDecl.T.Ignore(e) 
+                                              | DoDecl.T.Defer(e)-> e) st.Dos
       let unHandled = Set(md.MonitorList) - (Set(e1) + Set(e2))
       if unHandled.Count > 0 then begin
         sw.Write("if(")
