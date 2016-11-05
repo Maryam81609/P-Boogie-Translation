@@ -151,6 +151,7 @@ module Translator =
     | Lval.Dot(_), _ -> raise NotDefined
     | _, _ ->
       sw.WriteLine("{0} := {1};", (getLhsVar lval), (translateExpr G evMap expr))
+    
 
   let translateInsert (sw:IndentedTextWriter) G evMap v e1 e2 =
     match isSeq (typeof (Expr.Var(v)) G) with
@@ -228,7 +229,8 @@ module Translator =
         sw.WriteLine("")
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-        sw.WriteLine("assert false;")
+//        sw.WriteLine("assert false;") //TODO: Come Back!
+        sw.WriteLine("call{:cexpr \"dropped_event\"} boogie_si_record_int(event);")
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
       end
@@ -349,6 +351,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     let regEvents = ref(events |> Map.toSeq |> Seq.map (fun (k, v) -> (v, false)) |> Map.ofSeq)
     let igEvents  = ref(events |> Map.toSeq |> Seq.map (fun (k, v) -> (v, false)) |> Map.ofSeq)
     let defEvents = ref(events |> Map.toSeq |> Seq.map (fun (k, v) -> (v, false)) |> Map.ofSeq)
+    let halt = events.["halt"]
+    regEvents := Map.add halt true !regEvents
     for l in d do
       match l with
       | DoDecl.T.Ignore(e) ->
@@ -430,7 +434,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
           sw.WriteLine("{")
           sw.Indent <- sw.Indent + 1;
           sw.WriteLine("call {0}_CallExitAction();", mach.Name)
-          sw.WriteLine("call {0}(payload);", f)
+          sw.WriteLine("call payload := {0}(payload);", f)
           sw.WriteLine("CurrState := {0};", Map.find d stateToInt)
           sw.WriteLine("call {0}_CallEntryAction({1}, payload);", mach.Name, Map.find d stateToInt)
           sw.Indent <- sw.Indent - 1
@@ -575,11 +579,18 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       | None -> sw.WriteLine()
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
+      sw.Write("else ")
 
     sw.WriteLine("procedure {0}_CallExitAction()", name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     List.iter callExitAction states
+    sw.WriteLine()
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("assume false;")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
@@ -607,7 +618,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
-    sw.WriteLine("var depth: int;")
     sw.WriteLine("// Initialize")
     if md.HasPush then
       sw.WriteLine("StateStack := Nil();")
@@ -660,11 +670,18 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
         | None -> sw.WriteLine()
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
+        sw.Write("else ")
 
       sw.WriteLine("procedure {0}_CallExitAction()", md.Name)
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       List.iter callExitAction md.States
+      sw.WriteLine()
+      sw.WriteLine("{")
+      sw.Indent <- sw.Indent + 1
+      sw.WriteLine("assume false;")
+      sw.Indent <- sw.Indent - 1
+      sw.WriteLine("}")
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
@@ -829,11 +846,18 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       List.iter (fun(m) -> sw.WriteLine("call Monitor_{0}({1}, payload);", m, e)) monLst
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
+      sw.Write("else ")
 
     sw.WriteLine("procedure monitor(event: int, payload: PrtRef)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     Map.iter printMonitorSt evToMon
+    sw.WriteLine()
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("assume false;")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
@@ -988,7 +1012,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("const unique {0}: PrtType;", (translateType Type.Event))
     for i = 1 to prog.maxFields do
       sw.WriteLine("const unique PrtTypeTuple{0}: PrtType;", i)
-
       
     (* Sequence and Map Types *)
     Map.iter (fun k v ->
@@ -1063,6 +1086,10 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     
     (* AssertIsType *)
     Set.iter (fun t -> printTypeCheck sw t) prog.TypesAsserted
+
+    (*boogie_si_record *)
+    sw.WriteLine("procedure boogie_si_record_int(x: int);")
+    sw.WriteLine("procedure boogie_si_record_PrtRef(x:PrtRef);")
 
     (* Machine Globals *)
     prog.Machines |> List.filter (fun(md: MachineDecl) -> not md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Globals) |> List.map (getVars "{:thread_local}") |> List.fold (fun l v ->  l @ v) [] |> List.iter (fun(x)->sw.WriteLine(x))

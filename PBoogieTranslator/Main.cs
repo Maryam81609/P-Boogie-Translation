@@ -48,13 +48,13 @@ namespace Microsoft.PBoogieTranslator
                                 process.Start();
                                 string output = process.StandardOutput.ReadToEnd();
                                 string err = process.StandardError.ReadToEnd();
-                                if (!output.Contains("type checking error"))
+                                if (output.Contains("type checking error"))
                                 {
                                     Console.WriteLine("Boogie Output:");
                                     Console.WriteLine(output);
                                     wrong++;
                                 }
-                                if (!err.Contains("type checking error"))
+                                if (err.Contains("type checking error"))
                                 {
                                     Console.Error.WriteLine(err);
                                     wrong++;

@@ -1,0 +1,5 @@
+C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_TwoMachines_7\RaisedHalt_bugFound.bpl
+C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_TwoMachines_8\HaltTrigger4Do.bpl
+C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\two-phase-commit\two-phase-commit.bpl
+C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\two-phase-commit_1\two-phase-commit_1.bpl
+C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Zinger\Correct\BoundedChoice_1\BoundedChoice_1.bpl
