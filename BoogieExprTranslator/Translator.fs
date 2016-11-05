@@ -804,9 +804,11 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
 
     createCallEntryAction sw md.Name md.States stateToInt
     createCallMonitorExitAction()
-    sw.WriteLine("procedure Monitor_{0}(event: int, payload: PrtRef)", md.Name)
+    sw.WriteLine("procedure Monitor_{0}(event: int, actual_payload: PrtRef)", md.Name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("var payload: PrtRef;")
+    sw.WriteLine("payload := actual_payload;")
     List.iter translateMonitorState md.States
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")

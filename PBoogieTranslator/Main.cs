@@ -37,13 +37,14 @@ namespace Microsoft.PBoogieTranslator
                             options.pFile = line;
                             ProcessPFile(options, fsExpGen);
                             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
-                            startInfo.Arguments = options.boogieFile;
+                            startInfo.Arguments = options.boogieFile + " /cooperative";
                             startInfo.RedirectStandardError = true;
                             startInfo.RedirectStandardInput = true;
                             startInfo.RedirectStandardOutput = true;
                             startInfo.UseShellExecute = false;
                             using (Process process = new Process())
                             {
+                                var flag = true;
                                 process.StartInfo = startInfo;
                                 try
                                 {
@@ -60,26 +61,33 @@ namespace Microsoft.PBoogieTranslator
                                         {
                                             Console.WriteLine(op);
                                             Console.WriteLine(err);
+                                            wrong++;
+                                            flag = false;
                                         }
                                     }
                                     
                                     using (var erf = new StreamWriter(errFile))
                                     {
                                         erf.WriteLine(err);
-                                        if (err.Contains("Program has a potential bug: True bug"))
-                                        {
-                                            Console.WriteLine(op);
-                                            Console.WriteLine(err);
-                                        }
                                     }
-                                    correct++;
+                                    
                                 }
                                 catch(Exception e)
                                 {
                                     Console.WriteLine(e.ToString());
+                                    Console.WriteLine("ERROR IN CORRAL!");
                                     wrong++;
+                                    flag = false;
                                 }
                                 process.WaitForExit();
+                                if(process.ExitCode != 0)
+                                {
+                                    Console.WriteLine("ERROR IN CORRAL!");
+                                    wrong++;
+                                    flag = false;
+                                }
+                                if (flag)
+                                    correct++;
                             }
                             
                         }
