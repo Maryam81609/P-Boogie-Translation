@@ -5,8 +5,7 @@ using Microsoft.P2Boogie;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.CodeDom.Compiler;
-using PBoogieTranslator;
-using System.Diagnostics;
+using PBoogieTranslator;using System.Diagnostics;
 
 namespace Microsoft.PBoogieTranslator
 {
@@ -42,6 +41,7 @@ namespace Microsoft.PBoogieTranslator
                             startInfo.RedirectStandardInput = true;
                             startInfo.RedirectStandardOutput = true;
                             startInfo.UseShellExecute = false;
+                            Console.Write("Running Corral...");
                             using (Process process = new Process())
                             {
                                 var flag = true;
@@ -59,6 +59,7 @@ namespace Microsoft.PBoogieTranslator
                                         opt.WriteLine(op);
                                         if(op.Contains("Program has a potential bug: True bug"))
                                         {
+                                            Console.WriteLine();
                                             Console.WriteLine(op);
                                             Console.WriteLine(err);
                                             wrong++;
@@ -75,6 +76,7 @@ namespace Microsoft.PBoogieTranslator
                                 catch(Exception e)
                                 {
                                     Console.WriteLine(e.ToString());
+                                    Console.WriteLine();
                                     Console.WriteLine("ERROR IN CORRAL!");
                                     wrong++;
                                     flag = false;
@@ -82,12 +84,16 @@ namespace Microsoft.PBoogieTranslator
                                 process.WaitForExit();
                                 if(process.ExitCode != 0)
                                 {
+                                    Console.WriteLine();
                                     Console.WriteLine("ERROR IN CORRAL!");
                                     wrong++;
                                     flag = false;
                                 }
                                 if (flag)
+                                {
                                     correct++;
+                                    Console.WriteLine("done!");
+                                }
                             }
                             
                         }
@@ -132,9 +138,10 @@ namespace Microsoft.PBoogieTranslator
             }
 
             //Type check the program.
-            Console.WriteLine("Type checking...");
+            Console.Write("Type checking...");
             ProgramTyping.typecheckProgram(prog);
-
+			Console.WriteLine("done!");
+            
             //Remove named tuples in the P Program
             prog = RemoveNamedTuples.removeNamedTuplesProgram(prog);
             if(options.removeNT)
