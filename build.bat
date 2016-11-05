@@ -53,15 +53,17 @@ shift
 goto :parseargs
 
 :initsub
-if exist "P\README.md" goto :updatesub
+if exist "P\README.md" and exist "corral\README.md" goto :updatesub
 
-echo ### Initializing your submodules 
+echo "*****************************************************************************************************************"
+echo "Initializing your submodules" 
+echo "*****************************************************************************************************************"
 git submodule init
 git submodule update
 
 :checksubmodule
 for /f "usebackq tokens=1,2*" %%i in (`git submodule summary %1`) do (
-  if "%%j"=="%1" echo #### Submodule is out of date: %1 & set SubmoduleOutOfDate=true  
+  if "%%j"=="%1" echo "Submodule is out of date: %1" & set SubmoduleOutOfDate=true  
 )
 
 goto :eof
@@ -69,23 +71,38 @@ goto :eof
 :updatesub
 if "%NoSync%"=="true" goto :nosync
 
-echo ### Updating your submodules 
+echo ""
+echo ""
+echo "*****************************************************************************************************************"
+echo "Updating your submodules"
+echo "*****************************************************************************************************************"
 call :checksubmodule Ext/Formula
 call :checksubmodule Ext/Zing
 
 if "%SubmoduleOutOfDate%"=="false" goto :nosync
 
 :sync
-echo ### Fixing your submodules so they are up to date...
+echo ""
+echo ""
+echo "*****************************************************************************************************************"
+echo "Fixing your submodules so they are up to date..."
+echo "*****************************************************************************************************************"
 git submodule sync --recursive
 git submodule update --init --recursive
 goto :nosync
 
 :nosync
 
+echo ""
+echo ""
+echo "*****************************************************************************************************************"
 echo "Building P..."
+echo "*****************************************************************************************************************"
 cd P\Bld
 call build.bat %1 %2 %3 %4 
 
-
+echo ""
+echo ""
+echo "*****************************************************************************************************************"
 echo "Building Corral..."
+echo "*****************************************************************************************************************"

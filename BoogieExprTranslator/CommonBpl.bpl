@@ -54,34 +54,34 @@ procedure {:inline} RemoveSeq(seq: PrtRef, index: int)  returns (nseq: PrtRef)
 procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (nseq: PrtRef)
 {
     var oldStore: [int]PrtRef;
-	var newStore: [int]PrtRef;
+    var newStore: [int]PrtRef;
     var size: int;
-	var i: int;
+    var i: int;
 
     size := PrtFieldSeqSize(seq);
-	i := 0;    
+    i := 0;    
     assert (0 <= index && index <= size);
     
     oldStore := PrtFieldSeqStore(seq);
-	while(i < index)
-	{
-		newStore[i] := oldStore [i];
-		i := i + 1;
-	}
-	
-	newStore[index] := value;
-	i := i + 1;
+    while(i < index)
+    {
+        newStore[i] := oldStore [i];
+        i := i + 1;
+    }
+    
+    newStore[index] := value;
+    i := i + 1;
 
-	while(i < size)
-	{
-		newStore[i + 1] := oldStore[i];
-		i := i + 1;
-	}
+    while(i < size)
+    {
+        newStore[i + 1] := oldStore[i];
+        i := i + 1;
+    }
 
     call nseq := AllocatePrtRef();
     assume PrtFieldSeqSize(nseq) == size + 1;
     assume PrtFieldSeqStore(nseq) == newStore;
-	assume PrtDynamicType(nseq) == PrtDynamicType(seq);
+    assume PrtDynamicType(nseq) == PrtDynamicType(seq);
 }
 
 

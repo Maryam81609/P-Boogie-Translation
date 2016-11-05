@@ -46,7 +46,7 @@ module Translator =
     | Expr.Bin(BinOp.Intdiv, e1, e2) -> sprintf "PrtConstructFromInt(PrtFieldInt(%s) div PrtFieldInt(%s))" (translateExpr G evMap e1) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isIntop(op) -> sprintf "PrtConstructFromInt(PrtFieldInt(%s) %s PrtFieldInt(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isRelop(op) -> sprintf "PrtConstructFromBool(PrtFieldInt(%s) %s PrtFieldInt(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
-    | Expr.Bin(op, e1, e2) when  isBoolop(op) -> sprintf "PrtConstructFromBool(PrtFieldBool(%s) %s PrtFieldBool(%s))" (translateExpr G evMap e2) (printBinop op) (translateExpr G evMap e2)
+    | Expr.Bin(op, e1, e2) when  isBoolop(op) -> sprintf "PrtConstructFromBool(PrtFieldBool(%s) %s PrtFieldBool(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isComparison(op) -> raise NotDefined
     | Expr.Bin(Idx, e1, e2) -> raise NotDefined
     | Expr.Bin(In, e1, e2) -> raise NotDefined
@@ -55,7 +55,7 @@ module Translator =
     | Expr.Un(Sizeof, e) when isSeq (typeof e G) -> sprintf "PrtConstructFromInt(PrtFieldSeqSize(%s))" (translateExpr G evMap e)
     | Expr.Un(Sizeof, e) -> sprintf "PrtConstructFromInt(PrtFieldMapSize(%s))" (translateExpr G evMap e)
     | Expr.Dot(e, f) -> sprintf "PrtFieldTuple%d(%s)" f (translateExpr G evMap e)
-    | _ -> raise NotDefined
+    | _ -> raise NotDefined  
 
   let translateMachineExpr G evMap m =
     match m with
@@ -142,7 +142,10 @@ module Translator =
         sw.WriteLine("assume PrtDynamicType({0}) == PrtTypeSeq{1};", (getLhsVar lval), (GetTypeIndex (Map.find (getLhsVar lval) G)))
       end
     | _, Expr.Nondet ->
-      sw.WriteLine("havoc {0};", (getLhsVar lval))
+      begin
+        sw.WriteLine("havoc tmpBool;")
+        sw.WriteLine("{0} := PrtConstructFromBool(tmpBool);", (getLhsVar lval))
+      end
     | Lval.Var(v), Expr.New(m, arg) ->
         sw.WriteLine("call {0} := newMachine_{1}({2});", v, m, translateExpr G evMap arg)
     | Lval.Index(Lval.Var(lhsVar), e), _ when isSeq (typeofLval (Lval.Var(lhsVar)) G) ->
@@ -226,6 +229,8 @@ module Translator =
       begin
         sw.WriteLine("yield;")
         sw.WriteLine("call event, payload := Dequeue();")
+        sw.WriteLine("call {:cexpr \"recvd_event\"} boogie_si_record_int(event);") 
+
         List.iter translateCase ls
         sw.WriteLine("")
         sw.WriteLine("{")
@@ -402,6 +407,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
+    sw.WriteLine("var tmpBool: bool;")
     
     fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name + ";") |> List.iter (fun(s) -> sw.WriteLine(s))
     
@@ -492,6 +498,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     //Raise exception for unhandled event.
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("call {:cexpr \"dropped_event\"} boogie_si_record_int(event);")
     sw.WriteLine("assert false;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
@@ -643,6 +650,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("yield;")
     sw.WriteLine("call event, payload := Dequeue();")
+    sw.WriteLine("call {{:cexpr \"{0}_recvd_event\"}} boogie_si_record_int(event);", md.Name)
+
     if md.HasPush then sw.WriteLine("call {0}_ProbeStateStack(event);", md.Name)
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine()
@@ -755,6 +764,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       sw.WriteLine()
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
+      sw.WriteLine("call {{:cexpr \"{0}_dropped_event\"}} boogie_si_record_int(event);", md.Name)
       sw.WriteLine("assert false;") //Assume false?
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
@@ -887,7 +897,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
-  let createDeque (sw: IndentedTextWriter) hasDefer hasIgnore =    
+  let createDeque (sw: IndentedTextWriter) hasDefer hasIgnore (numEvents: int) =    
     sw.WriteLine("procedure Dequeue() returns (event: int, payload: PrtRef)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
@@ -983,7 +993,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("}")
 
     sw.WriteLine("// block")
-    sw.WriteLine("assume event >= 0;")
+    sw.WriteLine("assume (event >= 0) && (event < {0});", numEvents)
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
@@ -1121,7 +1131,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     printEquals sw prog.maxFields
 
     (* Deque *)
-    createDeque sw prog.HasDefer prog.HasIgnore
+    let numEvents = evMap |> Map.toSeq |> Seq.length
+    createDeque sw prog.HasDefer prog.HasIgnore numEvents
 
     (* Assert Event Cardinality *)
     printAssertEventCard sw evMap prog.EventMap

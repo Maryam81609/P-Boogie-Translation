@@ -195,7 +195,7 @@ module Helper=
         let evType = match (Map.find e prog.EventMap).Type with
                      | None -> "(payload: null)"
                      | Some(t) -> sprintf "(payload: %s)" (printType t)
-        sprintf "on %s do %s {\n%s(payload);\n}" e evType f
+        sprintf "on %s do %s {\npayload = %s(payload);\n}" e evType f
       end
 
   let printTrans (prog: ProgramDecl) (t: Syntax.TransDecl.T) =
