@@ -36,7 +36,7 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             options.pFile = line;
                             ProcessPFile(options, fsExpGen);
-                            startInfo.FileName = @"C:\Users\teja5832\P-Boogie-Translation\corral\boogie\Binaries\Boogie.exe";
+                            startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
                             startInfo.Arguments = options.boogieFile;
                             startInfo.RedirectStandardError = true;
                             startInfo.RedirectStandardInput = true;
@@ -45,26 +45,41 @@ namespace Microsoft.PBoogieTranslator
                             using (Process process = new Process())
                             {
                                 process.StartInfo = startInfo;
-                                process.Start();
-                                string output = process.StandardOutput.ReadToEnd();
-                                string err = process.StandardError.ReadToEnd();
-                                if (output.Contains("type checking error"))
+                                try
                                 {
-                                    Console.WriteLine("Boogie Output:");
-                                    Console.WriteLine(output);
-                                    wrong++;
-                                }
-                                if (err.Contains("type checking error"))
-                                {
-                                    Console.Error.WriteLine(err);
-                                    wrong++;
-                                }
-                                else
-                                {
+                                    process.Start();
+                                    var errFile = Path.ChangeExtension(options.boogieFile, ".err.txt");
+                                    var opFile = Path.ChangeExtension(options.boogieFile, ".op.txt");
+                                    var op = process.StandardOutput.ReadToEnd();
+                                    var err = process.StandardOutput.ReadToEnd();
+                                    using (var opt = new StreamWriter(opFile))
+                                    {
+                                        
+                                        opt.WriteLine(op);
+                                        if(op.Contains("Program has a potential bug: True bug"))
+                                        {
+                                            Console.WriteLine(op);
+                                            Console.WriteLine(err);
+                                        }
+                                    }
+                                    
+                                    using (var erf = new StreamWriter(errFile))
+                                    {
+                                        erf.WriteLine(err);
+                                        if (err.Contains("Program has a potential bug: True bug"))
+                                        {
+                                            Console.WriteLine(op);
+                                            Console.WriteLine(err);
+                                        }
+                                    }
                                     correct++;
                                 }
+                                catch(Exception e)
+                                {
+                                    Console.WriteLine(e.ToString());
+                                    wrong++;
+                                }
                                 process.WaitForExit();
-                                
                             }
                             
                         }
