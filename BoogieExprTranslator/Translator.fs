@@ -43,6 +43,7 @@ module Translator =
     | Expr.Default Bool -> "PrtFalse"
     | Expr.Event s -> sprintf "PrtConstructFromEventId(%d)" (Map.find s evMap)
     | Expr.Var(v) -> v
+    | Expr.Bin(BinOp.Intdiv, e1, e2) -> sprintf "PrtConstructFromInt(PrtFieldInt(%s) div PrtFieldInt(%s))" (translateExpr G evMap e1) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isIntop(op) -> sprintf "PrtConstructFromInt(PrtFieldInt(%s) %s PrtFieldInt(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isRelop(op) -> sprintf "PrtConstructFromBool(PrtFieldInt(%s) %s PrtFieldInt(%s))" (translateExpr G evMap e1) (printBinop op) (translateExpr G evMap e2)
     | Expr.Bin(op, e1, e2) when  isBoolop(op) -> sprintf "PrtConstructFromBool(PrtFieldBool(%s) %s PrtFieldBool(%s))" (translateExpr G evMap e2) (printBinop op) (translateExpr G evMap e2)
