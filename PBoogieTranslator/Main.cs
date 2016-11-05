@@ -5,7 +5,8 @@ using Microsoft.P2Boogie;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.CodeDom.Compiler;
-using PBoogieTranslator;using System.Diagnostics;
+using PBoogieTranslator;
+using System.Diagnostics;
 
 namespace Microsoft.PBoogieTranslator
 {
@@ -78,7 +79,8 @@ namespace Microsoft.PBoogieTranslator
                                     Console.WriteLine(e.ToString());
                                     Console.WriteLine();
                                     Console.WriteLine("ERROR IN CORRAL!");
-                                    wrong++;
+                                    if(flag)
+                                        wrong++;
                                     flag = false;
                                 }
                                 process.WaitForExit();
@@ -86,7 +88,8 @@ namespace Microsoft.PBoogieTranslator
                                 {
                                     Console.WriteLine();
                                     Console.WriteLine("ERROR IN CORRAL!");
-                                    wrong++;
+                                    if(flag)
+                                        wrong++;
                                     flag = false;
                                 }
                                 if (flag)
@@ -140,7 +143,7 @@ namespace Microsoft.PBoogieTranslator
             //Type check the program.
             Console.Write("Type checking...");
             ProgramTyping.typecheckProgram(prog);
-			Console.WriteLine("done!");
+            Console.WriteLine("done!");
             
             //Remove named tuples in the P Program
             prog = RemoveNamedTuples.removeNamedTuplesProgram(prog);
