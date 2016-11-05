@@ -1,0 +1,4 @@
+arg: -et:PushExplicitPop.trace
+inc: PushExplicitPop.trace
+del: PushExplicitPop.trace
+dsc: zinger.exe, P semantics test: one machine, "push" with explicit "pop"

@@ -1,0 +1,4 @@
+arg: -et:SendInEntry.trace
+inc: SendInEntry.trace
+del: SendInEntry.trace
+dsc: zinger.exe, P semantics test: one machine, "send" to itself in entry actions

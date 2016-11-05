@@ -1,0 +1,10 @@
+=================================
+         Console output          
+=================================
+OUT: <CreateLog> Machine Main(1) is created
+OUT: <StateLog> Machine Main(1) entered state S
+OUT: <RaiseLog> Machine Main(1) raised event halt with payload null
+OUT: <ExitLog> Machine Main(1) exiting state S
+OUT: <HaltLog> Machine Main(1) halted in state S
+OUT: 
+EXIT: 0

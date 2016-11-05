@@ -1,0 +1,18 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350, MachineInboxHead, MachineInboxTail}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 0.67 s
+Time spent reading-writing programs: 0.32 s
+
+Time spent checking a program (2): 0.99 s
+Time spent checking a path (4): 0.42 s
+
+Number of procedures inlined: 12
+Number of variables tracked: 16
+Total Time: 1.8896408 s
+Total User CPU time: 1.96875 s
+

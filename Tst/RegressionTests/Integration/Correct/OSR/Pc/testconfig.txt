@@ -1,0 +1,5 @@
+arg: ..\OSR.p
+arg: /shortFileNames
+arg: /test
+arg: /outputDir:..\.
+dsc: pc.exe, Feature Integration: protocol sample, syntax only

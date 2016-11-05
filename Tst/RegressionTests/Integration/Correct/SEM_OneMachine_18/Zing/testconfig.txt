@@ -1,0 +1,1 @@
+dsc: zinger.exe, P semantics test: one machine, deferral of an unhandled event
