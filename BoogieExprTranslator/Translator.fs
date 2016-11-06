@@ -327,6 +327,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("procedure AssertIsType{0}(x: PrtRef) ", tindex)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("call {:cexpr \"typeof_x\"} boogie_si_record_PrtType(PrtDynamicType(x));")
     match t with
     | Null -> sw.WriteLine("assert PrtIsNull(x);")
     | Any -> raise NotDefined
@@ -1103,6 +1104,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     (*boogie_si_record *)
     sw.WriteLine("procedure boogie_si_record_int(x: int);")
     sw.WriteLine("procedure boogie_si_record_PrtRef(x:PrtRef);")
+    sw.WriteLine("procedure boogie_si_record_PrtType(x: PrtType);")
 
     (* Machine Globals *)
     prog.Machines |> List.filter (fun(md: MachineDecl) -> not md.IsMonitor) |> List.map (fun(md: MachineDecl) -> md.Globals) |> List.map (getVars "{:thread_local}") |> List.fold (fun l v ->  l @ v) [] |> List.iter (fun(x)->sw.WriteLine(x))
