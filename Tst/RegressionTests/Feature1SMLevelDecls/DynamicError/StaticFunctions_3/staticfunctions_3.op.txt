@@ -1,4 +1,18 @@
 Warning: Using default recursion bound of 1
-C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\StaticFunctions_3\staticfunctions_3.bpl(828,16): Error: wrong number of result variables in call to Main_S_on_a_goto_Main_S1: 1
-1 name resolution errors in C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\StaticFunctions_3\staticfunctions_3.bpl
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, CurrState}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, CurrState, machineToQCAssert}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 1.19 s
+Time spent reading-writing programs: 0.44 s
+
+Time spent checking a program (2): 1.38 s
+Time spent checking a path (4): 0.57 s
+
+Number of procedures inlined: 33
+Number of variables tracked: 7
+Total Time: 2.4217868 s
+Total User CPU time: 2.5625 s
 

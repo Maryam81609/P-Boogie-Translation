@@ -1553,8 +1553,11 @@ namespace Microsoft.PBoogieTranslator
                 var funName = symbolTable.GetFunName(getString(t.action));
                 var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(action + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
-                var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null),
-                    FSharpList<Syntax.Stmt>.Empty);
+
+                var body = new List<Syntax.Stmt>(2);
+                body.Add(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null));
+                body.Add(Syntax.Stmt.NewReturn(new FSharpOption<Syntax.Expr>(Syntax.Expr.Nil)));
+
                 var trueNames = new List<Tuple<string, string>>();
 
                 foreach (var kv in symbolTable.machTrueNames[symbolTable.currentM])
@@ -1562,7 +1565,7 @@ namespace Microsoft.PBoogieTranslator
                     trueNames.Add(new Tuple<string, string>(kv.Key, kv.Value));
                 }
 
-                var fd = new Syntax.FunDecl(action, @params, null, FSharpList<Syntax.VarDecl>.Empty, body, false, false, MapModule.OfSeq(trueNames));
+                var fd = new Syntax.FunDecl(action, @params, new FSharpOption<Syntax.Type>(Syntax.Type.Null), FSharpList<Syntax.VarDecl>.Empty, ListModule.OfSeq(body), false, false, MapModule.OfSeq(trueNames));
                 machineToFunList[symbolTable.currentM].Add(fd);
                 return Syntax.TransDecl.T.NewCall(trig, dst, action);
             }
@@ -1600,16 +1603,15 @@ namespace Microsoft.PBoogieTranslator
                 var @params = new FSharpList<Syntax.VarDecl>(new Syntax.VarDecl(action + "_payload", Syntax.Type.Null),
                     FSharpList<Syntax.VarDecl>.Empty);
 
-                var body = new List<Syntax.Stmt>(2);
-                body.Add(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null));
-                body.Add(Syntax.Stmt.NewReturn(new FSharpOption<Syntax.Expr>(Syntax.Expr.Nil)));
+                var body = new FSharpList<Syntax.Stmt>(Syntax.Stmt.NewFunStmt(funName, FSharpList<Syntax.Expr>.Empty, null), 
+                    FSharpList<Syntax.Stmt>.Empty);
                 
                 var trueNames = new List<Tuple<string, string>>();
                 foreach (var kv in symbolTable.machTrueNames[symbolTable.currentM])
                 {
                     trueNames.Add(new Tuple<string, string>(kv.Key, kv.Value));
                 }
-                var fd = new Syntax.FunDecl(action, @params, new FSharpOption<Syntax.Type>(Syntax.Type.Null), FSharpList<Syntax.VarDecl>.Empty, ListModule.OfSeq(body), false, false, MapModule.OfSeq(trueNames));
+                var fd = new Syntax.FunDecl(action, @params, null, FSharpList<Syntax.VarDecl>.Empty, body, false, false, MapModule.OfSeq(trueNames));
                 machineToFunList[symbolTable.currentM].Add(fd);
                 return Syntax.DoDecl.T.NewCall(trig, action);
             }

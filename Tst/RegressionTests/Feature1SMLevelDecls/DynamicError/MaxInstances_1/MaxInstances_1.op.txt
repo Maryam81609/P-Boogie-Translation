@@ -344,14 +344,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1404,5): anon0  (RETURN from newMachine_Main )
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1404,5): anon0  (Done)
 
-Boogie verification time: 6.42 s
-Time spent reading-writing programs: 1.63 s
+Boogie verification time: 6.51 s
+Time spent reading-writing programs: 1.79 s
 
-Time spent checking a program (4): 6.12 s
-Time spent checking a path (13): 2.86 s
+Time spent checking a program (4): 6.23 s
+Time spent checking a path (13): 2.90 s
 
 Number of procedures inlined: 30
 Number of variables tracked: 13
-Total Time: 9.811456 s
-Total User CPU time: 10.59375 s
+Total Time: 9.9682793 s
+Total User CPU time: 10.9375 s
 
