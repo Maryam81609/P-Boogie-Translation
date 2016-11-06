@@ -101,14 +101,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(720,5): anon0  (RETURN from newMachine_Main )
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(720,5): anon0  (Done)
 
-Boogie verification time: 0.39 s
-Time spent reading-writing programs: 0.17 s
+Boogie verification time: 0.38 s
+Time spent reading-writing programs: 0.13 s
 
-Time spent checking a program (1): 0.76 s
-Time spent checking a path (1): 0.10 s
+Time spent checking a program (1): 0.70 s
+Time spent checking a path (1): 0.11 s
 
 Number of procedures inlined: 8
 Number of variables tracked: 10
-Total Time: 1.3187546 s
-Total User CPU time: 1.421875 s
+Total Time: 1.2456017 s
+Total User CPU time: 1.3125 s
 

@@ -59,13 +59,13 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(676,5): anon0  (Done)
 
 Boogie verification time: 0.30 s
-Time spent reading-writing programs: 0.04 s
+Time spent reading-writing programs: 0.11 s
 
-Time spent checking a program (1): 0.61 s
+Time spent checking a program (1): 0.63 s
 Time spent checking a path (1): 0.08 s
 
 Number of procedures inlined: 7
 Number of variables tracked: 7
-Total Time: 1.1604894 s
-Total User CPU time: 1.1875 s
+Total Time: 1.1296435 s
+Total User CPU time: 1.171875 s
 

@@ -82,14 +82,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(762,5): anon0  (RETURN from newMachine_Main )
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(762,5): anon0  (Done)
 
-Boogie verification time: 0.29 s
-Time spent reading-writing programs: 0.14 s
+Boogie verification time: 0.28 s
+Time spent reading-writing programs: 0.16 s
 
-Time spent checking a program (1): 0.62 s
+Time spent checking a program (1): 0.63 s
 Time spent checking a path (1): 0.08 s
 
 Number of procedures inlined: 6
 Number of variables tracked: 8
-Total Time: 1.1541057 s
-Total User CPU time: 1.125 s
+Total Time: 1.181618 s
+Total User CPU time: 1.109375 s
 

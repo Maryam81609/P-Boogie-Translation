@@ -84,13 +84,13 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(748,5): anon0  (Done)
 
 Boogie verification time: 0.33 s
-Time spent reading-writing programs: 0.20 s
+Time spent reading-writing programs: 0.09 s
 
-Time spent checking a program (1): 0.69 s
+Time spent checking a program (1): 0.65 s
 Time spent checking a path (1): 0.10 s
 
 Number of procedures inlined: 8
 Number of variables tracked: 7
-Total Time: 1.2182256 s
-Total User CPU time: 1.15625 s
+Total Time: 1.207476 s
+Total User CPU time: 1.21875 s
 

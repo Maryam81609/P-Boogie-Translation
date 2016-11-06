@@ -164,14 +164,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive5\receive5.bpl(709,5): anon0  (RETURN from Main_Init_entry9 )
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive5\receive5.bpl(709,5): anon0  (Done)
 
-Boogie verification time: 1.24 s
-Time spent reading-writing programs: 0.68 s
+Boogie verification time: 1.20 s
+Time spent reading-writing programs: 0.65 s
 
-Time spent checking a program (3): 1.26 s
-Time spent checking a path (9): 1.13 s
+Time spent checking a program (3): 1.28 s
+Time spent checking a path (9): 1.12 s
 
 Number of procedures inlined: 17
 Number of variables tracked: 10
-Total Time: 2.9669747 s
-Total User CPU time: 3.0625 s
+Total Time: 2.9224779 s
+Total User CPU time: 2.84375 s
 

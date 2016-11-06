@@ -9,14 +9,14 @@ Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, this
 Program has no bugs
 Reached recursion bound of 1
 
-Boogie verification time: 2.33 s
-Time spent reading-writing programs: 1.16 s
+Boogie verification time: 2.36 s
+Time spent reading-writing programs: 1.03 s
 
-Time spent checking a program (4): 2.34 s
-Time spent checking a path (12): 1.77 s
+Time spent checking a program (4): 2.37 s
+Time spent checking a path (12): 1.79 s
 
 Number of procedures inlined: 30
 Number of variables tracked: 14
-Total Time: 4.7303725 s
-Total User CPU time: 5.09375 s
+Total Time: 4.7250533 s
+Total User CPU time: 4.875 s
 

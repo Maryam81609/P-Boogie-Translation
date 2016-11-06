@@ -196,14 +196,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
  )
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive3\receive3.bpl(727,17): anon7_Else  (Done)
 
-Boogie verification time: 1.72 s
-Time spent reading-writing programs: 0.93 s
+Boogie verification time: 1.81 s
+Time spent reading-writing programs: 0.92 s
 
-Time spent checking a program (4): 1.68 s
+Time spent checking a program (4): 1.65 s
 Time spent checking a path (13): 1.67 s
 
 Number of procedures inlined: 20
 Number of variables tracked: 12
-Total Time: 3.9981814 s
-Total User CPU time: 3.84375 s
+Total Time: 3.9006653 s
+Total User CPU time: 4.109375 s
 

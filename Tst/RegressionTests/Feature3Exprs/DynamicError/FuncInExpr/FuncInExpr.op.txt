@@ -108,14 +108,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature3Exprs\DynamicError\FuncInExpr\FuncInExpr.bpl(758,5): anon0  (RETURN from newMachine_Main )
 (1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature3Exprs\DynamicError\FuncInExpr\FuncInExpr.bpl(758,5): anon0  (Done)
 
-Boogie verification time: 0.32 s
-Time spent reading-writing programs: 0.15 s
+Boogie verification time: 0.31 s
+Time spent reading-writing programs: 0.12 s
 
 Time spent checking a program (1): 0.63 s
 Time spent checking a path (1): 0.10 s
 
 Number of procedures inlined: 8
 Number of variables tracked: 8
-Total Time: 1.2040694 s
-Total User CPU time: 1.265625 s
+Total Time: 1.1979119 s
+Total User CPU time: 1.203125 s
 

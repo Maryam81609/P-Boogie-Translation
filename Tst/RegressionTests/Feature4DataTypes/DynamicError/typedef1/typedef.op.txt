@@ -1,0 +1,6 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_slot1, Main_val1, Main_slot2, tmpRhsValue_0, tmpRhsValue_1, Main_val2, Main_map1, registerEvents, CurrState, StateStack, Tmp229, Tmp231, Tmp232, Tmp230, Tmp234, Tmp235, Tmp233, Tmp237, Tmp240, Tmp241, Tmp239, Tmp238, Tmp236, Tmp243, Tmp246, Tmp247, Tmp245, Tmp244, Tmp242}
+Program has a potential bug: True bug
+
+Error, internal bug: Failed to find the failing assert
+
