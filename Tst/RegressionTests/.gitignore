@@ -6,3 +6,10 @@
 *.trace
 *display-diffs.bat
 *failed-tests.txt
+
+#Intermediate Files generated in Testing
+NTRemoved_*.p
+SERemoved_*.p
+deSugared_*.p
+serialized_*.bin
+*.bpl
