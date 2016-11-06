@@ -1,0 +1,71 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, registerEvents, CurrState}
+Program has a potential bug: True bug
+PersistentProgram(316,1): error PF5001: This assertion can fail
+
+pop.bpl(503,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(674,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(674,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(675,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(676,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(558,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(558,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(559,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(560,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(483,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(483,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(484,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(560,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(562,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(563,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(564,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(565,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(566,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(567,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(636,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(636,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(637,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(639,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(640,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(643,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(644,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(645,5): anon0  (CALL Main_Init_entry6)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(577,32): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(577,32): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(578,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(579,5): anon0  (CALL Main_CallExitAction)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(622,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(624,9): anon3_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(622,5): anon3_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(624,9): anon3_Then  (CALL Main_Init_exit6)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(589,34): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(589,34): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(590,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(624,9): anon3_Then  (RETURN from Main_Init_exit6 )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(579,5): anon0  (RETURN from Main_CallExitAction )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(580,5): anon0  (CALL StateStackPop)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(503,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(503,4): anon0  (ASSERTION FAILS assert StateStack != Nil();
+ )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(580,5): anon0  (RETURN from StateStackPop )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(645,5): anon0  (RETURN from Main_Init_entry6 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(645,5): anon0  (Done)
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(567,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(568,7): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(676,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\pop\pop.bpl(676,5): anon0  (Done)
+
+Boogie verification time: 0.31 s
+Time spent reading-writing programs: 0.14 s
+
+Time spent checking a program (1): 0.61 s
+Time spent checking a path (1): 0.07 s
+
+Number of procedures inlined: 7
+Number of variables tracked: 7
+Total Time: 1.091074 s
+Total User CPU time: 1.171875 s
+

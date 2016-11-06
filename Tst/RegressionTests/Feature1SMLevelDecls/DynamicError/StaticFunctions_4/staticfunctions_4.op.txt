@@ -1,0 +1,4 @@
+Warning: Using default recursion bound of 1
+C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\StaticFunctions_4\staticfunctions_4.bpl(925,16): Error: wrong number of result variables in call to Main_S_on_a_goto_Main_S1: 1
+1 name resolution errors in C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\StaticFunctions_4\staticfunctions_4.bpl
+

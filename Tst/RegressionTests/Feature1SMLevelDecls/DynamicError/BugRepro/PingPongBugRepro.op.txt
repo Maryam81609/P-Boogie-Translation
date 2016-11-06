@@ -1,0 +1,16 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp2, Tmp3, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp7, Tmp8, Tmp9, Tmp10, Timer_client}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 0.82 s
+Time spent reading-writing programs: 0.52 s
+
+Time spent checking a program (1): 1.72 s
+Time spent checking a path (0): 0.00 s
+
+Number of procedures inlined: 16
+Number of variables tracked: 27
+Total Time: 2.4466135 s
+Total User CPU time: 2.40625 s
+
