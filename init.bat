@@ -53,7 +53,7 @@ del Src\PrtDist\Core\NodeManager_c.c
 del Src\PrtDist\Core\NodeManager_s.c
 
 echo msbuild P.sln /p:Platform=%Platform% /p:Configuration=%Configuration%
-msbuild  P.sln /p:Platform=%Platform% /p:Configuration=%Configuration% /t:Clean
+msbuild  P.sln /p:Platform=%Platform% /p:Configuration=%Configuration%
  
 cd ..
 echo Done!
