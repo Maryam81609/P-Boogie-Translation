@@ -13,3 +13,4 @@ SERemoved_*.p
 deSugared_*.p
 serialized_*.bin
 *.bpl
+stat.txt
