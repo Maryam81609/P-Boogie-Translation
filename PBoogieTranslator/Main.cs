@@ -153,7 +153,8 @@ namespace Microsoft.PBoogieTranslator
             }
             if (options.serialize)
             {
-                Save(prog, "serialized_" + Path.ChangeExtension(options.deSugarFile, ".bin"));
+                Save(prog, Path.Combine(Path.GetDirectoryName(options.deSugarFile), 
+                    "serialized_" + Path.ChangeExtension(Path.GetFileName(options.deSugarFile), ".bin")));
             }
 
             //Type check the program.
@@ -169,7 +170,8 @@ namespace Microsoft.PBoogieTranslator
             }
             if (options.serialize)
             {
-                Save(prog, "serialized_" + Path.ChangeExtension(options.removeNTFile, ".bin"));
+                Save(prog, Path.Combine(Path.GetDirectoryName(options.removeNTFile), 
+                    "serialized_" + Path.ChangeExtension(Path.GetFileName(options.removeNTFile), ".bin")));
             }
 
             //Remove side effects in the P Program
@@ -181,7 +183,8 @@ namespace Microsoft.PBoogieTranslator
 
             if (options.serialize)
             {
-                Save(prog, "serialized_" + Path.ChangeExtension(options.removeSEFile, ".bin"));
+                Save(prog, Path.Combine(Path.GetDirectoryName(options.removeSEFile), 
+                    "serialized_" + Path.ChangeExtension(Path.GetFileName(options.removeSEFile), ".bin")));
             }
 
             //Print the Boogie file.
