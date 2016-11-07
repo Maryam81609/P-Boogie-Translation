@@ -98,7 +98,7 @@ namespace Microsoft.PBoogieTranslator
                                 if(process.ExitCode != 0)
                                 {
                                     Console.WriteLine();
-                                    Console.WriteLine("ERROR IN CORRAL!");
+                                    Console.Error.WriteLine("ERROR IN CORRAL!");
                                     if(flag)
                                         wrong++;
                                     flag = false;
