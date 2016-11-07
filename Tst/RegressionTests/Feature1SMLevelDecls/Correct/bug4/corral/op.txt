@@ -1,0 +1,11 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp18, Tmp29}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+

@@ -1,0 +1,11 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_ghost_machine, registerEvents, CurrState, Ghost_real_machine}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_ghost_machine, registerEvents, CurrState, Ghost_real_machine, machineEvToQCount}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_ghost_machine, registerEvents, CurrState, Ghost_real_machine, machineEvToQCount, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_ghost_machine, registerEvents, CurrState, Ghost_real_machine, machineEvToQCount, machineToQCAssert, MachineInboxHead, MachineInboxTail}
+Program has no bugs
+Reached recursion bound of 1
+

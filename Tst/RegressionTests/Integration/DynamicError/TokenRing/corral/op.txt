@@ -1,0 +1,11 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst, machineToQCAssert, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst, machineToQCAssert, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineToQCAssume, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+

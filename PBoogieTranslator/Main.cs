@@ -51,31 +51,20 @@ namespace Microsoft.PBoogieTranslator
                                 try
                                 {
                                     process.Start();
-                                    var errFile = Path.ChangeExtension(options.boogieFile, ".err.txt");
-                                    if(File.Exists(errFile))
-                                        File.Delete(errFile);   
-                                    var opFile = Path.ChangeExtension(options.boogieFile, ".op.txt");
-                                    if(File.Exists(opFile))
-                                        File.Delete(opFile);
-
-                                    var opFileDir = Path.Combine(Path.GetDirectoryName(opFile), "corral");
+                                    
+                                    var opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
                                     if (!Directory.Exists(opFileDir))
                                         Directory.CreateDirectory(opFileDir);
 
-                                    var fileName = Path.GetFileName(options.boogieFile);
-                                    opFile = Path.ChangeExtension(fileName, ".op.txt");
-                                    opFile = Path.Combine(opFileDir, opFile);
-
-                                    errFile = Path.ChangeExtension(fileName, ".err.txt");
-                                    errFile = Path.Combine(opFileDir, errFile);
-
                                     var op = process.StandardOutput.ReadToEnd();
                                     var err = process.StandardOutput.ReadToEnd();
-                                    using (var opt = new StreamWriter(opFile))
+
+                                    var idx = op.IndexOf("Boogie verification time");
+                                    
+                                    using (var sw = new StreamWriter(Path.Combine(opFileDir, "op.txt")))
                                     {
-                                        
-                                        opt.WriteLine(op);
-                                        if(op.Contains("Program has a potential bug: True bug"))
+                                        sw.Write(op.Substring(0, idx));
+                                        if (op.Contains("Program has a potential bug: True bug"))
                                         {
                                             Console.WriteLine();
                                             Console.WriteLine(op);
@@ -84,8 +73,13 @@ namespace Microsoft.PBoogieTranslator
                                             flag = false;
                                         }
                                     }
+
+                                    using (var sw = new StreamWriter(Path.Combine(opFileDir, "stat.txt")))
+                                    {
+                                        sw.Write(op.Substring(idx));
+                                    }
                                     
-                                    using (var erf = new StreamWriter(errFile))
+                                    using (var erf = new StreamWriter(Path.Combine(opFileDir, "err.txt")))
                                     {
                                         erf.WriteLine(err);
                                     }
@@ -95,7 +89,7 @@ namespace Microsoft.PBoogieTranslator
                                 {
                                     Console.WriteLine(e.ToString());
                                     Console.WriteLine();
-                                    Console.WriteLine("ERROR IN CORRAL!");
+                                    Console.Error.WriteLine("ERROR IN CORRAL!");
                                     if(flag)
                                         wrong++;
                                     flag = false;
@@ -116,7 +110,9 @@ namespace Microsoft.PBoogieTranslator
                                     Console.Error.WriteLine("Correct!");
                                 }
                                 else
+                                {
                                     Console.Error.WriteLine("Wrong!");
+                                }
                             }
 
                         }

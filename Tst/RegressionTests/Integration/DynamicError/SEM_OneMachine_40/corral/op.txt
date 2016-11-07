@@ -1,0 +1,83 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_y, Main_tmp, Main_tmp1, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp1390, Tmp1389, Tmp1392, Tmp1391, Tmp1388}
+Program has a potential bug: True bug
+PersistentProgram(268,1): error PF5001: This assertion can fail
+
+lvalues_runtimeError.bpl(206,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(771,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(771,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(772,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(773,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(595,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(595,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(596,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(597,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(520,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(520,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(521,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(597,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(599,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(600,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(601,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(602,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(603,5): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(604,11): anon0  (FORK MachineThread_Main)
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(715,16): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(715,16): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(716,15): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(718,17): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(719,13): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(721,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(722,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(723,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(724,13): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(725,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(726,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(727,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(728,13): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(729,19): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(730,19): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(731,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(732,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(733,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(734,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(735,12): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(736,12): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(737,14): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(738,15): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(740,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(741,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(742,5): anon0  (CALL Main_S_entry18)
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(644,30): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(644,30): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(645,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(646,5): anon0  (CALL Main_foo)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(613,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(613,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(614,9): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(646,5): anon0  (RETURN from Main_foo )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(647,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(648,5): anon0  (CALL Main_IncY)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(631,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(631,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(632,12): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(633,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(634,9): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(648,5): anon0  (RETURN from Main_IncY )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(649,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(650,13): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(651,5): anon0  (CALL WriteSeq)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(206,2): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(206,2): anon0  (ASSERTION FAILS assert SeqIndexInBounds(seq, index);
+ )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(651,5): anon0  (RETURN from WriteSeq )
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(742,5): anon0  (RETURN from Main_S_entry18 )
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(742,5): anon0  (Done)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(604,11): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(605,7): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(773,5): anon0  (RETURN from newMachine_Main )
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_40\lvalues_runtimeError.bpl(773,5): anon0  (Done)
+

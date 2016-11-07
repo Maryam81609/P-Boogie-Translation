@@ -1,0 +1,9 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, registerEvents, CurrState, StateStack}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, registerEvents, CurrState, StateStack, machineEvToQCount}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, registerEvents, CurrState, StateStack, machineEvToQCount, machineToQCAssert}
+Program has no bugs
+Reached recursion bound of 1
+

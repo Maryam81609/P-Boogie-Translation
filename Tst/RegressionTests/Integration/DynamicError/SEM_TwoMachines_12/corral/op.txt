@@ -1,0 +1,153 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_test, Main_mac, Main_ev2, tmpEventID, Main_ev1, registerEvents, CurrState, StateStack}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_test, Main_mac, Main_ev2, tmpEventID, Main_ev1, registerEvents, CurrState, StateStack, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: True bug
+PersistentProgram(680,1): error PF5001: This assertion can fail
+
+NonConstantEventExprMonitor1.bpl(630,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1024,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1024,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1025,17): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1026,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1027,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(650,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(650,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(651,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(652,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(514,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(514,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(515,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(652,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(654,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(655,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(656,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(657,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(658,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(659,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(660,5): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(661,11): anon0  (FORK MachineThread_Main)
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(822,16): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(822,16): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(823,15): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(825,17): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(826,13): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(828,15): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(829,14): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(830,14): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(831,14): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(832,14): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(834,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(835,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(836,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(837,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(838,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(839,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(840,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(841,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(842,5): anon0  (CALL Main_Real1_Init_entry13)
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(719,39): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(719,39): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(720,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(721,5): anon0  (CALL newMachine_Real2)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(668,20): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(668,20): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(669,9): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(670,5): anon0  (CALL InitializeInbox)
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(514,4): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(514,4): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(515,4): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(670,5): anon0  (RETURN from InitializeInbox )
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(672,28): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(673,28): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(674,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(675,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(676,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(677,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(678,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(679,11): anon0  (FORK MachineThread_Real2)
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(979,16): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(979,16): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(980,15): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(982,17): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(983,13): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(985,14): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(987,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(988,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(989,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(990,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(991,5): anon0  (CALL Real2_Real2_Init_entry37)
+(3,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(922,40): anon0  
+(3,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(922,40): anon0  
+(3,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(923,5): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(991,5): anon0  (RETURN from Real2_Real2_Init_entry37 )
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(992,5): anon6_LoopHead  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(994,9): anon6_LoopBody  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(992,5): anon6_LoopBody  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(679,11): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(680,7): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(721,5): anon0  (RETURN from newMachine_Real2 )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(722,14): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(723,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(724,14): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(725,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(726,5): anon0  (CALL AssertPayloadDynamicType)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(91,10): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(91,10): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(94,9): anon3_Then  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(92,5): anon3_Then  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(94,9): anon3_Then  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(96,5): anon2  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(726,5): anon0  (RETURN from AssertPayloadDynamicType )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(727,5): anon0  (CALL monitor)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(69,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(69,5): anon6_Else  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(69,5): anon6_Else  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(74,9): anon7_Then  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(72,10): anon7_Then  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(74,9): anon7_Then  (CALL Monitor_M)
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(608,13): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(608,13): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(609,5): anon3_Then  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(609,5): anon3_Then  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(611,7): M_x  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(614,13): anon4_Then  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(612,9): anon4_Then  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(614,13): anon4_Then  (CALL M_x_do_E251)
+(2,0)        C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(627,24): anon0  
+(2,0)        C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(627,24): anon0  
+(2,0)        C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(628,5): anon0  
+(2,0)        C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(629,5): anon0  (CALL PrtEquals)
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(103,5): anon0  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(103,5): anon13_Else  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(103,5): anon13_Else  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(105,8): anon2  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(105,8): anon2  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(106,8): anon2  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(108,5): anon14_Else  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(108,5): anon14_Else  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(109,5): anon4  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(109,5): anon15_Else  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(109,5): anon15_Else  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(110,5): anon6  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(110,31): anon16_Then  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(110,5): anon16_Then  
+(2,0)         C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(110,31): anon16_Then  
+(2,0)        C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(629,5): anon0  (RETURN from PrtEquals )
+(2,0)        C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(630,5): anon0  (ASSERTION FAILS assert PrtFieldBool(Tmp1402);
+ )
+(2,0)       C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(614,13): anon4_Then  (RETURN from M_x_do_E251 )
+(2,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(74,9): anon7_Then  (RETURN from Monitor_M )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(727,5): anon0  (RETURN from monitor )
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(842,5): anon0  (RETURN from Main_Real1_Init_entry13 )
+(2,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(842,5): anon0  (Done)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(661,11): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(662,7): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1027,5): anon0  (RETURN from newMachine_Main )
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(1027,5): anon0  (Done)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(994,9): anon6_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_12\NonConstantEventExprMonitor1.bpl(994,9): anon6_LoopBody  (Done)
+

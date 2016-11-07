@@ -1,0 +1,15 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, B_x, tmpRhsValue_0, tmpRhsValue_1}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, B_x, tmpRhsValue_0, tmpRhsValue_1, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, B_x, tmpRhsValue_0, tmpRhsValue_1, MachineInboxHead, MachineInboxTail, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, B_x, tmpRhsValue_0, tmpRhsValue_1, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, B_x, tmpRhsValue_0, tmpRhsValue_1, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStoreEvent}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, B_x, tmpRhsValue_0, tmpRhsValue_1, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+
