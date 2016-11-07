@@ -1,0 +1,18 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, Main_sharer_list, Main_s, tmpRhsValue_0, tmpRhsValue_1, Main_temp, Main_clients, tmpRhsValue_2, Main_curr_client, Main_is_curr_req_excl, Main_is_excl_granted, Main_i, registerEvents, StateStack, Tmp641, Tmp642, Tmp643, Tmp640, Tmp644, Client_host, Client_pending, CPU_cache, Tmp657, Tmp658, Tmp659, Tmp656}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, Main_sharer_list, Main_s, tmpRhsValue_0, tmpRhsValue_1, Main_temp, Main_clients, tmpRhsValue_2, Main_curr_client, Main_is_curr_req_excl, Main_is_excl_granted, Main_i, registerEvents, StateStack, Tmp641, Tmp642, Tmp643, Tmp640, Tmp644, Client_host, Client_pending, CPU_cache, Tmp657, Tmp658, Tmp659, Tmp656, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineToQCAssert, machineToQCAssume, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 1327.00 s
+Time spent reading-writing programs: 3.73 s
+
+Time spent checking a program (2): 1074.48 s
+Time spent checking a path (4): 266.90 s
+
+Number of procedures inlined: 83
+Number of variables tracked: 40
+Total Time: 1343.1044082 s
+Total User CPU time: 1332.109375 s
+

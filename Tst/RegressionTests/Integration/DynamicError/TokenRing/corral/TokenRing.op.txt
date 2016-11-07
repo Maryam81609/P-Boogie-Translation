@@ -1,0 +1,22 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst, machineToQCAssert, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Node_MyRing, Node_NextMachine, Node_IsSending, registerEvents, StateStack, Main_N1, Main_N2, Main_N3, Main_N4, Main_ReadyCount, Main_Rand1, Main_Rand2, Main_RandSrc, Main_RandDst, machineToQCAssert, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineToQCAssume, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 217.77 s
+Time spent reading-writing programs: 2.35 s
+
+Time spent checking a program (4): 209.18 s
+Time spent checking a path (12): 12.36 s
+
+Number of procedures inlined: 103
+Number of variables tracked: 28
+Total Time: 222.44617 s
+Total User CPU time: 230.203125 s
+

@@ -1,0 +1,24 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp603, Tmp606, Tmp607, Tmp605, Tmp604, Tmp602, Tmp601, Tmp609, Tmp608, Tmp600, Tmp611, Tmp614, Tmp615, Tmp613, Tmp612, Tmp610}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp603, Tmp606, Tmp607, Tmp605, Tmp604, Tmp602, Tmp601, Tmp609, Tmp608, Tmp600, Tmp611, Tmp614, Tmp615, Tmp613, Tmp612, Tmp610, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp603, Tmp606, Tmp607, Tmp605, Tmp604, Tmp602, Tmp601, Tmp609, Tmp608, Tmp600, Tmp611, Tmp614, Tmp615, Tmp613, Tmp612, Tmp610, machineToQCAssert, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp603, Tmp606, Tmp607, Tmp605, Tmp604, Tmp602, Tmp601, Tmp609, Tmp608, Tmp600, Tmp611, Tmp614, Tmp615, Tmp613, Tmp612, Tmp610, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp603, Tmp606, Tmp607, Tmp605, Tmp604, Tmp602, Tmp601, Tmp609, Tmp608, Tmp600, Tmp611, Tmp614, Tmp615, Tmp613, Tmp612, Tmp610, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 2.73 s
+Time spent reading-writing programs: 1.67 s
+
+Time spent checking a program (5): 2.54 s
+Time spent checking a path (16): 2.42 s
+
+Number of procedures inlined: 22
+Number of variables tracked: 33
+Total Time: 5.6338753 s
+Total User CPU time: 6.28125 s
+

@@ -1,0 +1,18 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, Main_N1, Main_N2, Main_N3, Main_N4, Main_templ, Main_slotT, tmpRhsValue_0, tmpRhsValue_1, registerEvents, StateStack, Tmp911, OpenWSN_Mote_myRank, OpenWSN_Mote_lastSynched, OpenWSN_Mote_temp, OpenWSN_Mote_i, OpenWSN_Mote_myNeighbours, OpenWSN_Mote_slotTimer, OpenWSN_Mote_myTimeParent, OpenWSN_Mote_currentSlot, OpenWSN_Mote_check, Tmp926, Tmp928, Tmp929, Tmp927, Tmp931, Tmp934, Tmp935, Tmp933, Tmp932, Tmp930, SlotTimerMachine_counter, SlotTimerMachine_AllMotes, SlotTimerMachine_i, Tmp953}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, Main_N1, Main_N2, Main_N3, Main_N4, Main_templ, Main_slotT, tmpRhsValue_0, tmpRhsValue_1, registerEvents, StateStack, Tmp911, OpenWSN_Mote_myRank, OpenWSN_Mote_lastSynched, OpenWSN_Mote_temp, OpenWSN_Mote_i, OpenWSN_Mote_myNeighbours, OpenWSN_Mote_slotTimer, OpenWSN_Mote_myTimeParent, OpenWSN_Mote_currentSlot, OpenWSN_Mote_check, Tmp926, Tmp928, Tmp929, Tmp927, Tmp931, Tmp934, Tmp935, Tmp933, Tmp932, Tmp930, SlotTimerMachine_counter, SlotTimerMachine_AllMotes, SlotTimerMachine_i, Tmp953, MachineInboxHead, MachineInboxTail}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 18.28 s
+Time spent reading-writing programs: 1.14 s
+
+Time spent checking a program (2): 18.45 s
+Time spent checking a path (4): 1.65 s
+
+Number of procedures inlined: 77
+Number of variables tracked: 43
+Total Time: 20.9333244 s
+Total User CPU time: 22.671875 s
+

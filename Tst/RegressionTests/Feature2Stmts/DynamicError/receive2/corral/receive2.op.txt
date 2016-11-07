@@ -1,0 +1,24 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 3.81 s
+Time spent reading-writing programs: 1.97 s
+
+Time spent checking a program (5): 3.71 s
+Time spent checking a path (16): 2.98 s
+
+Number of procedures inlined: 33
+Number of variables tracked: 20
+Total Time: 7.5218367 s
+Total User CPU time: 7.9375 s
+

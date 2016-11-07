@@ -1,0 +1,93 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_m, registerEvents, CurrState, StateStack, Tmp1320}
+Program has a potential bug: True bug
+PersistentProgram(281,1): error PF5001: This assertion can fail
+
+Insert4Map.bpl(392,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(688,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(688,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(689,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(690,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(567,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(567,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(568,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(569,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(492,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(492,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(493,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(569,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(571,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(572,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(573,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(574,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(575,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(576,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(646,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(646,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(647,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(649,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(650,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(652,5): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(653,5): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(654,5): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(655,12): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(657,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(658,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(659,5): anon0  (CALL Main_S_entry10)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(586,30): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(586,30): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(587,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(588,5): anon0  (CALL InsertMap)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(383,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(383,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(384,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(385,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(386,9): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(388,2): anon5_LoopHead  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(388,2): anon5_LoopDone  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(388,2): anon5_LoopDone  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(397,13): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(397,13): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(398,15): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(400,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(401,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(402,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(403,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(404,2): anon4  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(588,5): anon0  (RETURN from InsertMap )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(589,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(590,5): anon0  (CALL InsertMap)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(383,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(383,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(384,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(385,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(386,9): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(388,2): anon5_LoopHead  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(390,3): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(388,2): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(392,4): anon6_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(390,3): anon6_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(392,4): anon6_Then  (ASSERTION FAILS assert false;
+ )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(590,5): anon0  (RETURN from InsertMap )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(659,5): anon0  (RETURN from Main_S_entry10 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(659,5): anon0  (Done)
+(1,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(576,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(577,7): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(690,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation-Backup\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes15\Insert4Map.bpl(690,5): anon0  (Done)
+
+Boogie verification time: 0.34 s
+Time spent reading-writing programs: 0.16 s
+
+Time spent checking a program (1): 0.69 s
+Time spent checking a path (1): 0.09 s
+
+Number of procedures inlined: 8
+Number of variables tracked: 9
+Total Time: 1.2169033 s
+Total User CPU time: 1.296875 s
+

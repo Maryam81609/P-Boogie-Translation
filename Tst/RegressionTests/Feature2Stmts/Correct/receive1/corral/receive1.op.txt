@@ -1,0 +1,26 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload, MachineInboxStoreEvent, machineEvToQCount, machineCounter}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 10.11 s
+Time spent reading-writing programs: 2.33 s
+
+Time spent checking a program (6): 9.97 s
+Time spent checking a path (20): 3.58 s
+
+Number of procedures inlined: 50
+Number of variables tracked: 20
+Total Time: 14.4589596 s
+Total User CPU time: 15.21875 s
+

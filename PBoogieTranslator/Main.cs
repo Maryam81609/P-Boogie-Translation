@@ -34,6 +34,7 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             Console.WriteLine(line);
                             Console.WriteLine("*************************************************************************************************************************");
+                            Console.Error.WriteLine(line);
                             options.pFile = line;
                             ProcessPFile(options, fsExpGen);
                             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
@@ -51,7 +52,23 @@ namespace Microsoft.PBoogieTranslator
                                 {
                                     process.Start();
                                     var errFile = Path.ChangeExtension(options.boogieFile, ".err.txt");
+                                    if(File.Exists(errFile))
+                                        File.Delete(errFile);   
                                     var opFile = Path.ChangeExtension(options.boogieFile, ".op.txt");
+                                    if(File.Exists(opFile))
+                                        File.Delete(opFile);
+
+                                    var opFileDir = Path.Combine(Path.GetDirectoryName(opFile), "corral");
+                                    if (!Directory.Exists(opFileDir))
+                                        Directory.CreateDirectory(opFileDir);
+
+                                    var fileName = Path.GetFileName(options.boogieFile);
+                                    opFile = Path.ChangeExtension(fileName, ".op.txt");
+                                    opFile = Path.Combine(opFileDir, opFile);
+
+                                    errFile = Path.ChangeExtension(fileName, ".err.txt");
+                                    errFile = Path.Combine(opFileDir, errFile);
+
                                     var op = process.StandardOutput.ReadToEnd();
                                     var err = process.StandardOutput.ReadToEnd();
                                     using (var opt = new StreamWriter(opFile))
@@ -96,9 +113,12 @@ namespace Microsoft.PBoogieTranslator
                                 {
                                     correct++;
                                     Console.WriteLine("done!");
+                                    Console.Error.WriteLine("Correct!");
                                 }
+                                else
+                                    Console.Error.WriteLine("Wrong!");
                             }
-                            
+
                         }
                         catch (Exception e)
                         {

@@ -1,0 +1,18 @@
+Warning: Using default recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, tmpRhsValue_0}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, tmpRhsValue_0, machineToQCAssert}
+Program has no bugs
+Reached recursion bound of 1
+
+Boogie verification time: 1.55 s
+Time spent reading-writing programs: 0.54 s
+
+Time spent checking a program (2): 1.93 s
+Time spent checking a path (4): 0.61 s
+
+Number of procedures inlined: 32
+Number of variables tracked: 9
+Total Time: 3.052638 s
+Total User CPU time: 3.25 s
+

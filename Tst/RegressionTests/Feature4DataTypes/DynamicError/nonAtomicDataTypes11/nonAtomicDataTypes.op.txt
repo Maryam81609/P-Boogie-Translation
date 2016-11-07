@@ -1,6 +1,0 @@
-Warning: Using default recursion bound of 1
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_s7, Main_tmp3, tmpRhsValue_0, tmpRhsValue_1, Main_t, registerEvents, CurrState, StateStack, Tmp195, Tmp194, Tmp197, Tmp196, Tmp193, Tmp199, Tmp200, Tmp198, Tmp202, Tmp203, Tmp201, Tmp206, Tmp205, Tmp208, Tmp207, Tmp204, Tmp209, Tmp210, Tmp211, Tmp212, Tmp213, Tmp214, Tmp215, Tmp216, Tmp217, Tmp218, Tmp219, Tmp220}
-Program has a potential bug: True bug
-
-Error, internal bug: Failed to find the failing assert
-

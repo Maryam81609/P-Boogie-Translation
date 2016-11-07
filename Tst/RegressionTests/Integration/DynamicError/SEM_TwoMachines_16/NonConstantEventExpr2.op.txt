@@ -1,6 +1,0 @@
-Warning: Using default recursion bound of 1
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_mac, Main_ev2, tmpEventID, Main_ev1, Main_test, registerEvents, CurrState, StateStack}
-Program has a potential bug: True bug
-
-Error, internal bug: Failed to find the failing assert
-
