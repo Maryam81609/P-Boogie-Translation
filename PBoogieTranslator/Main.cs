@@ -38,7 +38,10 @@ namespace Microsoft.PBoogieTranslator
                             options.pFile = line;
                             ProcessPFile(options, fsExpGen);
                             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
-                            startInfo.Arguments = options.boogieFile + " /cooperative";
+                            startInfo.Arguments = options.boogieFile 
+                                + " /cooperative"  //Use Co-operative scheduling
+                                + "/maxStaticLoopBound:50" //Figure out recursion bound automatically.
+                                + "/k:3"; //Context switch bound.
                             startInfo.RedirectStandardError = true;
                             startInfo.RedirectStandardInput = true;
                             startInfo.RedirectStandardOutput = true;

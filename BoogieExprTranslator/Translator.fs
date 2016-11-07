@@ -403,7 +403,9 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("procedure {0}({1}){2}", fd.Name, formals, ret)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
-    fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef;")  |> List.iter (fun(s) -> sw.WriteLine(s))
+    fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef; //" + (printType (Map.find v.Name G)))  
+    |> List.iter (fun(s) -> sw.WriteLine(s))
+
     getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
     
     sw.WriteLine("var event: int;")
@@ -529,6 +531,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("yield;")
     sw.WriteLine("async call MachineThread_{0}(tmp, entryArg);", m)
     sw.WriteLine("m := PrtConstructFromMachineId(tmp);")
+    sw.WriteLine("assume PrtDynamicType(m) == PrtTypeMachine;")
     sw.WriteLine("return;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
