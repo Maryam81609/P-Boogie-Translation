@@ -556,9 +556,10 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       StateStack := stack#Cons(StateStack);
       if(registerEvents[CurrState][event])
       {" 
-    fprintfn sw "      call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
-    fprintfn sw "      return;
-   }" 
+    fprintfn sw "        call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
+    fprintfn sw "        return;
+      }" 
+    fprintfn sw "   }"
 
     fprintfn sw @"   return;
 }"
