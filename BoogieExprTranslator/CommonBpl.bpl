@@ -7,6 +7,7 @@ procedure {:inline} WriteSeq(seq: PrtRef, index: int, value: PrtRef)  returns (n
 	var store: [int]PrtRef;
 	var size: int;
 
+	call {:cexpr "idx_in_bounds"} boogie_si_record_bool(SeqIndexInBounds(seq, index));
 	assert SeqIndexInBounds(seq, index);
 		
 	size := PrtFieldSeqSize(seq);
@@ -31,6 +32,7 @@ procedure {:inline} RemoveSeq(seq: PrtRef, index: int)  returns (nseq: PrtRef)
 	i := 0;
 	oldStore := PrtFieldSeqStore(seq);
 
+	call {:cexpr "idx_in_bounds"} boogie_si_record_bool(SeqIndexInBounds(seq, index));
 	assert SeqIndexInBounds(seq, index);
 
 	while(i < index)
@@ -59,7 +61,9 @@ procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (
 	var i: int;
 
 	size := PrtFieldSeqSize(seq);
-	i := 0;    
+	i := 0;
+
+	call {:cexpr "idx_in_bounds"} boogie_si_record_bool((0 <= index && index <= size));
 	assert (0 <= index && index <= size);
 	
 	oldStore := PrtFieldSeqStore(seq);
@@ -132,6 +136,7 @@ procedure {:inline} ReadMap(map: PrtRef, key: PrtRef) returns (value: PrtRef)
 		i := i + 1;
 	}
 
+	call {:cexpr "key_not_found"} boogie_si_record_bool(true);
 	assert false;
 	return;
 }
@@ -222,6 +227,7 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
 	{
 		if(keys[i] == key)
 		{
+		    call {:cexpr "key_already_present"} boogie_si_record_bool(true);
 			assert false;
 		}
 		i := i + 1;
@@ -250,6 +256,7 @@ procedure {:inline} RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
 	var newValues: [int]PrtRef;
 
 	size := PrtFieldMapSize(map);
+	call {:cexpr "map_empty"} boogie_si_record_bool((size == 0));
 	assert (size > 0);
 	i := 0;
 	oldKeys := PrtFieldMapKeys(map);
@@ -268,6 +275,8 @@ procedure {:inline} RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
 		}
 		i := i + 1;
 	}
+
+	call {:cexpr "key_not_found"} boogie_si_record_bool(!flag);
 	assert flag;
 
 	while(i < (size - 1))
@@ -342,6 +351,7 @@ procedure StateStackPush(state: int)
 
 procedure StateStackPop()
 {
+   call {:cexpr "stack_nil"} boogie_si_record_bool((StateStack != Nil()));
    assert StateStack != Nil();
    StateStack := stack#Cons(StateStack);
    return;
@@ -361,6 +371,7 @@ procedure AssertMachineQueueSize(mid: int)
 	qc := machineToQCAssert[mid];
 	if(qc > 0)
 	{
+	   call {:cexpr "MachineQC_violated"} boogie_si_record_bool((size <= qc));
 	   assert (size <= qc);
 	}
 
