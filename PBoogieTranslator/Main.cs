@@ -15,7 +15,7 @@ namespace Microsoft.PBoogieTranslator
         public static void Main(string[] args)
         {
             var options = new CommandLineArguments(args);
-            FSharpExpGen fsExpGen = null; //new FSharpExpGen(options);
+            FSharpExpGen fsExpGen = new FSharpExpGen(options); //null
             int correct = 0;
             int wrong = 0;
             int tested = 0;
@@ -35,7 +35,7 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             Console.WriteLine(options.boogieFile);
                             Console.WriteLine("*************************************************************************************************************************");
-                            //ProcessPFile(options, fsExpGen);
+                            ProcessPFile(options, fsExpGen);
                             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
                             startInfo.Arguments = options.boogieFile 
                                 + " /cooperative"  //Use Co-operative scheduling
@@ -53,7 +53,7 @@ namespace Microsoft.PBoogieTranslator
                                 try
                                 {
                                     process.Start();
-                                    
+
                                     var opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
                                     if (!Directory.Exists(opFileDir))
                                         Directory.CreateDirectory(opFileDir);
@@ -62,11 +62,12 @@ namespace Microsoft.PBoogieTranslator
                                     var err = process.StandardOutput.ReadToEnd();
 
                                     var idx = op.IndexOf("Boogie verification time");
-                                    
+
                                     using (var sw = new StreamWriter(Path.Combine(opFileDir, "op.txt")))
                                     {
                                         sw.Write(op.Substring(0, idx));
-                                        if (!op.Contains("Program has a potential bug: True bug"))
+                                        if ((line.Contains(@"\Correct\") && op.Contains("Program has a potential bug: True bug")) ||
+                                            (line.Contains(@"\DynamicError\") && !op.Contains("Program has a potential bug: True bug")))
                                         {
                                             Console.WriteLine();
                                             Console.WriteLine(op);
@@ -75,7 +76,6 @@ namespace Microsoft.PBoogieTranslator
                                             flag = false;
                                         }
                                     }
-
                                     using (var sw = new StreamWriter(Path.Combine(opFileDir, "stat.txt")))
                                     {
                                         sw.Write(op.Substring(idx));

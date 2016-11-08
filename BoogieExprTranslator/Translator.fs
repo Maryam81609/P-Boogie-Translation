@@ -403,7 +403,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("procedure {0}({1}){2}", fd.Name, formals, ret)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
-    fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef; //" + (printType (Map.find v.Name G)))  
+    fd.Formals |> List.map (fun(v) -> "var " + v.Name + ": PrtRef; //" + (printType (Map.find v.Name fd.VarMap)))  
     |> List.iter (fun(s) -> sw.WriteLine(s))
 
     getVars "" fd.Locals |> List.iter (fun(x) -> sw.WriteLine("{0}", x))
@@ -1141,6 +1141,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
 
     (*boogie_si_record *)
     sw.WriteLine("procedure boogie_si_record_int(x: int);")
+    sw.WriteLine("procedure boogie_si_record_bool(x: bool);")
     sw.WriteLine("procedure boogie_si_record_PrtRef(x:PrtRef);")
     sw.WriteLine("procedure boogie_si_record_PrtType(x: PrtType);")
 

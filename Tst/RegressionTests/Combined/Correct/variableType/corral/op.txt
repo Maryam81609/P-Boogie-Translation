@@ -1,8 +1,12 @@
 Warning: Using default recursion bound of 1
-LB: Took 1.03 s
+LB: Took 0.34 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, CurrState}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, CurrState, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, CurrState, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, CurrState, machineToQCAssert, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, CurrState, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail}
 Program has no bugs
 Reached recursion bound of 1
 

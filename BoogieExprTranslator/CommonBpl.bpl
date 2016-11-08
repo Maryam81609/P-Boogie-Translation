@@ -191,6 +191,7 @@ procedure {:inline} WriteMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns (
 
 	if(!flag)
 	{
+	    call {:cexpr "key_not_found"} boogie_si_record_bool(true);
 		keys[i] := key;
 		values[i] := value;
 		size := size + 1;
