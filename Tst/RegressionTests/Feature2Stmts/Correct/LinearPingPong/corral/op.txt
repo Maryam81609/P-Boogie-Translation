@@ -1,13 +1,15 @@
 Warning: Using default recursion bound of 1
 Verifying 5 impls
-LB: Took 0.52 s
+LB: Took 0.48 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineEvToQCount}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineToQCAssert}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineEvToQCount, machineToQCAssert}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineToQCAssert, machineToQCAssume}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineEvToQCount, machineToQCAssert, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineToQCAssert, machineToQCAssume, machineEvToQCount}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineToQCAssert, machineToQCAssume, machineEvToQCount, MachineInboxHead, MachineInboxTail}
 Program has no bugs
 Reached recursion bound of 1
 

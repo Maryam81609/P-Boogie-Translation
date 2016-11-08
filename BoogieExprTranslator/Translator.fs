@@ -944,22 +944,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
         sw.Indent <- sw.Indent + 1
         sw.WriteLine("// dequeue")
         sw.WriteLine("q := machineEvToQCount[thisMid][event];")
-        
-        sw.WriteLine("if(machineToQCAssert[thisMid] != 0 - 1)")
-        sw.WriteLine("{")
-        sw.Indent <- sw.Indent + 1
-        sw.WriteLine("call {:cexpr \"Q_size\"} boogie_si_record_int(q);")
-        sw.WriteLine("assert q <= machineToQCAssert[thisMid];")
-        sw.Indent <- sw.Indent - 1
-        sw.WriteLine("}")
-
-        sw.WriteLine("else if(machineToQCAssume[thisMid] != 0 - 1)")
-        sw.WriteLine("{")
-        sw.Indent <- sw.Indent + 1
-        sw.WriteLine("assume q <= machineToQCAssume[thisMid];")
-        sw.Indent <- sw.Indent - 1
-        sw.WriteLine("}")
-
         sw.WriteLine("machineEvToQCount[thisMid][event] := q - 1;")
         sw.WriteLine("if(ptr == head)")
         sw.WriteLine("{")
@@ -990,20 +974,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("// dequeue")
     sw.WriteLine("q := machineEvToQCount[thisMid][event];")    
-    sw.WriteLine("if(machineToQCAssert[thisMid] != 0 - 1)")
-    sw.WriteLine("{")
-    sw.Indent <- sw.Indent + 1
-    sw.WriteLine("assert q <= machineToQCAssert[thisMid];")
-    sw.Indent <- sw.Indent - 1
-    sw.WriteLine("}")
-
-    sw.WriteLine("else if(machineToQCAssume[thisMid] != 0 - 1)")
-    sw.WriteLine("{")
-    sw.Indent <- sw.Indent + 1
-    sw.WriteLine("assume q <= machineToQCAssume[thisMid];")
-    sw.Indent <- sw.Indent - 1
-    sw.WriteLine("}")
-
     sw.WriteLine("machineEvToQCount[thisMid][event] := q - 1;")
     sw.WriteLine("if(ptr == head)")
     sw.WriteLine("{")
