@@ -501,7 +501,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     //Raise exception for unhandled event.
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
-    sw.WriteLine("call {:cexpr \"dropped_event\"} boogie_si_record_int(event);")
+    sw.WriteLine("call {:cexpr \"unhandled_event\"} boogie_si_record_int(event);")
     sw.WriteLine("assert false;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
@@ -834,7 +834,11 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       match (Map.find e evToDecl).QC with
       | None -> sw.WriteLine()
       | Some(Card.Assume(i)) -> sw.WriteLine("assume (count <= {0});", i)
-      | Some(Card.Assert(i)) -> sw.WriteLine("assert (count <= {0});", i)
+      | Some(Card.Assert(i)) -> 
+        begin
+          sw.WriteLine("call {{:cexpr \"{0}_QC_violated\"}}  boogie_si_record_int(count);", e)
+          sw.WriteLine("assert (count <= {0});", i)
+        end
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
 
@@ -940,6 +944,22 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
         sw.Indent <- sw.Indent + 1
         sw.WriteLine("// dequeue")
         sw.WriteLine("q := machineEvToQCount[thisMid][event];")
+        
+        sw.WriteLine("if(machineToQCAssert[thisMid] != 0 - 1)")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("call {:cexpr \"Q_size\"} boogie_si_record_int(q);")
+        sw.WriteLine("assert q <= machineToQCAssert[thisMid];")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+
+        sw.WriteLine("else if(machineToQCAssume[thisMid] != 0 - 1)")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("assume q <= machineToQCAssume[thisMid];")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+
         sw.WriteLine("machineEvToQCount[thisMid][event] := q - 1;")
         sw.WriteLine("if(ptr == head)")
         sw.WriteLine("{")
@@ -969,7 +989,21 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("// dequeue")
-    sw.WriteLine("q := machineEvToQCount[thisMid][event];")
+    sw.WriteLine("q := machineEvToQCount[thisMid][event];")    
+    sw.WriteLine("if(machineToQCAssert[thisMid] != 0 - 1)")
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("assert q <= machineToQCAssert[thisMid];")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+
+    sw.WriteLine("else if(machineToQCAssume[thisMid] != 0 - 1)")
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("assume q <= machineToQCAssume[thisMid];")
+    sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+
     sw.WriteLine("machineEvToQCount[thisMid][event] := q - 1;")
     sw.WriteLine("if(ptr == head)")
     sw.WriteLine("{")
@@ -1000,6 +1034,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
 
     sw.WriteLine("// block")
     sw.WriteLine("assume (event >= 0) && (event < {0});", numEvents)
+    
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 

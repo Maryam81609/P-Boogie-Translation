@@ -9,7 +9,7 @@ machine Main {
 			entry {
 				raise x, (a, 3);
 			}
-                        on x do (payload: (event, int)) {
+            on x do (payload: (event, int)) {
 				raise payload.0, payload.1;
 			}
 		}

@@ -15,7 +15,7 @@ namespace Microsoft.PBoogieTranslator
         public static void Main(string[] args)
         {
             var options = new CommandLineArguments(args);
-            FSharpExpGen fsExpGen = new FSharpExpGen(options);
+            FSharpExpGen fsExpGen = null; //new FSharpExpGen(options);
             int correct = 0;
             int wrong = 0;
             int tested = 0;
@@ -31,17 +31,16 @@ namespace Microsoft.PBoogieTranslator
                         {
                             if (line.StartsWith("//"))
                                 continue;
-                            Console.WriteLine("*************************************************************************************************************************");
-                            Console.WriteLine(line);
-                            Console.WriteLine("*************************************************************************************************************************");
-                            Console.Error.WriteLine(line);
                             options.pFile = line;
-                            ProcessPFile(options, fsExpGen);
+                            Console.WriteLine("*************************************************************************************************************************");
+                            Console.WriteLine(options.boogieFile);
+                            Console.WriteLine("*************************************************************************************************************************");
+                            //ProcessPFile(options, fsExpGen);
                             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
                             startInfo.Arguments = options.boogieFile 
                                 + " /cooperative"  //Use Co-operative scheduling
-                                + "/maxStaticLoopBound:50" //Figure out recursion bound automatically.
-                                + "/k:3"; //Context switch bound.
+                                + " /maxStaticLoopBound:100" //Figure out recursion bound automatically.
+                                + " /k:3"; //Context switch bound.
                             startInfo.RedirectStandardError = true;
                             startInfo.RedirectStandardInput = true;
                             startInfo.RedirectStandardOutput = true;
@@ -67,7 +66,7 @@ namespace Microsoft.PBoogieTranslator
                                     using (var sw = new StreamWriter(Path.Combine(opFileDir, "op.txt")))
                                     {
                                         sw.Write(op.Substring(0, idx));
-                                        if (op.Contains("Program has a potential bug: True bug"))
+                                        if (!op.Contains("Program has a potential bug: True bug"))
                                         {
                                             Console.WriteLine();
                                             Console.WriteLine(op);

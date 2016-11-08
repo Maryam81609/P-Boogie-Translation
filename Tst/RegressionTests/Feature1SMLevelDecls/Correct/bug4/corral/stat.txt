@@ -1,11 +1,10 @@
-Boogie verification time: 2.42 s
-Time spent reading-writing programs: 1.23 s
+Boogie verification time: 3.33 s
+Time spent reading-writing programs: 1.53 s
 
-Time spent checking a program (4): 2.38 s
-Time spent checking a path (12): 2.03 s
+Time spent checking a program (4): 2.82 s
+Time spent checking a path (12): 2.05 s
 
 Number of procedures inlined: 35
 Number of variables tracked: 18
-Total Time: 5.0784977 s
-Total User CPU time: 5.171875 s
-
+Total Time: 6.282963 s
+Total User CPU time: 6.40625 s
