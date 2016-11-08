@@ -191,6 +191,7 @@ module Translator =
         sw.WriteLine("eventRaised := true;")
         sw.WriteLine("raisedEvent := {0};", eExp)
         sw.WriteLine("raisedEventPl := {0};", plExpr)
+        sw.WriteLine("call {:cexpr \"raised_event\"} boogie_si_record_int(raisedEvent);")
       end
     | Send(m, e, arg) ->
       begin
@@ -541,11 +542,10 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     fprintfn sw @"procedure %s_ProbeStateStack(event: int)
 {
    if(registerEvents[CurrState][event])
-   {
-      return;
-   }" name
-   
-
+   {" name
+    fprintfn sw "      call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
+    fprintfn sw "      return;
+   }" 
     
     fprintfn sw "  //Probe down the state stack. 
    while(StateStack != Nil())
@@ -555,10 +555,10 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       CurrState := state#Cons(StateStack);
       StateStack := stack#Cons(StateStack);
       if(registerEvents[CurrState][event])
-      {
-          return;
-      }
-   }"
+      {" 
+    fprintfn sw "      call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
+    fprintfn sw "      return;
+   }" 
 
     fprintfn sw @"   return;
 }"

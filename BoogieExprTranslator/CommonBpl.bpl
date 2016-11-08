@@ -88,8 +88,6 @@ procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (
 	assume PrtDynamicType(nseq) == PrtDynamicType(seq);
 }
 
-
-
 // Maps
 procedure {:inline} MapContainsKey(map: PrtRef, key: PrtRef) returns (v: PrtRef)
 {

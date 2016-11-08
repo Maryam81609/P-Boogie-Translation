@@ -36,11 +36,13 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine(options.boogieFile);
                             Console.WriteLine("*************************************************************************************************************************");
                             ProcessPFile(options, fsExpGen);
+                            Console.Error.WriteLine(options.boogieFile);
                             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
-                            startInfo.Arguments = options.boogieFile 
+                            startInfo.Arguments = options.boogieFile
                                 + " /cooperative"  //Use Co-operative scheduling
                                 + " /maxStaticLoopBound:100" //Figure out recursion bound automatically.
-                                + " /k:3"; //Context switch bound.
+                                + " /k:3" //Context switch bound.
+                                + " /timeLimit:1000"; //Z3 timeout increased to 1000s
                             startInfo.RedirectStandardError = true;
                             startInfo.RedirectStandardInput = true;
                             startInfo.RedirectStandardOutput = true;
@@ -136,7 +138,7 @@ namespace Microsoft.PBoogieTranslator
                     }
                     Console.WriteLine("*************************************************************************************************************************");
                 }
-                System.Console.WriteLine("{0} correct, {1} wrong, {2} in total", correct, wrong, tested);
+                System.Console.WriteLine("At most {0} correct, at least {1} wrong, {2} in total", correct, wrong, tested);
             }
             else
             {

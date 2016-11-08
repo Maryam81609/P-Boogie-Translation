@@ -1,13 +1,9 @@
 Warning: Using default recursion bound of 1
 Verifying 2 impls
-LB: Took 0.38 s
+LB: Took 0.41 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350, machineToQCAssert}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350, machineToQCAssert, machineToQCAssume}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350, MachineInboxHead, MachineInboxTail}
 Program has no bugs
 Reached recursion bound of 1
 

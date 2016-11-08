@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 4 impls
-LB: Took 0.45 s
+LB: Took 0.43 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp18, Tmp29}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert}
