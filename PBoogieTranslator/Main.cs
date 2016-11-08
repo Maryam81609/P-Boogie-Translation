@@ -1,6 +1,7 @@
 ﻿using Microsoft.Pc;
 using System;
 using System.IO;
+using System.Collections.Generic;
 using Microsoft.P2Boogie;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
@@ -20,6 +21,8 @@ namespace Microsoft.PBoogieTranslator
             int wrong = 0;
             int tested = 0;
             ProcessStartInfo startInfo = new ProcessStartInfo();
+            var correctCodes = new List<string>();
+            var wrongCodes = new List<string>();
             if (options.list)
             {
                 using (var sr = new StreamReader(options.inputFile))
@@ -75,6 +78,7 @@ namespace Microsoft.PBoogieTranslator
                                             Console.WriteLine(op);
                                             Console.WriteLine(err);
                                             wrong++;
+                                            wrongCodes.Add(options.boogieFile);
                                             flag = false;
                                         }
                                     }
@@ -94,22 +98,29 @@ namespace Microsoft.PBoogieTranslator
                                     Console.WriteLine(e.ToString());
                                     Console.WriteLine();
                                     Console.Error.WriteLine("ERROR IN CORRAL!");
-                                    if(flag)
+                                    if (flag)
+                                    {
                                         wrong++;
-                                    flag = false;
+                                        wrongCodes.Add(options.boogieFile);
+                                        flag = false;
+                                    }
                                 }
                                 process.WaitForExit();
                                 if(process.ExitCode != 0)
                                 {
                                     Console.WriteLine();
                                     Console.Error.WriteLine("ERROR IN CORRAL!");
-                                    if(flag)
+                                    if (flag)
+                                    {
                                         wrong++;
-                                    flag = false;
+                                        wrongCodes.Add(options.boogieFile);
+                                        flag = false;
+                                    }
                                 }
                                 if (flag)
                                 {
                                     correct++;
+                                    correctCodes.Add(options.boogieFile);
                                     Console.WriteLine("done!");
                                     Console.Error.WriteLine("Correct!");
                                 }
@@ -139,6 +150,16 @@ namespace Microsoft.PBoogieTranslator
                     Console.WriteLine("*************************************************************************************************************************");
                 }
                 System.Console.WriteLine("At most {0} correct, at least {1} wrong, {2} in total", correct, wrong, tested);
+                using (var sw = new StreamWriter("correct.txt"))
+                {
+                    foreach(var x in correctCodes)
+                        sw.WriteLine(x);
+                }
+                using (var sw = new StreamWriter("wrong.txt"))
+                {
+                    foreach (var x in wrongCodes)
+                        sw.WriteLine(x);
+                }
             }
             else
             {
