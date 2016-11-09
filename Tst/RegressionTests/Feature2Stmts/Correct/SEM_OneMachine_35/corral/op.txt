@@ -2,7 +2,7 @@ Warning: Using default recursion bound of 1
 Verifying 10 impls
 LB: Loop Main_BubbleSort_loop_anon7_LoopHead requires minimum 2 iterations
 LB: Loop Main_init_entry52_loop_anon3_LoopHead requires minimum 11 iterations
-LB: Took 0.81 s
+LB: Took 0.89 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, Main_s, Main_t, Main_swapped, Main_rev, Main_sorted, Main_b, registerEvents, CurrState, StateStack, Tmp174, Tmp175}
 Program has no bugs
 Reached recursion bound of 1

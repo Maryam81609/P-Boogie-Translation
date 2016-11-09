@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 3 impls
-LB: Took 0.41 s
+LB: Took 0.49 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp7}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, registerEvents, CurrState, StateStack, Tmp7, MachineInboxHead, MachineInboxTail}

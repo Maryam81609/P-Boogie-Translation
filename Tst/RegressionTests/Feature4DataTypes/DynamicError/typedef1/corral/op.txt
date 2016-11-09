@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 5 impls
-LB: Took 0.69 s
+LB: Took 0.74 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_slot1, Main_val1, Main_slot2, tmpRhsValue_0, tmpRhsValue_1, Main_val2, Main_map1, registerEvents, CurrState, StateStack, Tmp1321, Tmp1323, Tmp1324, Tmp1322, Tmp1326, Tmp1327, Tmp1325, Tmp1329, Tmp1332, Tmp1333, Tmp1331, Tmp1330, Tmp1328, Tmp1335, Tmp1338, Tmp1339, Tmp1337, Tmp1336, Tmp1334}
 Program has no bugs
 Reached recursion bound of 1

@@ -902,7 +902,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("procedure AssertPayloadDynamicType(event: PrtRef, payload: PrtRef) returns (evID: int)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
-    sw.WriteLine("evID := PrtFieldInt(event);")
+    sw.WriteLine("evID := PrtFieldEvent(event);")
     Map.iter (fun k v -> printAssertion k) evToInt
     sw.WriteLine("return;")
     sw.Indent <- sw.Indent - 1

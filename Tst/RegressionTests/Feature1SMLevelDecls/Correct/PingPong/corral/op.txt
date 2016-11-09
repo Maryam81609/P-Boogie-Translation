@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 7 impls
-LB: Took 0.61 s
+LB: Took 0.67 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue, tmpEventID, PING_pongMachine, registerEvents, CurrState, StateStack, Tmp53, Tmp54, tmpRhsValue_0, tmpRhsValue_1, Tmp52, Main_container, Main_pongMachine_1, Main_pongMachine_2}
 Program has a potential bug: True bug
 PersistentProgram(126,1): error PF5001: This assertion can fail
@@ -9,11 +9,11 @@ PingPong.bpl(70,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1850,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1850,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1851,17): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1852,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1853,5): anon0  (CALL newMachine_Main)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1862,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1862,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1863,17): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1864,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1865,5): anon0  (CALL newMachine_Main)
 (1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(944,20): anon0  
 (1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(944,20): anon0  
 (1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(945,9): anon0  
@@ -33,26 +33,26 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(956,31): anon0  
 (1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(957,5): anon0  
 (1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(958,11): anon0  (FORK MachineThread_Main)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1701,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1701,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1702,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1704,17): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1705,13): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1707,20): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1708,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1709,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1711,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1712,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1713,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1714,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1715,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1716,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1717,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1718,5): anon0  (CALL Main_Init_entry104)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1627,34): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1627,34): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1628,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1629,5): anon0  (CALL _CREATECONTAINER)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1711,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1711,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1712,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1714,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1715,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1717,20): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1718,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1719,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1721,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1722,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1723,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1724,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1725,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1726,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1727,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1728,5): anon0  (CALL Main_Init_entry104)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1635,34): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1635,34): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1636,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1637,5): anon0  (CALL _CREATECONTAINER)
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(732,29): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(732,29): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(733,5): anon0  
@@ -76,28 +76,28 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(978,31): anon0  
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(979,5): anon0  
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(980,11): anon0  (FORK MachineThread_Container)
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1807,16): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1807,16): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1808,15): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1810,17): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1811,13): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1814,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1815,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1816,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1817,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1818,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1819,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1820,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1821,5): anon0  (CALL Container_Init_entry13)
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1750,41): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1750,41): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1751,5): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1821,5): anon0  (RETURN from Container_Init_entry13 )
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1822,5): anon5_LoopHead  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1824,9): anon5_LoopBody  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1822,5): anon5_LoopBody  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1824,9): anon5_LoopBody  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1824,9): anon5_LoopBody  (Done)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1819,16): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1819,16): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1820,15): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1822,17): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1823,13): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1826,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1827,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1828,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1829,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1830,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1831,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1832,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1833,5): anon0  (CALL Container_Init_entry13)
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1760,41): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1760,41): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1761,5): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1833,5): anon0  (RETURN from Container_Init_entry13 )
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1834,5): anon5_LoopHead  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1836,9): anon5_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1834,5): anon5_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1836,9): anon5_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1836,9): anon5_LoopBody  (Done)
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(980,11): anon0  
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(981,7): anon0  
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(982,5): anon0  
@@ -105,9 +105,9 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(735,29): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(736,5): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(737,9): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1629,5): anon0  (RETURN from _CREATECONTAINER )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1630,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1631,5): anon0  (CALL _CREATEMACHINE)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1637,5): anon0  (RETURN from _CREATECONTAINER )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1638,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1639,5): anon0  (CALL _CREATEMACHINE)
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(674,24): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(674,24): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(675,33): anon0  
@@ -130,12 +130,12 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(70,5): anon0  (ASSERTION FAILS assert PrtDynamicType(x) == PrtTypeTuple2;
  )
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(684,9): anon6_Then  (RETURN from AssertIsType5 )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1631,5): anon0  (RETURN from _CREATEMACHINE )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1718,5): anon0  (RETURN from Main_Init_entry104 )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1718,5): anon0  (Done)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1639,5): anon0  (RETURN from _CREATEMACHINE )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1728,5): anon0  (RETURN from Main_Init_entry104 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1728,5): anon0  (Done)
 (1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(958,11): anon0  
 (1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(959,7): anon0  
 (1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(960,5): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1853,5): anon0  (RETURN from newMachine_Main )
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1853,5): anon0  (Done)
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1865,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\Correct\PingPong\PingPong.bpl(1865,5): anon0  (Done)
 

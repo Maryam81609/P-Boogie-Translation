@@ -6,5 +6,5 @@ Time spent checking a path (0): 0.00 s
 
 Number of procedures inlined: 12
 Number of variables tracked: 16
-Total Time: 1.3968543 s
-Total User CPU time: 1.453125 s
+Total Time: 1.3691342 s
+Total User CPU time: 1.484375 s

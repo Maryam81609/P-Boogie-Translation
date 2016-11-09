@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 5 impls
-LB: Took 0.89 s
+LB: Took 0.87 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_ghost_machine, registerEvents, CurrState, Ghost_real_machine}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_ghost_machine, registerEvents, CurrState, Ghost_real_machine, machineEvToQCount}

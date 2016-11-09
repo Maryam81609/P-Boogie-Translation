@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 19 impls
-LB: Took 5.13 s
+LB: Took 5.09 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, Timer_target, registerEvents, StateStack, Replica_pendingWriteReq, Replica_lastSeqNum, Replica_shouldCommit, Replica_coordinator, Replica_data, Tmp993, Tmp995, Tmp996, Tmp997, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, Tmp994, Coordinator_data, Coordinator_pendingWriteReq, Coordinator_currSeqNum, Coordinator_i, Coordinator_replicas, Coordinator_timer, Coordinator_numReplicas, Coordinator_replica, Tmp1001, Tmp1002, Tmp1004, Tmp1005, Tmp1006, Tmp1003, Client_coordinator, Client_idx, Client_val, Main_coordinator}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, Timer_target, registerEvents, StateStack, Replica_pendingWriteReq, Replica_lastSeqNum, Replica_shouldCommit, Replica_coordinator, Replica_data, Tmp993, Tmp995, Tmp996, Tmp997, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, Tmp994, Coordinator_data, Coordinator_pendingWriteReq, Coordinator_currSeqNum, Coordinator_i, Coordinator_replicas, Coordinator_timer, Coordinator_numReplicas, Coordinator_replica, Tmp1001, Tmp1002, Tmp1004, Tmp1005, Tmp1006, Tmp1003, Client_coordinator, Client_idx, Client_val, Main_coordinator, machineToQCAssert}
