@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 7 impls
-LB: Took 0.57 s
+LB: Took 0.53 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_tbool, Main_ev, Main_tt, Main_a, Main_mac, Main_s12, Main_s2, Main_m1, Main_i, Main_m3, Main_s, Main_tmp3, Main_t, Main_s4, Main_s8, registerEvents, CurrState, StateStack, Tmp195, Tmp194, Tmp197, Tmp196, Tmp193, Tmp200, Tmp199, Tmp202, Tmp201, Tmp198, Tmp204, Tmp205, Tmp203, Tmp207, Tmp208, Tmp206, Tmp210, Tmp211, Tmp209, Tmp213, Tmp214, Tmp212, Tmp217, Tmp216, Tmp219, Tmp218, Tmp215, Tmp220, Tmp221, Tmp222, Tmp223, Tmp224, Tmp225, Tmp226, Tmp227, Tmp228, Tmp229, Tmp230, Tmp231, Tmp232, Tmp233, Tmp234, Tmp235, Tmp236, Tmp237, Tmp238, Tmp239, Tmp240, Tmp241, Tmp242}
 Program has no bugs
 Reached recursion bound of 1

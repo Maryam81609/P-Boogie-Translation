@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 2 impls
-LB: Took 0.64 s
+LB: Took 0.38 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_y, Main_tmp, Main_tmp1, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp1390, Tmp1389, Tmp1392, Tmp1391, Tmp1388}
 Program has a potential bug: True bug
 PersistentProgram(273,1): error PF5001: This assertion can fail

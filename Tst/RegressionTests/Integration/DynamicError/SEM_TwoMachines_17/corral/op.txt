@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 9 impls
-LB: Took 0.88 s
+LB: Took 0.72 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_mac, Main_sev, Main_sAny, Main_mev, Main_ev2, tmpEventID, tmpRhsValue, registerEvents, StateStack, Tmp1407, Tmp1408, Tmp1409, Tmp1410, Real2_ev3, Real2_mac1}
 Program has no bugs
 Reached recursion bound of 1

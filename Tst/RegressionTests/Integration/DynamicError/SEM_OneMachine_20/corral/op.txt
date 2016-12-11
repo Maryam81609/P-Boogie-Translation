@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 3 impls
-LB: Took 0.64 s
+LB: Took 0.42 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, registerEvents, CurrState}
 Program has a potential bug: True bug
 PersistentProgram(462,1): error PF5001: This assertion can fail

@@ -2,7 +2,7 @@ Warning: Using default recursion bound of 1
 Verifying 22 impls
 LB: Loop Main_Init_entry18_loop_anon6_LoopHead requires minimum 3 iterations
 LB: Loop Main_Init_entry18_loop_anon5_LoopHead requires minimum 3 iterations
-LB: Took 3.02 s
+LB: Took 2.80 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp1094, Tmp1095, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp1099, Tmp1100, Tmp1101, Tmp1102, Timer_client}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp1094, Tmp1095, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp1099, Tmp1100, Tmp1101, Tmp1102, Timer_client, MachineInboxHead, MachineInboxTail}

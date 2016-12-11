@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 7 impls
-LB: Took 0.65 s
+LB: Took 0.50 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_l, tmpRhsValue_0, tmpRhsValue_1, Main_mac, registerEvents, CurrState, StateStack, Tmp145, Tmp148, Tmp147, Tmp149, Tmp146, test_ii, test_rec, test_i, Tmp152, Tmp153}
 Program has no bugs
 Reached recursion bound of 1

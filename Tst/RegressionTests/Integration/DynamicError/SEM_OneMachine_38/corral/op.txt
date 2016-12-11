@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 3 impls
-LB: Took 0.58 s
+LB: Took 0.43 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_i, registerEvents}
 Program has no bugs
 Reached recursion bound of 1

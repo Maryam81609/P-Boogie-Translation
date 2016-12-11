@@ -1,6 +1,6 @@
 Warning: Using default recursion bound of 1
 Verifying 11 impls
-LB: Took 16.43 s
+LB: Took 15.81 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_Driver, registerEvents, Switch_Driver, LED_Driver, Timer_Driver, OSRDriver_LEDV, OSRDriver_TimerV, OSRDriver_check}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_Driver, registerEvents, Switch_Driver, LED_Driver, Timer_Driver, OSRDriver_LEDV, OSRDriver_TimerV, OSRDriver_check, machineToQCAssert}
