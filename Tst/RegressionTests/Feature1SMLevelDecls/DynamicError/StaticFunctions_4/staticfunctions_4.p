@@ -18,15 +18,15 @@ fun F3()
 {
 	receive {
 		case b : { 
-		receive { 
-			case a : 
-			{ 
-				receive { 
-				case b : {assert(false);}
+			receive { 
+				case a : 
+				{ 
+					receive { 
+						case b : {assert(false);}
+					}
 				}
 			}
 		}
-	}
 	}
 }
 

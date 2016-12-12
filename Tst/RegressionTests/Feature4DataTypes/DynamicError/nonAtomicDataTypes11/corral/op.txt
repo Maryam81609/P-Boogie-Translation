@@ -1,7 +1,233 @@
-Warning: Using default recursion bound of 1
-Verifying 6 impls
-LB: Took 0.48 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_s7, Main_tmp3, tmpRhsValue_0, tmpRhsValue_1, Main_t, registerEvents, CurrState, StateStack, Tmp1287, Tmp1286, Tmp1289, Tmp1288, Tmp1285, Tmp1291, Tmp1292, Tmp1290, Tmp1294, Tmp1295, Tmp1293, Tmp1298, Tmp1297, Tmp1300, Tmp1299, Tmp1296, Tmp1301, Tmp1302, Tmp1303, Tmp1304, Tmp1305, Tmp1306, Tmp1307, Tmp1308, Tmp1309, Tmp1310, Tmp1311, Tmp1312}
-Program has no bugs
-Reached recursion bound of 1
+Program has a potential bug: True bug
+PersistentProgram(622,1): error PF5001: This assertion can fail
+
+nonAtomicDataTypes.bpl(394,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(1071,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(1071,20): anon0  
+(1,3)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(1072,5): anon0  
+(1,3)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(1073,5): anon0  (CALL newMachine_Main)
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(665,20): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(665,20): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(666,9): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(667,5): anon0  (CALL InitializeInbox)
+(1,3)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(588,4): anon0  
+(1,3)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(588,4): anon0  
+(1,3)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(589,4): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(667,5): anon0  (RETURN from InitializeInbox )
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(669,28): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(670,28): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(671,31): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(672,31): anon0  
+(1,3)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(673,31): anon0  
+(1,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(674,5): anon0  
+(1,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(675,11): anon0  (FORK MachineThread_Main)
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(819,16): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(819,16): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(820,15): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(822,17): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(823,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(825,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(826,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(827,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(828,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(829,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(830,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(831,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(832,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(833,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(834,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(835,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(836,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(837,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(838,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(839,12): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(840,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(841,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(842,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(843,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(844,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(845,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(846,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(847,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(848,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(849,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(850,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(851,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(852,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(853,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(854,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(855,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(856,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(857,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(858,12): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(859,14): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(860,15): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(861,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(862,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(863,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(864,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(865,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(866,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(867,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(868,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(869,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(870,19): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(871,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(872,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(873,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(874,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(875,15): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(876,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(877,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(878,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(879,15): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(880,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(881,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(882,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(883,12): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(884,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(885,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(886,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(887,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(888,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(889,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(890,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(891,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(892,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(893,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(894,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(895,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(896,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(897,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(898,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(899,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(900,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(901,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(902,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(903,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(904,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(905,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(906,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(907,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(908,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(909,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(910,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(911,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(912,12): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(913,14): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(914,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(915,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(916,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(917,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(918,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(919,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(920,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(921,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(922,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(923,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(924,5): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(925,13): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(927,26): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(928,26): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(929,26): anon0  
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(930,5): anon0  (CALL Main_S_entry33)
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(737,30): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(737,30): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(738,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(739,5): anon0  (CALL InsertSeq)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(319,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(319,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(320,4): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(322,2): anon0  (idx_in_bounds = true)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(323,2): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(325,11): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(326,2): anon5_LoopHead  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(326,2): anon5_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(326,2): anon5_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(332,18): anon2  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(332,18): anon2  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(333,4): anon2  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(335,2): anon6_LoopHead  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(335,2): anon6_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(335,2): anon6_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(341,2): anon4  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(341,2): anon4  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(342,2): anon4  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(343,2): anon4  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(344,2): anon4  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(739,5): anon0  (RETURN from InsertSeq )
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(740,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(741,5): anon0  (CALL WriteMap)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(435,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(435,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(436,4): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(437,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(438,9): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(439,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(441,2): anon7_LoopHead  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(441,2): anon7_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(441,2): anon7_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(451,2): anon4  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(453,6): anon9_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(451,2): anon9_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(453,6): anon9_Then  (key_not_found = true)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(454,11): anon9_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(455,13): anon9_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(456,8): anon9_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(459,2): anon6  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(459,2): anon6  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(460,2): anon6  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(461,2): anon6  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(462,2): anon6  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(463,2): anon6  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(741,5): anon0  (RETURN from WriteMap )
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(742,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(743,19): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(744,19): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(745,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(746,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(747,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(748,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(749,12): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(750,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(751,5): anon0  (CALL PrtEquals)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(158,5): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(158,20): anon17_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(158,5): anon17_Then  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(158,20): anon17_Then  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(751,5): anon0  (RETURN from PrtEquals )
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(752,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(753,5): anon0  
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(754,5): anon0  (CALL ReadMap)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(378,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(378,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(379,4): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(380,7): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(381,9): anon0  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(383,2): anon5_LoopHead  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(385,3): anon5_LoopBody  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(383,2): anon5_LoopBody  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(385,3): anon6_Else  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(385,3): anon6_Else  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(390,5): anon3  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(390,5): anon3  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(383,2): anon5_LoopHead  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(383,2): anon5_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(383,2): anon5_LoopDone  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(393,2): anon4  
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(393,2): anon4  (key_not_found = true)
+(2,4)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(394,2): anon4  (ASSERTION FAILS assert false;
+ )
+(2,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(754,5): anon0  (RETURN from ReadMap )
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(930,5): anon0  (RETURN from Main_S_entry33 )
+(2,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(930,5): anon0  (Done)
+(1,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(675,11): anon0  
+(1,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(676,7): anon0  
+(1,4)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(677,5): anon0  
+(1,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(1073,5): anon0  (RETURN from newMachine_Main )
+(1,4)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\nonAtomicDataTypes11\nonAtomicDataTypes.bpl(1073,5): anon0  (Done)
 

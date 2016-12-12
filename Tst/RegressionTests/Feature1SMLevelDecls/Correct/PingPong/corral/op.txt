@@ -1,6 +1,3 @@
-Warning: Using default recursion bound of 1
-Verifying 7 impls
-LB: Took 0.59 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue, tmpEventID, PING_pongMachine, registerEvents, CurrState, StateStack, Tmp53, Tmp54, tmpRhsValue_0, tmpRhsValue_1, Tmp52, Main_container, Main_pongMachine_1, Main_pongMachine_2}
 Program has a potential bug: True bug
 PersistentProgram(126,1): error PF5001: This assertion can fail

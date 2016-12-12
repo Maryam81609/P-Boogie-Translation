@@ -1,11 +1,446 @@
-Warning: Using default recursion bound of 1
-Verifying 22 impls
-LB: Loop Main_Init_entry18_loop_anon6_LoopHead requires minimum 3 iterations
-LB: Loop Main_Init_entry18_loop_anon5_LoopHead requires minimum 3 iterations
-LB: Took 2.80 s
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp1094, Tmp1095, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp1099, Tmp1100, Tmp1101, Tmp1102, Timer_client}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp0, Tmp1, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp5, Tmp6, Tmp7, Tmp8, Timer_client}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp1094, Tmp1095, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp1099, Tmp1100, Tmp1101, Tmp1102, Timer_client, MachineInboxHead, MachineInboxTail}
-Program has no bugs
-Reached recursion bound of 1
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp0, Tmp1, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp5, Tmp6, Tmp7, Tmp8, Timer_client, Safety_CurrState}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Main_i, Main_n, Main_nodeseq, Main_nodemap, Main_fd, registerEvents, Tmp0, Tmp1, FailureDetector_nodes, FailureDetector_alive, FailureDetector_responses, FailureDetector_clients, FailureDetector_timer, FailureDetector_attempts, Tmp5, Tmp6, Tmp7, Tmp8, Timer_client, Safety_CurrState, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: True bug
+PersistentProgram(1042,1): error PF5001: This assertion can fail
+
+PingPongBugRepro.bpl(607,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2834,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2834,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2835,24): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2836,22): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2837,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2838,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2839,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2840,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2841,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2842,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2843,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2844,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2845,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2846,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1060,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1060,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1061,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1062,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(710,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(710,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(711,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1062,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1064,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1065,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1066,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1067,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1068,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1069,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1070,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1071,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1072,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1073,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1074,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1075,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1076,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1077,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1078,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1079,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1080,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1081,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1082,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1083,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1084,5): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1085,11): anon0  (FORK MachineThread_Main)
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1289,16): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1289,16): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1290,15): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1292,17): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1293,13): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1295,13): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1296,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1297,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1298,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1299,18): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1300,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1301,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1302,5): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1303,18): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1304,12): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1305,12): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1307,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1308,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1309,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1310,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1311,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1312,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1313,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1314,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1315,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1316,26): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1317,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1318,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1319,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1320,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1321,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1322,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1323,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1324,27): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1325,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1326,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1327,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1328,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1329,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1330,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1331,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1332,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1333,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1334,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1335,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1336,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1337,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1338,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1339,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1340,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1341,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1342,25): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1343,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1344,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1345,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1346,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1347,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1348,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1349,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1350,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1351,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1352,23): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1353,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1354,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1355,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1356,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1357,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1358,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1359,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1360,24): anon0  
+(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1361,5): anon0  (CALL Main_Init_entry18)
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1198,33): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1198,33): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1199,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1200,12): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1201,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1202,5): anon5_LoopHead  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1204,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1202,5): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1204,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1205,9): anon5_LoopBody  (CALL newMachine_Node)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1126,20): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1126,20): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1127,9): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1128,5): anon0  (CALL InitializeInbox)
+(2,0)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(710,4): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(710,4): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(711,4): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1128,5): anon0  (RETURN from InitializeInbox )
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1130,28): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1131,28): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1132,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1133,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1134,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1135,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1136,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1137,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1138,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1139,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1140,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1141,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1142,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1143,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1144,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1145,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1146,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1147,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1148,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1149,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1150,5): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1151,11): anon0  (FORK MachineThread_Node)
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2283,16): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2283,16): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2284,15): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2286,17): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2287,13): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2290,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2291,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2292,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2293,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2294,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2295,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2296,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2297,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2298,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2299,26): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2300,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2301,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2302,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2303,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2304,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2305,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2306,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2307,27): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2308,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2309,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2310,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2311,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2312,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2313,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2314,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2315,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2316,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2317,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2318,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2319,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2320,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2321,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2322,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2323,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2324,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2325,25): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2326,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2327,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2328,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2329,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2330,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2331,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2332,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2333,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2334,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2335,23): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2336,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2337,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2338,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2339,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2340,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2341,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2342,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2343,24): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2344,5): anon0  (CALL Node_WaitPing_entry_rand_1419208837)
+(3,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2224,54): anon0  
+(3,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2224,54): anon0  
+(3,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2225,5): anon0  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2344,5): anon0  (RETURN from Node_WaitPing_entry_rand_1419208837 )
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2345,5): anon6_LoopHead  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2347,9): anon6_LoopBody  
+(3,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2345,5): anon6_LoopBody  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1151,11): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1152,7): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1153,5): anon0  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1205,9): anon5_LoopBody  (RETURN from newMachine_Node )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1206,16): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1207,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1208,9): anon5_LoopBody  (CALL InsertSeq)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(441,7): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(441,7): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(442,4): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(444,2): anon0  (idx_in_bounds = true)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(445,2): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(447,11): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopHead  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopDone  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopDone  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(454,18): anon2  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(454,18): anon2  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(455,4): anon2  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(457,2): anon6_LoopHead  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(457,2): anon6_LoopDone  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(457,2): anon6_LoopDone  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(463,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(463,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(464,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(465,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(466,2): anon4  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1208,9): anon5_LoopBody  (RETURN from InsertSeq )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1209,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1210,9): anon5_LoopBody  (CALL InsertMap)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(597,7): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(597,7): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(598,4): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(599,7): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(600,9): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(602,2): anon5_LoopHead  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(602,2): anon5_LoopDone  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(602,2): anon5_LoopDone  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(612,13): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(612,13): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(613,15): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(615,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(616,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(617,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(618,2): anon4  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(619,2): anon4  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1210,9): anon5_LoopBody  (RETURN from InsertMap )
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1211,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1212,16): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1202,5): anon5_LoopHead  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1204,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1202,5): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1204,9): anon5_LoopBody  
+(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1205,9): anon5_LoopBody  (CALL newMachine_Node)
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1126,20): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1126,20): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1127,9): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1128,5): anon0  (CALL InitializeInbox)
+(2,0)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(710,4): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(710,4): anon0  
+(2,0)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(711,4): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1128,5): anon0  (RETURN from InitializeInbox )
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1130,28): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1131,28): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1132,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1133,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1134,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1135,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1136,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1137,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1138,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1139,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1140,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1141,31): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1142,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1143,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1144,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1145,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1146,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1147,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1148,32): anon0  
+(2,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1149,32): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1085,11): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1086,7): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1087,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2846,5): anon0  (RETURN from newMachine_Main )
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2846,5): anon0  (Done)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2347,9): anon6_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2347,9): anon6_LoopBody  (Done)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1150,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1151,11): anon0  (FORK MachineThread_Node)
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2283,16): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2283,16): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2284,15): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2286,17): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2287,13): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2290,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2291,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2292,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2293,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2294,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2295,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2296,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2297,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2298,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2299,26): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2300,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2301,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2302,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2303,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2304,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2305,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2306,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2307,27): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2308,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2309,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2310,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2311,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2312,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2313,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2314,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2315,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2316,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2317,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2318,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2319,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2320,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2321,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2322,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2323,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2324,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2325,25): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2326,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2327,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2328,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2329,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2330,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2331,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2332,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2333,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2334,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2335,23): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2336,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2337,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2338,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2339,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2340,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2341,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2342,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2343,24): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2344,5): anon0  (CALL Node_WaitPing_entry_rand_1419208837)
+(4,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2224,54): anon0  
+(4,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2224,54): anon0  
+(4,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2225,5): anon0  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2344,5): anon0  (RETURN from Node_WaitPing_entry_rand_1419208837 )
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2345,5): anon6_LoopHead  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2347,9): anon6_LoopBody  
+(4,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2345,5): anon6_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1151,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1152,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1153,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1205,9): anon5_LoopBody  (RETURN from newMachine_Node )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1206,16): anon5_LoopBody  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1207,9): anon5_LoopBody  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1208,9): anon5_LoopBody  (CALL InsertSeq)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(441,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(441,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(442,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(444,2): anon0  (idx_in_bounds = true)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(445,2): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(447,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopHead  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(450,15): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(450,15): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(451,5): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopHead  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopDone  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(448,2): anon5_LoopDone  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(454,18): anon2  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(454,18): anon2  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(455,4): anon2  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(457,2): anon6_LoopHead  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(457,2): anon6_LoopDone  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(457,2): anon6_LoopDone  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(463,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(463,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(464,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(465,2): anon4  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(466,2): anon4  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1208,9): anon5_LoopBody  (RETURN from InsertSeq )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1209,9): anon5_LoopBody  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1210,9): anon5_LoopBody  (CALL InsertMap)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(597,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(597,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(598,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(599,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(600,9): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(602,2): anon5_LoopHead  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(604,3): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(602,2): anon5_LoopBody  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(606,7): anon6_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(604,3): anon6_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(606,7): anon6_Then  (key_already_present = true)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(607,4): anon6_Then  (ASSERTION FAILS assert false;
+ )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1210,9): anon5_LoopBody  (RETURN from InsertMap )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1361,5): anon0  (RETURN from Main_Init_entry18 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(1361,5): anon0  (Done)
+(4,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2347,9): anon6_LoopBody  
+(4,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\BugRepro\PingPongBugRepro.bpl(2347,9): anon6_LoopBody  (Done)
 

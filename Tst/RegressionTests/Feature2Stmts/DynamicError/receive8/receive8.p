@@ -32,8 +32,8 @@ machine B {
 				case E: { x = x + 1;}
 			}
 			receive {
-				case F: { 	
-					assert(x ==  1); x = x + 1; 
+				case F: {
+					assert(x == 1); x = x + 1; 
 					receive {
 						case F : { assert(false);}
 					}

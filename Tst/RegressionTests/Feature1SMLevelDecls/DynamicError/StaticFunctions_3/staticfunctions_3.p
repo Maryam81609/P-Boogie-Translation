@@ -20,7 +20,6 @@ machine Main {
 			raise a;
 		}
 		on a goto S1 with F2;
-	
 }	
 	state S1 {
 		entry F2;
@@ -30,5 +29,4 @@ machine Main {
 			}
 		}
 	}
-	
 }
