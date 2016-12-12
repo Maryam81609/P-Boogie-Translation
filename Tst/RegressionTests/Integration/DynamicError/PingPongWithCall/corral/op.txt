@@ -1,11 +1,14 @@
-Warning: Using default recursion bound of 1
-Verifying 5 impls
-LB: Took 0.63 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, MachineInboxHead, MachineInboxTail}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, MachineInboxHead, MachineInboxTail, machineEvToQCount}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, MachineInboxHead, MachineInboxTail, machineEvToQCount, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, MachineInboxHead, MachineInboxTail, machineEvToQCount, machineToQCAssume, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, MachineInboxHead, MachineInboxTail, machineEvToQCount, machineToQCAssume, machineToQCAssert, MachineInboxStoreEvent, MachineInboxStorePayload, machineCounter}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 4
 

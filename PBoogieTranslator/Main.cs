@@ -44,8 +44,8 @@ namespace Microsoft.PBoogieTranslator
                             bool good = false;
                             while (!good && rb < 21)
                             {
-                                rb++;
                                 good = verifyAndGetLoopBound(options, rb);
+                                rb++;
                             }
                             if (!good)
                             {
