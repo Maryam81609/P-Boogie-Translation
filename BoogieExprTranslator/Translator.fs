@@ -192,6 +192,7 @@ module Translator =
         sw.WriteLine("raisedEvent := {0};", eExp)
         sw.WriteLine("raisedEventPl := {0};", plExpr)
         sw.WriteLine("call {:cexpr \"raised_event\"} boogie_si_record_int(raisedEvent);")
+        sw.WriteLine("return;")
       end
     | Send(m, e, arg) ->
       begin
@@ -229,18 +230,86 @@ module Translator =
     | Receive(ls) ->
       begin
         sw.WriteLine("yield;")
-        sw.WriteLine("call event, payload := Dequeue();")
+        sw.WriteLine("assert (!eventRaised);")
+        sw.WriteLine("event := 0 - 1;")
+        let regEvs = List.map (fun (e,s) -> e) ls |> Set.ofList
+        let regMap = Map.map (fun k v -> Set.contains k regEvs) evMap
+        Map.iter (fun k v-> sw.WriteLine("recvRegisteredEvents[{0}] := {1};", v, 
+          if (Map.find k regMap) then "true" else "false")) evMap
+        sw.WriteLine("recvHd := MachineInboxHead[thisMid];")
+        sw.WriteLine("recvTl := MachineInboxTail[thisMid];")
+        sw.WriteLine("recvPtr := recvHd;")
+        sw.WriteLine("while(recvPtr <= recvTl)")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("event := MachineInboxStoreEvent[thisMid][recvPtr];")
+        sw.WriteLine("if(event >= 0 && recvRegisteredEvents[event])")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("// dequeue")
+        sw.WriteLine("q := machineEvToQCount[thisMid][event];")
+        sw.WriteLine("machineEvToQCount[thisMid][event] := q - 1;")
+        sw.WriteLine("if(recvPtr == recvHd)")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("MachineInboxHead[thisMid] := recvHd + 1;")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+        sw.WriteLine("else if(recvPtr == recvTl)")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("MachineInboxTail[thisMid] := recvTl - 1;")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+        sw.WriteLine("else")
+        sw.WriteLine("{")
+        sw.Indent <- sw.Indent + 1
+        sw.WriteLine("MachineInboxStoreEvent[thisMid][ptr] := 0 - 1;")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+        sw.WriteLine("payload := MachineInboxStorePayload[thisMid][recvPtr];")
+        sw.WriteLine("break;")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+        sw.Indent <- sw.Indent - 1
+        sw.WriteLine("}")
+
         sw.WriteLine("call {:cexpr \"recvd_event\"} boogie_si_record_int(event);") 
 
+        let HandleNullCase (c: string * Stmt) = 
+          match c with
+          | "null", s -> 
+            begin
+              sw.WriteLine("//Handle the null case - event queue has no registered event.")
+              sw.WriteLine("if(event < 0)")
+              sw.WriteLine("{")
+              sw.Indent <- sw.Indent + 1
+              translateStmt sw G stateToInt cm evMap s
+              sw.Indent <- sw.Indent - 1
+              sw.WriteLine("}")
+              sw.WriteLine("else")
+              sw.WriteLine("{")
+              sw.Indent <- sw.Indent + 1
+              true
+            end
+          | _ -> false
+
+        let flag = List.fold (fun acc x -> HandleNullCase x || acc) false  ls
+        if not flag then sw.WriteLine("assert (event >= 0);")
         List.iter translateCase ls
         sw.WriteLine("")
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-//        sw.WriteLine("assert false;") //TODO: Come Back!
-        sw.WriteLine("call{:cexpr \"dropped_event\"} boogie_si_record_int(event);")
+        sw.WriteLine("assume false;")
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
+        
+        if flag then begin
+          sw.Indent <- sw.Indent - 1
+          sw.WriteLine("}")
+        end
       end
+
     | Pop ->
       begin
         if cm = "" then raise NotDefined
@@ -266,6 +335,7 @@ module Translator =
                   | None -> ""
                   | Some(x) -> sprintf " %s := " x
         sw.WriteLine("call {0}{1}({2});", lhs, f, args)
+        sw.WriteLine("if(eventRaised) { return; }")
       end
     | Goto(s, e) -> 
       begin

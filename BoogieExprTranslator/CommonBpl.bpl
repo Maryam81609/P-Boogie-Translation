@@ -298,7 +298,6 @@ procedure {:inline} RemoveMap(map: PrtRef, key: PrtRef)  returns (nmap: PrtRef)
 var machineCounter : int;
 
 // The Queues
-
 // MachineId -> index -> EventId
 var MachineInboxStoreEvent: [int][int]int;
 
@@ -326,6 +325,12 @@ var {:thread_local} raisedEventPl: PrtRef;
 
 //For event variables
 var {:thread_local} tmpEventID: int;
+
+//For receive statements
+var {:thread_local} recvRegisteredEvents: [int]bool;
+var {:thread_local} recvPtr :int;
+var {:thread_local} recvHd: int;
+var {:thread_local} recvTl: int;
 
 procedure {:inline} InitializeInbox(mid: int)
 {
