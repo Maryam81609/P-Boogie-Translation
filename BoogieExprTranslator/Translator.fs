@@ -170,7 +170,7 @@ module Translator =
   let rec translateStmt (sw: IndentedTextWriter) G (stateToInt: Map<string, int>) (cm: string) (evMap: Map<string, int>) stmt =
     
     let translateCase (e, st) =
-      sw.WriteLine("if(event == {0})", (Map.find e evMap))
+      sw.WriteLine("if(event == {0}) //{1}", (Map.find e evMap), e)
       sw.WriteLine("{")
       sw.Indent <- sw.Indent + 1
       translateStmt sw G stateToInt cm evMap st
@@ -247,8 +247,8 @@ module Translator =
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
         sw.WriteLine("// dequeue")
-        sw.WriteLine("q := machineEvToQCount[thisMid][event];")
-        sw.WriteLine("machineEvToQCount[thisMid][event] := q - 1;")
+        sw.WriteLine("recvQ := machineEvToQCount[thisMid][event];")
+        sw.WriteLine("machineEvToQCount[thisMid][event] := recvQ - 1;")
         sw.WriteLine("if(recvPtr == recvHd)")
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
@@ -264,13 +264,14 @@ module Translator =
         sw.WriteLine("else")
         sw.WriteLine("{")
         sw.Indent <- sw.Indent + 1
-        sw.WriteLine("MachineInboxStoreEvent[thisMid][ptr] := 0 - 1;")
+        sw.WriteLine("MachineInboxStoreEvent[thisMid][recvPtr] := 0 - 1;")
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
         sw.WriteLine("payload := MachineInboxStorePayload[thisMid][recvPtr];")
         sw.WriteLine("break;")
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
+        sw.WriteLine("recvPtr := recvPtr + 1;")
         sw.Indent <- sw.Indent - 1
         sw.WriteLine("}")
 
@@ -295,7 +296,10 @@ module Translator =
           | _ -> false
 
         let flag = List.fold (fun acc x -> HandleNullCase x || acc) false  ls
-        if not flag then sw.WriteLine("assert (event >= 0);")
+        if not flag then begin
+          sw.WriteLine("// block")
+          sw.WriteLine("assume (event >= 0);")
+        end
         List.iter translateCase ls
         sw.WriteLine("")
         sw.WriteLine("{")
@@ -464,7 +468,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
 
     List.zip l1 l2
 
-  //TODO Come back!
   let printEvDict (sw:IndentedTextWriter) (state: int) (evDict: Map<int, bool>, name: string)=
     Map.iter (fun k v ->sw.WriteLine("{0}[{1}][{2}] := {3};", name, state, k, if v then "true" else "false")) evDict
 

@@ -1,6 +1,3 @@
-Warning: Using default recursion bound of 1
-Verifying 5 impls
-LB: Took 0.48 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_count, Main_server, registerEvents, CurrState, StateStack, Server_client, machineEvToQCount}

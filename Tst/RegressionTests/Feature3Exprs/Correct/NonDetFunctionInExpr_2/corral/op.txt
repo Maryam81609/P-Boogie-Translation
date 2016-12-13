@@ -1,7 +1,4 @@
-Warning: Using default recursion bound of 1
-Verifying 12 impls
-LB: Took 0.61 s
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, tmpRhsValue_1, Main_ts, Main_t, Main_s, Main_s1, Main_m, Main_j, registerEvents, CurrState, StateStack, Tmp361, Tmp360, Tmp359, Tmp358, Tmp362, Tmp363, Tmp366, Tmp365, Tmp368, Tmp367, Tmp364, Tmp371, Tmp370, Tmp373, Tmp372, Tmp369, Tmp375, Tmp376, Tmp374, Tmp377}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, tmpRhsValue_1, Main_ts, Main_t, Main_s, Main_s1, Main_m, Main_j, registerEvents, CurrState, StateStack, Tmp350, Tmp349, Tmp348, Tmp347, Tmp351, Tmp352, Tmp355, Tmp354, Tmp357, Tmp356, Tmp353, Tmp360, Tmp359, Tmp362, Tmp361, Tmp358, Tmp364, Tmp365, Tmp363, Tmp366}
 Program has no bugs
 Reached recursion bound of 1
 

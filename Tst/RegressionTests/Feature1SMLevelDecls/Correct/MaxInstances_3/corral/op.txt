@@ -1,6 +1,3 @@
-Warning: Using default recursion bound of 1
-Verifying 4 impls
-LB: Took 0.42 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_ghost_machine, registerEvents, CurrState, StateStack, Ghost_real_machine}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_ghost_machine, registerEvents, CurrState, StateStack, Ghost_real_machine, machineToQCAssert}

@@ -1,9 +1,6 @@
-Warning: Using default recursion bound of 1
-Verifying 2 impls
-LB: Took 0.38 s
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, registerEvents, CurrState, StateStack}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, registerEvents, CurrState, StateStack, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState, MachineInboxHead, MachineInboxTail}
 Program has no bugs
 Reached recursion bound of 1
 

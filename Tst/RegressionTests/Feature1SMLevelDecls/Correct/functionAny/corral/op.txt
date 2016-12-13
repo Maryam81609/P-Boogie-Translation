@@ -1,9 +1,6 @@
-Warning: Using default recursion bound of 1
-Verifying 2 impls
-LB: Took 0.36 s
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, CurrState}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, CurrState, MachineInboxHead, MachineInboxTail}
 Program has no bugs
 Reached recursion bound of 1
 

@@ -1,17 +1,14 @@
-Warning: Using default recursion bound of 1
-Verifying 3 impls
-LB: Took 0.39 s
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload, MachineInboxStoreEvent, machineEvToQCount, machineCounter}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload, MachineInboxStoreEvent, machineEvToQCount, machineCounter}
 Program has no bugs
 Reached recursion bound of 1
 

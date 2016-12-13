@@ -331,6 +331,7 @@ var {:thread_local} recvRegisteredEvents: [int]bool;
 var {:thread_local} recvPtr :int;
 var {:thread_local} recvHd: int;
 var {:thread_local} recvTl: int;
+var {:thread_local} recvQ: int;
 
 procedure {:inline} InitializeInbox(mid: int)
 {

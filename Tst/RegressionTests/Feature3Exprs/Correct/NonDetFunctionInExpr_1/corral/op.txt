@@ -1,9 +1,6 @@
-Warning: Using default recursion bound of 1
-Verifying 2 impls
-LB: Took 0.36 s
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp342, Tmp341, Tmp340, Tmp339}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp353, Tmp352, Tmp351, Tmp350, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_i, tmpRhsValue_0, Main_x, registerEvents, CurrState, StateStack, Tmp342, Tmp341, Tmp340, Tmp339, MachineInboxHead, MachineInboxTail}
 Program has no bugs
 Reached recursion bound of 1
 

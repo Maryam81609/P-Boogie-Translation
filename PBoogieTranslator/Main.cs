@@ -22,7 +22,7 @@ namespace Microsoft.PBoogieTranslator
         public static void Main(string[] args)
         {
             var options = new CommandLineArguments(args);
-            FSharpExpGen fsExpGen = /*null;*/ new FSharpExpGen(options);
+            FSharpExpGen fsExpGen = new FSharpExpGen(options);
             if (options.list)
             {
                 using (var sr = new StreamReader(options.inputFile))
@@ -38,33 +38,69 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             Console.WriteLine(options.boogieFile);
                             Console.WriteLine("*************************************************************************************************************************");
-                            //ProcessPFile(options, fsExpGen);
+                            ProcessPFile(options, fsExpGen);
                             Console.Error.WriteLine(options.boogieFile);
+
+                            opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
+                            if (!Directory.Exists(opFileDir))
+                                Directory.CreateDirectory(opFileDir);
+
+                            var optFilePath = Path.Combine(opFileDir, "options.txt");
                             int rb = 1;
                             bool good = false;
-                            while (!good && rb < 21)
+
+                            if (File.Exists(optFilePath))
                             {
-                                good = verifyAndGetLoopBound(options, rb);
-                                rb++;
-                            }
-                            if (!good)
-                            {
-                                Console.WriteLine("There seems to be another issue. A recursion bound of 20 is not working.");
+                                using (var tmp = new StreamReader(optFilePath))
+                                {
+                                    int k = 0;
+                                    var s = tmp.ReadLine().Split();
+                                    foreach (var e in s)
+                                    {
+                                        if (e.StartsWith("/recursionBound:"))
+                                        {
+                                            rb = int.Parse(e.Substring(16));
+                                        }
+                                        else if (e.StartsWith("/k:"))
+                                        {
+                                            k = int.Parse(e.Substring(3));
+                                        }
+                                    }
+                                    good = verify(options, rb, k);
+                                    if (!good)
+                                    {
+                                        Console.Error.WriteLine();
+                                        Console.Error.WriteLine(optFilePath);
+                                        Console.Error.WriteLine();
+                                    }
+                                }
                             }
                             else
                             {
-                                using (var opts = new StreamWriter(Path.Combine(opFileDir, "options.txt")))
+                                do
                                 {
-                                    opts.WriteLine(" /cooperative"  //Use Co-operative scheduling
-                                        + " /recursionBound:"
-                                        + rb
-                                        //+ " /maxStaticLoopBound:100" //Figure out recursion bound automatically.
-                                        + " /k:3"); //Context switch bound.
-                                        //+ " /timeLimit:1000"); //Z3 timeout increased to 1000s
+                                    good = verify(options, rb);
+                                    rb++;
+                                } while (!good && rb < 21);
+                                rb--;
+                                if (!good)
+                                {
+                                    Console.WriteLine("There seems to be another issue. A recursion bound of 20 is not working.");
                                 }
+                                else
+                                {
+                                    using (var opts = new StreamWriter(optFilePath))
+                                    {
+                                        opts.WriteLine(" /cooperative"  //Use Co-operative scheduling
+                                            + " /timeLimit:1000"
+                                            + " /recursionBound:"
+                                            + rb
+                                            + " /k:3"); //Context switch bound.
+                                    }
+                                }
+                                Console.WriteLine("Recursion Bound: {0}", rb);
+                                Console.Error.WriteLine("Recursion Bound: {0}", rb);
                             }
-                            Console.WriteLine("Recursion Bound: {0}", rb);
-                            Console.Error.WriteLine("Recursion Bound: {0}", rb);
                         }
                         catch (Exception e)
                         {
@@ -103,17 +139,18 @@ namespace Microsoft.PBoogieTranslator
             }
         }
 
-        public static bool verifyAndGetLoopBound(CommandLineArguments options, int rb)
+        public static bool verify(CommandLineArguments options, int rb, int k=3)
         {
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.FileName = @"..\..\..\corral\bin\Debug\corral.exe";
             startInfo.Arguments = options.boogieFile
                 + " /cooperative"  //Use Co-operative scheduling
+                + " /timeLimit:1000"
                 + " /recursionBound:"
                 + rb
-                //+ " /maxStaticLoopBound:100" //Figure out recursion bound automatically.
-                + " /k:3"; //Context switch bound.
-                //+ " /timeLimit:1000"; //Z3 timeout increased to 1000s
+                + " /k:"
+                + k; //Context switch bound.
+
             startInfo.RedirectStandardError = true;
             startInfo.RedirectStandardInput = true;
             startInfo.RedirectStandardOutput = true;
@@ -126,11 +163,7 @@ namespace Microsoft.PBoogieTranslator
                 try
                 {
                     process.Start();
-
-                    opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
-                    if (!Directory.Exists(opFileDir))
-                        Directory.CreateDirectory(opFileDir);
-
+                    process.WaitForExit();
                     var op = process.StandardOutput.ReadToEnd();
                     var err = process.StandardOutput.ReadToEnd();
 
@@ -278,7 +311,6 @@ namespace Microsoft.PBoogieTranslator
 
         private static void printPFile(string fileName, Syntax.ProgramDecl prog)
         {
-            //Console.WriteLine(fileName);
             if (fileName == "-")
             {
                 Helper.printProg(prog, new IndentedTextWriter(Console.Out, "   "));
