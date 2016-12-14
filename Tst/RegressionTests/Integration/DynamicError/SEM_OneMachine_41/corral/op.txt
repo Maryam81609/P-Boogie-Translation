@@ -1,11 +1,8 @@
-Warning: Using default recursion bound of 1
-Verifying 3 impls
-LB: Took 0.44 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, StateStack, Main_i, registerEvents}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, StateStack, Main_i, registerEvents, machineEvToQCount}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, StateStack, Main_i, registerEvents, machineEvToQCount, machineToQCAssert}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 3
 

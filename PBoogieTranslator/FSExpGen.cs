@@ -1683,7 +1683,6 @@ namespace Microsoft.PBoogieTranslator
             typesAsserted.Clear();
 
             events.Add(new Syntax.EventDecl("halt", null, null));
-            events.Add(new Syntax.EventDecl("null", null, null));
 
             maxFields = 0;
             hasDefer = false;
@@ -1743,7 +1742,6 @@ namespace Microsoft.PBoogieTranslator
                     eventsToDecls[e.Name] = e;
                     eventToMonitorList[e.Name] = new List<string>();
                 }
-                eventToMonitorList["null"] = new List<string>();
                 eventToMonitorList["halt"] = new List<string>();
 
             }

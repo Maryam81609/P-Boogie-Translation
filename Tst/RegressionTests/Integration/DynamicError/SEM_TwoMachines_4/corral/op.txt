@@ -1,11 +1,14 @@
-Warning: Using default recursion bound of 1
-Verifying 5 impls
-LB: Took 0.61 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_pongId, Main_count, registerEvents, StateStack}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_pongId, Main_count, registerEvents, StateStack, MachineInboxHead, MachineInboxTail}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_pongId, Main_count, registerEvents, StateStack, MachineInboxHead, MachineInboxTail, machineEvToQCount}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_pongId, Main_count, registerEvents, StateStack, MachineInboxHead, MachineInboxTail, machineEvToQCount, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_pongId, Main_count, registerEvents, StateStack, MachineInboxHead, MachineInboxTail, machineEvToQCount, machineToQCAssume, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_pongId, Main_count, registerEvents, StateStack, MachineInboxHead, MachineInboxTail, machineEvToQCount, machineToQCAssume, machineToQCAssert, MachineInboxStoreEvent, MachineInboxStorePayload, machineCounter}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 2
 

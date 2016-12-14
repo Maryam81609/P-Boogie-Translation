@@ -498,7 +498,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       match d with
       | DoDecl.T.Call(e, f) ->
         begin
-          sw.WriteLine("if(event == {0}) //{1}", (Map.find e evMap), e)
+          let x = if e = "null" then "0 - 1" else (sprintf "%d" (Map.find e evMap))
+          sw.WriteLine("if(event == {0}) //{1}", x, e)
           sw.WriteLine("{")
           sw.Indent <- sw.Indent + 1
           sw.WriteLine("call {0}(payload);", f)
@@ -514,7 +515,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       match t with
       | TransDecl.T.Call(e, d, f) ->
         begin
-          sw.WriteLine("if(event == {0}) // {1}", (Map.find e evMap), e)
+          let x = if e = "null" then "0 - 1" else (sprintf "%d" (Map.find e evMap))
+          sw.WriteLine("if(event == {0}) // {1}", x, e)
           sw.WriteLine("{")
           sw.Indent <- sw.Indent + 1;
           sw.WriteLine("call {0}_CallExitAction();", mach.Name)
@@ -526,7 +528,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
         end
       |TransDecl.T.Push(e, d) ->
         begin
-          sw.WriteLine("if(event == {0}) // {1}", (Map.find e evMap), e)
+          let x = if e = "null" then "0 - 1" else (sprintf "%d" (Map.find e evMap))
+          sw.WriteLine("if(event == {0}) // {1}", x, e)
           sw.WriteLine("{")
           sw.Indent <- sw.Indent + 1
           sw.WriteLine("call StateStackPush({0});", (Map.find src stateToInt))
@@ -553,11 +556,26 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     let ht = List.fold (fun acc t -> acc || (haltHandledInTrans t)) false state.Transitions
     ht || hd
 
-  let translateState (sw: IndentedTextWriter) mach (stateToInt:Map<string, int>) hasDefer hasIgnore (evMap: Map<string,int>) (state: StateDecl) =
+  let translateState (sw: IndentedTextWriter) (mach: MachineDecl) (stateToInt:Map<string, int>) hasDefer hasIgnore (evMap: Map<string,int>) (state: StateDecl) =
     sw.WriteLine("if(CurrState == {0})", (Map.find state.Name stateToInt))
     sw.WriteLine("{")
     sw.WriteLine("  {0}:", state.Name)
     sw.Indent <- sw.Indent + 1
+    let HasNullTrans = 
+      (state.Transitions |> List.fold (fun acc (t: TransDecl.T) -> match t with
+                                                                   | TransDecl.T.Push("null", _)
+                                                                   | TransDecl.T.Call("null", _, _) -> acc || true
+                                                                   | _ -> acc)  false)
+    || (state.Dos |> List.fold (fun acc (d: DoDecl.T) -> match d with
+                                                         | DoDecl.T.Call("null", _) -> acc || true
+                                                         | _ -> acc) false)
+    let arg = if HasNullTrans then "false" else "true"
+
+    sw.WriteLine("call event, payload := Dequeue({0});", arg)
+    sw.WriteLine("call {{:cexpr \"{0}_recvd_event\"}} boogie_si_record_int(event);", mach.Name)
+
+    if mach.HasPush then sw.WriteLine("call {0}_ProbeStateStack(event);", mach.Name)
+
     List.iter (translateDos sw evMap) state.Dos
     List.iter (translateTransitions sw mach state.Name stateToInt evMap) state.Transitions
     if (not (haltHandled state)) then
@@ -570,7 +588,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
         sw.WriteLine("}")
         sw.Write("else")
       end
-    
+
     sw.WriteLine()
     //Raise exception for unhandled event.
     sw.WriteLine("{")
@@ -727,10 +745,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("yield;")
-    sw.WriteLine("call event, payload := Dequeue();")
-    sw.WriteLine("call {{:cexpr \"{0}_recvd_event\"}} boogie_si_record_int(event);", md.Name)
 
-    if md.HasPush then sw.WriteLine("call {0}_ProbeStateStack(event);", md.Name)
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine()
     sw.WriteLine("{")
@@ -780,7 +795,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
           begin
             let srcExitAction = md.StateMap.[src].ExitAction
             let dstEntryAction = md.StateMap.[d].EntryAction
-            sw.WriteLine("if(event == {0}) // {1}", (Map.find e evMap), e)
+            let x = if e = "null" then "0 - 1" else (sprintf "%d" (Map.find e evMap))
+            sw.WriteLine("if(event == {0}) // {1}", x, e)
             sw.WriteLine("{")
             sw.Indent <- sw.Indent + 1;
             match srcExitAction with
@@ -982,7 +998,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("}")
 
   let createDeque (sw: IndentedTextWriter) hasDefer hasIgnore (numEvents: int) =    
-    sw.WriteLine("procedure Dequeue() returns (event: int, payload: PrtRef)")
+    sw.WriteLine("procedure Dequeue(block: bool) returns (event: int, payload: PrtRef)")
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("var ptr: int;")
@@ -1000,12 +1016,13 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
 
-
     sw.WriteLine("head := MachineInboxHead[thisMid];")
     sw.WriteLine("tail := MachineInboxTail[thisMid];")
 
     sw.WriteLine("ptr := head;")
     sw.WriteLine("event := 0 - 1;")
+    sw.WriteLine("payload := PrtNull;")
+    sw.WriteLine("if(!block && head > tail) return; //Handle non-blocking case")
 
     sw.WriteLine("while(ptr <= tail)")
     sw.WriteLine("{")

@@ -145,8 +145,8 @@ module Syntax =
     member this.EntryAction = entryaction
     member this.ExitAction = exitaction
     member this.Transitions = transitions
-    member this.Dos = dos
-   
+    member this.Dos = dos                                                        
+
   [<Serializable>]
   type MachineDecl(name: string, startState: string, globals: VarDecl list, 
                       functions: FunDecl list, states: StateDecl list, 
@@ -177,7 +177,7 @@ module Syntax =
     member this.VarMap =
       let map = ref Map.empty in
       List.iter (fun (var: VarDecl) -> map := Map.add var.Name var.Type !map) this.Globals
-      !map       
+      !map
       
    
   [<Serializable>]

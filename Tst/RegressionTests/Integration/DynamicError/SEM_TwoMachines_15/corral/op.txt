@@ -1,79 +1,76 @@
-Warning: Using default recursion bound of 1
-Verifying 2 impls
-LB: Took 0.37 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_ev2, Main_test, tmpEventID, registerEvents, CurrState, StateStack}
 Program has a potential bug: True bug
-PersistentProgram(546,1): error PF5001: This assertion can fail
+PersistentProgram(556,1): error PF5001: This assertion can fail
 
-MonitorInvocationEventExprPayload.bpl(639,1): error PF5001: This assertion can fail
+MonitorInvocationEventExprPayload.bpl(645,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(786,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(786,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(787,17): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(788,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(789,5): anon0  (CALL newMachine_Main)
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(659,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(659,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(660,9): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(661,5): anon0  (CALL InitializeInbox)
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(521,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(521,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(522,4): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(661,5): anon0  (RETURN from InitializeInbox )
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(663,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(664,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(665,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(666,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(667,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(668,31): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(669,5): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(670,11): anon0  (FORK MachineThread_Main)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(744,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(744,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(745,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(747,17): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(748,13): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(750,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(751,14): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(753,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(754,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(755,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(756,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(757,5): anon0  (CALL Main_Real1_Init_entry11)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(681,39): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(681,39): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(682,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(683,14): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(684,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(685,5): anon0  (CALL AssertPayloadDynamicType)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(792,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(792,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(793,17): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(794,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(795,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(665,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(665,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(666,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(667,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(527,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(527,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(528,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(667,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(669,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(670,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(671,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(672,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(673,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(674,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(675,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(676,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(750,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(750,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(751,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(753,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(754,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(756,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(757,14): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(759,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(760,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(761,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(762,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(763,5): anon0  (CALL Main_Real1_Init_entry11)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(687,39): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(687,39): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(688,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(689,14): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(690,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(691,5): anon0  (CALL AssertPayloadDynamicType)
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(88,10): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(88,10): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(91,9): anon3_Then  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(89,5): anon3_Then  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(91,9): anon3_Then  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(93,5): anon2  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(685,5): anon0  (RETURN from AssertPayloadDynamicType )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(686,5): anon0  (CALL monitor)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(691,5): anon0  (RETURN from AssertPayloadDynamicType )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(692,5): anon0  (CALL monitor)
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(66,5): anon0  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(66,5): anon6_Else  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(66,5): anon6_Else  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(71,9): anon7_Then  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(69,10): anon7_Then  
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(71,9): anon7_Then  (CALL Monitor_M)
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(617,13): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(617,13): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(618,5): anon3_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(618,5): anon3_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(620,7): M_x  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(623,13): anon4_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(621,9): anon4_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(623,13): anon4_Then  (CALL M_x_do_E220)
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(636,24): anon0  
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(636,24): anon0  
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(637,5): anon0  
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(638,5): anon0  (CALL PrtEquals)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(623,13): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(623,13): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(624,5): anon3_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(624,5): anon3_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(626,7): M_x  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(629,13): anon4_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(627,9): anon4_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(629,13): anon4_Then  (CALL M_x_do_E220)
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(642,24): anon0  
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(642,24): anon0  
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(643,5): anon0  
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(644,5): anon0  (CALL PrtEquals)
 (2,1)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(100,5): anon0  
 (2,1)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(100,5): anon13_Else  
 (2,1)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(100,5): anon13_Else  
@@ -89,17 +86,17 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,1)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(107,31): anon16_Then  
 (2,1)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(107,5): anon16_Then  
 (2,1)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(107,31): anon16_Then  
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(638,5): anon0  (RETURN from PrtEquals )
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(639,5): anon0  (ASSERTION FAILS assert PrtFieldBool(Tmp1403);
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(644,5): anon0  (RETURN from PrtEquals )
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(645,5): anon0  (ASSERTION FAILS assert PrtFieldBool(Tmp309);
  )
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(623,13): anon4_Then  (RETURN from M_x_do_E220 )
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(629,13): anon4_Then  (RETURN from M_x_do_E220 )
 (2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(71,9): anon7_Then  (RETURN from Monitor_M )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(686,5): anon0  (RETURN from monitor )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(757,5): anon0  (RETURN from Main_Real1_Init_entry11 )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(757,5): anon0  (Done)
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(670,11): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(671,7): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(672,5): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(789,5): anon0  (RETURN from newMachine_Main )
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(789,5): anon0  (Done)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(692,5): anon0  (RETURN from monitor )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(763,5): anon0  (RETURN from Main_Real1_Init_entry11 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(763,5): anon0  (Done)
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(676,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(677,7): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(678,5): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(795,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_TwoMachines_15\MonitorInvocationEventExprPayload.bpl(795,5): anon0  (Done)
 
