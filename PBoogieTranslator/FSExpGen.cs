@@ -52,6 +52,12 @@ namespace Microsoft.PBoogieTranslator
 
         private SymbolTable symbolTable = new SymbolTable();
 
+        private Dictionary<P_Root.FunDecl, string> funToFile =
+            new Dictionary<P_Root.FunDecl, string>();
+
+        private Dictionary<P_Root.AnonFunDecl, string> anonFunToFile =
+            new Dictionary<P_Root.AnonFunDecl, string>();
+
         private int maxFields = 0;
         private bool hasDefer = false;
         private bool hasIgnore = false;
@@ -109,12 +115,17 @@ namespace Microsoft.PBoogieTranslator
 
         private string getFunFileInfo(P_Root.FunDecl d)
         {
-            //var s = d.Span as 
+            string ans;
+            if (funToFile.TryGetValue(d, out ans))
+                return ans; 
             return "";
         }
 
         private string getAnonFunFileInfo(P_Root.AnonFunDecl d)
         {
+            string ans;
+            if (anonFunToFile.TryGetValue(d, out ans))
+                return ans;
             return "";
         }
         private Tuple<int, int> getLineColNumber(P_Root.Stmt s)
@@ -1683,7 +1694,18 @@ namespace Microsoft.PBoogieTranslator
         {
             foreach (var program in parsedPrograms)
             {
-                var file = program.FileInfos;
+                foreach(var f in program.FileInfos)
+                {
+                    if (f.decl is P_Root.FunDecl)
+                    {
+                        funToFile[f.decl as P_Root.FunDecl] = getString(f.file);
+                    }
+                    else if(f.decl is P_Root.AnonFunDecl)
+                    {
+                        anonFunToFile[f.decl as P_Root.AnonFunDecl] = getString(f.file);
+                    }
+                }
+
                 foreach (var state in program.States)
                 {
                     var name = getString((state.owner as P_Root.MachineDecl).name)

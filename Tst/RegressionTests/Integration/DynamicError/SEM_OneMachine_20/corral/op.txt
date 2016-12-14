@@ -1,113 +1,110 @@
-Warning: Using default recursion bound of 1
-Verifying 3 impls
-LB: Took 0.42 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, registerEvents, CurrState}
 Program has a potential bug: True bug
-PersistentProgram(462,1): error PF5001: This assertion can fail
+PersistentProgram(475,1): error PF5001: This assertion can fail
 
-BugReproIdenticalTerms.bpl(642,1): error PF5001: This assertion can fail
+BugReproIdenticalTerms.bpl(649,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(759,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(759,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(760,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(761,5): anon0  (CALL newMachine_Main)
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(582,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(582,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(583,9): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(584,5): anon0  (CALL InitializeInbox)
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(505,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(505,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(506,4): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(584,5): anon0  (RETURN from InitializeInbox )
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(586,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(587,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(588,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(589,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(590,31): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(591,5): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(592,11): anon0  (FORK MachineThread_Main)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(698,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(698,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(699,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(701,17): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(702,13): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(705,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(706,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(707,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(708,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(709,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(710,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(711,5): anon0  (CALL Main_Init_entry6)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(603,32): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(603,32): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(604,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(605,17): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(606,17): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(607,19): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(608,5): anon0  (raised_event = 0)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(711,5): anon0  (RETURN from Main_Init_entry6 )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(712,5): anon8_LoopHead  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(714,9): anon8_LoopBody  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(712,5): anon8_LoopBody  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(592,11): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(593,7): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(594,5): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(761,5): anon0  (RETURN from newMachine_Main )
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(761,5): anon0  (Done)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(714,9): anon8_LoopBody  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(715,9): anon8_LoopBody  (CALL Dequeue)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(766,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(766,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(767,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(768,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(588,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(588,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(589,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(590,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(511,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(511,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(512,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(590,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(592,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(593,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(594,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(595,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(596,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(597,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(598,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(705,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(705,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(706,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(708,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(709,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(712,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(713,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(714,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(715,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(716,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(717,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(718,5): anon0  (CALL Main_Init_entry6)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(609,32): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(609,32): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(610,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(611,17): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(612,17): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(613,19): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(614,5): anon0  (raised_event = 0)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(718,5): anon0  (RETURN from Main_Init_entry6 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(719,5): anon8_LoopHead  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(721,9): anon8_LoopBody  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(719,5): anon8_LoopBody  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(598,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(599,7): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(600,5): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(768,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(768,5): anon0  (Done)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(721,9): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(722,9): anon8_LoopBody  (CALL Dequeue)
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(112,5): anon0  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(114,21): anon11_Then  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(112,5): anon11_Then  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(114,21): anon11_Then  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(115,15): anon11_Then  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(116,17): anon11_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(715,9): anon8_LoopBody  (RETURN from Dequeue )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(716,9): anon8_LoopBody  (Main_recvd_event = 0)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(717,9): anon8_LoopBody  (CALL Main_ProbeStateStack)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(647,4): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(649,7): anon6_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(647,4): anon6_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(649,7): anon6_Then  (Main_state = 0)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(717,9): anon8_LoopBody  (RETURN from Main_ProbeStateStack )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(718,9): anon9_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(718,9): anon9_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(720,11): Main_Init  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(723,17): anon10_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(721,13): anon10_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(723,17): anon10_Then  (CALL StateStackPush)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(520,15): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(520,15): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(723,17): anon10_Then  (RETURN from StateStackPush )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(724,27): anon10_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(725,17): anon10_Then  (CALL Main_CallEntryAction)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(669,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(669,5): anon4_Else  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(669,5): anon4_Else  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(673,5): anon2  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(675,9): anon5_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(673,5): anon5_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(675,9): anon5_Then  (CALL Main_Call_entry14)
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(628,33): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(628,33): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(629,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(630,5): anon0  (CALL Main_CallExitAction)
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(680,5): anon0  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(680,5): anon4_Else  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(680,5): anon4_Else  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(686,9): anon5_Then  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(684,10): anon5_Then  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(686,9): anon5_Then  (CALL Main_Call_exit16)
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(640,32): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(640,32): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(641,5): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(642,5): anon0  (ASSERTION FAILS assert PrtFieldBool(PrtFalse);
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(722,9): anon8_LoopBody  (RETURN from Dequeue )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(723,9): anon8_LoopBody  (Main_recvd_event = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(724,9): anon8_LoopBody  (CALL Main_ProbeStateStack)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(654,4): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(656,7): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(654,4): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(656,7): anon6_Then  (Main_state = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(724,9): anon8_LoopBody  (RETURN from Main_ProbeStateStack )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(725,9): anon9_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(725,9): anon9_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(727,11): Main_Init  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(730,17): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(728,13): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(730,17): anon10_Then  (CALL StateStackPush)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(526,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(526,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(730,17): anon10_Then  (RETURN from StateStackPush )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(731,27): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(732,17): anon10_Then  (CALL Main_CallEntryAction)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(676,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(676,5): anon4_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(676,5): anon4_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(680,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(682,9): anon5_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(680,5): anon5_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(682,9): anon5_Then  (CALL Main_Call_entry14)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(635,33): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(635,33): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(636,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(637,5): anon0  (CALL Main_CallExitAction)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(687,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(687,5): anon4_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(687,5): anon4_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(693,9): anon5_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(691,10): anon5_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(693,9): anon5_Then  (CALL Main_Call_exit16)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(647,32): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(647,32): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(648,5): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(649,5): anon0  (ASSERTION FAILS assert PrtFieldBool(PrtFalse);
  )
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(686,9): anon5_Then  (RETURN from Main_Call_exit16 )
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(630,5): anon0  (RETURN from Main_CallExitAction )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(675,9): anon5_Then  (RETURN from Main_Call_entry14 )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(725,17): anon10_Then  (RETURN from Main_CallEntryAction )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(725,17): anon10_Then  (Done)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(693,9): anon5_Then  (RETURN from Main_Call_exit16 )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(637,5): anon0  (RETURN from Main_CallExitAction )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(682,9): anon5_Then  (RETURN from Main_Call_entry14 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(732,17): anon10_Then  (RETURN from Main_CallEntryAction )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_20\BugReproIdenticalTerms.bpl(732,17): anon10_Then  (Done)
 

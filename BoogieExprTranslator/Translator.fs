@@ -614,24 +614,24 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
   let createProbe sw name =
     fprintfn sw @"procedure %s_ProbeStateStack(event: int)
 {
-   if(registerEvents[CurrState][event])
-   {" name
-    fprintfn sw "      call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
-    fprintfn sw "      return;
-   }" 
-    
-    fprintfn sw "  //Probe down the state stack. 
-   while(StateStack != Nil())
-   {"
-    fprintfn sw "      call %s_CallExitAction();" name
-    fprintfn sw @"
-      CurrState := state#Cons(StateStack);
-      StateStack := stack#Cons(StateStack);
-      if(registerEvents[CurrState][event])
-      {" 
+    if(registerEvents[CurrState][event])
+    {" name
     fprintfn sw "        call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
     fprintfn sw "        return;
-      }" 
+    }" 
+    
+    fprintfn sw "   //Probe down the state stack. 
+    while(StateStack != Nil())
+    {"
+    fprintfn sw "        call %s_CallExitAction();" name
+    fprintfn sw @"
+        CurrState := state#Cons(StateStack);
+        StateStack := stack#Cons(StateStack);
+        if(registerEvents[CurrState][event])
+        {" 
+    fprintfn sw "            call {:cexpr \"%s_state\"} boogie_si_record_int(CurrState);" name
+    fprintfn sw "            return;
+        }" 
     fprintfn sw "   }"
 
     fprintfn sw @"   return;

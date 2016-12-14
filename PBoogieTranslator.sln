@@ -31,7 +31,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTranslator", "Tst\TestT
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckP", "P\Tst\Tools\CheckP\CheckP.csproj", "{D614D3EC-C765-4B47-8002-E683C16C5865}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateSpreadSheet", "CreateSpreadSheet\CreateSpreadSheet.csproj", "{DD5E9120-88BF-435E-9E94-A208B0B9BC0B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateCSV", "CreateCSV\CreateCSV.csproj", "{DD5E9120-88BF-435E-9E94-A208B0B9BC0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

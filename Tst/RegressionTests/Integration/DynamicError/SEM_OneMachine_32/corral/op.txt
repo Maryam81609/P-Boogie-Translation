@@ -1,11 +1,246 @@
-Warning: Using default recursion bound of 1
-Verifying 3 impls
-LB: Took 0.42 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_test, registerEvents, CurrState}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_test, registerEvents, CurrState, machineEvToQCount}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_test, registerEvents, CurrState, machineEvToQCount, machineToQCAssert}
-Program has no bugs
-Reached recursion bound of 1
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_test, registerEvents, CurrState, machineEvToQCount, machineToQCAssert, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_test, registerEvents, CurrState, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_test, registerEvents, CurrState, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent}
+Program has a potential bug: True bug
+PersistentProgram(635,1): error PF5001: This assertion can fail
+
+RaisedHaltHandled.bpl(613,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(789,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(789,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(790,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(791,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(590,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(590,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(591,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(592,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(513,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(513,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(514,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(592,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(594,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(595,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(596,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(597,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(598,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(599,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(600,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(727,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(727,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(728,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(730,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(731,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(733,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(735,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(736,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(737,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(738,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(739,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(740,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(741,5): anon0  (CALL Main_Real1_Init_entry9)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(632,38): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(632,38): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(633,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(634,5): anon0  (CALL send)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(583,2): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(583,2): anon0  (CALL monitor)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(65,5): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(67,5): anon5_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(65,5): anon5_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(583,2): anon0  (RETURN from monitor )
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(600,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(601,7): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(602,5): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(791,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(791,5): anon0  (Done)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(584,2): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(585,2): anon0  (CALL Enqueue)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(569,9): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(569,9): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(570,26): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(572,6): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(573,34): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(574,38): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(575,40): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(577,4): anon0  (CALL AssertEventCard)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(158,10): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(158,10): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(159,10): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(160,11): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(164,9): anon6_Then  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(162,5): anon6_Then  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(164,9): anon6_Then  (E1_QC_violated = 1)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(165,9): anon6_Then  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(167,5): anon2  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(167,5): anon7_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(167,5): anon7_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(171,5): anon4  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(171,5): anon8_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(171,5): anon8_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(577,4): anon0  (RETURN from AssertEventCard )
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(578,4): anon0  (CALL AssertMachineQueueSize)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(546,7): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(546,7): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(547,7): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(548,7): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(550,5): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(551,2): anon4_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(551,2): anon4_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(557,5): anon2  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(557,5): anon2  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(558,2): anon5_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(558,2): anon5_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(578,4): anon0  (RETURN from AssertMachineQueueSize )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(585,2): anon0  (RETURN from Enqueue )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(634,5): anon0  (RETURN from send )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(635,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(636,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(637,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(638,19): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(639,5): anon0  (raised_event = 1)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(741,5): anon0  (RETURN from Main_Real1_Init_entry9 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(742,5): anon8_LoopHead  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(744,9): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(742,5): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(744,9): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(745,9): anon8_LoopBody  (CALL Dequeue)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(113,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(115,21): anon11_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(113,5): anon11_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(115,21): anon11_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(116,15): anon11_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(117,17): anon11_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(745,9): anon8_LoopBody  (RETURN from Dequeue )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(746,9): anon8_LoopBody  (Main_recvd_event = 1)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(747,9): anon8_LoopBody  (CALL Main_ProbeStateStack)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(676,4): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(678,7): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(676,4): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(678,7): anon6_Then  (Main_state = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(747,9): anon8_LoopBody  (RETURN from Main_ProbeStateStack )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(748,9): anon9_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(748,9): anon9_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(750,11): Main_Real1_Init  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(750,11): anon10_Else  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(751,13): anon10_Else  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(757,17): anon11_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(755,18): anon11_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(757,17): anon11_Then  (CALL StateStackPush)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(528,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(528,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(757,17): anon11_Then  (RETURN from StateStackPush )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(758,27): anon11_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(759,17): anon11_Then  (CALL Main_CallEntryAction)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(698,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(698,5): anon4_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(698,5): anon4_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(702,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(704,9): anon5_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(702,5): anon5_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(704,9): anon5_Then  (CALL Main_Real1_S1_entry18)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(659,34): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(659,34): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(660,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(661,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(704,9): anon5_Then  (RETURN from Main_Real1_S1_entry18 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(759,17): anon11_Then  (RETURN from Main_CallEntryAction )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(742,5): anon8_LoopHead  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(744,9): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(742,5): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(744,9): anon8_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(745,9): anon8_LoopBody  (CALL Dequeue)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(113,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(113,5): anon11_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(113,5): anon11_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(120,10): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(120,10): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(121,10): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(122,9): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(123,11): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(124,5): anon12_LoopHead  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(126,15): anon12_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(124,5): anon12_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(126,15): anon12_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(130,15): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(127,9): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(130,15): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(131,47): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(134,43): anon14_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(132,13): anon14_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(134,43): anon14_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(144,21): anon8  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(144,21): anon8  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(151,5): anon10  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(151,5): anon10  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(745,9): anon8_LoopBody  (RETURN from Dequeue )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(746,9): anon8_LoopBody  (Main_recvd_event = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(747,9): anon8_LoopBody  (CALL Main_ProbeStateStack)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(676,4): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(676,4): anon6_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(676,4): anon6_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(682,4): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(682,4): anon7_LoopHead  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(684,7): anon7_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(682,4): anon7_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(684,7): anon7_LoopBody  (CALL Main_CallExitAction)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(709,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(709,5): anon4_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(709,5): anon4_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(715,9): anon5_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(713,10): anon5_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(715,9): anon5_Then  (CALL Main_Real1_S1_exit18)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(670,39): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(670,39): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(671,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(715,9): anon5_Then  (RETURN from Main_Real1_S1_exit18 )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(684,7): anon7_LoopBody  (RETURN from Main_CallExitAction )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(686,17): anon7_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(687,18): anon7_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(690,9): anon8_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(688,7): anon8_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(690,9): anon8_Then  (Main_state = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(747,9): anon8_LoopBody  (RETURN from Main_ProbeStateStack )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(748,9): anon9_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(748,9): anon9_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(750,11): Main_Real1_Init  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(753,17): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(751,13): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(753,17): anon10_Then  (CALL Main_Real1_Init_do_E1)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(622,34): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(622,34): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(623,5): anon0  (CALL Main_Action2)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(611,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(611,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(612,5): anon0  (CALL PrtEquals)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(91,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(91,5): anon13_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(91,5): anon13_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(93,8): anon2  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(93,8): anon2  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(94,8): anon2  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(96,5): anon14_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(96,5): anon14_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(97,5): anon4  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(97,5): anon15_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(97,5): anon15_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(98,5): anon6  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(98,31): anon16_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(98,5): anon16_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(98,31): anon16_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(612,5): anon0  (RETURN from PrtEquals )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(613,5): anon0  (ASSERTION FAILS assert PrtFieldBool(Tmp288);
+ )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(623,5): anon0  (RETURN from Main_Action2 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(753,17): anon10_Then  (RETURN from Main_Real1_Init_do_E1 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Integration\DynamicError\SEM_OneMachine_32\RaisedHaltHandled.bpl(753,17): anon10_Then  (Done)
 
