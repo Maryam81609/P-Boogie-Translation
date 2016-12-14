@@ -315,8 +315,6 @@ namespace Microsoft.PBoogieTranslator
             if (lst == null)
                 return null;
 
-           // Console.WriteLine("{0}: {1}; {2}", lst, lst.Count, maxFields);
-
             if (lst.Count > maxFields)
                 maxFields = lst.Count;
             return Syntax.Type.NewNamedTuple(ListModule.OfSeq(lst)) 
@@ -588,7 +586,7 @@ namespace Microsoft.PBoogieTranslator
             {
                 maxFields = x.Length;
             }
-           // Console.WriteLine("{0}: {1}; {2}", x, x.Length, maxFields);
+           
 
             return Syntax.Expr.NewTuple(x) as Syntax.Expr.Tuple;
         }
@@ -600,7 +598,7 @@ namespace Microsoft.PBoogieTranslator
             {
                 maxFields = x.Length;
             }
-           // Console.WriteLine("{0}: {1}; {2}", x, x.Length, maxFields);
+           
 
             return Syntax.Expr.NewNamedTuple(x) as Syntax.Expr.NamedTuple;
         }
@@ -1691,7 +1689,7 @@ namespace Microsoft.PBoogieTranslator
                     var name = getString((state.owner as P_Root.MachineDecl).name)
                         + '_'
                         + getQualifiedName(state.name as P_Root.QualifiedName);
-                    // Console.WriteLine(name);
+                    
                     statesToDos[name] = new List<Syntax.DoDecl.T>();
                     statesToTransitions[name] = new List<Syntax.TransDecl.T>();
                 }
