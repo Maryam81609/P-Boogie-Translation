@@ -1,11 +1,289 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineCounter}
-Program has no bugs
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_x, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert}
+Program has a potential bug: True bug
+PersistentProgram(1350,1): error PF5001: This assertion can fail
+
+receive2.bpl(1000,1): error PF5001: This assertion can fail
+
+Execution trace:
+Format: (tid,k)  filename(line,col): blockName   (extra info)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1437,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1437,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1438,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1439,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(655,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(655,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(656,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(657,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(578,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(578,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(579,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(657,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(659,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(660,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(661,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(662,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(663,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(664,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(665,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(666,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(667,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1058,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1058,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1059,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1061,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1062,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1064,12): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1066,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1067,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1068,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1069,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1070,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1071,5): anon0  (CALL Main_Init_entry11)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(985,33): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(985,33): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(986,25): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(987,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(988,5): anon0  (CALL newMachine_B)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(675,20): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(675,20): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(676,9): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(677,5): anon0  (CALL InitializeInbox)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(578,4): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(578,4): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(579,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(677,5): anon0  (RETURN from InitializeInbox )
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(679,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(680,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(681,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(682,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(683,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(684,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(685,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(686,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(687,11): anon0  (FORK MachineThread_B)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1396,16): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1396,16): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1397,15): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1399,17): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1400,13): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1403,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1404,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1405,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1406,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1407,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1408,5): anon0  (CALL B_Init_entry34)
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1260,27): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1260,27): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1261,22): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1262,22): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1263,12): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1264,12): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1265,12): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1266,19): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1267,19): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1268,19): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1269,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1270,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1271,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1272,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1273,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1274,34): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1275,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1276,22): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1277,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1278,22): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1279,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(687,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(688,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(689,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(988,5): anon0  (RETURN from newMachine_B )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(989,25): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(990,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(991,12): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(992,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(993,5): anon0  (CALL PrtEquals)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,20): anon21_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,5): anon21_Then  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,20): anon21_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(993,5): anon0  (RETURN from PrtEquals )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(994,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(995,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(996,5): anon0  (CALL Main_foo)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(822,15): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(822,15): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(823,15): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(824,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(825,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(826,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(827,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(828,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(829,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(830,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(831,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(832,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(833,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(834,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(835,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(836,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(837,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(838,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(839,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(840,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(841,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(842,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(843,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(844,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(845,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(846,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(847,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(848,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(849,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(850,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(851,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(852,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(853,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(854,19): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(855,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(856,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(857,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(858,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(859,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(860,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(861,5): anon0  (CALL send)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(648,2): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(648,2): anon0  (CALL monitor)
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(77,5): anon0  
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(79,5): anon7_Then  
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(77,5): anon7_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(648,2): anon0  (RETURN from monitor )
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(667,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(668,7): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(669,5): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1439,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1439,5): anon0  (Done)
+(3,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1280,5): anon0  
+(3,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1408,5): anon0  (RETURN from B_Init_entry34 )
+(3,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1408,5): anon0  (Done)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(649,2): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(650,2): anon0  (CALL Enqueue)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(634,9): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(634,9): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(635,26): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(637,6): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(638,34): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(639,38): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(640,40): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(642,4): anon0  (CALL AssertEventCard)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(216,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(216,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(217,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(218,11): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(223,5): anon10_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(220,5): anon10_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(224,5): anon2  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(224,5): anon11_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(224,5): anon11_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(228,5): anon4  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(228,5): anon12_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(228,5): anon12_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(232,5): anon6  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(232,5): anon13_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(232,5): anon13_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(236,5): anon8  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(236,5): anon14_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(236,5): anon14_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(642,4): anon0  (RETURN from AssertEventCard )
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(643,4): anon0  (CALL AssertMachineQueueSize)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(611,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(611,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(612,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(613,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(615,5): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(616,2): anon4_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(616,2): anon4_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(622,5): anon2  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(622,5): anon2  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(623,2): anon5_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(623,2): anon5_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(643,4): anon0  (RETURN from AssertMachineQueueSize )
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(650,2): anon0  (RETURN from Enqueue )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(861,5): anon0  (RETURN from send )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(862,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(863,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(864,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(865,11): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(866,29): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(867,29): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(868,29): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(869,29): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(870,29): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(871,12): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(872,12): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(873,13): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(874,5): anon27_LoopHead  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(874,5): anon27_LoopDone  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(874,5): anon27_LoopDone  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(899,5): anon8  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(899,5): anon8  (recvd_event = (- 1))
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(903,23): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(901,5): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(903,23): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(904,23): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(905,9): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(906,9): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(907,9): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(908,9): anon31_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(909,9): anon31_Then  (CALL Main_foo_case_null119)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(702,37): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(702,37): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(703,30): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(704,16): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(705,16): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(706,16): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(707,16): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(708,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(709,19): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(710,19): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(711,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(712,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(713,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(714,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(715,9): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(909,9): anon31_Then  (RETURN from Main_foo_case_null119 )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(910,9): anon32_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(910,9): anon32_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(911,20): anon11  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(911,20): anon11  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(912,20): anon11  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(973,5): anon26  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(996,5): anon0  (RETURN from Main_foo )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(997,5): anon3_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(997,5): anon3_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(998,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(998,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(999,5): anon2  (CALL PrtEquals)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,5): anon21_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(113,5): anon21_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(115,8): anon2  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(115,8): anon2  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(116,8): anon2  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(118,5): anon22_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(118,5): anon22_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(119,5): anon4  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(119,30): anon23_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(119,5): anon23_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(119,30): anon23_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(999,5): anon2  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1000,5): anon2  (ASSERTION FAILS assert PrtFieldBool(Tmp99);
+ )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1071,5): anon0  (RETURN from Main_Init_entry11 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\receive2\receive2.bpl(1071,5): anon0  (Done)
 

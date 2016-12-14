@@ -1,6 +1,3 @@
-Warning: Using default recursion bound of 1
-Verifying 9 impls
-LB: Took 10.25 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Elevator_TimerV, Elevator_DoorV, registerEvents, Main_ElevatorV, Door_ElevatorV, Timer_ElevatorV}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Elevator_TimerV, Elevator_DoorV, registerEvents, Main_ElevatorV, Door_ElevatorV, Timer_ElevatorV, machineToQCAssert}

@@ -1,67 +1,64 @@
-Warning: Using default recursion bound of 1
-Verifying 3 impls
-LB: Took 0.38 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, registerEvents, CurrState, StateStack}
 Program has a potential bug: True bug
-PersistentProgram(557,1): error PF5001: This assertion can fail
+PersistentProgram(567,1): error PF5001: This assertion can fail
 
-NondetFun.bpl(673,1): error PF5001: This assertion can fail
+NondetFun.bpl(679,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(780,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(780,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(781,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(782,5): anon0  (CALL newMachine_Main)
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(577,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(577,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(578,9): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(579,5): anon0  (CALL InitializeInbox)
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(500,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(500,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(501,4): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(579,5): anon0  (RETURN from InitializeInbox )
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(581,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(582,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(583,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(584,31): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(585,5): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(586,11): anon0  (FORK MachineThread_Main)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(740,16): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(740,16): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(741,15): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(743,17): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(744,13): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(746,12): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(747,12): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(749,26): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(750,26): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(751,5): anon0  (CALL Main_Init_entry28)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(659,33): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(659,33): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(660,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(661,5): anon0  (CALL Main_Foo)
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(600,17): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(600,17): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(601,17): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(602,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(603,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(604,13): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(605,17): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(606,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(607,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(608,13): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(609,17): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(610,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(611,9): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(661,5): anon0  (RETURN from Main_Foo )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(664,9): anon6_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(662,5): anon6_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(664,9): anon6_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(665,16): anon6_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(671,5): anon3  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(671,5): anon3  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(672,5): anon3  (CALL PrtEquals)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(786,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(786,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(787,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(788,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(583,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(583,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(584,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(585,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(506,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(506,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(507,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(585,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(587,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(588,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(589,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(590,31): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(591,5): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(592,11): anon0  (FORK MachineThread_Main)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(746,16): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(746,16): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(747,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(749,17): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(750,13): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(752,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(753,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(755,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(756,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(757,5): anon0  (CALL Main_Init_entry28)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(665,33): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(665,33): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(666,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(667,5): anon0  (CALL Main_Foo)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(606,17): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(606,17): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(607,17): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(608,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(609,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(610,11): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(611,17): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(612,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(613,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(614,11): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(615,17): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(616,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(617,9): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(667,5): anon0  (RETURN from Main_Foo )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(670,9): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(668,5): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(670,9): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(671,16): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(677,5): anon3  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(677,5): anon3  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(678,5): anon3  (CALL PrtEquals)
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(89,5): anon0  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(89,5): anon13_Else  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(89,5): anon13_Else  
@@ -74,14 +71,14 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(95,30): anon15_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(95,5): anon15_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(95,30): anon15_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(672,5): anon3  (RETURN from PrtEquals )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(673,5): anon3  (ASSERTION FAILS assert PrtFieldBool(Tmp1160);
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(678,5): anon3  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(679,5): anon3  (ASSERTION FAILS assert PrtFieldBool(Tmp67);
  )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(751,5): anon0  (RETURN from Main_Init_entry28 )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(751,5): anon0  (Done)
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(586,11): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(587,7): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(588,5): anon0  
-(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(782,5): anon0  (RETURN from newMachine_Main )
-(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(782,5): anon0  (Done)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(757,5): anon0  (RETURN from Main_Init_entry28 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(757,5): anon0  (Done)
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(592,11): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(593,7): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(594,5): anon0  
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(788,5): anon0  (RETURN from newMachine_Main )
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature2Stmts\DynamicError\NondetFun\NondetFun.bpl(788,5): anon0  (Done)
 

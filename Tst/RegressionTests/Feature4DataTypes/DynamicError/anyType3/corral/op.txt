@@ -1,69 +1,66 @@
-Warning: Using default recursion bound of 1
-Verifying 2 impls
-LB: Took 0.38 s
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_vAny, Main_vInt, Main_vEvent, registerEvents, CurrState, StateStack}
 Program has a potential bug: True bug
-PersistentProgram(495,1): error PF5001: This assertion can fail
+PersistentProgram(505,1): error PF5001: This assertion can fail
 
-anyType3.bpl(639,1): error PF5001: This assertion can fail
+anyType3.bpl(645,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(739,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(739,20): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(740,5): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(741,5): anon0  (CALL newMachine_Main)
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(586,20): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(586,20): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(587,9): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(588,5): anon0  (CALL InitializeInbox)
-(1,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(509,4): anon0  
-(1,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(509,4): anon0  
-(1,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(510,4): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(588,5): anon0  (RETURN from InitializeInbox )
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(590,28): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(591,28): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(592,31): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(593,31): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(594,31): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(595,5): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(596,11): anon0  (FORK MachineThread_Main)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(697,16): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(697,16): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(698,15): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(700,17): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(701,13): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(703,15): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(704,17): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(705,15): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(707,26): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(708,26): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(709,26): anon0  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(710,5): anon0  (CALL Main_S_entry14)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(611,30): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(611,30): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(612,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(613,15): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(614,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(615,15): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(616,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(617,5): anon0  (CALL PrtEquals)
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(745,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(745,20): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(746,5): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(747,5): anon0  (CALL newMachine_Main)
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(592,20): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(592,20): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(593,9): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(594,5): anon0  (CALL InitializeInbox)
+(1,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(515,4): anon0  
+(1,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(515,4): anon0  
+(1,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(516,4): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(594,5): anon0  (RETURN from InitializeInbox )
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(596,28): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(597,28): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(598,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(599,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(600,31): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(601,5): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(602,11): anon0  (FORK MachineThread_Main)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(703,16): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(703,16): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(704,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(706,17): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(707,13): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(709,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(710,17): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(711,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(713,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(714,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(715,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(716,5): anon0  (CALL Main_S_entry14)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(617,30): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(617,30): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(618,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(619,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(620,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(621,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(622,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(623,5): anon0  (CALL PrtEquals)
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon0  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon13_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(617,5): anon0  (RETURN from PrtEquals )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(618,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(619,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(620,17): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(621,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(622,15): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(623,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(624,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(623,5): anon0  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(624,5): anon0  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(625,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(626,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(626,17): anon0  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(627,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(628,5): anon0  (CALL PrtEquals)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(628,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(629,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(630,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(631,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(632,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(633,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(634,5): anon0  (CALL PrtEquals)
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon0  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon13_Else  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon13_Else  
@@ -73,34 +70,34 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(98,22): anon14_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(98,5): anon14_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(98,22): anon14_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(628,5): anon0  (RETURN from PrtEquals )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(629,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(630,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(631,15): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(632,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(633,17): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(634,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(635,5): anon0  (CALL PrtEquals)
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon13_Then  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(635,5): anon0  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(634,5): anon0  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(635,5): anon0  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(636,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(637,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(638,5): anon0  (CALL PrtEquals)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(637,15): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(638,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(639,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(640,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(641,5): anon0  (CALL PrtEquals)
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon0  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon13_Then  
 (2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(638,5): anon0  (RETURN from PrtEquals )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(639,5): anon0  (ASSERTION FAILS assert PrtFieldBool(PrtConstructFromBool(!PrtFieldBool(Tmp1284)));
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(641,5): anon0  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(642,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(643,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(644,5): anon0  (CALL PrtEquals)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,5): anon13_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(93,20): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(644,5): anon0  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(645,5): anon0  (ASSERTION FAILS assert PrtFieldBool(PrtConstructFromBool(!PrtFieldBool(Tmp191)));
  )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(710,5): anon0  (RETURN from Main_S_entry14 )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(710,5): anon0  (Done)
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(596,11): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(597,7): anon0  
-(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(598,5): anon0  
-(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(741,5): anon0  (RETURN from newMachine_Main )
-(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(741,5): anon0  (Done)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(716,5): anon0  (RETURN from Main_S_entry14 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(716,5): anon0  (Done)
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(602,11): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(603,7): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(604,5): anon0  
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(747,5): anon0  (RETURN from newMachine_Main )
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature4DataTypes\DynamicError\anyType3\anyType3.bpl(747,5): anon0  (Done)
 

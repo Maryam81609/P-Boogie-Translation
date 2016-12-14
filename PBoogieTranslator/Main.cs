@@ -22,7 +22,7 @@ namespace Microsoft.PBoogieTranslator
         public static void Main(string[] args)
         {
             var options = new CommandLineArguments(args);
-            FSharpExpGen fsExpGen = new FSharpExpGen(options);
+            FSharpExpGen fsExpGen = null; //new FSharpExpGen(options);
             if (options.list)
             {
                 using (var sr = new StreamReader(options.inputFile))
@@ -38,7 +38,7 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             Console.WriteLine(options.boogieFile);
                             Console.WriteLine("*************************************************************************************************************************");
-                            ProcessPFile(options, fsExpGen);
+                            // ProcessPFile(options, fsExpGen);
                             Console.Error.WriteLine(options.boogieFile);
 
                             opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
@@ -163,7 +163,8 @@ namespace Microsoft.PBoogieTranslator
                 try
                 {
                     process.Start();
-                    process.WaitForExit();
+                    process.PriorityClass = ProcessPriorityClass.High;
+                    //process.WaitForExit();
                     var op = process.StandardOutput.ReadToEnd();
                     var err = process.StandardOutput.ReadToEnd();
 
