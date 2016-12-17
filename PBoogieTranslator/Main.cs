@@ -22,7 +22,7 @@ namespace Microsoft.PBoogieTranslator
         public static void Main(string[] args)
         {
             var options = new CommandLineArguments(args);
-            FSharpExpGen fsExpGen = null; //new FSharpExpGen(options);
+            FSharpExpGen fsExpGen = new FSharpExpGen(options);
             if (options.list)
             {
                 using (var sr = new StreamReader(options.inputFile))
@@ -38,7 +38,7 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             Console.WriteLine(options.boogieFile);
                             Console.WriteLine("*************************************************************************************************************************");
-                            // ProcessPFile(options, fsExpGen);
+                            ProcessPFile(options, fsExpGen);
                             Console.Error.WriteLine(options.boogieFile);
 
                             opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
@@ -48,6 +48,21 @@ namespace Microsoft.PBoogieTranslator
                             var optFilePath = Path.Combine(opFileDir, "options.txt");
                             int rb = 1;
                             bool good = false;
+
+                            if (opFileDir.Contains("Correct"))
+                            {
+                                good = verify(options, 3, 3);
+                                if (!good)
+                                    wrongCodes.Add(options.boogieFile);
+                                using (var opts = new StreamWriter(optFilePath))
+                                {
+                                    opts.WriteLine(" /cooperative"  //Use Co-operative scheduling
+                                        + " /timeLimit:1000"
+                                        + " /recursionBound:3"
+                                        + " /k:3"); //Context switch bound.
+                                }
+                                continue;
+                            }
 
                             if (File.Exists(optFilePath))
                             {
@@ -164,7 +179,6 @@ namespace Microsoft.PBoogieTranslator
                 {
                     process.Start();
                     process.PriorityClass = ProcessPriorityClass.High;
-                    //process.WaitForExit();
                     var op = process.StandardOutput.ReadToEnd();
                     var err = process.StandardOutput.ReadToEnd();
 
@@ -172,7 +186,15 @@ namespace Microsoft.PBoogieTranslator
 
                     using (var sw = new StreamWriter(Path.Combine(opFileDir, "op.txt")))
                     {
-                        sw.Write(op.Substring(0, idx));
+                        try
+                        {
+                            sw.Write(op.Substring(0, idx));
+                        }
+                        catch (System.ArgumentOutOfRangeException e)
+                        {
+                            Console.WriteLine("Index: {0}", idx);
+                            Console.WriteLine(op);
+                        }
                         if ((opFileDir.Contains(@"\Correct\") && op.Contains("Program has a potential bug: True bug")) ||
                             (opFileDir.Contains(@"\DynamicError\") && !op.Contains("Program has a potential bug: True bug")))
                         {

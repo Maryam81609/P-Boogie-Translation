@@ -1,1 +1,1 @@
- /cooperative /timeLimit:1000 /recursionBound:1 /k:3
+ /cooperative /timeLimit:1000 /recursionBound:3 /k:3

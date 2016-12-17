@@ -1,12 +1,10 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp592, Tmp595, Tmp596, Tmp594, Tmp593, Tmp591, Tmp590, Tmp598, Tmp597, Tmp589, Tmp600, Tmp603, Tmp604, Tmp602, Tmp601, Tmp599}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp593, Tmp596, Tmp597, Tmp595, Tmp594, Tmp592, Tmp591, Tmp599, Tmp598, Tmp590, Tmp601, Tmp604, Tmp605, Tmp603, Tmp602, Tmp600}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp592, Tmp595, Tmp596, Tmp594, Tmp593, Tmp591, Tmp590, Tmp598, Tmp597, Tmp589, Tmp600, Tmp603, Tmp604, Tmp602, Tmp601, Tmp599, machineToQCAssert}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp593, Tmp596, Tmp597, Tmp595, Tmp594, Tmp592, Tmp591, Tmp599, Tmp598, Tmp590, Tmp601, Tmp604, Tmp605, Tmp603, Tmp602, Tmp600, machineToQCAssert}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp592, Tmp595, Tmp596, Tmp594, Tmp593, Tmp591, Tmp590, Tmp598, Tmp597, Tmp589, Tmp600, Tmp603, Tmp604, Tmp602, Tmp601, Tmp599, machineToQCAssert, machineToQCAssume}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp593, Tmp596, Tmp597, Tmp595, Tmp594, Tmp592, Tmp591, Tmp599, Tmp598, Tmp590, Tmp601, Tmp604, Tmp605, Tmp603, Tmp602, Tmp600, machineToQCAssert, machineToQCAssume}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp592, Tmp595, Tmp596, Tmp594, Tmp593, Tmp591, Tmp590, Tmp598, Tmp597, Tmp589, Tmp600, Tmp603, Tmp604, Tmp602, Tmp601, Tmp599, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp592, Tmp595, Tmp596, Tmp594, Tmp593, Tmp591, Tmp590, Tmp598, Tmp597, Tmp589, Tmp600, Tmp603, Tmp604, Tmp602, Tmp601, Tmp599, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, tmpRhsValue_1, Main_compVal1, Main_compVal2, registerEvents, CurrState, StateStack, Tmp593, Tmp596, Tmp597, Tmp595, Tmp594, Tmp592, Tmp591, Tmp599, Tmp598, Tmp590, Tmp601, Tmp604, Tmp605, Tmp603, Tmp602, Tmp600, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 3
 

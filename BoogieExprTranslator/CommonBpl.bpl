@@ -226,7 +226,6 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
 		if(keys[i] == key)
 		{
 		    call {:cexpr "key_already_present"} boogie_si_record_bool(true);
-			assert false;
 		}
 		i := i + 1;
 	}
@@ -351,6 +350,7 @@ var {:thread_local} CurrState: int;
 procedure StateStackPush(state: int) 
 {
    StateStack := Cons(state, StateStack);
+   call {:cexpr "pushed_state"} boogie_si_record_int(state);
 }
 
 procedure StateStackPop()

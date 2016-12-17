@@ -1,10 +1,9 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState, Tmp17, Tmp28}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, Tmp18, Tmp29}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState, Tmp17, Tmp28, machineToQCAssert}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState, Tmp17, Tmp28, machineToQCAssert, machineToQCAssume}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert, machineToQCAssume}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState, Tmp17, Tmp28, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail, machineCounter}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_part, tmpRhsValue_0, tmpRhsValue_1, tmpRhsValue_2, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, Tmp18, Tmp29, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail, machineCounter}
 Program has no bugs
-Reached recursion bound of 1
 

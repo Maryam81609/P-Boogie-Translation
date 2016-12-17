@@ -1,6 +1,5 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, CurrState, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue_0, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, MachineInboxHead, MachineInboxTail}
 Program has no bugs
-Reached recursion bound of 1
 

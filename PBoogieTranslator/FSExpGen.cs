@@ -52,11 +52,10 @@ namespace Microsoft.PBoogieTranslator
 
         private SymbolTable symbolTable = new SymbolTable();
 
-        private Dictionary<P_Root.FunDecl, string> funToFile =
-            new Dictionary<P_Root.FunDecl, string>();
-
-        private Dictionary<P_Root.AnonFunDecl, string> anonFunToFile =
-            new Dictionary<P_Root.AnonFunDecl, string>();
+        private Dictionary<string, string> machineToFile =
+            new Dictionary<string, string>();
+        private Dictionary<string, string> staticFunToFile =
+            new Dictionary<string, string>();
 
         private int maxFields = 0;
         private bool hasDefer = false;
@@ -113,21 +112,31 @@ namespace Microsoft.PBoogieTranslator
             return ret;
         }
 
-        private string getFunFileInfo(P_Root.FunDecl d)
+        private string getFunFileInfo()
         {
             string ans;
-            if (funToFile.TryGetValue(d, out ans))
-                return ans; 
+            if (!symbolTable.InsideStaticFn)
+            {
+                var cm = symbolTable.currentM;
+                if (machineToFile.TryGetValue(cm, out ans))
+                    return ans;
+            }
+            else
+            {
+                var cf = symbolTable.currentF;
+                if (staticFunToFile.TryGetValue(cf, out ans))
+                    return ans;
+            }
             return "";
         }
-
+        /*
         private string getAnonFunFileInfo(P_Root.AnonFunDecl d)
         {
             string ans;
             if (anonFunToFile.TryGetValue(d, out ans))
                 return ans;
             return "";
-        }
+        }*/
         private Tuple<int, int> getLineColNumber(P_Root.Stmt s)
         {
             if (s is P_Root.NewStmt)
@@ -289,7 +298,6 @@ namespace Microsoft.PBoogieTranslator
                 lst.Add(z);
                 x = x.tl as P_Root.TupType;
             } while (x != null);
-            //Console.WriteLine("{0}: {1}; {2}", lst, lst.Count, maxFields);
             if (lst.Count > maxFields)
                 maxFields = lst.Count;
             return Syntax.Type.NewTuple(ListModule.OfSeq(lst)) as Syntax.Type.Tuple;
@@ -831,16 +839,15 @@ namespace Microsoft.PBoogieTranslator
                 retList.Add(Syntax.Expr.NewVar(x.Item2));
             }
 
-            if(refParams.Count > 0)
+            if (refParams.Count > 0)
             {
                 e = new FSharpOption<Syntax.Expr>(Syntax.Expr.NewTuple(ListModule.OfSeq(retList)));
-                if(retList.Count > maxFields)
+                if (retList.Count > maxFields)
                 {
                     maxFields = retList.Count;
                 }
-                //Console.WriteLine("{0}: {1}; {2}", retList, retList.Count, maxFields);
             }
-            else if(retList.Count > 0)
+            else if (retList.Count > 0)
             {
                 e = new FSharpOption<Syntax.Expr>(retList[0]);
             }
@@ -893,7 +900,7 @@ namespace Microsoft.PBoogieTranslator
             FSharpOption<Syntax.Expr> retExp = null;
             List<Syntax.Stmt> body = new List<Syntax.Stmt>();
             var args = new List<Syntax.VarDecl>();
-            fileName = getAnonFunFileInfo(d);
+            fileName = getFunFileInfo();//getAnonFunFileInfo(d);
 
             var ln = getLineColNumber(d.body as P_Root.Stmt).Item1;
             if (ln == 0)
@@ -916,8 +923,6 @@ namespace Microsoft.PBoogieTranslator
             }
 
             var lst = env.Item1.Item;
-            //Console.WriteLine("{0}: {1}; {2}", lst, lst.Length, maxFields);
-
             if (env.Item1.Item.Length > maxFields)
                 maxFields = env.Item1.Item.Length;
 
@@ -1349,7 +1354,7 @@ namespace Microsoft.PBoogieTranslator
         private Syntax.FunDecl genFunDecl(P_Root.FunDecl d)
         {
             var name = symbolTable.GetFunName(getString(d.name));
-            fileName = getFunFileInfo(d);
+            fileName = getFunFileInfo();
             NewScope(name);
             name =symbolTable.GetFunName(name);
             bool is_model = false;
@@ -1459,7 +1464,7 @@ namespace Microsoft.PBoogieTranslator
             else
                 name += ln.Item1;
 
-            fileName = getAnonFunFileInfo(d);
+            fileName = getFunFileInfo(); //getAnonFunFileInfo(d);
 
             if (!symbolTable.InsideStaticFn)
                 symbolTable.AddMachFun(symbolTable.currentM, name); 
@@ -1695,13 +1700,36 @@ namespace Microsoft.PBoogieTranslator
             {
                 foreach(var f in program.FileInfos)
                 {
-                    if (f.decl is P_Root.FunDecl)
+                    if (f.decl is P_Root.FunDecl && f.file.Symbol.ToString() != "NIL")
                     {
-                        funToFile[f.decl as P_Root.FunDecl] = getString(f.file);
+                        var x = f.decl as P_Root.FunDecl;
+                        var n = getString(f.file as P_Root.StringCnst);
+                        //funToFile[x] = n;
+                        if (x.owner.Symbol.ToString() != "NIL")
+                        {
+                            var owner = getString((x.owner as P_Root.MachineDecl).name);
+                            machineToFile[owner] = n;
+                        }
+                        else
+                        {
+                            staticFunToFile[getString(x.name as P_Root.StringCnst)] = n;
+                        }
                     }
-                    else if(f.decl is P_Root.AnonFunDecl)
+                    else if (f.decl is P_Root.AnonFunDecl && f.file.Symbol.ToString() != "NIL")
                     {
-                        anonFunToFile[f.decl as P_Root.AnonFunDecl] = getString(f.file);
+                        var x = f.decl as P_Root.AnonFunDecl;
+                        var n = getString(f.file as P_Root.StringCnst);
+                        //anonFunToFile[x] = n;
+                        if (x.owner.Symbol.ToString() != "NIL")
+                        {
+                            var owner = getString((x.owner as P_Root.MachineDecl).name);
+                            machineToFile[owner] = n;
+                        }
+                        else if (x.ownerFun.Symbol.ToString() != "NIL")
+                        {
+                            var of = x.ownerFun as P_Root.FunDecl;
+                            staticFunToFile[getString(of.name as P_Root.StringCnst)] = n;
+                        }
                     }
                 }
 

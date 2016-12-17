@@ -571,11 +571,6 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
                                                          | _ -> acc) false)
     let arg = if HasNullTrans then "false" else "true"
 
-    sw.WriteLine("call event, payload := Dequeue({0});", arg)
-    sw.WriteLine("call {{:cexpr \"{0}_recvd_event\"}} boogie_si_record_int(event);", mach.Name)
-
-    if mach.HasPush then sw.WriteLine("call {0}_ProbeStateStack(event);", mach.Name)
-
     List.iter (translateDos sw evMap) state.Dos
     List.iter (translateTransitions sw mach state.Name stateToInt evMap) state.Transitions
     if (not (haltHandled state)) then
@@ -594,6 +589,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("call {:cexpr \"unhandled_event\"} boogie_si_record_int(event);")
+    sw.WriteLine("call {{:cexpr \"{0}_CurrState\"}} boogie_si_record_int(CurrState);", mach.Name)
     sw.WriteLine("assert false;")
     sw.Indent <- sw.Indent - 1
     sw.WriteLine("}")
@@ -665,12 +661,21 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
       | None -> sw.WriteLine()
       sw.Indent <- sw.Indent - 1
       sw.WriteLine("}")
+      sw.Write("else ")
 
     sw.WriteLine("procedure {0}_CallEntryAction(state: int, payload: PrtRef)", name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("call {{:cexpr \"{0}_Entered_State\"}} boogie_si_record_int(state);", name)
     List.iter callEntryAction states
+    sw.WriteLine()
+    sw.WriteLine("{")
+    sw.Indent <- sw.Indent + 1
+    sw.WriteLine("assume false;")
     sw.Indent <- sw.Indent - 1
+    sw.WriteLine("}")
+    sw.Indent <- sw.Indent - 1
+    
     sw.WriteLine("}")
 
   let createCallExitAction (sw: IndentedTextWriter) (name: string) (states: StateDecl list) (stateToInt: Map<string, int>) = 
@@ -688,6 +693,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("procedure {0}_CallExitAction()", name)
     sw.WriteLine("{")
     sw.Indent <- sw.Indent + 1
+    sw.WriteLine("call {{:cexpr \"{0}_Exited_State\"}} boogie_si_record_int(CurrState);", name)
     List.iter callExitAction states
     sw.WriteLine()
     sw.WriteLine("{")
@@ -726,6 +732,7 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     if md.HasPush then
       sw.WriteLine("StateStack := Nil();")
     sw.WriteLine("CurrState := {0};", (Map.find md.StartState stateToInt))
+    sw.WriteLine("call {{:cexpr \"{0}_Entered_State\"}} boogie_si_record_int(CurrState);", md.Name)
     sw.WriteLine("// For raised events")
     sw.WriteLine("eventRaised := false;")
     sw.WriteLine("thisMid := mid;")
@@ -746,6 +753,26 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.Indent <- sw.Indent + 1
     sw.WriteLine("yield;")
 
+    let StateHasNullTrans (state: StateDecl) = 
+      let HasNullTrans = 
+        (state.Transitions |> List.fold (fun acc (t: TransDecl.T) -> match t with
+                                                                    | TransDecl.T.Push("null", _)
+                                                                    | TransDecl.T.Call("null", _, _) -> acc || true
+                                                                    | _ -> acc)  false)
+        || (state.Dos |> List.fold (fun acc (d: DoDecl.T) -> match d with
+                                                             | DoDecl.T.Call("null", _) -> acc || true
+                                                             | _ -> acc) false) in
+        Map.find state.Name stateToInt, if HasNullTrans then "false" else "true"
+
+    let stateToNullTrans = md.States |> List.map StateHasNullTrans |> Map.ofList
+    Map.iter (fun k v -> begin
+                          sw.WriteLine("if(CurrState == {0}) {{ call event, payload := Dequeue({1}); }}", k, v)
+                          sw.Write("else ")
+                         end) stateToNullTrans
+    sw.WriteLine("{ assume false; }")
+
+    sw.WriteLine("call {{:cexpr \"{0}_recvd_event\"}} boogie_si_record_int(event);", md.Name) 
+    sw.WriteLine("call {0}_ProbeStateStack(event);", md.Name)
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine()
     sw.WriteLine("{")
@@ -1021,8 +1048,8 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
 
     sw.WriteLine("ptr := head;")
     sw.WriteLine("event := 0 - 1;")
-    sw.WriteLine("payload := PrtNull;")
-    sw.WriteLine("if(!block && head > tail) return; //Handle non-blocking case")
+    sw.WriteLine("payload := null;")
+    sw.WriteLine("if(!block && head > tail) { return; } //Handle non-blocking case")
 
     sw.WriteLine("while(ptr <= tail)")
     sw.WriteLine("{")
@@ -1281,7 +1308,10 @@ procedure PrtEquals(a: PrtRef, b: PrtRef) returns (v: PrtRef)
     sw.WriteLine("machineCounter := 0;")
     
     (* Set monitor Start States. *)
-    Map.iter (fun k v -> sw.WriteLine("{0}_CurrState := {1};", k, v)) !monitorToStartState
+    Map.iter (fun k v -> begin
+                          sw.WriteLine("{0}_CurrState := {1};", k, v)
+                          sw.WriteLine("call {{:cexpr \"{0}_Entered_State\"}} boogie_si_record_int({1});", k, v)
+                         end) !monitorToStartState
 
     (* Initialize monitor globals *)
     mons |> List.iter (initializeMonitorGlobals sw evMap)

@@ -10,5 +10,4 @@ Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, this
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, tmpRhsValue_0, tmpRhsValue_1, recvRegisteredEvents, recvHd, recvTl, recvPtr, recvQ, registerEvents, CurrState, StateStack, tmpRhsValue_2, tmpRhsValue_3, MachineInboxHead, MachineInboxTail, machineToQCAssume, machineToQCAssert, MachineInboxStorePayload, MachineInboxStoreEvent, machineEvToQCount, machineCounter}
 Program has no bugs
-Reached recursion bound of 1
 

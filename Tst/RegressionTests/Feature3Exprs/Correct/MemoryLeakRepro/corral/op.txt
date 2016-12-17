@@ -1,4 +1,3 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_t, tmpRhsValue_0, tmpRhsValue_1, Main_i, registerEvents, CurrState, StateStack, Tmp331, Tmp330, Tmp333, Tmp332, Tmp329}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_t, tmpRhsValue_0, tmpRhsValue_1, Main_i, registerEvents, CurrState, StateStack, Tmp332, Tmp331, Tmp334, Tmp333, Tmp330}
 Program has no bugs
-Reached recursion bound of 1
 

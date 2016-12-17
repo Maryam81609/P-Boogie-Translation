@@ -1,6 +1,3 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, CurrState}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, CurrState, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, registerEvents, CurrState, StateStack}
 Program has no bugs
-Reached recursion bound of 1
 

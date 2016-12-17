@@ -1,4 +1,12 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_INT, Main_BOOL, Main_m, Main_s, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp149, Tmp150}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_INT, Main_BOOL, Main_m, Main_s, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp150, Tmp151}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_INT, Main_BOOL, Main_m, Main_s, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp150, Tmp151, machineToQCAssert}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_INT, Main_BOOL, Main_m, Main_s, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp150, Tmp151, machineToQCAssert, machineToQCAssume}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_INT, Main_BOOL, Main_m, Main_s, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp150, Tmp151, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_INT, Main_BOOL, Main_m, Main_s, tmpRhsValue_0, tmpRhsValue_1, registerEvents, CurrState, StateStack, Tmp150, Tmp151, machineToQCAssert, machineToQCAssume, MachineInboxStorePayload, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 3
 

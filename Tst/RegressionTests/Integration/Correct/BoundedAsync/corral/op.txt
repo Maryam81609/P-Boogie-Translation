@@ -1,6 +1,0 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_count, Main_p1, Main_p2, Main_p3, tmpRhsValue_0, tmpRhsValue_1, registerEvents, StateStack, Process_other1, Process_other2, Process_parent, Process_count}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, Main_count, Main_p1, Main_p2, Main_p3, tmpRhsValue_0, tmpRhsValue_1, registerEvents, StateStack, Process_other1, Process_other2, Process_parent, Process_count, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent, machineEvToQCount, MachineInboxStorePayload, machineToQCAssert, machineToQCAssume, machineCounter}
-Program has no bugs
-Reached recursion bound of 1
-
