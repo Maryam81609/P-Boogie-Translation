@@ -294,10 +294,7 @@ module Translator =
         openBlock sw
         sw.WriteLine("assume false;")
         closeBlock sw
-        
-        if flag then begin
-          closeBlock sw
-        end
+        if flag then closeBlock sw
       end
     | Pop ->
       begin
@@ -370,6 +367,7 @@ module Translator =
           end
         sw.WriteLine("return;")
         closeBlock sw
+        sw.WriteLine()
       end
 
   let printTypeCheck (sw:IndentedTextWriter) t =
@@ -683,6 +681,8 @@ module Translator =
     sw.WriteLine("// For raised events")
     sw.WriteLine("eventRaised := false;")
     sw.WriteLine("thisMid := mid;")
+    sw.WriteLine("// Flag for pop transitions.")
+    sw.WriteLine("popped := false;")
     sw.WriteLine("// Initialize machine variables.")
     md.Init |> List.iter (translateStmt sw G' stateToInt md.Name evMap)
 
@@ -1200,4 +1200,4 @@ module Translator =
     sw.WriteLine("call tmpRhsValue := newMachine_Main(null);")
     closeBlock sw
     monitorToStartState := Map.empty
-    0 
+    0
