@@ -322,6 +322,9 @@ var {:thread_local} eventRaised: bool;
 var {:thread_local} raisedEvent: int;
 var {:thread_local} raisedEventPl: PrtRef;
 
+//For pops
+var {:thread_local} popped: bool;
+
 //For event variables
 var {:thread_local} tmpEventID: int;
 
