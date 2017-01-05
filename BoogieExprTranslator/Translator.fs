@@ -179,13 +179,15 @@ module Translator =
     | false -> sw.WriteLine("call {0} := RemoveMap({1}, {2});", v, v, (translateExpr G evMap e1))
 
   let rec translateStmt (sw: IndentedTextWriter) G (stateToInt: Map<string, int>) (cm: string) (evMap: Map<string, int>) stmt =
-
     let translateCase (e, st) =
-      sw.WriteLine("if(event == {0}) //{1}", (Map.find e evMap), e)
-      openBlock sw
-      translateStmt sw G stateToInt cm evMap st
-      closeBlock sw
-      sw.Write("else ")
+      if e = "null" then ignore true 
+      else begin
+        sw.WriteLine("if(event == {0}) //{1}", (Map.find e evMap), e)
+        openBlock sw
+        translateStmt sw G stateToInt cm evMap st
+        closeBlock sw
+        sw.Write("else ")
+      end
     match stmt with
     | Assign(l, e) -> translateAssign sw G evMap l e
     | Insert(Lval.Var(v), e1, e2) -> translateInsert sw G evMap v e1 e2

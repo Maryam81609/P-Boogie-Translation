@@ -225,7 +225,7 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
 		if(keys[i] == key)
 		{
 		    call {:cexpr "key_already_present"} boogie_si_record_bool(true);
-		    break;
+			assert false;
 		}
 		i := i + 1;
 	}
