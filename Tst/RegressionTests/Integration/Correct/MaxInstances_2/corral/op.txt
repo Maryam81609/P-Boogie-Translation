@@ -1,8 +1,0 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine, machineEvToQCount}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine, machineEvToQCount, machineToQCAssert}
-Program has no bugs
-Reached recursion bound of 1
-

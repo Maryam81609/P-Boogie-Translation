@@ -451,7 +451,6 @@ namespace Microsoft.PBoogieTranslator
                     case "NONDET":
                         return Syntax.Expr.Nondet;
                     case "NULL":
-                        //Syntax.Expr.NewEvent("null") ?
                         return Syntax.Expr.Nil;
                     case "HALT":
                         return Syntax.Expr.NewEvent("halt");
@@ -900,7 +899,6 @@ namespace Microsoft.PBoogieTranslator
             FSharpOption<Syntax.Expr> retExp = null;
             List<Syntax.Stmt> body = new List<Syntax.Stmt>();
             var args = new List<Syntax.VarDecl>();
-            fileName = getFunFileInfo();//getAnonFunFileInfo(d);
 
             var ln = getLineColNumber(d.body as P_Root.Stmt).Item1;
             if (ln == 0)
@@ -927,7 +925,8 @@ namespace Microsoft.PBoogieTranslator
                 maxFields = env.Item1.Item.Length;
 
             NewScope(name);
-            
+            fileName = getFunFileInfo();
+
             //Get args            
             args.Insert(0, getAnonFunParams(d.envVars as P_Root.NmdTupType, name));
 
@@ -1354,9 +1353,9 @@ namespace Microsoft.PBoogieTranslator
         private Syntax.FunDecl genFunDecl(P_Root.FunDecl d)
         {
             var name = symbolTable.GetFunName(getString(d.name));
-            fileName = getFunFileInfo();
             NewScope(name);
-            name =symbolTable.GetFunName(name);
+            fileName = getFunFileInfo();
+            name = symbolTable.GetFunName(name);
             bool is_model = false;
             bool is_pure = false;
             FSharpOption<Syntax.Type> rettype = null;
@@ -1464,12 +1463,12 @@ namespace Microsoft.PBoogieTranslator
             else
                 name += ln.Item1;
 
-            fileName = getFunFileInfo(); //getAnonFunFileInfo(d);
-
             if (!symbolTable.InsideStaticFn)
                 symbolTable.AddMachFun(symbolTable.currentM, name); 
 
             NewScope(name);
+            fileName = getFunFileInfo();
+
             //Get args
             var args = new List<Syntax.VarDecl>();
             args.Add(getAnonFunParams(d.envVars as P_Root.NmdTupType, name));
@@ -1704,7 +1703,6 @@ namespace Microsoft.PBoogieTranslator
                     {
                         var x = f.decl as P_Root.FunDecl;
                         var n = getString(f.file as P_Root.StringCnst);
-                        //funToFile[x] = n;
                         if (x.owner.Symbol.ToString() != "NIL")
                         {
                             var owner = getString((x.owner as P_Root.MachineDecl).name);
@@ -1719,7 +1717,6 @@ namespace Microsoft.PBoogieTranslator
                     {
                         var x = f.decl as P_Root.AnonFunDecl;
                         var n = getString(f.file as P_Root.StringCnst);
-                        //anonFunToFile[x] = n;
                         if (x.owner.Symbol.ToString() != "NIL")
                         {
                             var owner = getString((x.owner as P_Root.MachineDecl).name);
@@ -1727,8 +1724,7 @@ namespace Microsoft.PBoogieTranslator
                         }
                         else if (x.ownerFun.Symbol.ToString() != "NIL")
                         {
-                            var of = x.ownerFun as P_Root.FunDecl;
-                            staticFunToFile[getString(of.name as P_Root.StringCnst)] = n;
+                            staticFunToFile[x.ownerFun.Symbol.ToString()] = n;
                         }
                     }
                 }

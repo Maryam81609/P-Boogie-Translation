@@ -74,7 +74,6 @@ procedure {:inline} InsertSeq(seq: PrtRef, index: int, value: PrtRef)  returns (
 	}
 	
 	newStore[index] := value;
-	i := i + 1;
 
 	while(i < size)
 	{
@@ -226,12 +225,13 @@ procedure {:inline} InsertMap(map: PrtRef, key: PrtRef, value: PrtRef)  returns 
 		if(keys[i] == key)
 		{
 		    call {:cexpr "key_already_present"} boogie_si_record_bool(true);
+		    break;
 		}
 		i := i + 1;
 	}
 	
-	keys[size] := key;
-	values[size] := value;
+	keys[i] := key;
+	values[i] := value;
 
 	call nmap := AllocatePrtRef();
 	assume PrtDynamicType(nmap) == PrtDynamicType(map);

@@ -1,166 +1,170 @@
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_x, registerEvents, CurrState, StateStack}
 Program has a potential bug: True bug
-PersistentProgram(600,1): error PF5001: This assertion can fail
+PersistentProgram(613,1): error PF5001: This assertion can fail
 
-DataImpureFunction.bpl(706,1): error PF5001: This assertion can fail
+DataImpureFunction.bpl(698,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(826,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(826,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(827,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(828,5): anon0  (CALL newMachine_Main)
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(602,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(602,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(603,9): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(604,5): anon0  (CALL InitializeInbox)
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(525,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(525,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(526,4): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(604,5): anon0  (RETURN from InitializeInbox )
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(606,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(607,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(608,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(609,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(610,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(611,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(612,5): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(613,11): anon0  (FORK MachineThread_Main)
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(780,16): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(780,16): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(781,15): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(783,17): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(784,13): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(786,12): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(787,12): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(789,26): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(790,26): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(791,26): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(792,26): anon0  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(793,5): anon0  (CALL Main_Ping_Init_entry12)
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(716,38): anon0  
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(716,38): anon0  
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(717,5): anon0  
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(718,17): anon0  
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(719,17): anon0  
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(720,19): anon0  
-(2,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(721,5): anon0  (raised_event = 1)
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(793,5): anon0  (RETURN from Main_Ping_Init_entry12 )
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(794,5): anon6_LoopHead  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(796,9): anon6_LoopBody  
-(2,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(794,5): anon6_LoopBody  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(613,11): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(614,7): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(615,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(828,5): anon0  (RETURN from newMachine_Main )
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(828,5): anon0  (Done)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(796,9): anon6_LoopBody  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(797,9): anon6_LoopBody  (CALL Dequeue)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(121,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(123,21): anon11_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(121,5): anon11_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(123,21): anon11_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(124,15): anon11_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(125,17): anon11_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(797,9): anon6_LoopBody  (RETURN from Dequeue )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(798,9): anon6_LoopBody  (Main_recvd_event = 1)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(799,9): anon6_LoopBody  (CALL Main_ProbeStateStack)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(737,4): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(739,7): anon6_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(737,4): anon6_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(739,7): anon6_Then  (Main_state = 0)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(799,9): anon6_LoopBody  (RETURN from Main_ProbeStateStack )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(800,9): anon7_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(800,9): anon7_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(802,11): Main_Ping_Init  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(805,17): anon8_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(803,13): anon8_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(805,17): anon8_Then  (CALL Main_Ping_Init_do_Success15)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(681,43): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(681,43): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(682,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(683,5): anon0  (CALL Main_foo1)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(624,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(624,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(625,5): anon0  (CALL Main_foo2)
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(644,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(644,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(645,12): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(646,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(649,9): anon3_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,5): anon3_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(649,9): anon3_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(650,13): anon3_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(625,5): anon0  (RETURN from Main_foo2 )
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(628,9): anon3_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(626,5): anon3_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(628,9): anon3_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(629,13): anon3_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(683,5): anon0  (RETURN from Main_foo1 )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(684,5): anon6_LoopHead  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(686,9): anon6_LoopBody  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(684,5): anon6_LoopBody  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(686,9): anon6_LoopBody  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(687,9): anon6_LoopBody  (CALL PrtEquals)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,20): anon13_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,5): anon13_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,20): anon13_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(687,9): anon6_LoopBody  (RETURN from PrtEquals )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(688,9): anon6_LoopBody  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(689,9): anon6_LoopBody  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(690,16): anon6_LoopBody  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(691,9): anon6_LoopBody  (CALL Main_foo1)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(624,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(624,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(625,5): anon0  (CALL Main_foo2)
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(644,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(644,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(645,12): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(646,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(655,9): anon3_Else  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,5): anon3_Else  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(655,9): anon3_Else  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(656,13): anon3_Else  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(625,5): anon0  (RETURN from Main_foo2 )
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(634,9): anon3_Else  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(626,5): anon3_Else  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(634,9): anon3_Else  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(635,13): anon3_Else  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(691,9): anon6_LoopBody  (RETURN from Main_foo1 )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(684,5): anon6_LoopHead  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(684,5): anon6_LoopDone  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(684,5): anon6_LoopDone  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(693,5): anon2  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(693,5): anon2  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(694,5): anon2  (CALL PrtEquals)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,20): anon13_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,5): anon13_Then  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(99,20): anon13_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(694,5): anon2  (RETURN from PrtEquals )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(695,5): anon2  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(696,5): anon2  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(697,5): anon2  (CALL Main_foo3)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(666,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(666,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(667,5): anon0  (CALL Main_foo2)
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(644,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(644,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(645,12): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(646,5): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(655,9): anon3_Else  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,5): anon3_Else  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(655,9): anon3_Else  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(656,13): anon3_Else  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(667,5): anon0  (RETURN from Main_foo2 )
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(668,9): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(697,5): anon2  (RETURN from Main_foo3 )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(705,9): anon7_Else  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(698,5): anon7_Else  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(705,9): anon7_Else  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(706,9): anon7_Else  (ASSERTION FAILS assert PrtFieldBool(PrtFalse);
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(834,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(834,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(835,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(836,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(595,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(595,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(596,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(597,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(517,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(517,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(518,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(597,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(599,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(600,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(601,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(602,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(603,31): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(604,5): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(605,11): anon0  (FORK MachineThread_Main)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(782,16): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(782,16): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(783,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(784,5): anon0  (Main_Entered_State = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(786,17): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(787,13): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(789,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(791,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(792,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(794,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(795,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(796,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(797,5): anon0  (CALL Main_Ping_Init_entry12)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(708,38): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(708,38): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(709,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(710,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(711,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(712,19): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(713,5): anon0  (raised_event = 1)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(797,5): anon0  (RETURN from Main_Ping_Init_entry12 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(798,5): anon9_LoopHead  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(800,16): anon9_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(798,5): anon9_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(800,16): anon9_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(801,9): anon9_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(802,30): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(802,9): anon10_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(802,30): anon10_Then  (CALL Dequeue)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(113,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(115,21): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(113,5): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(115,21): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(116,15): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(117,17): anon13_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(802,30): anon10_Then  (RETURN from Dequeue )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(804,9): anon4  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(804,9): anon4  (Main_recvd_event = 1)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(805,9): anon4  (CALL Main_ProbeStateStack)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(729,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(731,9): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(729,5): anon6_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(731,9): anon6_Then  (Main_state = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(805,9): anon4  (RETURN from Main_ProbeStateStack )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(806,9): anon11_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(806,9): anon11_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(808,15): Main_Ping_Init  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(811,17): anon12_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(809,13): anon12_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(811,17): anon12_Then  (CALL Main_Ping_Init_do_Success15)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(673,43): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(673,43): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(674,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(675,5): anon0  (CALL Main_foo1)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(616,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(616,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(617,5): anon0  (CALL Main_foo2)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(636,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(636,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(637,12): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(638,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(641,9): anon3_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(639,5): anon3_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(641,9): anon3_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(642,13): anon3_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(617,5): anon0  (RETURN from Main_foo2 )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(620,9): anon3_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(618,5): anon3_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(620,9): anon3_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(621,13): anon3_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(675,5): anon0  (RETURN from Main_foo1 )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(676,5): anon6_LoopHead  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(678,9): anon6_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(676,5): anon6_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(678,9): anon6_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(679,9): anon6_LoopBody  (CALL PrtEquals)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,20): anon13_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,5): anon13_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,20): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(679,9): anon6_LoopBody  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(680,9): anon6_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(681,9): anon6_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(682,16): anon6_LoopBody  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(683,9): anon6_LoopBody  (CALL Main_foo1)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(616,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(616,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(617,5): anon0  (CALL Main_foo2)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(636,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(636,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(637,12): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(638,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,9): anon3_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(639,5): anon3_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,9): anon3_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(648,13): anon3_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(617,5): anon0  (RETURN from Main_foo2 )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(626,9): anon3_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(618,5): anon3_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(626,9): anon3_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(627,13): anon3_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(683,9): anon6_LoopBody  (RETURN from Main_foo1 )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(676,5): anon6_LoopHead  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(676,5): anon6_LoopDone  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(676,5): anon6_LoopDone  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(685,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(685,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(686,5): anon2  (CALL PrtEquals)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,20): anon13_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,5): anon13_Then  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(95,20): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(686,5): anon2  (RETURN from PrtEquals )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(687,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(688,5): anon2  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(689,5): anon2  (CALL Main_foo3)
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(658,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(658,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(659,5): anon0  (CALL Main_foo2)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(636,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(636,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(637,12): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(638,5): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,9): anon3_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(639,5): anon3_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(647,9): anon3_Else  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(648,13): anon3_Else  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(659,5): anon0  (RETURN from Main_foo2 )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(660,9): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(689,5): anon2  (RETURN from Main_foo3 )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(697,9): anon7_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(690,5): anon7_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(697,9): anon7_Else  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(698,9): anon7_Else  (ASSERTION FAILS assert PrtFieldBool(PrtFalse);
  )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(805,17): anon8_Then  (RETURN from Main_Ping_Init_do_Success15 )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(805,17): anon8_Then  (Done)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(811,17): anon12_Then  (RETURN from Main_Ping_Init_do_Success15 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(811,17): anon12_Then  (Done)
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(605,11): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(606,7): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(607,5): anon0  
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(836,5): anon0  (RETURN from newMachine_Main )
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\DataPurity\DataImpureFunction.bpl(836,5): anon0  (Done)
 

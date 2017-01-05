@@ -58,7 +58,7 @@ machine Main {
 			
 			//+++++++++++++++++++++++++++++++++++++2.2. non-det value as an inserted value in +=:
 			//t.a += (1,F());                         //caused null deref in Zing; static error now
-			t.a += (1,i);                                    
+			t.a += (1,i);
 			assert (t.a[0] == 2 && (t.a[1] == 0 || t.a[1] == 1) && (t.a[2] == 5 || t.a[2] == 6));  //passes
 			
 			//+++++++++++++++++++++++++++++++++++++2.3. non-det value removed from a sequence:			

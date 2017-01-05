@@ -1,68 +1,65 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, popped, registerEvents, Ghost_real_machine}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine, machineEvToQCount}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, popped, registerEvents, Ghost_real_machine, machineEvToQCount}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine, machineEvToQCount, machineToQCAssert}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, popped, registerEvents, Ghost_real_machine, machineEvToQCount, machineToQCAssert}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, registerEvents, Ghost_real_machine, machineEvToQCount, machineToQCAssert, machineToQCAssume}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, StateStack, Main_ghost_machine, popped, registerEvents, Ghost_real_machine, machineEvToQCount, machineToQCAssert, machineToQCAssume}
 Program has a potential bug: True bug
-PersistentProgram(422,1): error PF5001: This assertion can fail
+PersistentProgram(426,1): error PF5001: This assertion can fail
 
-MaxInstances_1.bpl(202,1): error PF5001: This assertion can fail
+MaxInstances_1.bpl(196,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1441,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1441,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1442,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1443,5): anon0  (CALL newMachine_Main)
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(645,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(645,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(646,9): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(647,5): anon0  (CALL InitializeInbox)
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(568,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(568,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(569,4): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(647,5): anon0  (RETURN from InitializeInbox )
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(649,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(650,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(651,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(652,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(653,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(654,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(655,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(656,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(657,31): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(658,5): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(659,11): anon0  (FORK MachineThread_Main)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(914,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(914,16): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(915,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(917,17): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(918,13): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(920,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(922,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(923,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(924,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(925,26): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1468,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1468,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1469,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1470,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(639,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(640,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(560,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(560,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(561,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(640,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(642,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(643,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(644,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(645,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(646,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(647,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(648,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(649,31): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(650,5): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(651,11): anon0  (FORK MachineThread_Main)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(915,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(915,16): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(916,15): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(917,5): anon0  (Main_Entered_State = 0)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(919,17): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(920,13): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(922,12): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(924,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(926,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(927,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(928,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(929,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(930,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(931,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(929,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(930,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(931,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(932,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(933,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(934,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(935,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(936,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(937,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(936,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(937,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(938,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(939,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(940,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(941,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(942,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(943,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(943,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(944,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(945,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(946,24): anon0  
@@ -75,278 +72,270 @@ Format: (tid,k)  filename(line,col): blockName   (extra info)
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(953,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(954,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(955,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(956,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(956,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(957,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(958,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(959,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(960,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(961,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(962,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(963,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(962,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(963,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(964,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(965,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(966,26): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(967,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(968,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(969,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(970,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(968,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(969,24): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(970,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(971,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(972,24): anon0  
 (2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(973,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(974,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(975,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(976,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(977,24): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(978,5): anon0  (CALL Main_Real_Init_entry14)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(755,38): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(755,38): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(756,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(757,5): anon0  (CALL newMachine_Ghost)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(667,20): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(667,20): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(668,9): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(669,5): anon0  (CALL InitializeInbox)
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(568,4): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(568,4): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(569,4): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(669,5): anon0  (RETURN from InitializeInbox )
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(671,28): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(672,28): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(673,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(674,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(675,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(676,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(677,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(678,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(679,31): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(680,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(681,11): anon0  (FORK MachineThread_Ghost)
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1280,16): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1280,16): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1281,15): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1283,17): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1284,13): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1286,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1288,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1289,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1290,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1291,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1292,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1293,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1294,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1295,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1296,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1297,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1298,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1299,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1300,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1301,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1302,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1303,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1304,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1305,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1306,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1307,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1308,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1309,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1310,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1311,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1312,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1313,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1314,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1315,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1316,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1317,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1318,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1319,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1320,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1321,26): anon0  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(974,5): anon0  (CALL Main_Real_Init_entry14)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(746,38): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(746,38): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(747,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(748,5): anon0  (CALL newMachine_Ghost)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(659,20): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(659,20): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(660,9): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(661,5): anon0  (CALL InitializeInbox)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(560,4): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(560,4): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(561,4): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(661,5): anon0  (RETURN from InitializeInbox )
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(663,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(664,28): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(665,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(666,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(667,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(668,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(669,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(670,31): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(671,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(672,11): anon0  (FORK MachineThread_Ghost)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1299,16): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1299,16): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1300,15): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1301,5): anon0  (Ghost_Entered_State = 0)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1303,17): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1304,13): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1306,12): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1308,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1310,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1311,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1312,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1313,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1314,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1315,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1316,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1317,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1318,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1319,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1320,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1321,24): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1322,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1323,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1324,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1325,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1326,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1327,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1323,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1324,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1325,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1326,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1327,26): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1328,24): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1329,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1330,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1331,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1332,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1333,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1330,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1331,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1332,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1333,24): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1334,26): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1335,26): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1336,26): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1337,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1338,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1339,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1337,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1338,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1339,26): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1340,24): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1341,24): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1342,24): anon0  
 (3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1343,24): anon0  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1344,5): anon0  (CALL Ghost__Init_entry52)
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1124,32): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1124,32): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1125,5): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1126,24): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1127,5): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1128,17): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1129,17): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1130,19): anon0  
-(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1131,5): anon0  (raised_event = 6)
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1344,5): anon0  (RETURN from Ghost__Init_entry52 )
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1345,5): anon16_LoopHead  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1347,9): anon16_LoopBody  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1345,5): anon16_LoopBody  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1347,9): anon16_LoopBody  
-(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1347,9): anon16_LoopBody  (Done)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(681,11): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(682,7): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(683,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(757,5): anon0  (RETURN from newMachine_Ghost )
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(758,24): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(759,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(760,17): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(761,17): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(762,19): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(763,5): anon0  (raised_event = 6)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(978,5): anon0  (RETURN from Main_Real_Init_entry14 )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(979,5): anon16_LoopHead  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(981,9): anon16_LoopBody  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(979,5): anon16_LoopBody  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(981,9): anon16_LoopBody  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(982,9): anon16_LoopBody  (CALL Dequeue)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(131,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(133,21): anon15_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(131,5): anon15_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(133,21): anon15_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(134,15): anon15_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(135,17): anon15_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(982,9): anon16_LoopBody  (RETURN from Dequeue )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(983,9): anon16_LoopBody  (Main_recvd_event = 6)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(984,9): anon16_LoopBody  (CALL Main_ProbeStateStack)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(847,4): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(849,7): anon6_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(847,4): anon6_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(849,7): anon6_Then  (Main_state = 0)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(984,9): anon16_LoopBody  (RETURN from Main_ProbeStateStack )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(985,9): anon17_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(985,9): anon17_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(987,11): Main_Real_Init  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(987,11): anon18_Else  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(988,13): anon18_Else  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(994,17): anon19_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(992,18): anon19_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(994,17): anon19_Then  (CALL StateStackPush)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(583,15): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(583,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(994,17): anon19_Then  (RETURN from StateStackPush )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(995,27): anon19_Then  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(996,17): anon19_Then  (CALL Main_CallEntryAction)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(869,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(869,5): anon8_Else  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(869,5): anon8_Else  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(873,5): anon2  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(875,9): anon9_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(873,5): anon9_Then  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(875,9): anon9_Then  (CALL Main_Real_S1_entry24)
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(783,36): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(783,36): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(784,5): anon0  
-(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(785,5): anon0  (CALL send)
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,2): anon0  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,2): anon0  (CALL monitor)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1344,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1345,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1346,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1347,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1348,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1349,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1350,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1351,26): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1352,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1353,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1354,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1355,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1356,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1357,24): anon0  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1358,5): anon0  (CALL Ghost__Init_entry52)
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1133,32): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1133,32): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1134,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1135,24): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1136,5): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1137,17): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1138,17): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1139,19): anon0  
+(3,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1140,5): anon0  (raised_event = 5)
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1358,5): anon0  (RETURN from Ghost__Init_entry52 )
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1359,5): anon22_LoopHead  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1361,16): anon22_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1359,5): anon22_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1361,16): anon22_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1362,9): anon22_LoopBody  
+(3,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1362,9): anon22_LoopBody  (Done)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(672,11): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(673,7): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(674,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(748,5): anon0  (RETURN from newMachine_Ghost )
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(749,24): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(750,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(751,17): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(752,17): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(753,19): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(754,5): anon0  (raised_event = 5)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(974,5): anon0  (RETURN from Main_Real_Init_entry14 )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(975,5): anon22_LoopHead  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(977,16): anon22_LoopBody  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(975,5): anon22_LoopBody  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(977,16): anon22_LoopBody  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(978,9): anon22_LoopBody  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(979,30): anon23_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(979,9): anon23_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(979,30): anon23_Then  (CALL Dequeue)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(123,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(125,21): anon17_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(123,5): anon17_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(125,21): anon17_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(126,15): anon17_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(127,17): anon17_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(979,30): anon23_Then  (RETURN from Dequeue )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(984,9): anon7  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(984,9): anon7  (Main_recvd_event = 5)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(985,9): anon7  (CALL Main_ProbeStateStack)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(838,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(840,9): anon6_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(838,5): anon6_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(840,9): anon6_Then  (Main_state = 0)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(985,9): anon7  (RETURN from Main_ProbeStateStack )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(986,9): anon27_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(986,9): anon27_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(988,15): Main_Real_Init  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(988,15): anon28_Else  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(989,13): anon28_Else  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(995,17): anon29_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(993,18): anon29_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(995,17): anon29_Then  (CALL StateStackPush)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(575,15): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(575,15): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(576,4): anon0  (pushed_state = 0)
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(995,17): anon29_Then  (RETURN from StateStackPush )
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(996,27): anon29_Then  
+(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(997,17): anon29_Then  (CALL Main_CallEntryAction)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(864,5): anon0  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(864,5): anon0  (Main_Entered_State = 1)
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(864,5): anon6_Else  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(865,5): anon6_Else  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(871,9): anon7_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(869,10): anon7_Then  
+(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(871,9): anon7_Then  (CALL Main_Real_S1_entry24)
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(774,36): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(774,36): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(775,5): anon0  
+(2,1)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(776,5): anon0  (CALL send)
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(631,2): anon0  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(631,2): anon0  (CALL monitor)
 (2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(67,5): anon0  
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(69,5): anon9_Then  
-(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(67,5): anon9_Then  
-(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,2): anon0  (RETURN from monitor )
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(659,11): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(660,7): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(661,5): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1443,5): anon0  (RETURN from newMachine_Main )
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1443,5): anon0  (Done)
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(639,2): anon0  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(640,2): anon0  (CALL Enqueue)
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(624,9): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(624,9): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(625,26): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(627,6): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(628,34): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(629,38): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(630,40): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(632,4): anon0  (CALL AssertEventCard)
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,10): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,10): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(196,10): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(197,11): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(201,9): anon14_Then  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(199,5): anon14_Then  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(201,9): anon14_Then  (E1_QC_violated = 1)
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(202,9): anon14_Then  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(204,5): anon2  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(204,5): anon15_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(204,5): anon15_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(209,5): anon4  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(209,5): anon16_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(209,5): anon16_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(213,5): anon6  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(213,5): anon17_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(213,5): anon17_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(217,5): anon8  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(217,5): anon18_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(217,5): anon18_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(221,5): anon10  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(221,5): anon19_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(221,5): anon19_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(225,5): anon12  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(225,5): anon20_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(225,5): anon20_Else  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(632,4): anon0  (RETURN from AssertEventCard )
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(633,4): anon0  (CALL AssertMachineQueueSize)
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(601,7): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(601,7): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(602,7): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(603,7): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(605,5): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(606,2): anon4_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(606,2): anon4_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(612,5): anon2  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(612,5): anon2  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(613,2): anon5_Else  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(613,2): anon5_Else  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(633,4): anon0  (RETURN from AssertMachineQueueSize )
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(640,2): anon0  (RETURN from Enqueue )
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(785,5): anon0  (RETURN from send )
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(786,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(787,5): anon0  (CALL send)
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,2): anon0  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,2): anon0  (CALL monitor)
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(69,5): anon8_Then  
+(2,1)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(67,5): anon8_Then  
+(2,1)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(631,2): anon0  (RETURN from monitor )
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(651,11): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(652,7): anon0  
+(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(653,5): anon0  
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1470,5): anon0  (RETURN from newMachine_Main )
+(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(1470,5): anon0  (Done)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(632,2): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(633,2): anon0  (CALL Enqueue)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(617,9): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(617,9): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(618,26): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(620,6): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(621,34): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(622,38): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(623,40): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(625,4): anon0  (CALL AssertEventCard)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(189,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(189,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(190,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(191,11): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,9): anon12_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(193,5): anon12_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,9): anon12_Then  (E1_QC_violated = 1)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(196,9): anon12_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(198,5): anon2  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(198,5): anon13_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(198,5): anon13_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(203,5): anon4  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(203,5): anon14_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(203,5): anon14_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(207,5): anon6  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(207,5): anon15_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(207,5): anon15_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(211,5): anon8  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(211,5): anon16_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(211,5): anon16_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(215,5): anon10  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(215,5): anon17_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(215,5): anon17_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(625,4): anon0  (RETURN from AssertEventCard )
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(626,4): anon0  (CALL AssertMachineQueueSize)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(594,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(594,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(595,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(596,7): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(598,5): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(599,2): anon4_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(599,2): anon4_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(605,5): anon2  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(605,5): anon2  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(606,2): anon5_Else  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(606,2): anon5_Else  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(626,4): anon0  (RETURN from AssertMachineQueueSize )
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(633,2): anon0  (RETURN from Enqueue )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(776,5): anon0  (RETURN from send )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(777,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(778,5): anon0  (CALL send)
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(631,2): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(631,2): anon0  (CALL monitor)
 (2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(67,5): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(69,5): anon9_Then  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(67,5): anon9_Then  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(638,2): anon0  (RETURN from monitor )
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(639,2): anon0  
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(640,2): anon0  (CALL Enqueue)
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(624,9): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(624,9): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(625,26): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(627,6): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(628,34): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(629,38): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(630,40): anon0  
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(632,4): anon0  (CALL AssertEventCard)
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,10): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,10): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(196,10): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(197,11): anon0  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(201,9): anon14_Then  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(199,5): anon14_Then  
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(201,9): anon14_Then  (E1_QC_violated = 2)
-(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(202,9): anon14_Then  (ASSERTION FAILS assert count <= 1;
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(69,5): anon8_Then  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(67,5): anon8_Then  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(631,2): anon0  (RETURN from monitor )
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(632,2): anon0  
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(633,2): anon0  (CALL Enqueue)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(617,9): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(617,9): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(618,26): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(620,6): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(621,34): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(622,38): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(623,40): anon0  
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(625,4): anon0  (CALL AssertEventCard)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(189,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(189,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(190,10): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(191,11): anon0  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,9): anon12_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(193,5): anon12_Then  
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(195,9): anon12_Then  (E1_QC_violated = 2)
+(2,2)         C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(196,9): anon12_Then  (ASSERTION FAILS assert count <= 1;
  )
-(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(632,4): anon0  (RETURN from AssertEventCard )
-(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(640,2): anon0  (RETURN from Enqueue )
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(787,5): anon0  (RETURN from send )
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(875,9): anon9_Then  (RETURN from Main_Real_S1_entry24 )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(996,17): anon19_Then  (RETURN from Main_CallEntryAction )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(996,17): anon19_Then  (Done)
+(2,2)        C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(625,4): anon0  (RETURN from AssertEventCard )
+(2,2)       C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(633,2): anon0  (RETURN from Enqueue )
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(778,5): anon0  (RETURN from send )
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(871,9): anon7_Then  (RETURN from Main_Real_S1_entry24 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(997,17): anon29_Then  (RETURN from Main_CallEntryAction )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\MaxInstances_1\MaxInstances_1.bpl(997,17): anon29_Then  (Done)
 

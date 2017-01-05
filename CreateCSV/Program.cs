@@ -34,12 +34,18 @@ namespace CreateCSV
                         {
                             var line = "";
                             var f = Path.GetFileName(file);
+                            var flag = false;
                             while ((line = st.ReadLine()) != null)
                             {
                                 if (line.StartsWith(f))
                                 {
                                     Console.Write("{0}, ", line.Substring(f.Length + 1, line.IndexOf(',')));
+                                    flag = true;
                                     break;
+                                }
+                                if(!flag)
+                                {
+                                    Console.Write("NA, ");
                                 }
                             }
                         }

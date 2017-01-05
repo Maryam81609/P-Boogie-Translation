@@ -1,3 +1,3 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, tmpRhsValue, registerEvents, CurrState, StateStack}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, popped, tmpRhsValue, registerEvents, CurrState, StateStack}
 Program has no bugs
 

@@ -3,6 +3,13 @@ Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, PONG_pingid, machineEvToQCount}
 Program has a potential bug: False bug
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, PONG_pingid, machineEvToQCount, machineToQCAssert}
+Program has a potential bug: False bug
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, PONG_pingid, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, PONG_pingid, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_pongId, registerEvents, CurrState, PONG_pingid, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxHead, MachineInboxTail, MachineInboxStoreEvent, MachineInboxStorePayload, machineCounter}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 3
 

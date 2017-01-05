@@ -1,12 +1,14 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, registerEvents, StateStack}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, popped, registerEvents, StateStack}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, registerEvents, StateStack, machineEvToQCount}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, popped, registerEvents, StateStack, machineEvToQCount}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, registerEvents, StateStack, machineEvToQCount, machineToQCAssert}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, popped, registerEvents, StateStack, machineEvToQCount, machineToQCAssert}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, registerEvents, StateStack, machineEvToQCount, machineToQCAssert, machineToQCAssume}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, popped, registerEvents, StateStack, machineEvToQCount, machineToQCAssert, machineToQCAssume}
 Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, registerEvents, StateStack, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxStoreEvent, MachineInboxHead, MachineInboxTail}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, popped, registerEvents, StateStack, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxStoreEvent, MachineInboxHead}
+Program has a potential bug: False bug
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, deferEvents, CurrState, Main_test, popped, registerEvents, StateStack, machineEvToQCount, machineToQCAssert, machineToQCAssume, MachineInboxStoreEvent, MachineInboxHead, MachineInboxTail}
 Program has no bugs
-Reached recursion bound of 1
+Reached recursion bound of 3
 

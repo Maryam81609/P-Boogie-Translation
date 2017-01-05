@@ -423,15 +423,21 @@ module Translator =
         end
       | DoDecl.T.Call(e, _) ->
         begin
-          let evId = events.[e]
-          regEvents := Map.add evId true !regEvents
+          if e = "null" then ignore true 
+          else begin
+            let evId = events.[e]
+            regEvents := Map.add evId true !regEvents
+          end 
         end
     for l in trans do
       match l with
       | TransDecl.T.Call(e,_,_) | TransDecl.T.Push(e,_) ->
         begin
-          let evId = events.[e]
-          regEvents := Map.add evId true !regEvents
+          if e = "null" then ignore true 
+          else begin
+            let evId = events.[e]
+            regEvents := Map.add evId true !regEvents
+          end
         end
     let l1 = [!regEvents] @ (if hasIgnore then [!igEvents] else [])
               @ (if hasDefer then [!defEvents] else [])
@@ -703,9 +709,9 @@ module Translator =
     let StateHasNullTrans (state: StateDecl) = 
       let HasNullTrans = 
         (state.Transitions |> List.fold (fun acc (t: TransDecl.T) -> match t with
-                                                                    | TransDecl.T.Push("null", _)
-                                                                    | TransDecl.T.Call("null", _, _) -> acc || true
-                                                                    | _ -> acc)  false)
+                                                                     | TransDecl.T.Push("null", _)
+                                                                     | TransDecl.T.Call("null", _, _) -> acc || true
+                                                                     | _ -> acc)  false)
         || (state.Dos |> List.fold (fun acc (d: DoDecl.T) -> match d with
                                                              | DoDecl.T.Call("null", _) -> acc || true
                                                              | _ -> acc) false) in
@@ -718,7 +724,7 @@ module Translator =
                          end) stateToNullTrans
     sw.WriteLine("{ assume false; }")
     sw.WriteLine("call {{:cexpr \"{0}_recvd_event\"}} boogie_si_record_int(event);", md.Name) 
-    sw.WriteLine("call {0}_ProbeStateStack(event);", md.Name)
+    if md.HasPush then sw.WriteLine("call {0}_ProbeStateStack(event);", md.Name)
     List.iter (translateState sw md stateToInt hasDefer hasIgnore evMap) md.States
     sw.WriteLine()
     openBlock sw

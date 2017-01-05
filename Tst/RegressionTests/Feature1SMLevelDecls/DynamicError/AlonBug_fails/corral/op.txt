@@ -1,86 +1,90 @@
 Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, StateStack, Main_i, CurrState}
 Program has a potential bug: True bug
-PersistentProgram(532,1): error PF5001: This assertion can fail
+PersistentProgram(545,1): error PF5001: This assertion can fail
 
-AlonBug_fails.bpl(640,1): error PF5001: This assertion can fail
+AlonBug_fails.bpl(632,1): error PF5001: This assertion can fail
 
 Execution trace:
 Format: (tid,k)  filename(line,col): blockName   (extra info)
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(774,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(774,20): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(775,5): anon0  
-(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(776,5): anon0  (CALL newMachine_Main)
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(589,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(589,20): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(590,9): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(591,5): anon0  (CALL InitializeInbox)
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(512,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(512,4): anon0  
-(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(513,4): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(591,5): anon0  (RETURN from InitializeInbox )
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(593,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(594,28): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(595,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(596,31): anon0  
-(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(597,31): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(598,5): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(599,11): anon0  (FORK MachineThread_Main)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(713,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(713,15): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(715,17): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(716,13): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(718,12): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(720,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(721,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(722,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(723,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(724,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(725,26): anon0  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(726,5): anon0  (CALL Main_Init_entry8)
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(621,32): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(621,32): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(622,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(623,12): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(624,5): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(625,17): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(626,17): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(627,19): anon0  
-(2,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(628,5): anon0  (raised_event = 0)
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(726,5): anon0  (RETURN from Main_Init_entry8 )
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(727,5): anon8_LoopHead  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(729,9): anon8_LoopBody  
-(2,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(727,5): anon8_LoopBody  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(599,11): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(600,7): anon0  
-(1,1)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(601,5): anon0  
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(776,5): anon0  (RETURN from newMachine_Main )
-(1,1)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(776,5): anon0  (Done)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(729,9): anon8_LoopBody  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(730,9): anon8_LoopBody  (CALL Dequeue)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(113,5): anon0  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(115,21): anon11_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(113,5): anon11_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(115,21): anon11_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(116,15): anon11_Then  
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(117,17): anon11_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(730,9): anon8_LoopBody  (RETURN from Dequeue )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(731,9): anon8_LoopBody  (Main_recvd_event = 0)
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(732,9): anon9_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(732,9): anon9_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(734,11): Main_Init  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(737,17): anon10_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(735,13): anon10_Then  
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(737,17): anon10_Then  (CALL Main_CallExitAction)
-(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(695,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(782,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(782,20): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(783,5): anon0  
+(1,0)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(784,5): anon0  (CALL newMachine_Main)
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(582,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(582,20): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(583,9): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(584,5): anon0  (CALL InitializeInbox)
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(504,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(504,4): anon0  
+(1,0)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(505,4): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(584,5): anon0  (RETURN from InitializeInbox )
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(586,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(587,28): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(588,31): anon0  
+(1,0)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(589,31): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(590,5): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(591,11): anon0  (FORK MachineThread_Main)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(713,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(713,15): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(714,5): anon0  (Main_Entered_State = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(716,17): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(717,13): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(719,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(721,12): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(723,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(724,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(725,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(726,26): anon0  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(727,5): anon0  (CALL Main_Init_entry8)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(613,32): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(613,32): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(614,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(615,12): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(616,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(617,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(618,17): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(619,19): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(620,5): anon0  (raised_event = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(727,5): anon0  (RETURN from Main_Init_entry8 )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(728,5): anon12_LoopHead  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(730,16): anon12_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(728,5): anon12_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(730,16): anon12_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(731,9): anon12_LoopBody  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(732,30): anon13_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(732,9): anon13_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(732,30): anon13_Then  (CALL Dequeue)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(105,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(107,21): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(105,5): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(107,21): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(108,15): anon13_Then  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(109,17): anon13_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(732,30): anon13_Then  (RETURN from Dequeue )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(735,9): anon5  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(735,9): anon5  (Main_recvd_event = 0)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(736,9): anon15_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(736,9): anon15_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(738,15): Main_Init  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(741,17): anon16_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(739,13): anon16_Then  
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(741,17): anon16_Then  (CALL Main_CallExitAction)
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(694,5): anon0  
+(2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(694,5): anon0  (Main_Exited_State = 0)
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(697,9): anon4_Then  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(695,5): anon4_Then  
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(697,9): anon4_Then  (CALL Main_Init_exit10)
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(638,32): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(638,32): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(639,5): anon0  
-(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(640,5): anon0  (ASSERTION FAILS assert PrtFieldBool(PrtFalse);
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(630,32): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(630,32): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(631,5): anon0  
+(2,2)      C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(632,5): anon0  (ASSERTION FAILS assert PrtFieldBool(PrtFalse);
  )
 (2,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(697,9): anon4_Then  (RETURN from Main_Init_exit10 )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(737,17): anon10_Then  (RETURN from Main_CallExitAction )
-(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(737,17): anon10_Then  (Done)
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(741,17): anon16_Then  (RETURN from Main_CallExitAction )
+(2,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(741,17): anon16_Then  (Done)
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(591,11): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(592,7): anon0  
+(1,2)     C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(593,5): anon0  
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(784,5): anon0  (RETURN from newMachine_Main )
+(1,2)    C:\Users\teja5832\P-Boogie-Translation\Tst\RegressionTests\Feature1SMLevelDecls\DynamicError\AlonBug_fails\AlonBug_fails.bpl(784,5): anon0  (Done)
 

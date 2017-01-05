@@ -38,9 +38,9 @@ namespace Microsoft.PBoogieTranslator
                             Console.WriteLine("*************************************************************************************************************************");
                             Console.WriteLine(options.boogieFile);
                             Console.WriteLine("*************************************************************************************************************************");
-                            ProcessPFile(options, fsExpGen);
                             Console.Error.WriteLine(options.boogieFile);
-
+                            ProcessPFile(options, fsExpGen);
+                            
                             opFileDir = Path.Combine(Path.GetDirectoryName(options.boogieFile), "corral");
                             if (!Directory.Exists(opFileDir))
                                 Directory.CreateDirectory(opFileDir);
@@ -51,15 +51,17 @@ namespace Microsoft.PBoogieTranslator
 
                             if (opFileDir.Contains("Correct"))
                             {
-                                good = verify(options, 3, 3);
+                                good = verify(options, 3, 2);
                                 if (!good)
+                                {
                                     wrongCodes.Add(options.boogieFile);
+                                }
                                 using (var opts = new StreamWriter(optFilePath))
                                 {
                                     opts.WriteLine(" /cooperative"  //Use Co-operative scheduling
                                         + " /timeLimit:1000"
                                         + " /recursionBound:3"
-                                        + " /k:3"); //Context switch bound.
+                                        + " /k:2"); //Context switch bound.
                                 }
                                 continue;
                             }
@@ -183,6 +185,22 @@ namespace Microsoft.PBoogieTranslator
                     var err = process.StandardOutput.ReadToEnd();
 
                     var idx = op.IndexOf("Boogie verification time");
+
+                    if(idx == -1 && op.Contains("Error, Internal Bug"))
+                    {
+                        idx = op.IndexOf("Error, Internal Bug");
+                        idx = op.Substring(idx).IndexOf("\n"); //From the next line after "Error, Internal Bug"
+                    }
+
+                    if(idx == -1)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        Console.WriteLine(op);
+                        Console.WriteLine();
+                        Console.WriteLine();
+                        throw new Exception("Cannot interpret Corral Output.");
+                    }
 
                     using (var sw = new StreamWriter(Path.Combine(opFileDir, "op.txt")))
                     {

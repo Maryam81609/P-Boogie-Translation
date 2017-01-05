@@ -1,6 +1,0 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Elevator_TimerV, Elevator_DoorV, registerEvents, Main_ElevatorV, Door_ElevatorV, Timer_ElevatorV}
-Program has a potential bug: False bug
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, ignoreEvents, CurrState, deferEvents, StateStack, Elevator_TimerV, Elevator_DoorV, registerEvents, Main_ElevatorV, Door_ElevatorV, Timer_ElevatorV, machineToQCAssert}
-Program has no bugs
-Reached recursion bound of 1
-

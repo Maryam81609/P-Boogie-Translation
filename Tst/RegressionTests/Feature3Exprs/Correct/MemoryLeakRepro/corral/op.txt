@@ -1,3 +1,3 @@
-Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_t, tmpRhsValue_0, tmpRhsValue_1, Main_i, registerEvents, CurrState, StateStack, Tmp332, Tmp331, Tmp334, Tmp333, Tmp330}
+Verifying program while tracking: {eventRaised, raisedEvent, raisedEventPl, thisMid, Main_t, tmpRhsValue_0, tmpRhsValue_1, Main_i, popped, registerEvents, CurrState, StateStack, Tmp332, Tmp331, Tmp334, Tmp333, Tmp330}
 Program has no bugs
 
