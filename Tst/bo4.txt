@@ -1,5 +1,0 @@
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\anyTypeNullValue\anyTypeNullValue.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\ForeignTypes\foreigntypes.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\nestedTypedef\nestedTypedef.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\nonAtomicDataTypes16\nonAtomicDataTypes.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\ReturnIssue\returnIssue.bpl

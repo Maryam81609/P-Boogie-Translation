@@ -1,8 +1,0 @@
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\typedef\typedef.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Feature4DataTypes\Correct\typedef2\equality.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\BoundedAsync\boundedasync.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\Elevator\Elevator.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\German\German.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\MaxInstances_2\MaxInstances_2.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\Multi_Paxos_3\Multi_Paxos_3.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\Multi_Paxos_4\Multi_Paxos_4.bpl

@@ -1,8 +1,0 @@
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\openwsn1\openwsn1.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\OSR\OSR.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\PingPong\PingPong.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\PingPongDingDong\PingPongDingDong.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\PingPongMonitor\PingPongMonitor.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_18\UnhandledEventDeferred.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_19\UnhandledEventIgnored.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_2\RaiseSendInEntry.bpl

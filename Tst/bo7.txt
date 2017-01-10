@@ -1,7 +1,0 @@
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_22\AlonBug_1.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_31\RaisedHalt.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_4\SendInExitNotExecuted.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_OneMachine_7\SendInExitUnhandledHalt.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_TwoMachines_1\EventSentAfterSentHalt.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_TwoMachines_3\EventSentAfterSentHaltHandled.bpl
-C:\Users\teja5832\P-Boogie-Translation\P\Tst\RegressionTests\Integration\Correct\SEM_TwoMachines_5\RaisedHalt.bpl
