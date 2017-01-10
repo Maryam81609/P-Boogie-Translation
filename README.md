@@ -21,6 +21,10 @@ Other options:
 		and record corral outputs in a format similar to the Regression Tests.
 	testAll
 		This option will run all Regression Tests.
+
+CreateCSV.exe file.txt
+	Here, file.txt contains the list of all test cases to generate a CSV for. 
+
 ~~~
 
 ### Building
