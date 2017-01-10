@@ -122,7 +122,7 @@ namespace PBoogieTranslator
                 Console.WriteLine("\t\tThis option will consider the lines of the input file as file paths.");
                 Console.WriteLine("\t/test");
                 Console.WriteLine("\t\tThis option will consider the lines of the input file as file paths, and run corral on each output.");
-                Console.WriteLine("\tgenTestOutputs");
+                Console.WriteLine("\t/  genTestOutputs");
                 Console.WriteLine("\t\tThis option will consider the lines of the input file as file paths,");
                 Console.WriteLine("\t\tand record corral outputs in a format similar to the Regression Tests.");
                 Console.WriteLine("\ttestAll");

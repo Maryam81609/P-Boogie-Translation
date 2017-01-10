@@ -1,14 +1,34 @@
 # P-Boogie-Translation
+
 Translates a given P file to a Boogie file.
 
+### Usage
 ~~~
- USAGE: PBoogieTranslator.exe file.p [options]
-  OPTIONS:
-        /deSugar:[name]?
-        /outputFileName:[name]?
-        /removeNT:[name]?
-        /removeSE:[name]?
-        /serialize:[name]?
-        If name is not supplied, we will save to file with name like deSugared_file.p, NTRemoved_file.p, etc.
-        If name is "-", output is printed to the terminal.
+PBoogieTranslator.exe file.p [options]
+	/deSugar
+	/removeNT
+	/removeSE
+	/serialize
+	/noBoogie
+We will save to file with names like deSugared_file.p, NTRemoved_file.p, etc.
+Other options:
+	/list
+		This option will consider the lines of the input file as file paths.
+	/test
+		This option will consider the lines of the input file as file paths, and run corral on each output.
+	/genTestOutputs
+		This option will consider the lines of the input file as file paths,
+		and record corral outputs in a format similar to the Regression Tests.
+	testAll
+		This option will run all Regression Tests.
 ~~~
+
+### Building
+	Run build.bat
+
+### TBD
+	Add support for newer features of P - we use a version of P which is quite old - including InterfaceTypes, Enums, Module system declarations. 
+	Add tech report.
+	Generate Golden Outputs for the  tests in Tst/RegressionTests/Integration
+	Improve/find the recursion bounds and context switch bounds.
+
