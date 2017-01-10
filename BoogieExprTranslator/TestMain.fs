@@ -22,12 +22,12 @@ module Main =
     end
   let printProgram (pFile: string) = 
     begin
-      
       System.Console.WriteLine("*****************************************************************************");
       System.Console.WriteLine(pFile);
       let prog = getProgram pFile
       let OpFile = new System.IO.StreamWriter(pFile)
-      printProg prog OpFile
+      let sw = new IndentedTextWriter(OpFile, "    ")
+      printProg sw prog
       OpFile.Close()
     end
 

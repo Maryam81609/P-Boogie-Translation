@@ -5,11 +5,11 @@ module Helper=
   open System
   open Syntax
   open Common
-   
+  open System.CodeDom.Compiler
+     
   let mergeMaps map1 map2 = 
     (Map.fold (fun acc key value -> Map.add key value acc) map1 map2)
 
- 
   (* Helpers *)
   let rec lvalToExpr lval =
     match lval with
@@ -153,7 +153,18 @@ module Helper=
     | Lval.NamedDot(v, f) -> sprintf "%s.%s" (printLval v) f
     | Lval.Index(l, e) -> sprintf "%s[%s]" (printLval l) (printExpr e) 
   
-  let rec printStmt prog cm s =
+  let openBlock (sw: IndentedTextWriter) = 
+    begin
+      sw.WriteLine("{")
+      sw.Indent <- sw.Indent + 1
+    end
+  let closeBlock (sw: IndentedTextWriter) = 
+    begin
+      sw.Indent <- sw.Indent - 1
+      sw.WriteLine("}")
+    end
+
+  let rec stmtToString prog cm s =
     match s with
     | Assign(l, e) -> sprintf "%s = %s;" (printLval l) (printExpr e)
     | Insert(l, e1, e2) -> sprintf "%s += (%s, %s);" (printLval l) (printExpr e1) (printExpr e2)
@@ -167,10 +178,10 @@ module Helper=
     | Send (e1, e2, Nil) -> sprintf "send %s, %s;" (printExpr e1) (printExpr e2) 
     | Send (e1, e2, e3) -> sprintf "send %s, %s, %s;" (printExpr e1) (printExpr e2) (printExpr e3)
     | Skip(_) -> ";\n"
-    | While(c, s) -> sprintf "while(%s)\n{\n%s\n}\n" (printExpr c) (printStmt prog cm s)
-    | Ite(c, i, e) -> sprintf "if(%s)\n{\n%s\n}\nelse\n{\n%s\n}\n" (printExpr c) (printStmt prog cm i) (printStmt prog cm e)
-    | SeqStmt(l) -> sprintf "\n%s\n" (printList (printStmt prog cm) l "\n")
-    | Receive(l) -> sprintf "receive\n{\n%s\n}\n" (printList (printCases prog cm) l "\n")
+    | While(c, s) -> sprintf "while(%s)\n{\n%s\n}\n" (printExpr c) (stmtToString prog cm s)
+    | Ite(c, i, e) -> sprintf "if(%s)\n{\n%s\n}\nelse\n{\n%s\n}\n" (printExpr c) (stmtToString prog cm i) (stmtToString prog cm e)
+    | SeqStmt(l) -> sprintf "\n%s\n" (printList (stmtToString prog cm) l "\n")
+    | Receive(l) -> sprintf "receive\n{\n%s\n}\n" (printList (caseToString prog cm) l "\n")
     | Pop -> "pop;"
     | Return(None) -> "return;"
     | Return(Some(e)) -> sprintf "return (%s);" (printExpr e)
@@ -180,34 +191,101 @@ module Helper=
     | Goto(s, e) -> sprintf "goto %s, %s" s (printExpr e)
     
   ///printEventAction <program> <event name> <machine name> <function name>
-  and printCases (prog: ProgramDecl) cm (ev, st) =     
+  and caseToString (prog: ProgramDecl) cm (ev, st) =     
     let evType = match (Map.find ev prog.EventMap).Type with
                  | None -> "(payload: null)"
                  | Some(t) -> sprintf "(payload: %s)" (printType t)
-    sprintf "case %s: %s {\n%s\n}" ev evType (printStmt prog cm st)
+    sprintf "case %s: %s {\n%s\n}" ev evType (stmtToString  prog cm st)
 
-  let printDo (prog: ProgramDecl) (d: Syntax.DoDecl.T) = 
+
+  ///printStmt <sw> <program> <currentMachine> <stmt>
+  let rec printStmt (sw: IndentedTextWriter) prog cm s =
+    match s with
+    | Assign(l, e) -> sw.WriteLine("{0} = {1};", (printLval l), (printExpr e))
+    | Insert(l, e1, e2) -> sw.WriteLine("{0} += ({1}, {2});", (printLval l), (printExpr e1), (printExpr e2))
+    | Remove(l, e) -> sw.WriteLine("{0} -= {1};", (printLval l), (printExpr e))
+    | Assert(e) -> sw.WriteLine("assert {0};", (printExpr e))
+    | Assume(e) -> sw.WriteLine("assume {0};", (printExpr e))
+    | NewStmt(s, Nil) -> sw.WriteLine("new {0}();", s)
+    | NewStmt(s, e) -> sw.WriteLine("new {0}({1});", s, (printExpr e))
+    | Raise(e1, Nil) -> sw.WriteLine("raise {0};", (printExpr e1))
+    | Raise(e1, e2) -> sw.WriteLine("raise {0}, {1};", (printExpr e1), (printExpr e2))
+    | Send (e1, e2, Nil) -> sw.WriteLine("send {0}, {1};", (printExpr e1), (printExpr e2))
+    | Send (e1, e2, e3) -> sw.WriteLine("send {0}, {1}, {2};", (printExpr e1), (printExpr e2), (printExpr e3))
+    | Skip(_) -> ignore true
+    | While(c, s) -> 
+        begin
+          sw.WriteLine("while({0})", (printExpr c))
+          openBlock sw
+          sw.WriteLine("{0}",(printStmt sw prog cm s))
+          closeBlock sw
+        end
+    | Ite(c, i, e) ->
+        begin
+          sw.WriteLine("if({0})", (printExpr c))
+          openBlock sw
+          sw.WriteLine("{0}", (printStmt sw prog cm i))
+          closeBlock sw
+          sw.WriteLine("else")
+          openBlock sw
+          sw.WriteLine("{0}", (printStmt sw prog cm e))
+          closeBlock sw
+        end
+    | SeqStmt(l) -> List.iter (printStmt sw prog cm) l
+    | Receive(l) -> 
+        begin
+          sw.WriteLine("receive")
+          openBlock sw
+          List.iter (printCases sw prog cm) l
+          closeBlock sw
+        end
+    | Pop -> sw.WriteLine("pop;")
+    | Return(None) -> sw.WriteLine("return;")
+    | Return(Some(e)) -> sw.WriteLine("return ({0});", (printExpr e))
+    | Monitor(e1, e2) -> sw.WriteLine("monitor ({0}), ({1});", (printExpr e1), (printExpr e2))
+    | FunStmt(s, el, None) -> sw.WriteLine("{0}({1});", s, (printList printExpr el ", "))
+    | FunStmt(s, el, v) -> sw.WriteLine("{0} = {1}({2});", v.Value, s, (printList printExpr el ", "))
+    | Goto(s, e) -> sw.WriteLine("goto {0}, {1}", s, (printExpr e))
+    
+  ///printCases <sw> <program> <currentMachine> <event, action>
+  and printCases (sw:IndentedTextWriter) (prog: ProgramDecl) cm (ev, st) =
+    let evType = match (Map.find ev prog.EventMap).Type with
+                 | None -> "(payload: null)"
+                 | Some(t) -> sprintf "(payload: %s)" (printType t)
+    sw.Write("case {0}: {1} ", ev, evType)
+    openBlock sw
+    printStmt sw prog cm st
+    closeBlock sw
+
+  ///printDo <sw> <program> <DoDecl>
+  let printDo (sw: IndentedTextWriter) (prog: ProgramDecl) (d: Syntax.DoDecl.T) =
     match d with
-    | Syntax.DoDecl.T.Defer(s) -> (sprintf "defer %s;" s)
-    | Syntax.DoDecl.T.Ignore(s) -> (sprintf "ignore %s;" s)
-    | Syntax.DoDecl.T.Call(e, f) -> 
+    | Syntax.DoDecl.T.Defer(s) -> sw.WriteLine("defer {0};", s)
+    | Syntax.DoDecl.T.Ignore(s) -> sw.WriteLine("ignore {0};", s)
+    | Syntax.DoDecl.T.Call(e, f) ->
       begin
         let evType = match (Map.find e prog.EventMap).Type with
                      | None -> "(payload: null)"
                      | Some(t) -> sprintf "(payload: %s)" (printType t)
-        sprintf "on %s do %s {\npayload = %s(payload);\n}" e evType f
+        sw.Write("on {0} do {1} ", e, evType)
+        openBlock sw
+        sw.WriteLine("payload = {1}(payload);", f)
+        closeBlock sw
       end
 
-  let printTrans (prog: ProgramDecl) (t: Syntax.TransDecl.T) =
-    match t with 
-    | Syntax.TransDecl.T.Push(e, d) -> (sprintf "on %s push %s;" e d)
-    | Syntax.TransDecl.T.Call(e, d, f) -> 
+  ///printTrans <sw> <program> <DoDecl>
+  let printTrans (sw: IndentedTextWriter) (prog: ProgramDecl) (t: Syntax.TransDecl.T) =
+    match t with
+    | Syntax.TransDecl.T.Push(e, d) -> sw.WriteLine("on {0} push {1};", e, d)
+    | Syntax.TransDecl.T.Call(e, d, f) ->
       begin
         let evType = match (Map.find e prog.EventMap).Type with
                      | None -> "(payload: null)"
                      | Some(t) -> sprintf "(payload: %s)" (printType t)
-    
-        sprintf "on %s goto %s with %s {\n%s(payload);\n}" e d evType f
+        sw.Write("on {0} goto {1} with {2}", e, d, evType)
+        openBlock sw
+        sw.WriteLine("{0}(payload);", f)
+        closeBlock sw
       end
 
   let (|InvariantEqual|_|) (str:string) arg = 
@@ -222,74 +300,90 @@ module Helper=
   let printVar (v: Syntax.VarDecl) = 
     sprintf "var %s: %s" v.Name (printType v.Type)
   
-  let printVarList (ls: VarDecl list) = 
-    match ls with
-    | [] -> ""
-    | [h] -> (sprintf "%s;\n" (printVar h))
-    | _ -> (sprintf "%s;\n" (printList printVar ls ";\n"))
+  let printVarList (sw: IndentedTextWriter) (ls: VarDecl list) = 
+    List.iter (fun v -> sw.WriteLine("{0};", (printVar v))) ls
 
-  let printFunction prog cm (f: Syntax.FunDecl) = 
-    let printFormal (v: VarDecl) = 
+  ///printFunction <sw> <program> <currentMachine> <FunDecl>
+  let printFunction (sw: IndentedTextWriter) prog cm (f: Syntax.FunDecl) =
+    let printFormal (v: VarDecl) =
       sprintf "%s: %s" v.Name (printType v.Type)
     let model = if f.IsModel then "model " else ""
     let args = (printList printFormal f.Formals ", ")
-    let ret = if (f.RetType.IsSome) then (sprintf ": %s" (printType f.RetType.Value)) else ""
-    let locals = (printVarList f.Locals)
+    let ret = if (f.RetType.IsSome) then sprintf ": %s" (printType f.RetType.Value) else ""
     let body = SeqStmt(f.Body)
-    sprintf "%sfun %s(%s)%s\n{\n%s\n%s}" model f.Name args ret locals (printStmt prog cm body)
+    sw.WriteLine("{0}fun {1}({2}){3}", model, f.Name, args, ret)
+    openBlock sw
+    printVarList sw f.Locals
+    printStmt sw prog cm body
+    closeBlock sw
 
-  let printEvent (e: Syntax.EventDecl) =
+  let printEvent (sw: IndentedTextWriter) (e: Syntax.EventDecl) =
     let typ = if (e.Type.IsSome) then (sprintf ": %s" (printType e.Type.Value)) else ""
     let qc = if (e.QC.IsSome) then (sprintf " %s" (printCard e.QC.Value)) else ""
-    sprintf "event %s%s%s" e.Name qc typ
+    sw.WriteLine("event {0}{1}{2};", e.Name, qc, typ)
 
-  let printState (prog: ProgramDecl) cm (s: Syntax.StateDecl) = 
-    let temp = 
-      match s.Temperature with 
-      | InvariantEqual "Hot" -> "hot"
-      | InvariantEqual "Cold" -> "cold"
-      | _ -> ""
-    
+  ///printState <sw> <program> <currentMachine> <StateDecl>
+  let printState (sw: IndentedTextWriter) (prog: ProgramDecl) cm (s: Syntax.StateDecl) = 
     let printEntryExit (ea: string option) action= 
       match action, ea with
-      | _, None -> ""
+      | _, None -> ignore true
       | "entry", Some(a) -> 
         begin
           let fd = if (prog.FunMap.ContainsKey a) then prog.FunMap.[a]
                    else  (prog.MachineMap.[cm].FunMap.[a]) 
-          if fd.Formals.Length = 1 then
-            sprintf "entry (payload: %s) {\n%s(payload);\n}" (printType fd.Formals.Head.Type) a
+          if fd.Formals.Length = 1 then begin
+            sw.Write("entry (payload: {0}) ", (printType fd.Formals.Head.Type)) 
+            openBlock sw
+            sw.WriteLine("{0}(payload);", a)
+            closeBlock sw
+          end
           else
             raise NotDefined
         end
-      | "exit", Some(a) -> sprintf "exit {\n%s(null);\n}" a
-      | _,_ -> raise NotDefined   
+      | "exit", Some(a) -> 
+        begin
+          sw.Write("exit ")
+          openBlock sw
+          sw.WriteLine("{0}(null);", a)
+          closeBlock sw
+        end
+      | _,_ -> raise NotDefined  
 
-    let entry = (printEntryExit s.EntryAction "entry")
-    let exit = (printEntryExit s.ExitAction "exit")
-    let dos = (printList (printDo prog) s.Dos "\n")
-    let trans = (printList (printTrans prog) s.Transitions "\n")
-    sprintf "\n%s state %s\n{\n%s%s%s%s}" temp s.Name entry exit dos trans
+    let temp = 
+      match s.Temperature with 
+      | InvariantEqual "Hot" -> "hot"
+      | InvariantEqual "Cold" -> "cold"
+      | _ -> "" 
 
-  let printMachine (prog: ProgramDecl) (m: Syntax.MachineDecl) =
+    sw.Write("{0} state {1} ", temp, s.Name)
+    openBlock sw
+    printEntryExit s.EntryAction "entry"
+    printEntryExit s.ExitAction "exit"
+    List.iter (printDo sw prog) s.Dos
+    List.iter (printTrans sw prog) s.Transitions
+    closeBlock sw
+
+  ///printMachine <sw> <program> <MachineDecl>
+  let printMachine (sw: IndentedTextWriter) (prog: ProgramDecl) (m: Syntax.MachineDecl) =
     let machine = if (m.IsModel) then "model" else (if (m.IsMonitor) then "spec" else "machine")
     let monitors = if(m.IsMonitor) then (sprintf " monitors %s " (printList (sprintf "%s") m.MonitorList ", ")) else ""
     let card = if (m.QC.IsSome) then (printCard m.QC.Value) else ""
-    sprintf "%s %s%s%s\n{\n%s\n%s%s\n}\n" machine m.Name card monitors 
-              (printVarList m.Globals) 
-              (printList (printFunction prog m.Name) m.Functions "\n") 
-              (printList (fun (s: Syntax.StateDecl) -> 
-                            if (s.Name = m.StartState) then (sprintf "start %s" (printState prog m.Name s)) 
-                            else (printState prog m.Name s))  m.States "\n")
+    sw.WriteLine("{0} {1}{2}{3}", machine, m.Name, card, monitors)
+    openBlock sw
+    printVarList sw m.Globals
+    List.iter (printFunction sw prog m.Name) m.Functions
+    List.iter (fun (s: Syntax.StateDecl) -> begin
+                      if (s.Name = m.StartState) then sw.Write("start ")
+                      printState sw prog m.Name s
+                    end)  m.States
+    closeBlock sw
 
-  let printProg (prog: Syntax.ProgramDecl) (sw: System.IO.TextWriter) =
+  let printProg (sw: IndentedTextWriter) (prog: Syntax.ProgramDecl) =
     begin
       let events = List.filter (fun(x:EventDecl) -> x.Name <> "null" && x.Name <>"halt") prog.Events
-      match (printList printEvent events ";\n") with
-      | "" -> sw.Write("")
-      | s -> sw.WriteLine(sprintf "%s;" s)
-      sw.WriteLine (printList (printFunction prog "") prog.StaticFuns "\n")
-      sw.WriteLine (printList (printMachine prog) prog.Machines "\n")           
+      List.iter (printEvent sw) events
+      List.iter (printFunction sw prog "") prog.StaticFuns
+      List.iter (printMachine sw prog) prog.Machines           
     end
  
   let tupleSize t =
@@ -300,7 +394,6 @@ module Helper=
   (* find max tuple size *)
   let maxTupleSize m = 
     Map.fold (fun max t _ -> if(max < tupleSize t) then tupleSize t else max) 0 m
-
 
   (* global counter for fresh variables *)
   let globalFreshCnt = ref 0 in

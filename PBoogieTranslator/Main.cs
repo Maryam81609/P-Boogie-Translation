@@ -186,10 +186,11 @@ namespace Microsoft.PBoogieTranslator
 
                     var idx = op.IndexOf("Boogie verification time");
 
-                    if(idx == -1 && op.Contains("Error, Internal Bug"))
+                    if(idx == -1 && op.Contains("Error, internal bug:"))
                     {
-                        idx = op.IndexOf("Error, Internal Bug");
-                        idx = op.Substring(idx).IndexOf("\n"); //From the next line after "Error, Internal Bug"
+                        idx = op.IndexOf("Error, internal bug:");
+                        //From the next line after "Error, internal bug:"
+                        idx = op.Substring(idx).IndexOf("\n") + 1; 
                     }
 
                     if(idx == -1)
@@ -210,8 +211,10 @@ namespace Microsoft.PBoogieTranslator
                         }
                         catch (System.ArgumentOutOfRangeException e)
                         {
-                            Console.WriteLine("Index: {0}", idx);
+                            Console.WriteLine("Cannot interpret Corral Output.");
+                            Console.WriteLine();
                             Console.WriteLine(op);
+
                         }
                         if ((opFileDir.Contains(@"\Correct\") && op.Contains("Program has a potential bug: True bug")) ||
                             (opFileDir.Contains(@"\DynamicError\") && !op.Contains("Program has a potential bug: True bug")))
@@ -354,14 +357,14 @@ namespace Microsoft.PBoogieTranslator
         {
             if (fileName == "-")
             {
-                Helper.printProg(prog, new IndentedTextWriter(Console.Out, "   "));
+                Helper.printProg(new IndentedTextWriter(Console.Out, "   "), prog);
             }
             else if (fileName != null)
             {
                 using (var sw = new StreamWriter(fileName))
                 using (var tr = new IndentedTextWriter(sw, "    "))
                 {
-                    Helper.printProg(prog, tr);
+                    Helper.printProg(tr, prog);
                 }
             }
             else

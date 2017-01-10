@@ -362,28 +362,28 @@ module ProgramTyping =
       begin
         let ltype = (typecheckLval prog G cm l)
         let rtype = (typecheckExpr prog G cm e)
-        typeAssert (isSubtype rtype ltype) (sprintf "Invalid assignment: %s; lhs has type %s, but rhs has type %s " (printStmt prog cm st) (printType ltype) (printType rtype))
+        typeAssert (isSubtype rtype ltype) (sprintf "Invalid assignment: %s; lhs has type %s, but rhs has type %s " (stmtToString prog cm st) (printType ltype) (printType rtype))
       end
     | Insert(l, e1, e2) -> 
       match typecheckLval prog G cm l with
-      | Seq(t) -> typeAssert ((isSubtype (typecheckExpr prog G cm e1) Int) && (isSubtype (typecheckExpr prog G cm e2) t)) (sprintf "Invalid insert: %s" (printStmt prog cm st))
-      | Map(t1,t2) -> typeAssert ((isSubtype (typecheckExpr prog G cm e1) t1) && (isSubtype (typecheckExpr prog G cm e2) t2)) (sprintf "Invalid insert: %s" (printStmt prog cm st))
-      | _ -> typeAssert false (sprintf "Invalid insert: %s" (printStmt prog cm st))
+      | Seq(t) -> typeAssert ((isSubtype (typecheckExpr prog G cm e1) Int) && (isSubtype (typecheckExpr prog G cm e2) t)) (sprintf "Invalid insert: %s" (stmtToString prog cm st))
+      | Map(t1,t2) -> typeAssert ((isSubtype (typecheckExpr prog G cm e1) t1) && (isSubtype (typecheckExpr prog G cm e2) t2)) (sprintf "Invalid insert: %s" (stmtToString prog cm st))
+      | _ -> typeAssert false (sprintf "Invalid insert: %s" (stmtToString prog cm st))
     | Remove(l, e) ->
       match typecheckLval prog G cm l with
-      | Seq(t) -> typeAssert (isSubtype (typecheckExpr prog G cm e) Int) (sprintf "Invalid remove: %s" (printStmt prog cm st))
-      | Map(t1,t2) -> typeAssert (isSubtype (typecheckExpr prog G cm e) t1) (sprintf "Invalid remove: %s" (printStmt prog cm st))
-      | _ -> typeAssert false (sprintf "Invalid remove: %s" (printStmt prog cm st))
-    | Assume e ->  typeAssert (isSubtype (typecheckExpr prog G cm e) Bool) (sprintf "Invalid assume: %s" (printStmt prog cm st))
-    | Assert e -> typeAssert (isSubtype (typecheckExpr prog G cm e) Bool) (sprintf "Invalid assert: %s" (printStmt prog cm st))
+      | Seq(t) -> typeAssert (isSubtype (typecheckExpr prog G cm e) Int) (sprintf "Invalid remove: %s" (stmtToString prog cm st))
+      | Map(t1,t2) -> typeAssert (isSubtype (typecheckExpr prog G cm e) t1) (sprintf "Invalid remove: %s" (stmtToString prog cm st))
+      | _ -> typeAssert false (sprintf "Invalid remove: %s" (stmtToString prog cm st))
+    | Assume e ->  typeAssert (isSubtype (typecheckExpr prog G cm e) Bool) (sprintf "Invalid assume: %s" (stmtToString prog cm st))
+    | Assert e -> typeAssert (isSubtype (typecheckExpr prog G cm e) Bool) (sprintf "Invalid assert: %s" (stmtToString prog cm st))
     | NewStmt(m, e) -> 
       match (typecheckNew prog G m e) with
-      | Type.Machine -> (typeAssert true (sprintf "Invalid New Statement: %s" (printStmt prog cm st)))
-      | _ -> (typeAssert false (sprintf "Invalid New Statement: %s" (printStmt prog cm st)))
+      | Type.Machine -> (typeAssert true (sprintf "Invalid New Statement: %s" (stmtToString prog cm st)))
+      | _ -> (typeAssert false (sprintf "Invalid New Statement: %s" (stmtToString prog cm st)))
     | FunStmt(f, el, None) -> ignore (typecheckCall prog G cm f el)
     | FunStmt(f, el, v) -> 
       match (typecheckCall prog G cm f el) with
-      | Some(t) -> (typeAssert (isSubtype t (Map.find v.Value G)) (sprintf "Invalid types in Statement: %s, expected type %s, but got %s" (printStmt prog cm st) (printType t) (printType (Map.find v.Value G))))
+      | Some(t) -> (typeAssert (isSubtype t (Map.find v.Value G)) (sprintf "Invalid types in Statement: %s, expected type %s, but got %s" (stmtToString prog cm st) (printType t) (printType (Map.find v.Value G))))
       | None -> raise NotDefined
     | Raise(e, arg) -> typecheckEventWithArgs prog G cm e arg
     | Send(M, e, arg) -> typecheckSend prog G cm M e arg
