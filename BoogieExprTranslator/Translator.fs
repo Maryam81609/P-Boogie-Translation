@@ -463,7 +463,7 @@ module Translator =
     
     sw.WriteLine("var event: int;")
     sw.WriteLine("var payload: PrtRef;")
-    sw.WriteLine("var tmpBool: bool;")
+    sw.WriteLine("var tmpBool: bool; //For non-deterministic choice.")
     
     fd.Formals |> List.map (fun(v) -> v.Name + ":= actual_" + v.Name + ";") |> List.iter (fun(s) -> sw.WriteLine(s))
     
