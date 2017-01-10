@@ -282,7 +282,7 @@ module Helper=
         let evType = match (Map.find e prog.EventMap).Type with
                      | None -> "(payload: null)"
                      | Some(t) -> sprintf "(payload: %s)" (printType t)
-        sw.Write("on {0} goto {1} with {2}", e, d, evType)
+        sw.Write("on {0} goto {1} with {2} ", e, d, evType)
         openBlock sw
         sw.WriteLine("{0}(payload);", f)
         closeBlock sw
@@ -372,7 +372,8 @@ module Helper=
     openBlock sw
     printVarList sw m.Globals
     List.iter (printFunction sw prog m.Name) m.Functions
-    List.iter (fun (s: Syntax.StateDecl) -> begin
+    List.iter (fun (s: Syntax.StateDecl) -> 
+                    begin
                       if (s.Name = m.StartState) then sw.Write("start ")
                       printState sw prog m.Name s
                     end)  m.States

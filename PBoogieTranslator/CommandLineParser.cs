@@ -12,6 +12,8 @@ namespace PBoogieTranslator
         public bool removeSE = false;
         public bool genBoogie = true;
         public bool serialize = false;
+        public bool test = false;
+        public bool genTestOutputs = false;
         public string deSugarFile { get { return Path.Combine(Path.GetDirectoryName(pFile), "deSugared_" + Path.GetFileName(pFile)); } }
         public string removeNTFile { get { return Path.Combine(Path.GetDirectoryName(pFile), "NTRemoved_" + Path.GetFileName(pFile)); } }
         public string removeSEFile { get { return Path.Combine(Path.GetDirectoryName(pFile), "SERemoved_" + Path.GetFileName(pFile)); } }
@@ -64,6 +66,14 @@ namespace PBoogieTranslator
                         case "noboogie":
                             genBoogie = false;
                             break;
+                        case "test":
+                            list = true;
+                            test = true;
+                            break;
+                        case "gentestoutputs":
+                            genTestOutputs = true;
+                            list = true;
+                            break;
                         default:
                             Console.WriteLine("Invalid Option: {0}", arg);
                             goto error;
@@ -71,9 +81,15 @@ namespace PBoogieTranslator
                 }
                 else
                 {
-                    if (inputFile == null)
+                    if (inputFile == null && arg != "testAll")
                     {
                         inputFile = Path.GetFullPath(arg);
+                    }
+                    else if(arg == "testAll")
+                    {
+                        inputFile = Path.Combine("..", "..", "..", "Tst", "listOfTests.txt");
+                        list = true;
+                        test = true;
                     }
                     else
                     {
@@ -94,16 +110,23 @@ namespace PBoogieTranslator
         error:
             {
                 Console.WriteLine("USAGE: PBoogieTranslator.exe file.p [options]");
-                Console.WriteLine("/deSugar");
-                Console.WriteLine("/removeNT");
-                Console.WriteLine("/removeSE");
-                Console.WriteLine("/serialize");
-                Console.WriteLine("/noBoogie");
+                Console.WriteLine("\t/deSugar");
+                Console.WriteLine("\t/removeNT");
+                Console.WriteLine("\t/removeSE");
+                Console.WriteLine("\t/serialize");
+                Console.WriteLine("\t/noBoogie");
                 Console.WriteLine("We will save to file with names like");
                 Console.WriteLine("deSugared_file.p, NTRemoved_file.p, etc.");
-                Console.WriteLine("/list");
-                Console.WriteLine("\tThis option will consider the lines of the input file as file paths.");
-
+                Console.WriteLine("Other options:");
+                Console.WriteLine("\t/list");
+                Console.WriteLine("\t\tThis option will consider the lines of the input file as file paths.");
+                Console.WriteLine("\t/test");
+                Console.WriteLine("\t\tThis option will consider the lines of the input file as file paths, and run corral on each output.");
+                Console.WriteLine("\tgenTestOutputs");
+                Console.WriteLine("\t\tThis option will consider the lines of the input file as file paths,");
+                Console.WriteLine("\t\tand record corral outputs in a format similar to the Regression Tests.");
+                Console.WriteLine("\ttestAll");
+                Console.WriteLine("\t\tThis option will run all Regression Tests.");
                 Environment.Exit(-1);
             }
         }
