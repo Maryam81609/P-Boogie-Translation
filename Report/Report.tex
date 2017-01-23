@@ -1,0 +1,1014 @@
+\documentclass{llncs}
+
+\pagestyle{plain}
+
+\usepackage[left=3.5cm,right=3.5cm,top=3.5cm,bottom=3cm]{geometry}
+%\usepackage[a4paper, total={6in, 8in}]{geometry}
+
+\usepackage[english]{babel}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{times}
+\usepackage{xspace}
+\usepackage{booktabs}
+\usepackage{subfigure}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{wrapfig}
+\usepackage{psharp}
+\usepackage{minted}
+\usepackage{caption}
+
+\urlstyle{rm}
+
+\renewcommand{\lstlistingname}{Listing}
+\providecommand{\tabularnewline}{\\}
+\newcommand{\TODO}[1]{\textcolor{red}{\textbf{TODO:} #1}}
+\newcommand{\PDComment}[1]{\textcolor{cyan}{\textbf{PD:} #1}}
+
+% General macros
+\newcommand{\cs}{C\#\xspace}
+\newcommand{\ps}{P\#\xspace}
+\newcommand{\fs}{F\#\xspace}
+\newcommand{\newparagraph}[1]{\smallskip\noindent\textbf{#1 }}
+
+\begin{document}
+
+\title{BaZinga: Towards Symbolic Analysis of P programs}
+
+\author{Surya Teja Chavali$^1$, Akash Lal$^2$}
+\institute{$^1$ \textsf{cs13b1028@iith.ac.in}, \emph{Indian Institute of Technology Hyderabad}, India\\$^2$ \textsf{akashl@microsoft.com}, \emph{Microsoft Research}, India}
+
+\maketitle
+
+\section{Introduction}
+\label{sec:intro}
+P ~\cite{desai2013p} is a language for programming asynchronous event-driven systems. P allows the programmer to specify the system as a collection of interacting state machines, which communicate with each other using events. P unifies modeling and programming into one activity for the programmer. Not only can a P program be compiled into executable code, but it can also be validated using systematic testing, via the Zing \cite{zing-ref} analysis tool. P has been used to implement and validate the USB device driver stack that ships with Microsoft Windows 8 and Windows Phone. P is also suitable for the design and implementation of networked, embedded, and distributed systems.
+
+The motivation behind our work is to extend the analysis capabilities offered to the P programmer. Zing is an explicit-state model checker that covers multiple possible behaviors of the program through explicit enumeration. It has been designed to explore concurrent systems very efficiently. However, it is limited in covering the space of data values. The P programmer, thus, has to use concrete values when designing a test harness. The only exception is the use of Boolean choice, but this is not sufficient in many cases. We would like the P programmer to work with symbolic values, e.g., to test their system when $n$ messages of type $T_1$ and $m$ messages of type $T_2$ are sent to it by the environment, where $n$ and $m$ are symbolic values.
+
+To allow symbolic analysis of P programs, our attempt is to first compile it to a Boogie \cite{BoogiePL} program and then apply the Corral \cite{lal-cav12} analysis tool. Corral is able to handle concurrency as well as symbolic values. Our work will allow for a scientific comparison of two approaches to program verification: symbolic verification via Corral and state-space exploration via Zing. This report details the design of the translator from P to Boogie.
+
+\newparagraph{Repository} The translator is publicly available as open-source and can be found at its git repository at \textcolor{blue}{\url{https://github.com/p-org/P-Boogie-Translation}}.\\
+
+\newparagraph{Programming model} P provides primitives for creating machines, sending events from one machine to another, and writing assertions about system properties. Each machine has an input queue, a state stack, states, state transitions, event handlers, fields and methods. Machines run concurrently with each other, each executing an event handling loop that dequeues an event from the input queue and handles it by executing a sequence of operations. Each operation might update a field, create a new machine, or send an event to another machine. In P, create machine operations and send operations are non-blocking. In the case of a send operation the message is simply enqueued into the input queue of the target machine.\\ %A copy of the P# Manual!
+
+\noindent
+In the rest of this article, we first examine the mapping of basic features of a P program to the corresponding Boogie Program. We will then outline the process of the translation itself.
+
+\pagebreak
+
+\section{Mapping basic features of a P program}
+\label{sec:basics}
+
+A P program is a collection of \texttt{event} and \texttt{machine} declarations.
+
+\subsection{Types}
+All P variables are translated to Boogie variables of a single (user-defined) type \texttt{PrtRef}, and the types themselves are mapped to Boogie constants of a type called \texttt{PrtType}. Compound types such as maps and sequences are hashed to unique Boogie constants of type \texttt{PrtType}, and represented as \texttt{PrtTypeMap1}, \texttt{PrtTypeMap2}, etc. for maps and \texttt{PrtTypeSeq1}, \texttt{PrtTypeSeq2}, etc. for sequences. The function \texttt{PrtDynamicType} returns the P type of a \texttt{PrtRef}.
+\begin{minted}{c}
+type PrtType;
+const unique PrtTypeNull: PrtType; //null 
+const unique PrtTypeInt: PrtType; //int
+const unique PrtTypeBool: PrtType; //bool
+const unique PrtTypeMachine: PrtType; //machine
+const unique PrtTypeEvent: PrtType; //event
+const unique PrtTypeTuple1: PrtType //Tuple of length 1
+const unique PrtTypeTuple2: PrtType //Tuple of length 2
+const unique PrtTypeTuple3: PrtType //Tuple of length 3
+//Map of some type. The number 5 depends on the program at hand.
+const unique PrtTypeMap5: PrtType 
+const unique PrtTypeMap6: PrtType //Map of a different type.
+const unique PrtTypeSeq4: PrtType //Sequence of some type.
+
+type PrtRef;
+const unique null: PrtRef; //null
+const unique PrtTrue: PrtRef; //true
+const unique PrtFalse: PrtRef; //false
+function PrtDynamicType(PrtRef) :PrtType;
+function PrtIsNull(PrtRef) : bool;
+\end{minted}
+
+The function \texttt{PrtConstructFromInt} constructs a \texttt{PrtRef} from an \texttt{int}, and \texttt{PrtFieldInt} retrieves an integer from a \texttt{PrtRef}. An axiom is used to ensure that these functions are inverses of each other. Likewise for non-composite types like \texttt{event}s, \texttt{machine}s and \texttt{bool}s. The translation of composite types is more complicated. 
+\begin{minted}{c}
+function PrtConstructFromInt(int) : PrtRef;
+function PrtConstructFromEventId(int) : PrtRef;
+function PrtConstructFromMachineId(int) : PrtRef;
+function PrtConstructFromBool(bool) : PrtRef;
+
+function PrtFieldInt(PrtRef) : int;
+function PrtFieldBool(PrtRef) : bool;
+function PrtFieldMachine(PrtRef) : int;
+function PrtFieldEvent(PrtRef) : int;
+
+procedure {:allocator} AllocatePrtRef() returns (x: PrtRef);
+\end{minted}
+
+\subsubsection{Tuples}
+Tuples are translated in accordance with their length; an \texttt{(int)} will be a \texttt{PrtTypeTuple1}, and \textbf{both} \texttt{(int, bool)} \textbf{and} \texttt{(int, int)} are translated to \texttt{PrtTypeTuple2}.
+The function \texttt{PrtFieldTuple1} will return a \texttt{PrtRef} corresponding to the value at position 1 of the argument, and so on. Note that we start counting tuple positions with 0.
+\begin{minted}{c}
+function PrtFieldTuple0(PrtRef) : PrtRef;
+function PrtFieldTuple1(PrtRef) : PrtRef;
+\end{minted}
+\begin{center}
+\captionof{table}{Tuple Operations}
+\begin{tabular}{|p{0.3\textwidth}|p{0.7\textwidth}|}
+\hline
+\textbf{Original} & \textbf{Translation}
+\tabularnewline
+\hline
+\hline
+\begin{minted}{c}
+x = t.2;
+\end{minted}
+&
+\begin{minted}{c}
+call x := PrtFieldTuple2(t);
+\end{minted}
+\tabularnewline
+\hline
+\begin{minted}{c}
+t = (1, 2, E, true);
+\end{minted}
+&
+\begin{minted}{c}
+tmpRhsValue_0 := PrtConstructFromInt(1);
+tmpRhsValue_1 := PrtConstructFromInt(2);
+tmpRhsValue_0 := PrtConstructFromEventId(E);
+tmpRhsValue_0 := PrtTrue;
+call t := AllocatePrtRef();
+assume PrtDynamicType(t) == PrtTypeTuple4;
+assume PrtFieldTuple0(t) == tmpRhsValue_0;
+assume PrtFieldTuple1(t) == tmpRhsValue_1;
+assume PrtFieldTuple2(t) == tmpRhsValue_2;
+assume PrtFieldTuple3(t) == tmpRhsValue_3;
+\end{minted}
+\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{Maps}
+Map types are made to correspond to integers: a \texttt{map[int, int]} could be a \texttt{PrtTypeMap2}, for instance - these type names are entirely a function of the program being translated. A map is represented as two arrays: one for keys and another for values. The functions \texttt{PrtFieldMapKeys} and \texttt{PrtFieldMapValues} yield the corresponding array for a given \texttt{PrtRef}. A number of custom functions are used for map functionality: \texttt{ReadMap}, \texttt{WriteMap}, \texttt{InsertMap}, etc., and are detailed below.
+
+\begin{minted}{c}
+function PrtFieldMapKeys(PrtRef) : [int]PrtRef;
+function PrtFieldMapValues(PrtRef) : [int]PrtRef;
+function PrtFieldMapSize(PrtRef) : int;
+procedure MapContainsKey(map: PrtRef, key: PrtRef)returns (v: PrtRef)
+procedure ReadMap(map: PrtRef, key: PrtRef) returns (value: PrtRef)
+procedure MapGetKeys(map: PrtRef) returns (seq: PrtRef)
+procedure MapGetValues(map: PrtRef) returns (seq: PrtRef)
+procedure WriteMap(map: PrtRef, key: PrtRef, value: PrtRef) returns (nmap: PrtRef)
+procedure InsertMap(map: PrtRef, key: PrtRef, value: PrtRef) returns (nmap: PrtRef)
+procedure RemoveMap(map: PrtRef, key: PrtRef) returns (nmap: PrtRef)
+\end{minted}
+
+\pagebreak
+
+\begin{center}
+\captionof{table}{Map Operations}
+\begin{tabular}{|p{0.4\textwidth}|p{0.6\textwidth}|}
+\hline
+\textbf{Original} & \textbf{Translation}
+\tabularnewline
+\hline
+\hline
+\begin{minted}{c}
+i = sizeof(m);
+\end{minted}
+&
+\begin{minted}{c}
+i := PrtFieldMapSize(t);
+\end{minted}
+\tabularnewline
+\hline
+\begin{minted}{c}
+kl = keys(m);
+\end{minted}
+&
+\begin{minted}{c}
+kl := PrtFieldMapKeys(t);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+vl = values(m);
+\end{minted}
+&
+\begin{minted}{c}
+i := PrtFieldMapValues(t);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+m = default(map[int, int]);
+\end{minted}
+&
+\begin{minted}{c}
+call m := AllocatePrtRef();
+//Assuming 3 is the index of map[int, int]
+assume PrtDynamicType(m) == PrtTypeMap3;
+assume PrtFieldMapSize(m) == 0;
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+b = k in m;
+\end{minted}
+&
+\begin{minted}{c}
+call b := MapContainsKey(m, k);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+m[k] = v;
+\end{minted}
+&
+\begin{minted}{c}
+call m := WriteMap(m, k, v);
+\end{minted}
+
+\tabularnewline
+\hline
+\begin{minted}{c}
+m += (k, v);
+\end{minted}
+&
+\begin{minted}{c}
+call m := InsertMap(m, k, v);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+m -= k;
+\end{minted}
+&
+\begin{minted}{c}
+call m := RemoveMap(m, k);
+\end{minted}
+\tabularnewline
+\hline
+
+
+\end{tabular}
+\end{center}
+
+\pagebreak
+\subsubsection{Sequences}
+Sequence types, like map types, are made to correspond to integers by hashing on the type. A sequence is represented as an array of values. The function \texttt{PrtFieldSeqStore} yields the corresponding array for a given \texttt{PrtRef}. A number of custom functions are used for sequence functionality: \texttt{ReadSeq}, \texttt{WriteSeq}, \texttt{InsertSeq}, etc., and are detailed below.
+
+\begin{minted}{c}
+function PrtFieldSeqStore(PrtRef) : [int]PrtRef;
+function PrtFieldSeqSize(PrtRef) : int;
+procedure WriteSeq(seq: PrtRef, index: int, value: PrtRef) returns (nseq: PrtRef)
+procedure RemoveSeq(seq: PrtRef, index: int) returns (nseq: PrtRef)
+procedure InsertSeq(seq: PrtRef, index: int, value: PrtRef) returns (nseq: PrtRef)
+\end{minted}
+
+\begin{center}
+\captionof{table}{Sequence Operations}
+\begin{tabular}{|p{0.4\textwidth}|p{0.6\textwidth}|}
+\hline
+\textbf{Original} & \textbf{Translation}
+\tabularnewline
+\hline
+\hline
+\begin{minted}{c}
+i = sizeof(s);
+\end{minted}
+&
+\begin{minted}{c}
+i := PrtFieldSeqSize(s);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+s = default(seq[int]);
+\end{minted}
+&
+\begin{minted}{c}
+call s := AllocatePrtRef();
+//Assuming 4 is the index of seq[int]
+assume PrtDynamicType(s) == PrtTypeSeq4;
+assume PrtFieldSeqSize(s) == 0;
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+s[i] = v;
+\end{minted}
+&
+\begin{minted}{c}
+call s := WriteSeq(s, PrtFieldInt(i), v);
+\end{minted}
+
+\tabularnewline
+\hline
+\begin{minted}{c}
+s += (i, v);
+\end{minted}
+&
+\begin{minted}{c}
+call s := InsertSeq(s, PrtFieldInt(i), v);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+s -= i;
+\end{minted}
+&
+\begin{minted}{c}
+call s := RemoveSeq(s, PrtFieldInt(i));
+\end{minted}
+\tabularnewline
+\hline
+
+\end{tabular}
+\end{center}
+
+\pagebreak
+
+\subsection{Statements}
+Some statements in P are mapped to procedure calls in Boogie. They are shown below.
+
+\begin{center}
+\captionof{table}{Simple Statement Translation}
+\begin{tabular}{|p{0.4\textwidth}|p{0.6\textwidth}|}
+\hline
+\textbf{Original} & \textbf{Translation}
+\tabularnewline
+\hline
+\hline
+
+\begin{minted}{c}
+x = a/b;
+\end{minted}
+&
+\begin{minted}{c}
+x := PrtConstructFromInt(PrtFieldInt(a) 
+       div PrtFieldInt(b));
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+m = this;
+\end{minted}
+&
+\begin{minted}{c}
+m := PrtConstructFromMachineId(thisMid);
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+j = i as int;
+\end{minted}
+&
+\begin{minted}{c}
+//Assume int is type No.1.
+call AssertIsType1(i);
+j := i;
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+flag = (a == b);
+\end{minted}
+&
+\begin{minted}{c}
+call flag := PrtEquals(a, b);
+\end{minted}
+\tabularnewline
+\hline
+
+\end{tabular}
+\end{center}
+
+
+\subsection{Events and Machines}
+\noindent In Boogie, P events are represented as integers. Machine globals are represented as thread-local global variables in Boogie; machine functions and static functions as procedures. Local variables defined inside functions/ anonymous functions are procedure locals. All actions of \texttt{do}s, state transitions, \texttt{case}s in \texttt{receive} statements, and entry/exit actions of states(AnonFunDecls), are desugared to Boogie procedures.
+
+For example, the program
+
+\begin{psharpNoLines}
+event E: int;
+
+machine M {
+  var x: int;
+  start state Init { 
+    on E do (payload: int) { 
+      x = foo(payload); 
+    } 
+  }
+  state S { ... }
+  fun foo(i: int): int  { 
+    return i + 1; 
+  }
+}
+\end{psharpNoLines}
+
+\pagebreak
+
+results in the translation
+\begin{minted}{c}
+var{:thread_local} M_x: PrtRef;
+procedure M_foo(M_foo_i: PrtRef) returns (ret: PrtRef)
+{
+  ret := PrtConstructFromInt(PrtFieldInt(M_foo_i) + 1));
+}
+
+procedure MachineThread_M(entryArg: PrtRef)
+{
+  //Initialize...
+  while(true) 
+  {
+    if(CurrState == 0) //Init 
+    {
+     M_Init:
+      call event, payload := Dequeue(thisMid, true);
+      if(event == 0) /*E*/ { call M_x := foo(payload); }
+      else if (event == 1) /*Halt*/ { return; }
+    }
+
+    else if(CurrState == 1) { ... }
+
+    else { assume false; }
+  }
+}
+\end{minted}
+
+\subsection{Translation of Monitors} %Give an example
+Monitors are a special case in P, because of a multitude of reasons:
+\begin{itemize}
+\item Monitors may not use the \texttt{this} keyword, perform non-deterministic choice, create machines, have null or push transitions, defer events, or execute \texttt{send}, \texttt{receive}, \texttt{pop}, or  \texttt{monitor} statements.
+\item Monitors must be called synchronously - the corresponding monitor must be called immediately after an event is sent.
+\end{itemize}
+\noindent
+For these reasons, monitor translation is treated separately in the following ways:
+\begin{itemize}
+\item Monitor procedures are represented as \texttt{Monitor\_M\(\)}, and do not run on a different thread.
+\item Monitors do not possess a State Stack, or an event queue.
+\item Monitor globals are absolute globals, not thread local ones.
+\item An unhandled event is not an error.
+\item The \texttt{send()} procedure calls the corresponding monitor procedures before en-queuing the event to the queue of the target machine.
+\item Monitor type checking is more stringent to enforce the above rules.
+\end{itemize}
+
+An example is shown on the next page.
+
+\pagebreak
+\begin{psharpNoLines}
+spec M monitors Ping, Pong {
+var pingCount: int;
+var pongCount: int;
+  start state ExpectPing {
+    on Ping goto ExpectPong;
+  }
+  state ExpectPong {
+    on Pong goto ExpectPing;
+  }
+}
+\end{psharpNoLines}
+
+results in the translation
+
+\begin{minted}{c}
+
+var M_pingCount: PrtRef;
+var M_pongCount: PrtRef;
+
+procedure Monitor_M(event: int, payload: PrtRef)
+{
+  if(M_CurrState == 0) // M_ExpectPing
+  {
+   M_ExpectPing:
+    if(event == 0) // Ping
+    {
+      call M_ExpectPing_exit47(null);
+      call payload := M_ExpectPing_on_Ping_goto_M_ExpectPong48(payload);
+      M_CurrState := 1;
+      call M_ExpectPong_entry51(payload);
+    }
+    else if(event == 1){} //Nothing to do for Pong.
+    else
+    {
+      assert false;
+    }
+  }
+  else if(M_CurrState == 1) // M_ExpectPong
+  {
+   M_ExpectPong:
+    if(event == 1) // Pong
+    {
+      call M_ExpectPong_exit51(null);
+      call payload := M_ExpectPong_on_Pong_goto_M_ExpectPing52(payload);
+      M_CurrState := 0;
+      call M_ExpectPing_entry47(payload);
+    }
+    else if(event == 0){} //Nothing to do for Ping.
+    else
+    {
+      assert false;
+    }
+  }
+}
+\end{minted}
+
+\pagebreak
+
+\subsection{How the dequeue works}
+The working of the dequeue is best illustrated by means of the following code:
+
+\begin{minted}{c}
+
+procedure Dequeue(block: bool) returns (event: int, payload: PrtRef)
+{
+    if(eventRaised)
+    {
+        eventRaised := false;
+        event := raisedEvent;
+        payload := raisedEventPl;
+        return;
+    }
+    int head := MachineInboxHead[thisMid];
+    int tail := MachineInboxTail[thisMid];
+    int ptr := head;
+    int event := 0 - 1;
+    PrtRef payload := null;
+    if(!block && head > tail) { return; } //Handle non-blocking case "on null do"
+    while(ptr <= tail)
+    {
+        event := MachineInboxStoreEvent[thisMid][ptr];
+        if(event >= 0 && ignoreEvents[CurrState][event])
+        {
+            // ignore the event
+            MachineInboxStoreEvent[thisMid][ptr] := 0 - 1;
+            MachineInboxStorePayload[thisMid][ptr] := null;
+        }
+        else if(event >= 0 && !deferEvents[CurrState][event])
+        {
+            // dequeue
+            q := machineEvToQCount[thisMid][event];
+            machineEvToQCount[thisMid][event] := q - 1;
+            MachineInboxStoreEvent[thisMid][ptr] := 0 - 1;
+            payload := MachineInboxStorePayload[thisMid][ptr];
+            // book-keeping for head and tail.
+            break;
+        }
+        ptr := ptr + 1;
+        event := 0 - 1;
+    }
+    // block
+    assume (event >= 0);
+}
+\end{minted}
+
+The translation for a \texttt{receive} statement does \textbf{not} call the above procedure; it probes the event queue itself in a similar fashion. The reasons for this are manifold:
+\begin{itemize}
+\item The semantics of \texttt{receive} statement defers all events that are not explicitly handled - unlike a state event handler, which throws an error.
+\item The registered, ignored and deferred event maps of the machine must not be corrupted, but a \texttt{receive} statement requires them to be reset.
+\end{itemize}
+
+\pagebreak
+
+\section{How the translation proceeds}
+
+\subsection{Pre-processing: P to P transformations}
+This phase, largely written in \cs, is done via a custom \texttt{SymbolTable} class, which essentially maintains a stack of nested scopes. It proceeds in the following stages.
+\begin{enumerate}
+\item \textbf{Name Mangling} Because the translation converts machine globals to thread local globals, names of all states, functions, and variables are mangled into the following format to avoid naming conflicts:
+\begin{center}
+\texttt{\textbf{<machine\_name>\_\ensuremath{\le}function\_name>\_<variable\_name>}}
+\end{center}
+\item \textbf{Converting Anonymous Functions to Functions} This is a complicated step, as anonymous functions must capture the local scope as well as the global scope. Translation proceeds by capturing local scope in a tuple, \texttt{env}, passed as an argument to the function created, and restoring the variables after the function call:
+\begin{psharpNoLines}
+machine M {
+  var mach_global: int;
+  fun foo() {
+    var fun_local: int;
+    receive {
+      case E:(payload: int) {
+        fun_local += mach_global;
+      }
+      ... }}}
+\end{psharpNoLines}
+results in 
+\begin{psharpNoLines}
+machine M  {
+  var mach_global: int;
+  fun M_foo_recv_case_E(payload: int, Main_foo_env:(int, int)) {
+    var M_foo_recv_case_E_fun_local: int;
+    var M_foo_recv_case_E_mach_global: int;
+    
+    M_foo_recv_case_E_fun_local = Main_foo_env.0;
+    M_foo_recv_case_E_mach_global = Main_foo_env.1;
+    
+    M_foo_recv_case_E_fun_local += (M_foo_recv_case_E_mach_global + payload); 
+    return (M_foo_recv_case_E_fun_local, M_foo_recv_case_E_mach_global);
+  }
+  
+  fun foo() {
+    var fun_local: int;
+    var Main_foo_env: int;
+    receive {
+      case E:(payload: int) {
+        Main_foo_env = (fun_local, mach_global);
+        Main_foo_env = M_foo_recv_case_E(payload, Main_foo_env);
+        fun_local = Main_foo_env.0;
+        mach_global = Main_foo_env.1;
+      }
+    ... }}}
+\end{psharpNoLines}
+
+\pagebreak
+
+\item \textbf{Removing Reference parameters} proceeds in a similar fashion, and is implemented in \fs. An example is shown below.
+\begin{psharpNoLines}
+fun F(a ref: int, b : int) : int
+{
+  a = a + b;
+  return b + 1;
+}
+fun caller()
+{
+  ...
+  x = F(a ref, b);
+  ...
+}
+\end{psharpNoLines}
+becomes
+\begin{psharpNoLines}
+fun F(a : int, b : int) : (int, int)
+{
+  a = a + b;
+  return (b + 1, a);
+}
+fun caller()
+{
+  ...
+  tmp = F(a, b);
+  x = tmp.0;
+  a = tmp.1; 
+  ...
+}
+\end{psharpNoLines}
+
+\item \textbf{Removing \texttt{NamedTuple}s} \texttt{NamedTuple}s are desugared to \texttt{Tuple}s, again using \fs. For example,
+
+\begin{psharpNoLines}
+...
+var x: (i: int, b:bool, m: map[int, int]);
+x.i = 2;
+x.m += (5832, 4913);
+...
+\end{psharpNoLines}
+
+becomes
+
+\begin{psharpNoLines}
+...
+var x: (int, bool, map[int, int]);
+x.0 = 2;
+x.2 += (5832, 4913);
+...
+\end{psharpNoLines}
+\end{enumerate}
+
+\subsection{Type-checking}
+We perform another type check of the P code, before we proceed to further break it down into a form assimilable directly into Boogie. The reason for this type-check is the fact that we use a slightly stronger typing system than P. Structural sub-typing is disallowed, e.g., we do not let a seq[int] value to be assigned to a variable of type seq[any]. This is done for efficiency of the resulting analysis, otherwise type casting would be costly. Further, we believe this imposes a minimal burden on the P programmer.
+
+We do a runtime type checking of casts with \texttt{AssertIsType<int>} and of payloads of event variables via the method \texttt{AssertPayloadDynamicType()}.
+
+\subsection{Removing Side Effects}
+P statements are converted into a format amenable for directly mapping to Boogie. These statements are in the convenient form akin to a three-address code. The idea is that the resulting P statements should map directly to a single Boogie statement.
+
+Some examples of this are shown in the table below.
+\begin{center}
+\captionof{table}{Removing Side Effects} 
+\begin{tabular}{|p{0.3\textwidth}|p{0.75\textwidth}|}
+\hline 
+\textbf{Original} & \textbf{Side Effects Removed} 
+\tabularnewline
+\hline \hline 
+\begin{minted}{c}
+x = a + b.1 + c();
+\end{minted} 
+&
+\begin{minted}{c}
+t1 = b.1;
+t2 = c();   
+t3 = a + t1
+t4 = t2 + t3;
+x = t4;
+\end{minted}
+\tabularnewline
+\hline 
+
+\begin{minted}{c}
+y = f(g(x), 2);
+\end{minted} 
+& 
+\begin{minted}{c}
+t1 = g(x);
+y = f(t1, 2);
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+x = (y as int) + 1;
+\end{minted} 
+& 
+\begin{minted}{c}
+t1 = y as int;   
+x = t1 + 1;
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+while(x1 != x2)
+{ 
+  ...
+}
+\end{minted}
+
+& 
+\begin{minted}{c}
+b = !(x1 == x2);   
+while(b)
+{
+  ... 
+  b = !(x1 == x2); 
+} 
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+if($) {...}
+\end{minted} 
+& 
+\begin{minted}{c}
+t1 = $;   
+if(t1) {...}
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+l.i = e;
+\end{minted} 
+& 
+\begin{minted}{c}
+l = (l.0, ..., l.(i-1), e, l.(i+1), ...);
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+l.0[e1] = e2;
+\end{minted} 
+& 
+\begin{minted}{c}
+t = l.0;
+t[e1] = e2;
+l.0 = t;
+\end{minted}
+\tabularnewline
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{Note:} As a debugging feature of the translator, after each of the phases described above, the user can print the resulting P code, and it will be guaranteed to be a valid P program.
+
+\pagebreak
+
+\subsection{Output Boogie}
+This is the final phase of the translation, and the mapping of various P statements to the corresponding Boogie is straight-forward. Some examples are shown in the table below.
+
+\captionof{table}{Final translation}
+\begin{tabular}{|p{0.25\textwidth}|p{0.8\textwidth}|}
+\hline 
+\textbf{Original} & \textbf{Boogie Translation}\tabularnewline
+\hline 
+\hline 
+\begin{minted}{c}
+x = 1;  
+\end{minted}
+& 
+\begin{minted}{c}
+x := PrtConstructFromInt(1);
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+x += (0, 1); 
+\end{minted}
+& 
+\begin{minted}{c}
+call x := InsertSeq(x, 0, PrtConstructFromInt(1));
+\end{minted}
+\tabularnewline
+\hline 
+
+\begin{minted}{c}
+a = new M(x);  
+\end{minted}
+& 
+\begin{minted}{c}
+call a := newMachine_M(x);
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+send m, e, p; 
+\end{minted}
+& 
+\begin{minted}{c}
+call tmpEventID := AssertPayloadDynamicType(e, p); 
+call send(m, tmpEventID, p); 
+\end{minted}
+\tabularnewline
+\hline 
+\begin{minted}{c}
+if($) {...} 
+else {...} 
+\end{minted}
+& 
+\begin{minted}{c}
+havoc tmpBool;   
+b = PrtConstructFromBool(tmpBool);   
+if(PrtFieldBool(b)) {...} 
+else {...} 
+\end{minted}
+\tabularnewline
+\hline 
+
+\begin{minted}{c}
+pop;
+\end{minted}
+&
+\begin{minted}{c}
+popped := true;
+call StateStackPop();
+return;
+\end{minted}
+\tabularnewline
+\hline
+
+\begin{minted}{c}
+raise E, x; 
+\end{minted}
+& 
+\begin{minted}{c}
+eventRaised := true;
+raisedEvent := 1; //The integer corresponding to E
+raisedEventPl := x; 
+return;
+\end{minted}
+\tabularnewline
+\hline 
+
+\begin{minted}{c}
+x = foo(a, b);
+\end{minted}
+&
+\begin{minted}{c}
+call x := foo(a, b);
+if(popped || eventRaised) { return; }
+\end{minted}
+\tabularnewline
+\hline
+
+
+
+\end{tabular}
+
+
+\noindent
+\textbf{Note:} Because \texttt{pop} and \texttt{raise} statements trigger a behavior similar to raising an exception, \newline (thread-local) global flags are set whenever a \texttt{pop}/\texttt{raise} occurs. After every function call, these flags are checked, so as to return to the machine thread context. \newline \newline \newline
+
+\pagebreak
+
+\section{Testing the translation}
+The translation is tested against the regression tests of P. These include a rich battery of tests on the P framework, providing a large number of edge cases in the P semantics - with close to 140 tests that cover a variety of issues. Golden outputs as well as corral command-line flags for each of these tests have been generated, and stored in the directory \textsf{Tst/RegressionTests} of the repository. The translator comes with flags to run all regression tests, and compare against the golden outputs. 
+
+We assume \textbf{co-operative scheduling} in all of the Boogie programs that we generate, instead the pre-emptive scheduling of P, and the flag \textsf{/cooperative} must be passed to corral when used to verify the generated Boogie.
+
+Further, we target only \textbf{safety bugs} for now; there is no  attempt towards testing for liveness bugs.
+
+\bibliographystyle{plain}
+\bibliography{references}
+\pagebreak
+
+\appendix\section{Auxiliary Functions and Procedures in the Translation}
+Some of these procedures can be found in the repository at \textsf{BoogieExprTranslator/CommonBpl.bpl}.  Others are generated by the translator.
+
+\subsection {Types} 
+\subsubsection{\texttt{void AssertIsType<T>(x: PrtRef)} }
+Procedure that asserts that x is of type T.
+\subsubsection{\texttt{PrtType PrtDynamicType(x: PrtRef)} } 
+Function that returns the type of x 
+\subsubsection{\texttt{bool PrtIsNull(x: PrtRef)} }
+Function that checks if x is null.
+\subsubsection{\texttt{PrtRef PrtConstructFrom<T>(x: PrtRef)} }
+Function that constructs a PrtRef from x, of type T.
+\subsubsection{\texttt{int/bool PrtField<T>(x: PrtRef)} }
+Function that returns the value of x if x is an \texttt{int}, \texttt{bool}, \texttt{machine}(machine ID), or \texttt{event}(integer corresponding to event) 
+\subsubsection{\texttt{bool PrtEquals(a: PrtRef, b:PrtRef)} }
+Procedure that returns true of a and b are equal. Does NOT compare maps/sequences.
+\subsection {Tuples} 
+\subsubsection{\texttt{PrtEqualsTuple<L>(a: PrtRef, b:PrtRef)} }
+Procedure that compares two tuples field by field.
+\subsubsection{\texttt{PrtFieldTuple<i>(x: PrtRef)} }
+Function that returns ith element of tuple x.
+\subsection {Maps} 
+\subsubsection{\texttt{int PrtFieldMapSize(m: PrtRef)} }
+Function that returns number of elements in m.
+\subsubsection{\texttt{int{[}PrtRef{]} PrtFieldMapKeys(m: PrtRef)}} 
+Function that returns the array of keys of m.
+\subsubsection{\texttt{int{[}PrtRef{]} PrtFieldMapValues(m: PrtRef)}} 
+Function that returns the array of values of m.
+\subsubsection{\texttt{bool MapContainsKey(m: PrtRef, k: PrtRef)}} 
+Procedure that checks if k is present in m.
+\subsubsection{\texttt{PrtRef ReadMap(m: PrtRef, k: PrtRef)} }
+Procedure that returns the value corresponding to k in m.
+\subsubsection{\texttt{PrtRef MapGetKeys(m: PrtRef)} }
+Procedure that returns a sequence containing the keys of m.
+\subsubsection{\texttt{PrtRef MapGetValues(m: PrtRef)} }
+Procedure that returns a sequence containing the values of m.
+\subsubsection{\texttt{PrtRef WriteMap(m: PrtRef, k: PrtRef, v: PrtRef)}} 
+Procedure that does {m[k] = v;}
+\subsubsection{\texttt{PrtRef InsertMap(m: PrtRef, k: PrtRef, v: PrtRef)}}
+Procedure that does \texttt{m += (k,v); }
+\newline
+Throws an error if k is already present in m.
+\subsubsection{\texttt{PrtRef RemoveMap(m: PrtRef, k: PrtRef)} }
+Procedure that does \texttt{m -= k;}
+\newline 
+Throws an error if k is not present in m.
+\subsection {Sequences} 
+\subsubsection{\texttt{int PrtFieldSeqSize(s: PrtRef)} }
+Function that returns the size of s.
+\subsubsection{\texttt{int{[}PrtRef{]} PrtFieldSeqStore(s: PrtRef)}} 
+Function that returns the array of elements of s
+\subsubsection{\texttt{bool SeqIndexInBounds(s: PrtRef, i: int)} }
+Procedure that checks if 0 <= i < PrtFieldSeqSize(s);
+\subsubsection{\texttt{PrtRef ReadSeq(s: PrtRef, i: int)} }
+Procedure that returns \texttt{s[i]}
+\subsubsection{\texttt{PrtRef WriteSeq(s: PrtRef, i: int, v: PrtRef)}} 
+Procedure that does \texttt{s[i] = v;}
+\newline
+Throws an error if i is off bounds.
+\subsubsection{\texttt{PrtRef InsertSeq(m: PrtRef, i: int, v: PrtRef)}} 
+Procedure that does \texttt{s += (i,v);} 
+\newline 
+Throws an error if i is off bounds.
+\subsubsection{\texttt{PrtRef RemoveSeq(m: PrtRef, k: PrtRef)} }
+Procedure that does \texttt{s -= i;}
+\newline
+Throws an error if i is off bounds.
+\subsection {Machines} 
+\subsubsection{\texttt{int newMachine\_<M>(entryArg: PrtRef)} }
+Procedure that creates new machine of type M, and mutates global book-keeping variables accordingly. Returns the machine ID of the newly created machine.
+\subsubsection{\texttt{void <M>\_ProbeStateStack()} }
+Procedure that probes the state state stack of M, performing implicit pop till such a time as a state that handles the event is found. Throws an error if there is no such state.
+\subsubsection{\texttt{<M>\_CallEntryAction(arg: PrtRef, state: int)} }
+Procedure that calls the entry action of state of M with the corresponding entryArg.
+\subsubsection{\texttt{<M>\_CallExitAction()} }
+Procedure that calls the exit action of CurrState of M.
+\subsubsection{\texttt{MachineThread\_<M>(entryArg: PrtRef)} }
+Procedure that instantiates the variables of a fresh instance of M, and performs the state transitions, send/receive, etc.
+\subsubsection{\texttt{Monitor\_<M>(entryArg: PrtRef)} }
+Procedure corresponding to the monitor M.
+\subsubsection{\texttt{(int, PrtRef) Dequeue(mid: int, block: bool)}} 
+Procedure that performs a blocking/non-blocking deque of the machine's inbox. Returns -1, null if the queue is empty on a non-blocking dequeue.
+\subsubsection{\texttt{void InitializeInbox(mid: int)} }
+Procedure - sets mappings for \texttt{MachineInboxStoreEvent} and \texttt{MachineInboxStorePayload}.
+\subsubsection{\texttt{void StateStackPush(state: int)} }
+Procedure for StateStackPush.
+\subsubsection{\texttt{void StateStackPop()} }
+Procedure for pop.
+\subsubsection{\texttt{void AssertMachineQueueSize()} }
+Procedure for asserting whether the machine's queue constraints are being followed.
+\subsubsection{\texttt{void AssertEventCard(e: int)} }
+Procedure for asserting whether the event's queue constraints are being followed.
+\subsubsection{\texttt{void Enqueue(e: int, pl: PrtRef)} }
+Procedure which checks for queue constraints, and performs enqueue if they're followed. Else throws an error.
+\subsubsection{\texttt{monitor(e: int, pl: PrtRef)} }
+Procedure which calls the monitors for event e.
+\subsubsection{\texttt{void send(mid:int, e: int, pl: PrtRef)} }
+Procedure which calls \texttt{monitor()}, and \texttt{Enqueue()}
+\subsubsection{\texttt{PrtRef AssertPayloadDynamicType(e: int, pl: PrtRef)} }
+Procedure that asserts that pl is of the type e requires.
+
+\end{document}
