@@ -17,10 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ZingParser", "P\Src\Parsers
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommandLine", "P\Src\Pc\CommandLine\CommandLine.csproj", "{48B4C337-CD13-4826-B6A1-DA97CE71511B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InteractiveCommandLine", "P\Src\Pc\InteractiveCommandLine\InteractiveCommandLine.csproj", "{2AC6C51F-C987-477D-9A70-B71B7EE5323E}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PVisualizer", "P\Src\PVisualizer\PVisualizer.csproj", "{9EA5F2E1-7FFA-4A0C-B439-BEAE64B952C5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompilerService", "P\Src\Pc\CompilerService\CompilerService.csproj", "{9F8DE18D-C64B-4D30-9CFF-6793FFEAFC04}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Formula", "Formula", "{D9CBC08F-DEA5-4400-909F-A8E963790D22}"
@@ -28,8 +24,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "P\Ext\Formula\Src\Core\Core.csproj", "{1B5724EC-FFF1-48D7-A700-AD46F0150AFC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestTranslator", "Tst\TestTranslator.csproj", "{9EEDABEC-E404-4906-8786-29CAA01E5622}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckP", "P\Tst\Tools\CheckP\CheckP.csproj", "{D614D3EC-C765-4B47-8002-E683C16C5865}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CreateCSV", "CreateCSV\CreateCSV.csproj", "{DD5E9120-88BF-435E-9E94-A208B0B9BC0B}"
 EndProject
