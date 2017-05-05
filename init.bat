@@ -68,7 +68,7 @@ git submodule init
 git submodule update
 MSBuild cba.sln
 cd ..
-cp bin\z3.exe corral\bin\Debug\
+copy bin\z3.exe corral\bin\Debug\
 
 
 popd
