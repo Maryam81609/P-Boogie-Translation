@@ -269,7 +269,7 @@ module Helper=
                      | Some(t) -> sprintf "(payload: %s)" (printType t)
         sw.Write("on {0} do {1} ", e, evType)
         openBlock sw
-        sw.WriteLine("payload = {1}(payload);", f)
+        sw.WriteLine("payload = {0}(payload);", f)
         closeBlock sw
       end
 
