@@ -153,6 +153,10 @@ module Helper=
     | Lval.NamedDot(v, f) -> sprintf "%s.%s" (printLval v) f
     | Lval.Index(l, e) -> sprintf "%s[%s]" (printLval l) (printExpr e) 
   
+  let unqualifyStateName (name: string) =
+    let words = Array.toList (name.Split '.')
+    List.last words
+
   let openBlock (sw: IndentedTextWriter) = 
     begin
       sw.WriteLine("{")
@@ -355,7 +359,7 @@ module Helper=
       | InvariantEqual "Cold" -> "cold"
       | _ -> "" 
 
-    sw.Write("{0} state {1} ", temp, s.Name)
+    sw.Write("{0} state {1} ", temp, (unqualifyStateName s.Name))
     openBlock sw
     printEntryExit s.EntryAction "entry"
     printEntryExit s.ExitAction "exit"
@@ -368,6 +372,40 @@ module Helper=
     let machine = if (m.IsModel) then "model" else (if (m.IsMonitor) then "spec" else "machine")
     let monitors = if(m.IsMonitor) then (sprintf " monitors %s " (printList (sprintf "%s") m.MonitorList ", ")) else ""
     let card = if (m.QC.IsSome) then (printCard m.QC.Value) else ""
+    let groupNames : string list = 
+        List.fold (fun acc (s: Syntax.StateDecl) ->
+            begin
+                let temp =  Array.toList (s.Name.Split '.')
+                let first = List.head temp
+                if (String.Equals(first, s.Name)) then acc
+                else 
+                    begin
+                        if (List.contains first acc) then acc 
+                        else first :: acc
+                    end 
+            end
+        ) [] m.States
+    let isStateFromGroup (s: Syntax.StateDecl) : bool = 
+        let name = s.Name
+        let temp =  Array.toList (name.Split '.')
+        let first = List.head temp
+        not (String.Equals(name, first))
+    let getGroupFromState (name: string) = List.head(Array.toList (name.Split '.'))
+    let getStatesForGroup gr =
+        List.fold (fun acc state ->
+            begin
+                if (isStateFromGroup state && (String.Equals((getGroupFromState state.Name), gr))) 
+                then state :: acc
+                else acc
+            end
+        ) [] m.States
+    let getNonGroupedStates =
+        List.fold (fun acc state ->
+            begin
+                if (isStateFromGroup state) then acc
+                else state :: acc
+            end
+        ) [] m.States
     sw.WriteLine("{0} {1}{2}{3}", machine, m.Name, card, monitors)
     openBlock sw
     printVarList sw m.Globals
@@ -376,7 +414,17 @@ module Helper=
                     begin
                       if (s.Name = m.StartState) then sw.Write("start ")
                       printState sw prog m.Name s
-                    end)  m.States
+                    end)  getNonGroupedStates
+    List.iter (fun (gr: string) ->
+            begin
+                sw.Write("group {0} ", gr)
+                openBlock sw
+                List.iter (fun (s: Syntax.StateDecl) -> 
+                            begin
+                              printState sw prog m.Name s
+                            end)  (getStatesForGroup gr)
+                closeBlock sw
+            end) groupNames
     closeBlock sw
 
   let printProg (sw: IndentedTextWriter) (prog: Syntax.ProgramDecl) =
