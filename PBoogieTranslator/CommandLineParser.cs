@@ -74,6 +74,9 @@ namespace PBoogieTranslator
                             genTestOutputs = true;
                             list = true;
                             break;
+                        case "break":
+                            System.Diagnostics.Debugger.Launch();
+                            break;
                         default:
                             Console.WriteLine("Invalid Option: {0}", arg);
                             goto error;

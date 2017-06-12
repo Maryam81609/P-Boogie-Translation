@@ -274,16 +274,22 @@ namespace Microsoft.PBoogieTranslator
                 {
                     while (true)
                     {
-                        string line1 = lines[i++];
                         string line2 = sr.ReadLine();
+                        if(line2 == null)
+                        {
+                            return false;
+                        }
+
+                        if(i == lines.Length)
+                        {
+                            return false;
+                        }
+
+                        string line1 = lines[i++];
+
                         if (line1 != line2)
                         {
                             return true;
-                        }
-
-                        if (line1 == null && line2 == null)
-                        {
-                            return false;
                         }
                     }
                 }
