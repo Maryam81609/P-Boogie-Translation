@@ -421,6 +421,7 @@ module Helper=
                 openBlock sw
                 List.iter (fun (s: Syntax.StateDecl) -> 
                             begin
+                              if (s.Name = m.StartState) then sw.Write("start ")
                               printState sw prog m.Name s
                             end)  (getStatesForGroup gr)
                 closeBlock sw
