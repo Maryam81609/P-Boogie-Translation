@@ -199,7 +199,7 @@ module RemoveRefParams =
   let removeRefParamsMachine funToRefParams funToRetType (md: MachineDecl) = 
     let f' = md.Functions |> Seq.ofList |> Seq.map (fun (fd: FunDecl) -> (fd.Name, fd.RetType)) |> Map.ofSeq |>  Map.filter (fun k v -> v.IsSome) |> Map.map (fun k v -> v.Value) |> mergeMaps funToRetType
     let funs = List.map (removeRefParamsFunction funToRefParams f') md.Functions
-    new MachineDecl(md.Name, md.StartState, md.Globals, funs, md.States, md.IsMonitor, md.MonitorList, md.QC, md.IsModel, md.HasPush, md.Init)
+    new MachineDecl(md.Name, md.StartState, md.Globals, funs, md.States, md.IsMonitor, md.MonitorList, md.QC, md.IsModel, md.HasPush, md.Init, md.Partial)
 
   let removeRefParamsProgram funToRefParams (prog: ProgramDecl) =
     let funToRetType = prog.StaticFuns |> Seq.ofList |> Seq.map (fun (fd: FunDecl) -> (fd.Name, fd.RetType)) |> Map.ofSeq |> Map.filter (fun k v -> v.IsSome) |> Map.map (fun k v -> v.Value)

@@ -397,7 +397,7 @@ module RemoveSideEffects =
     let init, G'' = getDefaults m.Globals G'
     let newGlobals = m.Globals @ (getNewVars G' G'')
     let fList = List.map (removeSideEffectsFn G'') m.Functions 
-    new MachineDecl(m.Name, m.StartState, newGlobals , fList, m.States, m.IsMonitor, m.MonitorList, m.QC, m.IsModel, m.HasPush, init)
+    new MachineDecl(m.Name, m.StartState, newGlobals , fList, m.States, m.IsMonitor, m.MonitorList, m.QC, m.IsModel, m.HasPush, init, m.Partial)
 
   ///Return a new ProgramDecl with all statements causing 
   ///only one side effect at most.

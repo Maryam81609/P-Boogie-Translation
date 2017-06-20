@@ -151,7 +151,8 @@ module Syntax =
   type MachineDecl(name: string, startState: string, globals: VarDecl list, 
                       functions: FunDecl list, states: StateDecl list, 
                       isMonitor: bool, monitorsList: string List, 
-                      qc: Card option, isModel: bool, hasPush: bool, init: Stmt list) =
+                      qc: Card option, isModel: bool, hasPush: bool, init: Stmt list,
+                      partial: string option) =
     member this.Name = name
     member this.StartState = startState
     member this.Globals = globals
@@ -163,6 +164,7 @@ module Syntax =
     member this.IsModel = isModel
     member this.HasPush = hasPush
     member this.Init = init
+    member this.Partial = partial
 
     member this.StateMap =
       let map = ref Map.empty in

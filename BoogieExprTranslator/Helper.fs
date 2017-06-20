@@ -407,6 +407,9 @@ module Helper=
             end
         ) [] m.States
     sw.WriteLine("{0} {1}{2}{3}", machine, m.Name, card, monitors)
+    match m.Partial with
+    | Some(s) -> sw.WriteLine("[partial = null]")
+    | _ -> ignore true
     openBlock sw
     printVarList sw m.Globals
     List.iter (printFunction sw prog m.Name) m.Functions

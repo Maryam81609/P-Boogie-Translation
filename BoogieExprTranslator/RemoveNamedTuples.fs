@@ -107,7 +107,7 @@ module RemoveNamedTuples =
     let G' = mergeMaps (mergeMaps G m.VarMap) funs
     let globals = List.map processVd m.Globals
     let fList = List.map (removeNamedTuplesFn G') m.Functions 
-    new MachineDecl(m.Name, m.StartState, globals, fList, m.States, m.IsMonitor, m.MonitorList, m.QC, m.IsModel, m.HasPush, m.Init)
+    new MachineDecl(m.Name, m.StartState, globals, fList, m.States, m.IsMonitor, m.MonitorList, m.QC, m.IsModel, m.HasPush, m.Init, m.Partial)
 
   ///Return a new ProgramDecl with all named tuples removed.  
   let removeNamedTuplesProgram (prog: ProgramDecl) = 
