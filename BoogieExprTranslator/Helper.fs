@@ -283,13 +283,21 @@ module Helper=
     | Syntax.TransDecl.T.Push(e, d) -> sw.WriteLine("on {0} push {1};", e, d)
     | Syntax.TransDecl.T.Call(e, d, f) ->
       begin
-        let evType = match (Map.find e prog.EventMap).Type with
-                     | None -> "(payload: null)"
-                     | Some(t) -> sprintf "(payload: %s)" (printType t)
-        sw.Write("on {0} goto {1} with {2} ", e, d, evType)
-        openBlock sw
-        sw.WriteLine("{0}(payload);", f)
-        closeBlock sw
+        match f with
+        | Some(f') ->
+            begin
+            let evType = match (Map.find e prog.EventMap).Type with
+                         | None -> "(payload: null)"
+                         | Some(t) -> sprintf "(payload: %s)" (printType t)
+            sw.Write("on {0} goto {1} with {2} ", e, d, evType)
+            openBlock sw
+            sw.WriteLine("{0}(payload);", f')
+            closeBlock sw
+            end
+        | None ->
+            begin
+            sw.WriteLine("on {0} goto {1};", e, d)
+            end    
       end
 
   let (|InvariantEqual|_|) (str:string) arg = 

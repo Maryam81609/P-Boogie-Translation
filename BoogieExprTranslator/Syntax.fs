@@ -113,7 +113,7 @@ module Syntax =
 
     type T = 
       | Push of string * string
-      | Call of string * string * string
+      | Call of string * string * string option
 
     let getEvent td =
       match td with
