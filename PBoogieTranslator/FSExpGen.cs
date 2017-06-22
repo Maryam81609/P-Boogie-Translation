@@ -1186,7 +1186,7 @@ namespace Microsoft.PBoogieTranslator
                 qc = new FSharpOption<Syntax.Card>(x);
             }
             return new Syntax.MachineDecl(name, start_state, globals, functions,
-                states, is_monitor, monitored_events, qc, is_model, hasPush, FSharpList<Syntax.Stmt>.Empty);
+                states, is_monitor, monitored_events, qc, is_model, hasPush, FSharpList<Syntax.Stmt>.Empty, null);
         }
 
         private Syntax.Card genQueueConstraint(P_Root.QueueConstraint qc)
@@ -1556,7 +1556,7 @@ namespace Microsoft.PBoogieTranslator
             {
                 var action = owner + "_on_" + trig + "_goto_" + dst;
                 genAnonFunDecl(t.action as P_Root.AnonFunDecl, ref action, true);
-                return Syntax.TransDecl.T.NewCall(trig, dst, action);
+                return Syntax.TransDecl.T.NewCall(trig, dst, new FSharpOption<string>(action));
             }
             else
             {
@@ -1580,7 +1580,7 @@ namespace Microsoft.PBoogieTranslator
 
                 var fd = new Syntax.FunDecl(action, @params, new FSharpOption<Syntax.Type>(Syntax.Type.Null), FSharpList<Syntax.VarDecl>.Empty, ListModule.OfSeq(body), false, false, MapModule.OfSeq(trueNames));
                 machineToFunList[symbolTable.currentM].Add(fd);
-                return Syntax.TransDecl.T.NewCall(trig, dst, action);
+                return Syntax.TransDecl.T.NewCall(trig, dst, new FSharpOption<string>(action));
             }
         }
 
