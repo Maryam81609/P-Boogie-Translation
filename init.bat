@@ -61,22 +61,9 @@ echo Done!
 echo 
 echo 
 echo *****************************************************************************************************************
-echo Building Corral...
+echo Cloning Corral...
 echo *****************************************************************************************************************
 cd corral
 git submodule init
 git submodule update
-MSBuild cba.sln
-cd ..
-copy bin\z3.exe corral\bin\Debug\
 
-
-popd
-
-echo 
-echo 
-echo *****************************************************************************************************************
-echo Init done. Now, build the translator from Visual Studio.
-echo *****************************************************************************************************************
-echo 
-echo 

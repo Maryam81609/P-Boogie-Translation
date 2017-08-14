@@ -62,10 +62,6 @@
       <Project>{48b381f1-b893-4aca-bf5a-1fe5e5688309}</Project>
       <Name>PBoogieTranslator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\P\Tst\Tools\CheckP\CheckP.csproj">
-      <Project>{d614d3ec-c765-4b47-8002-e683c16c5865}</Project>
-      <Name>CheckP</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
