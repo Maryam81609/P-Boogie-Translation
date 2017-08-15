@@ -17,6 +17,7 @@ echo ***************************************************************************
 cd P
 git submodule init
 git submodule update
+cd ..
 
 echo 
 echo 
@@ -26,4 +27,5 @@ echo ***************************************************************************
 cd corral
 git submodule init
 git submodule update
+cd ..
 
