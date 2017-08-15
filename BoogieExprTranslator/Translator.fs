@@ -496,7 +496,9 @@ module Translator =
           sw.WriteLine("if(event == {0}) // {1}", x, e)
           openBlock sw
           sw.WriteLine("call {0}_CallExitAction();", mach.Name)
-          sw.WriteLine("call payload := {0}(payload);", f)
+          match f with
+            | Some(a) -> sw.WriteLine("call payload := {0}(payload);", a)
+            | None -> sw.WriteLine()
           sw.WriteLine("CurrState := {0};", Map.find d stateToInt)
           sw.WriteLine("call {0}_CallEntryAction({1}, payload);", mach.Name, Map.find d stateToInt)
           closeBlock sw
@@ -772,7 +774,9 @@ module Translator =
             match srcExitAction with
             | None -> ignore true
             | Some(ea) -> sw.WriteLine("call {0}(null);", ea)
-            sw.WriteLine("call payload := {0}(payload);", f)
+            match f with
+            | Some(a) -> sw.WriteLine("call payload := {0}(payload);", a)
+            | None -> sw.WriteLine()
             sw.WriteLine("{0}_CurrState := {1};", md.Name, (Map.find d stateToInt))
             match dstEntryAction with
             | None -> ignore true
